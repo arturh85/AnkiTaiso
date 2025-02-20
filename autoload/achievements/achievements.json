@@ -1,0 +1,24 @@
+{
+"test1": {
+	"id": "my-achievement",
+	"name": "MY achievement",
+	"description": "This is my awesome achievement",
+	"is_secret": false,
+	"count_goal": 25,
+	"current_progress": 0.0,
+	"icon_path": "res://assets/icon/my-achievement.png",
+	"unlocked": false,
+	"active": true
+	},
+"test2": {
+	"id": "my-achievement2",
+	"name": "MY achievement 2",
+	"description": "This is my awesome achievement 2",
+	"is_secret": true,
+	"count_goal": 10,
+	"current_progress": 0.0,
+	"icon_path": "res://assets/icon/my-achievement.png",
+	"unlocked": false,
+	"active": true
+	}
+}

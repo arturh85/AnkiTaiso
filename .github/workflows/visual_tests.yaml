@@ -20,7 +20,7 @@ jobs:
       fail-fast: false
       matrix:
         # Put the rendering drivers you want to use for tests here.
-        render-driver: [opengl3] # also: opengl3
+        render-driver: [vulkan] # also: opengl3
     defaults:
       run:
         # Use bash shells on all platforms.
@@ -48,7 +48,12 @@ jobs:
         run: |
           sudo rm -f /etc/apt/sources.list.d/microsoft-prod.list
           sudo add-apt-repository -n ppa:kisak/kisak-mesa
-          sudo apt-get update && apt-get install -y mesa-vulkan-drivers binutils rsync xvfb
+
+      - name: 💾 Install Graphics Driver Emulators
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: mesa-vulkan-drivers binutils rsync xvfb
+          version: 1.0
 
       - name: 🤖 Setup Godot
         uses: chickensoft-games/setup-godot@v2
@@ -61,7 +66,16 @@ jobs:
           # This allows checks on renovatebot PR's to succeed whenever
           # renovatebot updates the Godot SDK version.
           version: global.json
-          cache: false
+          cache: true
+          # Use .NET-enabled version of Godot (the default is also true).
+          use-dotnet: true
+          # Include the Godot Export Templates (the default is false).
+          include-templates: true
+
+      - name: 🔬 Verify Setup
+        run: |
+          dotnet --version
+          godot --version
 
       - name: 🧑‍🔬 Generate .NET Bindings
         run: |
@@ -69,6 +83,9 @@ jobs:
           export PATH="$PATH:/root/.dotnet/tools"
           godotenv addons install
           godot --headless --build-solutions --quit || exit 0
+
+      - name: 🦺 Build Projects
+        run: dotnet build
 
       - name: 🌋 Run Tests in Godot
         run: |

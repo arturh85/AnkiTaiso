@@ -40,8 +40,8 @@
     <!-- LightMoq is a Chickensoft package which makes it more like Moq. -->
     <PackageReference Include="LightMoq" Version="0.1.0" />
   </ItemGroup>
-  <ItemGroup><!-- Production dependencies go here! -->
-  
+  <ItemGroup>
+    <!-- Production dependencies go here! -->
     <Content Include="README.md" />
   </ItemGroup>
 </Project>
