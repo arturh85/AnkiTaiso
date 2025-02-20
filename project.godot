@@ -10,14 +10,19 @@ config_version=5
 
 [application]
 
-config/name="arturgodotcharp"
+config/name="Kyoukai Tansa"
+config/description="境界探査 (Kyōkai Tansa) - \"Boundary Exploration\""
 run/main_scene="res://src/Main.tscn"
 config/features=PackedStringArray("4.3", "C#", "Mobile")
 config/icon="res://icon.png"
 
 [dotnet]
 
-project/assembly_name="arturgodotcharp"
+project/assembly_name="kyoukai-tansa"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/expand-region/plugin.cfg", "res://addons/find-everywhere/plugin.cfg", "res://addons/imrp/plugin.cfg", "res://addons/previous-tab/plugin.cfg", "res://addons/script-tabs/plugin.cfg")
 
 [rendering]
 

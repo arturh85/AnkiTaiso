@@ -1,4 +1,4 @@
-namespace arturgodotcharp;
+namespace kyoukaitansa;
 
 using Godot;
 
@@ -7,7 +7,7 @@ public partial class Game : Control {
   public int ButtonPresses { get; private set; }
 
   public override void _Ready() {
-    TestButton = GetNode<Button>("%TestButton");
+	TestButton = GetNode<Button>("%TestButton");
   }
 
   public void OnTestButtonPressed() => ButtonPresses++;

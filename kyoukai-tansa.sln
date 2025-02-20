@@ -1,6 +1,6 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "arturgodotcharp", "arturgodotcharp.csproj", "{0354F7E9-FC8B-4793-BC8F-4CDB685A3DCA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kyoukai-tansa", "kyoukai-tansa.csproj", "{0354F7E9-FC8B-4793-BC8F-4CDB685A3DCA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

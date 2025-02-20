@@ -8,6 +8,10 @@ bin/
 obj/
 .generated/
 .vs/
+.idea/
 .DS_Store
 
 *.translation
+addons/*
+!addons/.editorconfig
+.addons/*

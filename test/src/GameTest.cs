@@ -1,4 +1,4 @@
-namespace arturgodotcharp;
+namespace kyoukaitansa;
 
 using System.Threading.Tasks;
 using Godot;

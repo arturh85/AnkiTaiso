@@ -1,29 +1,49 @@
-# arturgodotcharp
+# Kyoukai Tansa
 
-[![Chickensoft Badge][chickensoft-badge]][chickensoft-website] [![Discord][discord-badge]][discord] [![Read the docs][read-the-docs-badge]][docs] ![line coverage][line-coverage] ![branch coverage][branch-coverage]
+境界探査 (Kyōkai Tansa) - "Boundary Exploration"
 
-C# game template for Godot 4 with debug launch configurations, testing (locally and on CI/CD), code coverage, dependency update checks, and spell check working out-of-the-box!
+<img src="docs/logo.jpg" width="400">
 
 ---
 
-<p align="center">
-<img alt="Cardboard Box with Chickensoft Logo" src="icon.png" width="200">
-</p>
+## Explore Links
 
+- [Godot 4 Plugins](https://github.com/MakovWait/godot4-plugins)
+- https://chickensoft.games/
+  - [GodotEnv](https://github.com/chickensoft-games/GodotEnv)
+
+Potentielle Interessting Addons:
+
+- https://gitlab.com/Xecestel/sound-manager
+
+---
+
+## Godot Editor Extra Shortcuts via addons:
+
+### Expand Region
+
+- `ALT+W`: expand region (macos `CONTROL+W`)
+- `ALT+SHIFT+W`: shrink region (macos `CONTROL+SHIFT+W`)
+
+### Find Everywhere
+
+- `SHIFT-SHIFT`: Quick Open
+- `ALT+SHIFT+F`: Find in Files (macos `CONTROL+SHIFT+F`)
+
+### Previous Tab
+
+- `Ctrl+Tab`: Switch to the previously active tab (last tab) by pressing (macos `Option+Tab`)
+
+---
 ## 🥚 Getting Started
 
-This template allows you to easily create a C# game for Godot 4. Microsoft's `dotnet` tool allows you to easily create, install, and use templates.
+First install GodotEnv with:
 
-```sh
-# Install this template
-dotnet new install arturgodotcharp
+	dotnet tool install --global Chickensoft.GodotEnv
 
-# Generate a new project based on this template
-dotnet new chickengame --name "MyGameName" --param:author "My Name"
+	godotenv addons install
 
-cd MyGameName
-dotnet build
-```
+(tbd)
 
 ## 💁 Getting Help
 
@@ -140,7 +160,7 @@ You can configure which simulated graphics environments (`vulkan` and/or `opengl
 
 Currently, tests can only be run from the `ubuntu` runners. If you know how to make the workflow install mesa and a virtual window manager on macOS and Windows, we'd love to hear from you!
 
-Tests are executed by running the Godot test project in `arturgodotcharp` from the command line and passing in the relevant arguments to Godot so that [GoDotTest] can discover and run tests.
+Tests are executed by running the Godot test project in `kyoukai-tansa` from the command line and passing in the relevant arguments to Godot so that [GoDotTest] can discover and run tests.
 
 ### 🧑‍🏫 Spellcheck
 
@@ -154,7 +174,7 @@ You can also words to the local `cspell.json` file from VSCode by hovering over 
 
 ### 🗂 Version Change
 
-The included workflow in [`.github/workflows/version_change.yaml`](.github/workflows/version_change.yaml) can be manually dispatched to open a pull request that replaces the version number in `arturgodotcharp.csproj` with the version you specify in the workflow's inputs.
+The included workflow in [`.github/workflows/version_change.yaml`](.github/workflows/version_change.yaml) can be manually dispatched to open a pull request that replaces the version number in `kyoukai-tansa.csproj` with the version you specify in the workflow's inputs.
 
 ![Version Change Workflow](docs/version_change.png)
 

@@ -1,0 +1,36 @@
+// Godot addons configuration file for use with the GodotEnv tool.
+// See https://github.com/chickensoft-games/GodotEnv for more info.
+// -------------------------------------------------------------------- //
+// Note: this is a JSONC file, so you can use comments!
+// If using Rider, see https://youtrack.jetbrains.com/issue/RIDER-41716
+// for any issues with JSONC.
+// -------------------------------------------------------------------- //
+{
+  "$schema": "https://chickensoft.games/schemas/addons.schema.json",
+  // "path": "addons", // default
+  // "cache": ".addons", // default
+  "addons": {
+    "imrp": { // name must match the folder name in the repository
+      "url": "https://github.com/MakovWait/improved_resource_picker",
+      // "source": "remote", // default
+      // "checkout": "main", // default
+      "subfolder": "addons/imrp"
+    },
+    "expand-region": {
+      "url": "https://github.com/MakovWait/godot-expand-region",
+      "subfolder": "addons/expand-region"
+    },
+    "find-everywhere": {
+      "url": "https://github.com/MakovWait/godot-find-everywhere",
+      "subfolder": "addons/find-everywhere"
+    },
+    "previous-tab": {
+      "url": "https://github.com/MakovWait/godot-previous-tab",
+      "subfolder": "addons/previous-tab"
+    },
+    "script-tabs": {
+      "url": "https://github.com/MakovWait/godot-script-tabs",
+      "subfolder": "addons/script-tabs"
+    }
+  }
+}

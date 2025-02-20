@@ -1,10 +1,10 @@
-<Project Sdk="Godot.NET.Sdk">
+<Project Sdk="Godot.NET.Sdk/4.3.0">
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
-    <RootNamespace>arturgodotcharp</RootNamespace>
+    <RootNamespace>kyoukaitansa</RootNamespace>
     <!-- Required for some nuget packages to work -->
     <!-- godotengine/godot/issues/42271#issuecomment-751423827 -->
     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
@@ -15,10 +15,10 @@
     -->
     <DebugType>portable</DebugType>
     <DebugSymbols>true</DebugSymbols>
-    <Title>arturgodotcharp</Title>
+    <Title>kyoukai-tansa</Title>
     <Version>1.0.0</Version>
-    <Description>arturgodotcharp</Description>
-    <Copyright>© 2024 Artur Hallmann</Copyright>
+    <Description>kyoukai-tansa</Description>
+    <Copyright>© 2025 Artur Hallmann</Copyright>
     <Authors>Artur Hallmann</Authors>
     <Company>Artur Hallmann</Company>
     <!-- Don't include unit tests in release builds. -->
@@ -40,7 +40,8 @@
     <!-- LightMoq is a Chickensoft package which makes it more like Moq. -->
     <PackageReference Include="LightMoq" Version="0.1.0" />
   </ItemGroup>
-  <ItemGroup>
-    <!-- Production dependencies go here! -->
+  <ItemGroup><!-- Production dependencies go here! -->
+  
+    <Content Include="README.md" />
   </ItemGroup>
 </Project>
