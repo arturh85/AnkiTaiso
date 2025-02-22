@@ -54,6 +54,23 @@
   <ItemGroup>
     <!-- Production dependencies go here! -->
     <Content Include="cspell.json" />
+    <Content Include="docs\.gdignore" />
+    <Content Include="docs\explanation\.pages" />
+    <Content Include="docs\explanation\how-godot-works.md" />
+    <Content Include="docs\howto\.pages" />
+    <Content Include="docs\howto\update-godot-version.md" />
+    <Content Include="docs\index.md" />
+    <Content Include="docs\logo.jpg" />
+    <Content Include="docs\publish.png" />
+    <Content Include="docs\reference\.pages" />
+    <Content Include="docs\reference\api.md" />
+    <Content Include="docs\renovatebot_pr.png" />
+    <Content Include="docs\spelling_fix.png" />
+    <Content Include="docs\tutorial\.pages" />
+    <Content Include="docs\tutorial\getting-started.md" />
+    <Content Include="docs\version_change.png" />
     <Content Include="README.md" />
+    <Content Include="src\scenes\PlatformerTestScene.tscn" />
+    <Content Include="src\SpaceShooter\SpaceShooterTestScene.tscn" />
   </ItemGroup>
 </Project>

@@ -13,6 +13,8 @@
     "**/*.godot",
     "**/*.gdshader",
     "**/*.json",
+    "**/*.csproj",
+    "**/*.sln",
     "**/*.import",
     "localization/**/*.*",
     "coverage/**/*.*",
@@ -114,6 +116,10 @@
     "fmod",
     "absi",
     "LXXX",
-    "DCCC"
+    "DCCC",
+    "organised",
+    "howto",
+    "gdignore",
+    "Platformer"
   ]
 }

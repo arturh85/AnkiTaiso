@@ -35,7 +35,8 @@ enabled=PackedStringArray("res://addons/expand-region/plugin.cfg", "res://addons
 folder_colors={
 "res://assets/": "pink",
 "res://autoload/": "purple",
-"res://components/": "red"
+"res://components/": "red",
+"res://src/": "yellow"
 }
 
 [input]

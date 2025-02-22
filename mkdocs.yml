@@ -1,0 +1,17 @@
+site_name: Kyōkai Tansa docs
+site_url: https://arturh85.github.io/kyoukai-tansa/
+use_directory_urls: true
+theme:
+  name: readthedocs
+plugins:
+  - search
+  - mermaid2
+  - awesome-pages
+nav:
+  - "Home": index.md
+  - ... | tutorial/*.md
+  - ... | howto/*.md
+  - ... | explanation/*.md
+  - ... | reference/*.md
+  - "Links":
+    - "Git Project": "https://github.com/arturh85/kyoukai-tansa"

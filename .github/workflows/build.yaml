@@ -3,9 +3,12 @@ on:
   push:
   pull_request:
 
+
 jobs:
   build:
     name: 🤖 Release Build ${{ matrix.platform }}
+    permissions:
+      contents: write
     # Only run the workflow if it's not a PR or if it's a PR from a fork.
     # This prevents duplicate workflows from running on PR's that originate
     # from the repository itself.
@@ -17,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        platform: [linux, windows, mac]
+        platform: [linux, windows]
     defaults:
       run:
         # Use bash shells on all platforms.
@@ -77,10 +80,36 @@ jobs:
 
       - name: 🦺 Build Projects
         run: |
-          mkdir ${{ github.workspace }}/${{ matrix.platform }}
+          mkdir ${{ github.workspace }}/build/
           godot -v --headless --export-release ${{ matrix.platform }} || exit 1
+
       - name: Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: Kyoukai Tansa - ${{ matrix.platform }}
-          path: ${{ github.workspace }}/${{ matrix.platform }}
+          path: ${{ github.workspace }}/build
+
+      - name: Build docs
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.11
+        if: github.ref == 'refs/heads/main' && matrix.platform == 'linux'
+      - run: pip install \
+          mkdocs mkdocs-awesome-pages-plugin mkdocs-mermaid2-plugin
+      - run: mkdir public && mkdocs build -d public/docs
+
+#      - name: Deploy docs
+#        uses: mhausenblas/mkdocs-deploy-gh-pages@master
+#        if: github.ref == 'refs/heads/main' && matrix.platform == 'linux'
+#        # Or use mhausenblas/mkdocs-deploy-gh-pages@nomaterial to build without the mkdocs-material theme
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#          CONFIG_FILE: mkdocs.yml
+#          EXTRA_PACKAGES: build-base mermaid2 awesome-pages
+
+      - name: Deploy docs
+        uses: peaceiris/actions-gh-pages@v4
+        if: github.ref == 'refs/heads/main' && matrix.platform == 'linux'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
