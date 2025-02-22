@@ -16,17 +16,11 @@ run/main_scene="res://src/Main.tscn"
 config/features=PackedStringArray("4.3", "C#", "Mobile")
 config/icon="res://icon.png"
 
-[autoload]
+[display]
 
-Utilities="*res://autoload/general/Utilities.gd"
-GameGlobals="*res://autoload/globals/GameGlobals.gd"
-GlobalEventBus="*res://autoload/globals/GlobalEventBus.gd"
-AudioManager="*res://autoload/audio/AudioManager.gd"
-SceneTransitionManager="*res://autoload/scenes/scene_transition_manager.tscn"
-MusicManager="*res://autoload/audio/MusicManager.gd"
-GlobalCameraTransition="*res://autoload/camera/global_camera_transition.tscn"
-GameControllerManager="*res://autoload/input/GameControllerManager.gd"
-SaveManager="*res://autoload/saves/save_manager.gd"
+window/size/viewport_width=240
+window/size/viewport_height=320
+window/stretch/mode="canvas_items"
 
 [dotnet]
 
@@ -135,4 +129,6 @@ throw={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true

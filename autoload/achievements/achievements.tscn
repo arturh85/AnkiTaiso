@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://d11x3c6mkf4gc"]
-
-[ext_resource type="Script" path="res://autoload/achievements/achievements.gd" id="1_p8j8k"]
-
-[node name="Achievements" type="Node"]
-script = ExtResource("1_p8j8k")
-local_source_path = "res://autoload/achievements/achievements.json"
-
-[node name="HTTPRequest" type="HTTPRequest" parent="."]

@@ -10,6 +10,7 @@ obj/
 .vs/
 .idea/
 .DS_Store
+*.sln.*.user
 
 *.translation
 addons/*

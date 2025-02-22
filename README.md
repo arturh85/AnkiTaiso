@@ -6,13 +6,20 @@
 
 ---
 
+
+
+
+---
+
 ## Explore Links
 
 - [Godot 4 Plugins](https://github.com/MakovWait/godot4-plugins)
 - https://chickensoft.games/
   - [GodotEnv](https://github.com/chickensoft-games/GodotEnv)
+- Godot Tests: https://github.com/chickensoft-games/GoDotTest
+- [GodotSharp SourceGenerators](https://github.com/Cat-Lips/GodotSharp.SourceGenerators)
 
-Potentielle Interessting Addons:
+Potential Addons:
 
 - https://gitlab.com/Xecestel/sound-manager
 

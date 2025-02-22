@@ -1,14 +1,22 @@
 {
   "files": [
-    "**/*.*"
+    "docs/*.*",
+    "localization/*.*"
   ],
   "ignorePaths": [
+    "**/*.svg",
+    "**/*.gd",
+    "**/*.cs",
     "**/*.tscn",
+    "**/*.cfg",
+    "**/*.tres",
+    "**/*.godot",
+    "**/*.gdshader",
+    "**/*.json",
     "**/*.import",
-    "badges/**/*.*",
+    "localization/**/*.*",
     "coverage/**/*.*",
     ".godot/**/*.*",
-    "**/*.tres",
     "addons/**/*.*"
   ],
   "words": [
@@ -92,6 +100,20 @@
     "Artur",
     "Hallmann",
     "imrp",
-    "godotenv"
+    "godotenv",
+    "Yjtcz",
+    "onready",
+    "crossfade",
+    "crossfading",
+    "autoplay",
+    "absf",
+    "dotenv",
+    "elif",
+    "pprint",
+    "bitstream",
+    "fmod",
+    "absi",
+    "LXXX",
+    "DCCC"
   ]
 }

@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cx6rqohboh1y4"]
+
+[ext_resource type="Script" path="res://src/SpaceShooter/SpaceShooterTestScene.cs" id="1_mbx3v"]
+[ext_resource type="Texture2D" uid="uid://c65kn7dcmnplb" path="res://src/SpaceShooter/assets/Player ship/Player_ship (16 x 16).png" id="2_40mxy"]
+[ext_resource type="Script" path="res://src/SpaceShooter/Player.cs" id="2_pilkq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ww81"]
+size = Vector2(14.5, 12)
+
+[node name="SpaceShooterTestScene" type="Node2D"]
+script = ExtResource("1_mbx3v")
+
+[node name="Player" type="Area2D" parent="."]
+script = ExtResource("2_pilkq")
+
+[node name="Ship" type="Sprite2D" parent="Player"]
+texture = ExtResource("2_40mxy")
+hframes = 3
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(-0.25, 0)
+shape = SubResource("RectangleShape2D_4ww81")
