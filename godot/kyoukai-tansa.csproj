@@ -50,6 +50,8 @@
     <PackageReference Include="Chickensoft.Introspection.Generator" Version="2.2.0" PrivateAssets="all" OutputItemType="analyzer" />
     <PackageReference Include="Chickensoft.Serialization" Version="2.2.0" />
     <PackageReference Include="Chickensoft.Serialization.Godot" Version="0.7.5" />
+    <PackageReference Include="Chickensoft.LogicBlocks" Version="5.16.0" />
+    <PackageReference Include="Chickensoft.LogicBlocks.DiagramGenerator" Version="5.16.0" PrivateAssets="all" OutputItemType="analyzer" />
   </ItemGroup>
   <ItemGroup>
     <!-- Production dependencies go here! -->
@@ -58,18 +60,22 @@
     <Content Include="docs\explanation\.pages" />
     <Content Include="docs\explanation\how-godot-works.md" />
     <Content Include="docs\howto\.pages" />
+    <Content Include="docs\howto\tests.md" />
     <Content Include="docs\howto\update-godot-version.md" />
     <Content Include="docs\index.md" />
     <Content Include="docs\logo.jpg" />
     <Content Include="docs\publish.png" />
     <Content Include="docs\reference\.pages" />
     <Content Include="docs\reference\api.md" />
+    <Content Include="docs\reference\godot-editor-shortcuts.md" />
+    <Content Include="docs\reference\spellcheck.md" />
     <Content Include="docs\renovatebot_pr.png" />
     <Content Include="docs\spelling_fix.png" />
     <Content Include="docs\tutorial\.pages" />
     <Content Include="docs\tutorial\getting-started.md" />
     <Content Include="docs\version_change.png" />
     <Content Include="README.md" />
+    <Content Include="src\app\App.tscn" />
     <Content Include="src\scenes\PlatformerTestScene.tscn" />
     <Content Include="src\SpaceShooter\SpaceShooterTestScene.tscn" />
   </ItemGroup>
