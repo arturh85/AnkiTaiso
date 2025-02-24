@@ -1,39 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://arturh85.github.io/kyoukai-tansa/</loc>
+         <loc>https://arturh85.github.io/kyoukai-tansa/docs/</loc>
          <lastmod>2025-02-24</lastmod>
     </url>
     <url>
-         <loc>https://arturh85.github.io/kyoukai-tansa/explanation/how-godot-works/</loc>
+         <loc>https://arturh85.github.io/kyoukai-tansa/docs/explanation/how-godot-works/</loc>
          <lastmod>2025-02-24</lastmod>
     </url>
     <url>
-         <loc>https://arturh85.github.io/kyoukai-tansa/howto/tests/</loc>
+         <loc>https://arturh85.github.io/kyoukai-tansa/docs/howto/tests/</loc>
          <lastmod>2025-02-24</lastmod>
     </url>
     <url>
-         <loc>https://arturh85.github.io/kyoukai-tansa/howto/update-godot-version/</loc>
+         <loc>https://arturh85.github.io/kyoukai-tansa/docs/howto/update-godot-version/</loc>
          <lastmod>2025-02-24</lastmod>
     </url>
     <url>
-         <loc>https://arturh85.github.io/kyoukai-tansa/reference/api/</loc>
+         <loc>https://arturh85.github.io/kyoukai-tansa/docs/reference/api/</loc>
          <lastmod>2025-02-24</lastmod>
     </url>
     <url>
-         <loc>https://arturh85.github.io/kyoukai-tansa/reference/godot-editor-shortcuts/</loc>
+         <loc>https://arturh85.github.io/kyoukai-tansa/docs/reference/godot-editor-shortcuts/</loc>
          <lastmod>2025-02-24</lastmod>
     </url>
     <url>
-         <loc>https://arturh85.github.io/kyoukai-tansa/reference/spellcheck/</loc>
+         <loc>https://arturh85.github.io/kyoukai-tansa/docs/reference/spellcheck/</loc>
          <lastmod>2025-02-24</lastmod>
     </url>
     <url>
-         <loc>https://arturh85.github.io/kyoukai-tansa/reference/state-flow/</loc>
+         <loc>https://arturh85.github.io/kyoukai-tansa/docs/reference/state-flow/</loc>
          <lastmod>2025-02-24</lastmod>
     </url>
     <url>
-         <loc>https://arturh85.github.io/kyoukai-tansa/tutorial/getting-started/</loc>
+         <loc>https://arturh85.github.io/kyoukai-tansa/docs/tutorial/getting-started/</loc>
          <lastmod>2025-02-24</lastmod>
     </url>
 </urlset>
