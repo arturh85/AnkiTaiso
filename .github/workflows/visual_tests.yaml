@@ -39,10 +39,10 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           # Use the .NET SDK from global.json in the root of the repository.
-          global-json-file: global.json
+          global-json-file: godot/global.json
 
       - name: 📦 Restore Dependencies
-        run: dotnet restore
+        run: cd godot; dotnet restore
 
       - name: 💾 Add Graphics Driver Emulators Source
         run: |
@@ -65,7 +65,7 @@ jobs:
           #
           # This allows checks on renovatebot PR's to succeed whenever
           # renovatebot updates the Godot SDK version.
-          version: global.json
+          version: godot/global.json
           cache: true
           # Use .NET-enabled version of Godot (the default is also true).
           use-dotnet: true
@@ -81,14 +81,16 @@ jobs:
         run: |
           dotnet tool install --global Chickensoft.GodotEnv
           export PATH="$PATH:/root/.dotnet/tools"
+          cd godot
           godotenv addons install
           godot --headless --build-solutions --quit || exit 0
 
       - name: 🦺 Build Projects
-        run: dotnet build
+        run: cd godot; dotnet build
 
       - name: 🌋 Run Tests in Godot
         run: |
+          cd godot
           xvfb-run godot --audio-driver Dummy --rendering-driver ${{ matrix.render-driver }} --run-tests --quit-on-finish --coverage
 
           # The --coverage flag is used by GoDotTest to control the exit code

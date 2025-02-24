@@ -1,7 +1,7 @@
 namespace kyoukaitansa;
 
+using app;
 using Godot;
-using SpaceShooter;
 
 #if DEBUG
 using System.Reflection;
@@ -39,5 +39,5 @@ public partial class Main : Node2D {
 #endif
 
   private void RunScene()
-    => GetTree().ChangeSceneToFile(SpaceShooterTestScene.TscnFilePath);
+    => GetTree().ChangeSceneToFile(App.APP_SCENE_PATH);
 }

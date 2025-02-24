@@ -3,19 +3,24 @@ namespace kyoukaitansa.app;
 using Chickensoft.AutoInject;
 using Chickensoft.GodotNodeInterfaces;
 using Chickensoft.Introspection;
+using domain;
+using game;
+using GameDemo;
 using Godot;
-using kyoukaitansa.app.domain;
+using menu;
+using menu.splash;
 using state;
+using utils;
 
 public interface IApp : ICanvasLayer, IProvide<IAppRepo>;
 
 [Meta(typeof(IAutoNode))]
-[SceneTree]
 public partial class App : CanvasLayer, IApp {
   public override void _Notification(int what) => this.Notify(what);
 
   #region Constants
 
+  public const string APP_SCENE_PATH = "res://src/app/App.tscn";
   public const string GAME_SCENE_PATH = "res://src/game/Game.tscn";
 
   #endregion Constants

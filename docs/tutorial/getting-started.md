@@ -6,7 +6,7 @@ First install GodotEnv which manages our addons:
 
     dotnet tool install --global Chickensoft.GodotEnv
 
-Then we install all addons with this commmand:
+Then we install all addons with this command:
 
     godotenv addons install
 
@@ -22,7 +22,7 @@ This template includes some Visual Studio Code settings in `.vscode/settings.jso
 
 ## .NET Versioning
 
-The included [`global.json`](./global.json) specifies the version of the .NET SDK and `Godot.NET.Sdk` that the game should use. Using a `global.json` file allows [Renovatebot] to provide your repository with automatic dependency update pull requests whenever a new version of [GodotSharp] is released.
+The included [`global.json`](../../godot/global.json) specifies the version of the .NET SDK and `Godot.NET.Sdk` that the game should use. Using a `global.json` file allows [Renovatebot] to provide your repository with automatic dependency update pull requests whenever a new version of [GodotSharp] is released.
 
 ## 🏁 Application Entry Point
 

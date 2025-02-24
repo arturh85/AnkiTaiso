@@ -2,3 +2,5 @@ nupkg/
 .vs/
 .idea/
 .DS_Store
+*.sln.*.user
+

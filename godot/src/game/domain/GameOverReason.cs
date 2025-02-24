@@ -1,4 +1,4 @@
-namespace GameDemo;
+namespace kyoukaitansa.game.domain;
 
 public enum GameOverReason {
   Won,

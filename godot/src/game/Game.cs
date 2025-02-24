@@ -1,16 +1,21 @@
-namespace GameDemo;
+namespace kyoukaitansa.game;
 
 using System;
 using System.IO.Abstractions;
 using System.Text.Json;
+using app.domain;
 using Chickensoft.AutoInject;
 using Chickensoft.Collections;
 using Chickensoft.GodotNodeInterfaces;
-using Chickensoft.Serialization.Godot;
+using Chickensoft.Introspection;
 using Chickensoft.SaveFileBuilder;
 using Chickensoft.Serialization;
+using Chickensoft.Serialization.Godot;
+using domain;
+using GameDemo;
 using Godot;
-using Chickensoft.Introspection;
+using state;
+using GameLogic = state.GameLogic;
 
 public interface IGame : INode3D,
 IProvide<IGameRepo>, IProvide<ISaveChunk<GameData>>, IProvide<EntityTable> {
@@ -20,10 +25,10 @@ IProvide<IGameRepo>, IProvide<ISaveChunk<GameData>>, IProvide<EntityTable> {
 }
 
 [Meta(typeof(IAutoNode))]
+// [SceneTree]
 public partial class Game : Node3D, IGame {
   public override void _Notification(int what) => this.Notify(what);
 
-  #region Save
   [Signal]
   public delegate void SaveFileLoadedEventHandler();
   public JsonSerializerOptions JsonOptions { get; set; } = default!;
@@ -36,42 +41,26 @@ public partial class Game : Node3D, IGame {
   public ISaveFile<GameData> SaveFile { get; set; } = default!;
   public ISaveChunk<GameData> GameChunk { get; set; } = default!;
   ISaveChunk<GameData> IProvide<ISaveChunk<GameData>>.Value() => GameChunk;
-  #endregion Save
-
-  #region State
 
   public IGameRepo GameRepo { get; set; } = default!;
   public IGameLogic GameLogic { get; set; } = default!;
 
   public GameLogic.IBinding GameBinding { get; set; } = default!;
 
-  #endregion State
 
-  #region Nodes
-
-  [Node] public IPlayerCamera PlayerCamera { get; set; } = default!;
-
-  [Node] public IPlayer Player { get; set; } = default!;
-
-  [Node] public IMap Map { get; set; } = default!;
-  [Node] public IInGameUI InGameUi { get; set; } = default!;
-  [Node] public IDeathMenu DeathMenu { get; set; } = default!;
-  [Node] public IWinMenu WinMenu { get; set; } = default!;
+  // [Node] public IPlayerCamera PlayerCamera { get; set; } = default!;
+  //
+  // [Node] public IPlayer Player { get; set; } = default!;
+  //
+  // [Node] public IMap Map { get; set; } = default!;
+  // [Node] public IInGameUI InGameUi { get; set; } = default!;
+  // [Node] public IDeathMenu DeathMenu { get; set; } = default!;
+  // [Node] public IWinMenu WinMenu { get; set; } = default!;
   [Node] public IPauseMenu PauseMenu { get; set; } = default!;
 
-  #endregion Nodes
-
-  #region Provisions
-
   IGameRepo IProvide<IGameRepo>.Value() => GameRepo;
+  [Dependency] public IAppRepo AppRepo => DependentExtensions.DependOn<IAppRepo>(this);
 
-  #endregion Provisions
-
-  #region Dependencies
-
-  [Dependency] public IAppRepo AppRepo => this.DependOn<IAppRepo>();
-
-  #endregion Dependencies
 
   public void Setup() {
     FileSystem = new FileSystem();
@@ -100,13 +89,13 @@ public partial class Game : Node3D, IGame {
       TypeInfoResolver = resolver,
       WriteIndented = true
     };
-
-    DeathMenu.TryAgain += OnStart;
-    DeathMenu.MainMenu += OnMainMenu;
-    DeathMenu.TransitionCompleted += OnDeathMenuTransitioned;
-
-    WinMenu.MainMenu += OnMainMenu;
-    WinMenu.TransitionCompleted += OnWinMenuTransitioned;
+    //
+    // DeathMenu.TryAgain += OnStart;
+    // DeathMenu.MainMenu += OnMainMenu;
+    // DeathMenu.TransitionCompleted += OnDeathMenuTransitioned;
+    //
+    // WinMenu.MainMenu += OnMainMenu;
+    // WinMenu.TransitionCompleted += OnWinMenuTransitioned;
 
     PauseMenu.MainMenu += OnMainMenu;
     PauseMenu.Resume += OnResume;
@@ -116,17 +105,17 @@ public partial class Game : Node3D, IGame {
     GameChunk = new SaveChunk<GameData>(
       (chunk) => {
         var gameData = new GameData() {
-          MapData = chunk.GetChunkSaveData<MapData>(),
-          PlayerData = chunk.GetChunkSaveData<PlayerData>(),
-          PlayerCameraData = chunk.GetChunkSaveData<PlayerCameraData>()
+          // MapData = chunk.GetChunkSaveData<MapData>(),
+          // PlayerData = chunk.GetChunkSaveData<PlayerData>(),
+          // PlayerCameraData = chunk.GetChunkSaveData<PlayerCameraData>()
         };
 
         return gameData;
       },
         onLoad: (chunk, data) => {
-          chunk.LoadChunkSaveData(data.MapData);
-          chunk.LoadChunkSaveData(data.PlayerData);
-          chunk.LoadChunkSaveData(data.PlayerCameraData);
+          // chunk.LoadChunkSaveData(data.MapData);
+          // chunk.LoadChunkSaveData(data.PlayerData);
+          // chunk.LoadChunkSaveData(data.PlayerCameraData);
         }
       );
 
@@ -137,7 +126,30 @@ public partial class Game : Node3D, IGame {
     // while loading an existing save file.
   }
 
+  public void SpawnStuff() {
+    var random = new RandomNumberGenerator();
+    var box = GetNode("ExampleEnemy").Duplicate() as Node3D;
+    box.Show();
+    box.SetProcess(true);
+    box.Position = box.Position with { X = box.Position.X + random.RandfRange(-5, 5) };
+    GetNode("Enemies").AddChild(box);
+  }
+
+  public void _on_timer_timeout() {
+    GD.Print("SPAWN!");
+    SpawnStuff();
+  }
   public void OnResolved() {
+
+    (GetNode("ExampleEnemy") as Node3D).Hide();
+    GetNode("ExampleEnemy").SetProcess(false);
+
+    for (int i = 0; i < 10; i++) {
+      SpawnStuff();
+    }
+
+
+
     SaveFile = new SaveFile<GameData>(
       root: GameChunk,
       onSave: async (GameData data) => {
@@ -161,8 +173,8 @@ public partial class Game : Node3D, IGame {
     GameBinding
       .Handle(
         (in GameLogic.Output.StartGame _) => {
-          PlayerCamera.UsePlayerCamera();
-          InGameUi.Show();
+          // PlayerCamera.UsePlayerCamera();
+          // InGameUi.Show();
         })
       .Handle(
         (in GameLogic.Output.SetPauseMode output) =>
@@ -175,20 +187,24 @@ public partial class Game : Node3D, IGame {
             : Input.MouseModeEnum.Visible
       )
       .Handle((in GameLogic.Output.ShowLostScreen _) => {
-        DeathMenu.Show();
-        DeathMenu.FadeIn();
-        DeathMenu.Animate();
+        // DeathMenu.Show();
+        // DeathMenu.FadeIn();
+        // DeathMenu.Animate();
       })
-      .Handle((in GameLogic.Output.ExitLostScreen _) => DeathMenu.FadeOut())
+      .Handle((in GameLogic.Output.ExitLostScreen _) => {
+        // DeathMenu.FadeOut();
+      })
       .Handle((in GameLogic.Output.ShowPauseMenu _) => {
         PauseMenu.Show();
         PauseMenu.FadeIn();
       })
       .Handle((in GameLogic.Output.ShowWonScreen _) => {
-        WinMenu.Show();
-        WinMenu.FadeIn();
+        // WinMenu.Show();
+        // WinMenu.FadeIn();
       })
-      .Handle((in GameLogic.Output.ExitWonScreen _) => WinMenu.FadeOut())
+      .Handle((in GameLogic.Output.ExitWonScreen _) => {
+        // WinMenu.FadeOut();
+      })
       .Handle((in GameLogic.Output.ExitPauseMenu _) => PauseMenu.FadeOut())
       .Handle((in GameLogic.Output.HidePauseMenu _) => PauseMenu.Hide())
       .Handle((in GameLogic.Output.ShowPauseSaveOverlay _) =>
@@ -211,7 +227,7 @@ public partial class Game : Node3D, IGame {
     GameLogic.Start();
 
     GameLogic.Input(
-      new GameLogic.Input.Initialize(NumCoinsInWorld: Map.GetCoinCount())
+      new GameLogic.Input.Initialize()
     );
 
     this.Provide();
@@ -245,10 +261,10 @@ public partial class Game : Node3D, IGame {
     GameLogic.Input(new GameLogic.Input.DeathMenuTransitioned());
 
   public void OnExitTree() {
-    DeathMenu.TryAgain -= OnStart;
-    DeathMenu.MainMenu -= OnMainMenu;
-    DeathMenu.TransitionCompleted -= OnDeathMenuTransitioned;
-    WinMenu.MainMenu -= OnMainMenu;
+    // DeathMenu.TryAgain -= OnStart;
+    // DeathMenu.MainMenu -= OnMainMenu;
+    // DeathMenu.TransitionCompleted -= OnDeathMenuTransitioned;
+    // WinMenu.MainMenu -= OnMainMenu;
     PauseMenu.MainMenu -= OnMainMenu;
     PauseMenu.Resume -= OnResume;
     PauseMenu.TransitionCompleted -= OnPauseMenuTransitioned;

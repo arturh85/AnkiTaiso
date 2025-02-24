@@ -1,5 +1,5 @@
 site_name: Kyōkai Tansa docs
-site_url: https://arturh85.github.io/kyoukai-tansa/
+site_url: https://arturh85.github.io/kyoukai-tansa/docs/
 use_directory_urls: true
 theme:
   name: readthedocs
@@ -7,6 +7,9 @@ plugins:
   - search
   - mermaid2
   - awesome-pages
+  - puml-file
+  - plantuml:
+      puml_url: https://www.plantuml.com/plantuml/
 nav:
   - "Home": index.md
   - ... | tutorial/*.md

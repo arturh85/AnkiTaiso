@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://d04amsl0japsx"]
+
+[ext_resource type="Script" path="res://src/scenes/Enemy.cs" id="1_vod11"]
+
+[node name="Enemy" type="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.960693, -5.407)
+size = Vector3(1, 2.92139, 1.42139)
+script = ExtResource("1_vod11")
+
+[node name="Label" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+text = "HALLO"

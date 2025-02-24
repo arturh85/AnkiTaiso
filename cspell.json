@@ -6,7 +6,11 @@
   "ignorePaths": [
     "**/*.svg",
     "**/*.gd",
+    "**/*.txt",
     "**/*.cs",
+    "**/*.csv",
+    "**/*.puml",
+    "**/*.yml",
     "**/*.tscn",
     "**/*.cfg",
     "**/*.tres",
@@ -94,6 +98,8 @@
     "XRIP",
     "Xunit",
 
+    "Anki",
+    "practise",
     "kyoukaitansa",
     "kyoukai",
     "tansa",

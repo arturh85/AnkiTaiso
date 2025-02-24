@@ -2,7 +2,6 @@ namespace kyoukaitansa;
 
 using Godot;
 
-[SceneTree]
 public partial class Game : Control {
   public int ButtonPresses { get; private set; }
 

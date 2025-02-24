@@ -1,8 +1,10 @@
-namespace GameDemo;
+namespace kyoukaitansa.game.state;
+
+using kyoukaitansa.game.domain;
 
 public partial class GameLogic {
   public static class Input {
-    public readonly record struct Initialize(int NumCoinsInWorld);
+    public readonly record struct Initialize();
 
     public readonly record struct EndGame(GameOverReason Reason);
 

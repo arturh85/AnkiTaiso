@@ -39,10 +39,10 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           # Use the .NET SDK from global.json in the root of the repository.
-          global-json-file: global.json
+          global-json-file: godot/global.json
 
       - name: 📦 Restore Dependencies
-        run: dotnet restore
+        run: cd godot; dotnet restore
 
       - name: 💾 Install apt dependencies
         uses: awalsh128/cache-apt-pkgs-action@latest
@@ -60,7 +60,7 @@ jobs:
           #
           # This allows checks on renovatebot PR's to succeed whenever
           # renovatebot updates the Godot SDK version.
-          version: global.json
+          version: godot/global.json
           cache: true
           # Use .NET-enabled version of Godot (the default is also true).
           use-dotnet: true
@@ -76,27 +76,34 @@ jobs:
         run: |
           dotnet tool install --global Chickensoft.GodotEnv
           export PATH="$PATH:/root/.dotnet/tools"
+          cd godot/
           godotenv addons install
 
       - name: 🦺 Build Projects
         run: |
-          mkdir ${{ github.workspace }}/build/
+          mkdir ${{ github.workspace }}/godot/build/
+          cd godot
           godot -v --headless --export-release ${{ matrix.platform }} || exit 1
 
-      - name: Upload Artifact
+      - name: 🦺 Upload Artifact
         uses: actions/upload-artifact@v4
         with:
           name: Kyoukai Tansa - ${{ matrix.platform }}
-          path: ${{ github.workspace }}/build
+          path: ${{ github.workspace }}/godot/build
 
-      - name: Build docs
+      - name: 🔬 Setup docs
         uses: actions/setup-python@v5
         with:
           python-version: 3.11
         if: github.ref == 'refs/heads/main' && matrix.platform == 'linux'
-      - run: pip install \
-          mkdocs mkdocs-awesome-pages-plugin mkdocs-mermaid2-plugin
-      - run: mkdir public && mkdocs build -d public/docs
+
+      - name: 🧾 Build docs
+        if: github.ref == 'refs/heads/main' && matrix.platform == 'linux'
+        run: |
+          pip install mkdocs mkdocs-awesome-pages-plugin mkdocs-mermaid2-plugin mkdocs_puml_file mkdocs_puml plantuml
+          cp godot/src/app/state/AppLogic.g.puml docs/reference/
+          cp godot/src/game/state/GameLogic.g.puml docs/reference/
+          mkdir public && mkdocs build -d public/docs
 
 #      - name: Deploy docs
 #        uses: mhausenblas/mkdocs-deploy-gh-pages@master
@@ -107,7 +114,7 @@ jobs:
 #          CONFIG_FILE: mkdocs.yml
 #          EXTRA_PACKAGES: build-base mermaid2 awesome-pages
 
-      - name: Deploy docs
+      - name: 🦺 Deploy docs
         uses: peaceiris/actions-gh-pages@v4
         if: github.ref == 'refs/heads/main' && matrix.platform == 'linux'
         with:

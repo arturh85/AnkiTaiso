@@ -1,5 +1,6 @@
-namespace GameDemo;
+namespace kyoukaitansa.game.state;
 
+using app.domain;
 using Chickensoft.Introspection;
 using Chickensoft.LogicBlocks;
 

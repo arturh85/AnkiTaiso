@@ -1,34 +1,32 @@
-namespace GameDemo;
+namespace kyoukaitansa.game.state;
 
 using Chickensoft.Introspection;
 using Chickensoft.LogicBlocks;
+using kyoukaitansa.game.domain;
 
 public partial class GameLogic {
   public partial record State {
     [Meta]
-    public partial record Paused : State,
-      IGet<Input.PauseButtonPressed>,
-      IGet<Input.GoToMainMenu>,
-      IGet<Input.SaveRequested> {
+    public partial record Paused : State, LogicBlock<State>.IGet<state.GameLogic.Input.PauseButtonPressed>, LogicBlock<State>.IGet<state.GameLogic.Input.GoToMainMenu>, LogicBlock<State>.IGet<state.GameLogic.Input.SaveRequested> {
       public Paused() {
         this.OnEnter(
           () => {
             Get<IGameRepo>().Pause();
-            Output(new Output.ShowPauseMenu());
+            Output(new state.GameLogic.Output.ShowPauseMenu());
           }
         );
 
         // We don't resume on exit because we can leave this state for
         // a menu and we want to remain paused.
-        this.OnExit(() => Output(new Output.ExitPauseMenu()));
+        this.OnExit(() => Output(new state.GameLogic.Output.ExitPauseMenu()));
       }
 
-      public virtual Transition On(in Input.PauseButtonPressed input)
+      public virtual LogicBlock<State>.Transition On(in state.GameLogic.Input.PauseButtonPressed input)
         => To<Resuming>();
 
-      public Transition On(in Input.SaveRequested input) => To<Saving>();
+      public LogicBlock<State>.Transition On(in state.GameLogic.Input.SaveRequested input) => To<Saving>();
 
-      public Transition On(in Input.GoToMainMenu input) => To<Quit>();
+      public LogicBlock<State>.Transition On(in state.GameLogic.Input.GoToMainMenu input) => To<Quit>();
     }
   }
 }

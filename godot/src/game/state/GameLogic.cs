@@ -1,4 +1,4 @@
-namespace GameDemo;
+namespace kyoukaitansa.game.state;
 
 using Chickensoft.Introspection;
 using Chickensoft.LogicBlocks;

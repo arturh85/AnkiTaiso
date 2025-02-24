@@ -1,6 +1,6 @@
-Microsoft Visual Studio Solution File, Format Version 12.00
+﻿Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kyoukai-tansa", "kyoukai-tansa.csproj", "{0354F7E9-FC8B-4793-BC8F-4CDB685A3DCA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kyoukai-tansa", "kyoukai-tansa.csproj", "{FEC2DC7E-DC72-4FFE-8264-328B089C3282}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -9,11 +9,11 @@ Global
 	ExportRelease|Any CPU = ExportRelease|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{0354F7E9-FC8B-4793-BC8F-4CDB685A3DCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0354F7E9-FC8B-4793-BC8F-4CDB685A3DCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0354F7E9-FC8B-4793-BC8F-4CDB685A3DCA}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
-		{0354F7E9-FC8B-4793-BC8F-4CDB685A3DCA}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
-		{0354F7E9-FC8B-4793-BC8F-4CDB685A3DCA}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
-		{0354F7E9-FC8B-4793-BC8F-4CDB685A3DCA}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
+		{FEC2DC7E-DC72-4FFE-8264-328B089C3282}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FEC2DC7E-DC72-4FFE-8264-328B089C3282}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FEC2DC7E-DC72-4FFE-8264-328B089C3282}.ExportDebug|Any CPU.ActiveCfg = ExportDebug|Any CPU
+		{FEC2DC7E-DC72-4FFE-8264-328B089C3282}.ExportDebug|Any CPU.Build.0 = ExportDebug|Any CPU
+		{FEC2DC7E-DC72-4FFE-8264-328B089C3282}.ExportRelease|Any CPU.ActiveCfg = ExportRelease|Any CPU
+		{FEC2DC7E-DC72-4FFE-8264-328B089C3282}.ExportRelease|Any CPU.Build.0 = ExportRelease|Any CPU
 	EndGlobalSection
 EndGlobal

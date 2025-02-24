@@ -6,4 +6,4 @@ The [Code Spell Checker][cspell] plugin for VSCode is recommended to help you ca
 
 You can also words to the local `cspell.json` file from VSCode by hovering over a misspelled word and selecting `Quick Fix...` and then `Add "{word}" to config: cspell.json`.
 
-![Fix Spelling](spelling_fix.png)
+![Fix Spelling](images/spelling_fix.png)

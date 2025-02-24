@@ -57,8 +57,6 @@ public class AppRepo : IAppRepo {
   public void OnEnterGame() => GameEntered?.Invoke();
   public void OnExitGame(PostGameAction action) => GameExited?.Invoke(action);
 
-  #region Internals
-
   protected void Dispose(bool disposing) {
     if (!_disposedValue) {
       if (disposing) {
@@ -77,6 +75,4 @@ public class AppRepo : IAppRepo {
     Dispose(disposing: true);
     GC.SuppressFinalize(this);
   }
-
-  #endregion Internals
 }
