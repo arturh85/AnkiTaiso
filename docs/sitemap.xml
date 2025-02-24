@@ -2,22 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://arturh85.github.io/kyoukai-tansa/</loc>
-         <lastmod>2025-02-22</lastmod>
+         <lastmod>2025-02-24</lastmod>
     </url>
     <url>
          <loc>https://arturh85.github.io/kyoukai-tansa/explanation/how-godot-works/</loc>
-         <lastmod>2025-02-22</lastmod>
+         <lastmod>2025-02-24</lastmod>
+    </url>
+    <url>
+         <loc>https://arturh85.github.io/kyoukai-tansa/howto/tests/</loc>
+         <lastmod>2025-02-24</lastmod>
     </url>
     <url>
          <loc>https://arturh85.github.io/kyoukai-tansa/howto/update-godot-version/</loc>
-         <lastmod>2025-02-22</lastmod>
+         <lastmod>2025-02-24</lastmod>
     </url>
     <url>
          <loc>https://arturh85.github.io/kyoukai-tansa/reference/api/</loc>
-         <lastmod>2025-02-22</lastmod>
+         <lastmod>2025-02-24</lastmod>
+    </url>
+    <url>
+         <loc>https://arturh85.github.io/kyoukai-tansa/reference/godot-editor-shortcuts/</loc>
+         <lastmod>2025-02-24</lastmod>
+    </url>
+    <url>
+         <loc>https://arturh85.github.io/kyoukai-tansa/reference/spellcheck/</loc>
+         <lastmod>2025-02-24</lastmod>
     </url>
     <url>
          <loc>https://arturh85.github.io/kyoukai-tansa/tutorial/getting-started/</loc>
-         <lastmod>2025-02-22</lastmod>
+         <lastmod>2025-02-24</lastmod>
     </url>
 </urlset>

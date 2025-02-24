@@ -47,12 +47,28 @@
               <ul class="current">
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Getting Started</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#getting-started_1">🥚 Getting Started</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#environment-setup">🏝 Environment Setup</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#vscode-settings">VSCode Settings</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#net-versioning">.NET Versioning</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#application-entry-point">🏁 Application Entry Point</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#running-the-project">⏯ Running the Project</a>
+    </li>
     </ul>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">How-to Guides</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../howto/update-godot-version/">Update Godot Version</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howto/tests/">Tests</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howto/update-godot-version/">Update godot version</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Explanations</span></p>
@@ -63,6 +79,10 @@
               <p class="caption"><span class="caption-text">Technical Reference</span></p>
               <ul>
                   <li class="toctree-l1"><a class="reference internal" href="../../reference/api/">Api</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/godot-editor-shortcuts/">Godot Editor Shortcuts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/spellcheck/">Spellcheck</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Links</span></p>
@@ -95,13 +115,63 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="getting-started">Getting Started</h1>
-<p>(TDB)</p>
+<h2 id="getting-started_1">🥚 Getting Started</h2>
+<p>First install GodotEnv which manages our addons:</p>
+<pre><code>dotnet tool install --global Chickensoft.GodotEnv
+</code></pre>
+<p>Then we install all addons with this commmand:</p>
+<pre><code>godotenv addons install
+</code></pre>
+<h2 id="environment-setup">🏝 Environment Setup</h2>
+<p>For the provided debug configurations and test coverage to work correctly, you must setup your development environment correctly. The [Chickensoft Setup Docs][setup-docs] describe how to setup your Godot and C# development environment, using Chickensoft's best practice recommendations.</p>
+<h3 id="vscode-settings">VSCode Settings</h3>
+<p>This template includes some Visual Studio Code settings in <code>.vscode/settings.json</code>. The settings facilitate terminal environments on Windows (Git Bash, PowerShell, Command Prompt) and macOS (zsh), as well as fixing some syntax colorization issues that Omnisharp suffers from. You'll also find settings that enable editor config support in Omnisharp and the .NET Roslyn analyzers for a more enjoyable coding experience.</p>
+<blockquote>
+<p>Please double-check that the provided VSCode settings don't conflict with your existing settings.</p>
+</blockquote>
+<h2 id="net-versioning">.NET Versioning</h2>
+<p>The included <a href="./global.json"><code>global.json</code></a> specifies the version of the .NET SDK and <code>Godot.NET.Sdk</code> that the game should use. Using a <code>global.json</code> file allows [Renovatebot] to provide your repository with automatic dependency update pull requests whenever a new version of [GodotSharp] is released.</p>
+<h2 id="application-entry-point">🏁 Application Entry Point</h2>
+<p>The <code>Main.tscn</code> and <code>Main.cs</code> scene and script file are the entry point of your game. In general, you probably won't need to modify these unless you're doing something highly custom.</p>
+<p>If the game is running a release build, the <code>Main.cs</code> file will just immediately change the scene to <code>src/Game.tscn</code>. If the game is running in debug mode <em>and</em> GoDotTest has received the correct command line arguments to begin testing, the game will switch to the testing scene and hand off control to GoDotTest to run the game's tests.</p>
+<p>In general, prefer editing <code>src/Game.tscn</code> over <code>src/Main.tscn</code>.</p>
+<p>The provided debug configurations in <code>.vscode/launch.json</code> allow you to easily debug tests (or just the currently open test, provided its filename matches its class name).</p>
+<h2 id="running-the-project">⏯ Running the Project</h2>
+<p>Several launch profiles are included for Visual Studio Code:</p>
+<ul>
+<li>🕹 <strong>Debug Game</strong></li>
+</ul>
+<p>Runs the game in debug mode, allowing you to set breakpoints and inspect variables.</p>
+<ul>
+<li>🎭 <strong>Debug Current Scene</strong></li>
+</ul>
+<p>Debugs the game and loads the scene with the <strong>same name</strong> and <strong>in the same path</strong> as the C# file that's actively selected in VSCode: e.g., a scene named <code>MyScene.tscn</code> must reside in the same directory as <code>MyScene.cs</code>, and you must have selected <code>MyScene.cs</code> as the active tab in VSCode before running the launch profile.</p>
+<p>If GoDotTest is able to find a <code>.tscn</code> file with the same name in the same location, it will run the game in debug mode and load the scene.</p>
+<blockquote>
+<p>Naturally, Chickensoft recommends naming scenes after the C# script they use and keeping them in the same directory so that you can take advantage of this launch profile.</p>
+<p>⚠️ It's very easy to rename a script class but forget to rename the scene file, or vice-versa. When that happens, this launch profile will pass in the <em>expected</em> name of the scene file based on the script's name, but Godot will fail to find a scene with that name since the script name and scene name are not the same.</p>
+</blockquote>
+<ul>
+<li>🧪 <strong>Debug Tests</strong></li>
+</ul>
+<p>Runs the game in debug mode, specifying the command line flags needed by GoDotTest to run the tests. Debugging works the same as usual, allowing you to set breakpoints within the game's C# test files.</p>
+<ul>
+<li>🔬 <strong>Debug Current Test</strong></li>
+</ul>
+<p>Debugs the game and loads the test class with the <strong>same name</strong> as the C# file that's actively selected in VSCode: e.g., a test file named <code>MyTest.cs</code> must contain a test class named <code>MyTest</code>, and you must have selected <code>MyTest.cs</code> as the active tab in VSCode before running the launch profile.</p>
+<blockquote>
+<p>⚠️ It's very easy to rename a test class but forget to rename the test file, or vice-versa. When that happens, this launch profile will pass in the name of the file but GoDotTest will fail to find a class with that name since the filename and class name are not the same.</p>
+</blockquote>
+<p>Note that each launch profile will trigger a build (see <code>./.vscode/tasks.json</code>) before debugging the game.</p>
+<blockquote>
+<p>⚠️ <strong>Important:</strong> You must setup a <code>GODOT</code> environment variable for the launch configurations above. If you haven't done so already, please see the [Chickensoft Setup Docs][setup-docs].</p>
+</blockquote>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../.." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../../howto/update-godot-version/" class="btn btn-neutral float-right" title="Update Godot Version">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../howto/tests/" class="btn btn-neutral float-right" title="Tests">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -127,7 +197,7 @@
       <span><a href="../.." style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../../howto/update-godot-version/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../../howto/tests/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

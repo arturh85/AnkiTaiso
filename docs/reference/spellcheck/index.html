@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://arturh85.github.io/kyoukai-tansa/explanation/how-godot-works/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://arturh85.github.io/kyoukai-tansa/reference/spellcheck/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>How Godot works - Kyōkai Tansa docs</title>
+    <title>Spellcheck - Kyōkai Tansa docs</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "How Godot works";
-        var mkdocs_page_input_path = "explanation/how-godot-works.md";
-        var mkdocs_page_url = "/kyoukai-tansa/explanation/how-godot-works/";
+        var mkdocs_page_name = "Spellcheck";
+        var mkdocs_page_input_path = "reference/spellcheck.md";
+        var mkdocs_page_url = "/kyoukai-tansa/reference/spellcheck/";
       </script>
     
     <!--[if lt IE 9]>
@@ -56,19 +56,19 @@
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Explanations</span></p>
-              <ul class="current">
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">How Godot works</a>
-    <ul class="current">
-    </ul>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../explanation/how-godot-works/">How Godot works</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Technical Reference</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../reference/api/">Api</a>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../api/">Api</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../reference/godot-editor-shortcuts/">Godot Editor Shortcuts</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../godot-editor-shortcuts/">Godot Editor Shortcuts</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../reference/spellcheck/">Spellcheck</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Spellcheck</a>
+    <ul class="current">
+    </ul>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Links</span></p>
@@ -90,8 +90,8 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">Explanations</li>
-      <li class="breadcrumb-item active">How Godot works</li>
+          <li class="breadcrumb-item">Technical Reference</li>
+      <li class="breadcrumb-item active">Spellcheck</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -100,14 +100,16 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="how-godot-works">How Godot works</h1>
-<p>(TDB)</p>
+                <h3 id="spellcheck">🧑‍🏫 Spellcheck</h3>
+<p>A spell check runs on every push to the repository. The spellcheck workflow settings can be configured in <a href=".github/workflows/spellcheck.yaml"><code>.github/workflows/spellcheck.yaml</code></a>.</p>
+<p>The [Code Spell Checker][cspell] plugin for VSCode is recommended to help you catch typos before you commit them. If you need add a word to the dictionary or ignore a certain path, you can edit the project's <code>cspell.json</code> file.</p>
+<p>You can also words to the local <code>cspell.json</code> file from VSCode by hovering over a misspelled word and selecting <code>Quick Fix...</code> and then <code>Add "{word}" to config: cspell.json</code>.</p>
+<p><img alt="Fix Spelling" src="spelling_fix.png" /></p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../../howto/update-godot-version/" class="btn btn-neutral float-left" title="Update godot version"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../../reference/api/" class="btn btn-neutral float-right" title="Api">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../godot-editor-shortcuts/" class="btn btn-neutral float-left" title="Godot Editor Shortcuts"><span class="icon icon-circle-arrow-left"></span> Previous</a>
     </div>
 
   <hr/>
@@ -130,10 +132,8 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../../howto/update-godot-version/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../godot-editor-shortcuts/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
-    
-      <span><a href="../../reference/api/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
