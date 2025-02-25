@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/mkdocs_puml/puml.css" rel="stylesheet" />
+        <link href="../../assets/mkdocs_puml/interaction.css" rel="stylesheet" />
     
       <script>
         // Current page data
@@ -132,7 +134,7 @@
 <p>Please double-check that the provided VSCode settings don't conflict with your existing settings.</p>
 </blockquote>
 <h2 id="net-versioning">.NET Versioning</h2>
-<p>The included <a href="./global.json"><code>global.json</code></a> specifies the version of the .NET SDK and <code>Godot.NET.Sdk</code> that the game should use. Using a <code>global.json</code> file allows [Renovatebot] to provide your repository with automatic dependency update pull requests whenever a new version of [GodotSharp] is released.</p>
+<p>The included <a href="../../godot/global.json"><code>global.json</code></a> specifies the version of the .NET SDK and <code>Godot.NET.Sdk</code> that the game should use. Using a <code>global.json</code> file allows [Renovatebot] to provide your repository with automatic dependency update pull requests whenever a new version of [GodotSharp] is released.</p>
 <h2 id="application-entry-point">🏁 Application Entry Point</h2>
 <p>The <code>Main.tscn</code> and <code>Main.cs</code> scene and script file are the entry point of your game. In general, you probably won't need to modify these unless you're doing something highly custom.</p>
 <p>If the game is running a release build, the <code>Main.cs</code> file will just immediately change the scene to <code>src/Game.tscn</code>. If the game is running in debug mode <em>and</em> GoDotTest has received the correct command line arguments to begin testing, the game will switch to the testing scene and hand off control to GoDotTest to run the game's tests.</p>
@@ -208,6 +210,9 @@
     <script src="../../js/theme_extra.js"></script>
     <script src="../../js/theme.js"></script>
       <script src="../../search/main.js"></script>
+      <script src="../../assets/mkdocs_puml/puml.js"></script>
+      <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
+      <script src="../../assets/mkdocs_puml/interaction.js"></script>
     <script>
         jQuery(function () {
             SphinxRtdTheme.Navigation.enable(true);

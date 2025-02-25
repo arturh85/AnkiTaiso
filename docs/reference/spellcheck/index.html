@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../assets/mkdocs_puml/puml.css" rel="stylesheet" />
+        <link href="../../assets/mkdocs_puml/interaction.css" rel="stylesheet" />
     
       <script>
         // Current page data
@@ -106,7 +108,7 @@
 <p>A spell check runs on every push to the repository. The spellcheck workflow settings can be configured in <a href=".github/workflows/spellcheck.yaml"><code>.github/workflows/spellcheck.yaml</code></a>.</p>
 <p>The [Code Spell Checker][cspell] plugin for VSCode is recommended to help you catch typos before you commit them. If you need add a word to the dictionary or ignore a certain path, you can edit the project's <code>cspell.json</code> file.</p>
 <p>You can also words to the local <code>cspell.json</code> file from VSCode by hovering over a misspelled word and selecting <code>Quick Fix...</code> and then <code>Add "{word}" to config: cspell.json</code>.</p>
-<p><img alt="Fix Spelling" src="spelling_fix.png" /></p>
+<p><img alt="Fix Spelling" src="../images/spelling_fix.png" /></p>
               
             </div>
           </div><footer>
@@ -147,6 +149,9 @@
     <script src="../../js/theme_extra.js"></script>
     <script src="../../js/theme.js"></script>
       <script src="../../search/main.js"></script>
+      <script src="../../assets/mkdocs_puml/puml.js"></script>
+      <script src="https://unpkg.com/@panzoom/panzoom@4.5.1/dist/panzoom.min.js"></script>
+      <script src="../../assets/mkdocs_puml/interaction.js"></script>
     <script>
         jQuery(function () {
             SphinxRtdTheme.Navigation.enable(true);
