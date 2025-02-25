@@ -1,0 +1,31 @@
+@startuml AppLogic
+state "AppLogic State" as kyoukaitansa_app_state_AppLogic_State {
+  state "InGame" as kyoukaitansa_app_state_AppLogic_State_InGame
+  state "LeavingGame" as kyoukaitansa_app_state_AppLogic_State_LeavingGame
+  state "LeavingMenu" as kyoukaitansa_app_state_AppLogic_State_LeavingMenu
+  state "LoadingSaveFile" as kyoukaitansa_app_state_AppLogic_State_LoadingSaveFile
+  state "MainMenu" as kyoukaitansa_app_state_AppLogic_State_MainMenu
+  state "SplashScreen" as kyoukaitansa_app_state_AppLogic_State_SplashScreen
+}
+
+kyoukaitansa_app_state_AppLogic_State_InGame --> kyoukaitansa_app_state_AppLogic_State_LeavingGame : EndGame
+kyoukaitansa_app_state_AppLogic_State_LeavingGame --> kyoukaitansa_app_state_AppLogic_State_InGame : FadeOutFinished
+kyoukaitansa_app_state_AppLogic_State_LeavingGame --> kyoukaitansa_app_state_AppLogic_State_MainMenu : FadeOutFinished
+kyoukaitansa_app_state_AppLogic_State_LeavingMenu --> kyoukaitansa_app_state_AppLogic_State_InGame : FadeOutFinished
+kyoukaitansa_app_state_AppLogic_State_LeavingMenu --> kyoukaitansa_app_state_AppLogic_State_LoadingSaveFile : FadeOutFinished
+kyoukaitansa_app_state_AppLogic_State_LoadingSaveFile --> kyoukaitansa_app_state_AppLogic_State_InGame : SaveFileLoaded
+kyoukaitansa_app_state_AppLogic_State_MainMenu --> kyoukaitansa_app_state_AppLogic_State_LeavingMenu : LoadGame
+kyoukaitansa_app_state_AppLogic_State_MainMenu --> kyoukaitansa_app_state_AppLogic_State_LeavingMenu : NewGame
+kyoukaitansa_app_state_AppLogic_State_SplashScreen --> kyoukaitansa_app_state_AppLogic_State_MainMenu : FadeOutFinished
+
+kyoukaitansa_app_state_AppLogic_State_InGame : OnEnter → ShowGame
+kyoukaitansa_app_state_AppLogic_State_InGame : OnExit → HideGame
+kyoukaitansa_app_state_AppLogic_State_LeavingGame : OnFadeOutFinished → RemoveExistingGame, SetupGameScene
+kyoukaitansa_app_state_AppLogic_State_LeavingMenu : OnEnter → FadeToBlack
+kyoukaitansa_app_state_AppLogic_State_LoadingSaveFile : OnEnter → StartLoadingSaveFile
+kyoukaitansa_app_state_AppLogic_State_MainMenu : OnEnter → SetupGameScene, ShowMainMenu
+kyoukaitansa_app_state_AppLogic_State_SplashScreen : OnEnter → ShowSplashScreen
+kyoukaitansa_app_state_AppLogic_State_SplashScreen : OnSplashScreenSkipped() → HideSplashScreen
+
+[*] --> kyoukaitansa_app_state_AppLogic_State_SplashScreen
+@enduml

@@ -108,10 +108,82 @@
               
                 <h1 id="state-flow">State Flow</h1>
 <h2 id="app-logic">App Logic</h2>
-<pre><code class="language-puml">--- file not found ---
+<pre><code class="language-puml">@startuml AppLogic
+state &quot;AppLogic State&quot; as kyoukaitansa_app_state_AppLogic_State {
+  state &quot;InGame&quot; as kyoukaitansa_app_state_AppLogic_State_InGame
+  state &quot;LeavingGame&quot; as kyoukaitansa_app_state_AppLogic_State_LeavingGame
+  state &quot;LeavingMenu&quot; as kyoukaitansa_app_state_AppLogic_State_LeavingMenu
+  state &quot;LoadingSaveFile&quot; as kyoukaitansa_app_state_AppLogic_State_LoadingSaveFile
+  state &quot;MainMenu&quot; as kyoukaitansa_app_state_AppLogic_State_MainMenu
+  state &quot;SplashScreen&quot; as kyoukaitansa_app_state_AppLogic_State_SplashScreen
+}
+
+kyoukaitansa_app_state_AppLogic_State_InGame --&gt; kyoukaitansa_app_state_AppLogic_State_LeavingGame : EndGame
+kyoukaitansa_app_state_AppLogic_State_LeavingGame --&gt; kyoukaitansa_app_state_AppLogic_State_InGame : FadeOutFinished
+kyoukaitansa_app_state_AppLogic_State_LeavingGame --&gt; kyoukaitansa_app_state_AppLogic_State_MainMenu : FadeOutFinished
+kyoukaitansa_app_state_AppLogic_State_LeavingMenu --&gt; kyoukaitansa_app_state_AppLogic_State_InGame : FadeOutFinished
+kyoukaitansa_app_state_AppLogic_State_LeavingMenu --&gt; kyoukaitansa_app_state_AppLogic_State_LoadingSaveFile : FadeOutFinished
+kyoukaitansa_app_state_AppLogic_State_LoadingSaveFile --&gt; kyoukaitansa_app_state_AppLogic_State_InGame : SaveFileLoaded
+kyoukaitansa_app_state_AppLogic_State_MainMenu --&gt; kyoukaitansa_app_state_AppLogic_State_LeavingMenu : LoadGame
+kyoukaitansa_app_state_AppLogic_State_MainMenu --&gt; kyoukaitansa_app_state_AppLogic_State_LeavingMenu : NewGame
+kyoukaitansa_app_state_AppLogic_State_SplashScreen --&gt; kyoukaitansa_app_state_AppLogic_State_MainMenu : FadeOutFinished
+
+kyoukaitansa_app_state_AppLogic_State_InGame : OnEnter → ShowGame
+kyoukaitansa_app_state_AppLogic_State_InGame : OnExit → HideGame
+kyoukaitansa_app_state_AppLogic_State_LeavingGame : OnFadeOutFinished → RemoveExistingGame, SetupGameScene
+kyoukaitansa_app_state_AppLogic_State_LeavingMenu : OnEnter → FadeToBlack
+kyoukaitansa_app_state_AppLogic_State_LoadingSaveFile : OnEnter → StartLoadingSaveFile
+kyoukaitansa_app_state_AppLogic_State_MainMenu : OnEnter → SetupGameScene, ShowMainMenu
+kyoukaitansa_app_state_AppLogic_State_SplashScreen : OnEnter → ShowSplashScreen
+kyoukaitansa_app_state_AppLogic_State_SplashScreen : OnSplashScreenSkipped() → HideSplashScreen
+
+[*] --&gt; kyoukaitansa_app_state_AppLogic_State_SplashScreen
+@enduml
 </code></pre>
 <h2 id="game-logic">Game Logic</h2>
-<pre><code class="language-puml">--- file not found ---
+<pre><code class="language-puml">@startuml GameLogic
+state &quot;GameLogic State&quot; as kyoukaitansa_game_state_GameLogic_State {
+  state &quot;Lost&quot; as kyoukaitansa_game_state_GameLogic_State_Lost
+  state &quot;MenuBackdrop&quot; as kyoukaitansa_game_state_GameLogic_State_MenuBackdrop
+  state &quot;Paused&quot; as kyoukaitansa_game_state_GameLogic_State_Paused {
+    state &quot;Saving&quot; as kyoukaitansa_game_state_GameLogic_State_Saving
+  }
+  state &quot;Playing&quot; as kyoukaitansa_game_state_GameLogic_State_Playing
+  state &quot;Quit&quot; as kyoukaitansa_game_state_GameLogic_State_Quit
+  state &quot;RestartingGame&quot; as kyoukaitansa_game_state_GameLogic_State_RestartingGame
+  state &quot;Resuming&quot; as kyoukaitansa_game_state_GameLogic_State_Resuming
+  state &quot;Won&quot; as kyoukaitansa_game_state_GameLogic_State_Won
+}
+
+kyoukaitansa_game_state_GameLogic_State_Lost --&gt; kyoukaitansa_game_state_GameLogic_State_Quit : GoToMainMenu
+kyoukaitansa_game_state_GameLogic_State_Lost --&gt; kyoukaitansa_game_state_GameLogic_State_RestartingGame : Start
+kyoukaitansa_game_state_GameLogic_State_MenuBackdrop --&gt; kyoukaitansa_game_state_GameLogic_State_MenuBackdrop : Initialize
+kyoukaitansa_game_state_GameLogic_State_MenuBackdrop --&gt; kyoukaitansa_game_state_GameLogic_State_Playing : Start
+kyoukaitansa_game_state_GameLogic_State_Paused --&gt; kyoukaitansa_game_state_GameLogic_State_Quit : GoToMainMenu
+kyoukaitansa_game_state_GameLogic_State_Paused --&gt; kyoukaitansa_game_state_GameLogic_State_Resuming : PauseButtonPressed
+kyoukaitansa_game_state_GameLogic_State_Paused --&gt; kyoukaitansa_game_state_GameLogic_State_Saving : SaveRequested
+kyoukaitansa_game_state_GameLogic_State_Playing --&gt; kyoukaitansa_game_state_GameLogic_State_Lost : EndGame
+kyoukaitansa_game_state_GameLogic_State_Playing --&gt; kyoukaitansa_game_state_GameLogic_State_Paused : PauseButtonPressed
+kyoukaitansa_game_state_GameLogic_State_Playing --&gt; kyoukaitansa_game_state_GameLogic_State_Quit : EndGame
+kyoukaitansa_game_state_GameLogic_State_Playing --&gt; kyoukaitansa_game_state_GameLogic_State_Won : EndGame
+kyoukaitansa_game_state_GameLogic_State_Resuming --&gt; kyoukaitansa_game_state_GameLogic_State_Playing : PauseMenuTransitioned
+kyoukaitansa_game_state_GameLogic_State_Saving --&gt; kyoukaitansa_game_state_GameLogic_State_Paused : SaveCompleted
+kyoukaitansa_game_state_GameLogic_State_Saving --&gt; kyoukaitansa_game_state_GameLogic_State_Saving : PauseButtonPressed
+kyoukaitansa_game_state_GameLogic_State_Won --&gt; kyoukaitansa_game_state_GameLogic_State_Won : GoToMainMenu
+
+kyoukaitansa_game_state_GameLogic_State : OnIsMouseCaptured() → CaptureMouse
+kyoukaitansa_game_state_GameLogic_State : OnIsPaused() → SetPauseMode
+kyoukaitansa_game_state_GameLogic_State_Lost : OnEnter → ShowLostScreen
+kyoukaitansa_game_state_GameLogic_State_Paused : OnEnter → ShowPauseMenu
+kyoukaitansa_game_state_GameLogic_State_Paused : OnExit → ExitPauseMenu
+kyoukaitansa_game_state_GameLogic_State_Playing : OnEnter → StartGame
+kyoukaitansa_game_state_GameLogic_State_Resuming : OnExit → HidePauseMenu
+kyoukaitansa_game_state_GameLogic_State_Saving : OnEnter → ShowPauseSaveOverlay, StartSaving
+kyoukaitansa_game_state_GameLogic_State_Saving : OnExit → HidePauseSaveOverlay
+kyoukaitansa_game_state_GameLogic_State_Won : OnEnter → ShowWonScreen
+
+[*] --&gt; kyoukaitansa_game_state_GameLogic_State_MenuBackdrop
+@enduml
 </code></pre>
               
             </div>
