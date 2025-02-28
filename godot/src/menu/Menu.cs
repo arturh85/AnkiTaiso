@@ -14,12 +14,12 @@ public interface IMenu : IControl {
 public partial class Menu : Control, IMenu {
   public override void _Notification(int what) => this.Notify(what);
 
-  #region Nodes
-  [Node]
-  public IButton NewGameButton { get; set; } = default!;
-  [Node]
-  public IButton LoadGameButton { get; set; } = default!;
-  #endregion Nodes
+  // #region Nodes
+  // [Node]
+  // public IButton NewGameButton { get; set; } = default!;
+  // [Node]
+  // public IButton LoadGameButton { get; set; } = default!;
+  // #endregion Nodes
 
   #region Signals
   [Signal]
@@ -29,13 +29,13 @@ public partial class Menu : Control, IMenu {
   #endregion Signals
 
   public void OnReady() {
-    NewGameButton.Pressed += OnNewGamePressed;
-    LoadGameButton.Pressed += OnLoadGamePressed;
+    // NewGameButton.Pressed += OnNewGamePressed;
+    // LoadGameButton.Pressed += OnLoadGamePressed;
   }
 
   public void OnExitTree() {
-    NewGameButton.Pressed -= OnNewGamePressed;
-    LoadGameButton.Pressed -= OnLoadGamePressed;
+    // NewGameButton.Pressed -= OnNewGamePressed;
+    // LoadGameButton.Pressed -= OnLoadGamePressed;
   }
 
   public void OnNewGamePressed() => EmitSignal(Menu.SignalName.NewGame);

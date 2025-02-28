@@ -129,7 +129,7 @@ public partial class Game : Node3D, IGame {
   public void SpawnStuff() {
     var random = new RandomNumberGenerator();
     var box = GetNode("ExampleEnemy").Duplicate() as Node3D;
-    box.Show();
+    box!.Show();
     box.SetProcess(true);
     box.Position = box.Position with { X = box.Position.X + random.RandfRange(-5, 5) };
     GetNode("Enemies").AddChild(box);
@@ -141,7 +141,7 @@ public partial class Game : Node3D, IGame {
   }
   public void OnResolved() {
 
-    (GetNode("ExampleEnemy") as Node3D).Hide();
+    (GetNode("ExampleEnemy") as Node3D)!.Hide();
     GetNode("ExampleEnemy").SetProcess(false);
 
     for (int i = 0; i < 10; i++) {

@@ -116,7 +116,7 @@ public class GameRepo : IGameRepo {
   public event Action<GameOverReason>? Ended;
   public event Action? Jumped;
 
-  private int _coinsBeingCollected;
+  // private int _coinsBeingCollected;
   private bool _disposedValue;
 
   public GameRepo() {

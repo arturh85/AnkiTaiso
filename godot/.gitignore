@@ -9,6 +9,7 @@ obj/
 .generated/
 .vs/
 .idea/
+.csproj.old
 .DS_Store
 
 *.translation
