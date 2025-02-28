@@ -1,8 +1,11 @@
 namespace kyoukaitansa.game;
 
 using System;
+using System.Collections.Generic;
 using System.IO.Abstractions;
+using System.Linq;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 using app.domain;
 using Chickensoft.AutoInject;
 using Chickensoft.Collections;
@@ -14,6 +17,7 @@ using Chickensoft.Serialization.Godot;
 using domain;
 using GameDemo;
 using Godot;
+using scenes;
 using state;
 using GameLogic = state.GameLogic;
 
@@ -25,7 +29,7 @@ IProvide<IGameRepo>, IProvide<ISaveChunk<GameData>>, IProvide<EntityTable> {
 }
 
 [Meta(typeof(IAutoNode))]
-// [SceneTree]
+[SceneTree]
 public partial class Game : Node3D, IGame {
   public override void _Notification(int what) => this.Notify(what);
 
@@ -47,6 +51,19 @@ public partial class Game : Node3D, IGame {
 
   public GameLogic.IBinding GameBinding { get; set; } = default!;
 
+  public List<string> WordList = new List<string>();
+
+  public void LoadWordlist() {
+    var file = FileAccess.Open("res://assets/top_english_nouns_lower_10000.txt", FileAccess.ModeFlags.Read);
+    var content = file.GetAsText();
+
+    WordList.Clear();
+      var lines = Regex.Split(content, "\r\n|\r|\n");
+      foreach (var line in lines) {
+        WordList.Add(line);
+      }
+  }
+
 
   // [Node] public IPlayerCamera PlayerCamera { get; set; } = default!;
   //
@@ -56,7 +73,7 @@ public partial class Game : Node3D, IGame {
   // [Node] public IInGameUI InGameUi { get; set; } = default!;
   // [Node] public IDeathMenu DeathMenu { get; set; } = default!;
   // [Node] public IWinMenu WinMenu { get; set; } = default!;
-  [Node] public IPauseMenu PauseMenu { get; set; } = default!;
+  // [Node] public IPauseMenu PauseMenu { get; set; } = default!;
 
   IGameRepo IProvide<IGameRepo>.Value() => GameRepo;
   [Dependency] public IAppRepo AppRepo => DependentExtensions.DependOn<IAppRepo>(this);
@@ -97,10 +114,10 @@ public partial class Game : Node3D, IGame {
     // WinMenu.MainMenu += OnMainMenu;
     // WinMenu.TransitionCompleted += OnWinMenuTransitioned;
 
-    PauseMenu.MainMenu += OnMainMenu;
-    PauseMenu.Resume += OnResume;
-    PauseMenu.TransitionCompleted += OnPauseMenuTransitioned;
-    PauseMenu.Save += OnPauseMenuSaveRequested;
+    // PauseMenu.MainMenu += OnMainMenu;
+    // PauseMenu.Resume += OnResume;
+    // PauseMenu.TransitionCompleted += OnPauseMenuTransitioned;
+    // PauseMenu.Save += OnPauseMenuSaveRequested;
 
     GameChunk = new SaveChunk<GameData>(
       (chunk) => {
@@ -128,11 +145,12 @@ public partial class Game : Node3D, IGame {
 
   public void SpawnStuff() {
     var random = new RandomNumberGenerator();
-    var box = GetNode("ExampleEnemy").Duplicate() as Node3D;
-    box!.Show();
-    box.SetProcess(true);
+    var box = _.ExampleEnemy.Duplicate() as Enemy;
+    var randomIndex = Random.Shared.Next(0, WordList.Count);
+    box!.SetText(WordList[randomIndex]);
     box.Position = box.Position with { X = box.Position.X + random.RandfRange(-5, 5) };
-    GetNode("Enemies").AddChild(box);
+    box!.EnableA();
+    _.Enemies.AddChild(box);
   }
 
   public void _on_timer_timeout() {
@@ -140,16 +158,11 @@ public partial class Game : Node3D, IGame {
     SpawnStuff();
   }
   public void OnResolved() {
-
-    (GetNode("ExampleEnemy") as Node3D)!.Hide();
-    GetNode("ExampleEnemy").SetProcess(false);
-
+    LoadWordlist();
+    _.ExampleEnemy.DisableA();
     for (int i = 0; i < 10; i++) {
       SpawnStuff();
     }
-
-
-
     SaveFile = new SaveFile<GameData>(
       root: GameChunk,
       onSave: async (GameData data) => {
@@ -195,8 +208,8 @@ public partial class Game : Node3D, IGame {
         // DeathMenu.FadeOut();
       })
       .Handle((in GameLogic.Output.ShowPauseMenu _) => {
-        PauseMenu.Show();
-        PauseMenu.FadeIn();
+        // PauseMenu.Show();
+        // PauseMenu.FadeIn();
       })
       .Handle((in GameLogic.Output.ShowWonScreen _) => {
         // WinMenu.Show();
@@ -205,13 +218,17 @@ public partial class Game : Node3D, IGame {
       .Handle((in GameLogic.Output.ExitWonScreen _) => {
         // WinMenu.FadeOut();
       })
-      .Handle((in GameLogic.Output.ExitPauseMenu _) => PauseMenu.FadeOut())
-      .Handle((in GameLogic.Output.HidePauseMenu _) => PauseMenu.Hide())
-      .Handle((in GameLogic.Output.ShowPauseSaveOverlay _) =>
-        PauseMenu.OnSaveStarted()
+      .Handle((in GameLogic.Output.ExitPauseMenu _) => {
+        // PauseMenu.FadeOut();
+      })
+      .Handle((in GameLogic.Output.HidePauseMenu _) => {
+        // PauseMenu.Hide();
+      })
+      .Handle((in GameLogic.Output.ShowPauseSaveOverlay _) =>{}
+        // PauseMenu.OnSaveStarted()
       )
-      .Handle((in GameLogic.Output.HidePauseSaveOverlay _) =>
-        PauseMenu.OnSaveCompleted()
+      .Handle((in GameLogic.Output.HidePauseSaveOverlay _) => {}
+        // PauseMenu.OnSaveCompleted()
       )
       .Handle((in GameLogic.Output.StartSaving _) =>
         SaveFile.Save().ContinueWith(
@@ -265,9 +282,9 @@ public partial class Game : Node3D, IGame {
     // DeathMenu.MainMenu -= OnMainMenu;
     // DeathMenu.TransitionCompleted -= OnDeathMenuTransitioned;
     // WinMenu.MainMenu -= OnMainMenu;
-    PauseMenu.MainMenu -= OnMainMenu;
-    PauseMenu.Resume -= OnResume;
-    PauseMenu.TransitionCompleted -= OnPauseMenuTransitioned;
+    // PauseMenu.MainMenu -= OnMainMenu;
+    // PauseMenu.Resume -= OnResume;
+    // PauseMenu.TransitionCompleted -= OnPauseMenuTransitioned;
 
     GameLogic.Stop();
     GameBinding.Dispose();

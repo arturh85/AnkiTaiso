@@ -43,6 +43,7 @@ Optional integration with [Anki](https://apps.ankiweb.net/) to practise the voca
 
 - [GodotEnv](https://github.com/chickensoft-games/GodotEnv)
 - [English Words](https://github.com/dwyl/english-words)
+- [Top English Wordlists](https://github.com/david47k/top-english-wordlists)
 
 ## Special thanks to
 
