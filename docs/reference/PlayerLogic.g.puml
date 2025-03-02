@@ -1,0 +1,45 @@
+@startuml PlayerLogic
+state "PlayerLogic State" as kyoukaitansa_player_state_PlayerLogic_State {
+  state "Alive" as kyoukaitansa_player_state_PlayerLogic_State_Alive {
+    state "Airborne" as kyoukaitansa_player_state_PlayerLogic_State_Airborne {
+      state "Falling" as kyoukaitansa_player_state_PlayerLogic_State_Falling
+      state "Jumping" as kyoukaitansa_player_state_PlayerLogic_State_Jumping
+      state "Liftoff" as kyoukaitansa_player_state_PlayerLogic_State_Liftoff
+    }
+    state "Grounded" as kyoukaitansa_player_state_PlayerLogic_State_Grounded {
+      state "Idle" as kyoukaitansa_player_state_PlayerLogic_State_Idle
+      state "Moving" as kyoukaitansa_player_state_PlayerLogic_State_Moving
+    }
+  }
+  state "Dead" as kyoukaitansa_player_state_PlayerLogic_State_Dead
+  state "Disabled" as kyoukaitansa_player_state_PlayerLogic_State_Disabled
+}
+
+kyoukaitansa_player_state_PlayerLogic_State_Airborne --> kyoukaitansa_player_state_PlayerLogic_State_Falling : StartedFalling
+kyoukaitansa_player_state_PlayerLogic_State_Airborne --> kyoukaitansa_player_state_PlayerLogic_State_Idle : HitFloor
+kyoukaitansa_player_state_PlayerLogic_State_Airborne --> kyoukaitansa_player_state_PlayerLogic_State_Moving : HitFloor
+kyoukaitansa_player_state_PlayerLogic_State_Alive --> kyoukaitansa_player_state_PlayerLogic_State_Alive : Moved
+kyoukaitansa_player_state_PlayerLogic_State_Alive --> kyoukaitansa_player_state_PlayerLogic_State_Alive : PhysicsTick
+kyoukaitansa_player_state_PlayerLogic_State_Alive --> kyoukaitansa_player_state_PlayerLogic_State_Alive : Pushed
+kyoukaitansa_player_state_PlayerLogic_State_Alive --> kyoukaitansa_player_state_PlayerLogic_State_Dead : Killed
+kyoukaitansa_player_state_PlayerLogic_State_Disabled --> kyoukaitansa_player_state_PlayerLogic_State_Idle : Enable
+kyoukaitansa_player_state_PlayerLogic_State_Grounded --> kyoukaitansa_player_state_PlayerLogic_State_Falling : LeftFloor
+kyoukaitansa_player_state_PlayerLogic_State_Grounded --> kyoukaitansa_player_state_PlayerLogic_State_Jumping : Jump
+kyoukaitansa_player_state_PlayerLogic_State_Grounded --> kyoukaitansa_player_state_PlayerLogic_State_Liftoff : LeftFloor
+kyoukaitansa_player_state_PlayerLogic_State_Idle --> kyoukaitansa_player_state_PlayerLogic_State_Moving : StartedMovingHorizontally
+kyoukaitansa_player_state_PlayerLogic_State_Jumping --> kyoukaitansa_player_state_PlayerLogic_State_Jumping : Jump
+kyoukaitansa_player_state_PlayerLogic_State_Moving --> kyoukaitansa_player_state_PlayerLogic_State_Idle : StoppedMovingHorizontally
+
+kyoukaitansa_player_state_PlayerLogic_State_Alive : OnPhysicsTick → MovementComputed
+kyoukaitansa_player_state_PlayerLogic_State_Alive : OnPushed → VelocityChanged
+kyoukaitansa_player_state_PlayerLogic_State_Disabled : OnEnter → Idle
+kyoukaitansa_player_state_PlayerLogic_State_Falling : OnEnter → Fall
+kyoukaitansa_player_state_PlayerLogic_State_Grounded : OnJump → VelocityChanged
+kyoukaitansa_player_state_PlayerLogic_State_Idle : OnEnter → Idle
+kyoukaitansa_player_state_PlayerLogic_State_Jumping : OnEnter → Jump
+kyoukaitansa_player_state_PlayerLogic_State_Jumping : OnJump → VelocityChanged
+kyoukaitansa_player_state_PlayerLogic_State_Liftoff : OnEnter → Jump
+kyoukaitansa_player_state_PlayerLogic_State_Moving : OnEnter → Move
+
+[*] --> kyoukaitansa_player_state_PlayerLogic_State_Disabled
+@enduml
