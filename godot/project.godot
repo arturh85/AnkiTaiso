@@ -18,9 +18,10 @@ config/icon="res://icon.png"
 
 [display]
 
-window/size/viewport_width=800
-window/size/viewport_height=600
-window/stretch/mode="canvas_items"
+window/size/viewport_width=1024
+window/size/viewport_height=768
+window/size/mode=2
+window/size/initial_position_type=3
 
 [dotnet]
 
@@ -28,7 +29,7 @@ project/assembly_name="kyoukai-tansa"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/expand-region/plugin.cfg", "res://addons/find-everywhere/plugin.cfg", "res://addons/imrp/plugin.cfg", "res://addons/previous-tab/plugin.cfg", "res://addons/script-tabs/plugin.cfg")
+enabled=PackedStringArray("res://addons/expand-region/plugin.cfg", "res://addons/find-everywhere/plugin.cfg", "res://addons/imrp/plugin.cfg", "res://addons/previous-tab/plugin.cfg", "res://addons/richtext2/plugin.cfg", "res://addons/script-tabs/plugin.cfg")
 
 [file_customization]
 
@@ -133,3 +134,8 @@ throw={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
+
+[richer_text_label]
+
+fonts={}
+colors={}

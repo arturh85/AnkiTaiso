@@ -28,9 +28,9 @@ public static class TestSaveData {
     // };
 
     GameData = new GameData() {
-      // MapData = default!,
-      // PlayerData = default!,
-      // PlayerCameraData = default!
+      MapData = default!,
+      PlayerData = default!,
+      PlayerCameraData = default!
     };
   }
 }

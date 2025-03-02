@@ -1,0 +1,7 @@
+@startuml InGameUILogic
+state "InGameUILogic State" as kyoukaitansa_in_game_ui_state_InGameUILogic_State
+kyoukaitansa_in_game_ui_state_InGameUILogic_State : OnNumCoinsAtStart() → NumCoinsChanged
+kyoukaitansa_in_game_ui_state_InGameUILogic_State : OnNumCoinsCollected() → NumCoinsChanged
+
+[*] --> kyoukaitansa_in_game_ui_state_InGameUILogic_State
+@enduml

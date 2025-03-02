@@ -2,6 +2,7 @@ namespace kyoukaitansa.game.domain;
 
 using System;
 using Chickensoft.Collections;
+using GameDemo;
 using Godot;
 
 public interface IGameRepo : IDisposable {
@@ -9,8 +10,8 @@ public interface IGameRepo : IDisposable {
   event Action<GameOverReason>? Ended;
 
   /// <summary>Event invoked when a coin is collected.</summary>
-  // event Action<ICoin>? CoinCollectionStarted;
-  // event Action<ICoin>? CoinCollectionCompleted;
+  event Action<ICoin>? CoinCollectionStarted;
+  event Action<ICoin>? CoinCollectionCompleted;
 
   /// <summary>Event invoked when a jumpshroom is used to bounce.</summary>
   event Action? JumpshroomUsed;
@@ -42,13 +43,13 @@ public interface IGameRepo : IDisposable {
   /// <summary>Inform the game that a jumpshroom was used.</summary>
   void OnJumpshroomUsed();
 
-  // /// <summary>Inform the game that the player is collecting a coin.</summary>
-  // /// <param name="coin">Coin that is being collected.</param>
-  // void StartCoinCollection(ICoin coin);
-  //
-  // /// <summary>Inform the game that the player collected a coin.</summary>
-  // /// <param name="coin">Coin that was collected.</param>
-  // void OnFinishCoinCollection(ICoin coin);
+  /// <summary>Inform the game that the player is collecting a coin.</summary>
+  /// <param name="coin">Coin that is being collected.</param>
+  void StartCoinCollection(ICoin coin);
+
+  /// <summary>Inform the game that the player collected a coin.</summary>
+  /// <param name="coin">Coin that was collected.</param>
+  void OnFinishCoinCollection(ICoin coin);
 
   /// <summary>Tells the game how many coins the game world contains.</summary>
   /// <param name="numCoinsAtStart">Initial number of coins.</param>
@@ -110,13 +111,13 @@ public class GameRepo : IGameRepo {
   private readonly AutoProp<int> _numCoinsCollected;
   public IAutoProp<int> NumCoinsAtStart => _numCoinsAtStart;
   private readonly AutoProp<int> _numCoinsAtStart;
-  // public event Action<ICoin>? CoinCollectionCompleted;
-  // public event Action<ICoin>? CoinCollectionStarted;
+  public event Action<ICoin>? CoinCollectionCompleted;
+  public event Action<ICoin>? CoinCollectionStarted;
   public event Action? JumpshroomUsed;
   public event Action<GameOverReason>? Ended;
   public event Action? Jumped;
 
-  // private int _coinsBeingCollected;
+  private int _coinsBeingCollected;
   private bool _disposedValue;
 
   public GameRepo() {
@@ -153,23 +154,23 @@ public class GameRepo : IGameRepo {
   public void SetCameraBasis(Basis cameraBasis) =>
     _cameraBasis.OnNext(cameraBasis);
 
-  // public void StartCoinCollection(ICoin coin) {
-  //   _coinsBeingCollected++;
-  //   _numCoinsCollected.OnNext(_numCoinsCollected.Value + 1);
-  //   CoinCollectionStarted?.Invoke(coin);
-  // }
-  //
-  // public void OnFinishCoinCollection(ICoin coin) {
-  //   _coinsBeingCollected--;
-  //   CoinCollectionCompleted?.Invoke(coin);
-  //
-  //   if (
-  //     _coinsBeingCollected == 0 &&
-  //     _numCoinsCollected.Value >= _numCoinsAtStart.Value
-  //   ) {
-  //     OnGameEnded(GameOverReason.Won);
-  //   }
-  // }
+  public void StartCoinCollection(ICoin coin) {
+    _coinsBeingCollected++;
+    _numCoinsCollected.OnNext(_numCoinsCollected.Value + 1);
+    CoinCollectionStarted?.Invoke(coin);
+  }
+
+  public void OnFinishCoinCollection(ICoin coin) {
+    _coinsBeingCollected--;
+    CoinCollectionCompleted?.Invoke(coin);
+
+    if (
+      _coinsBeingCollected == 0 &&
+      _numCoinsCollected.Value >= _numCoinsAtStart.Value
+    ) {
+      OnGameEnded(GameOverReason.Won);
+    }
+  }
 
   public void OnJump() => Jumped?.Invoke();
 

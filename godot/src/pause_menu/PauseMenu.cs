@@ -1,9 +1,9 @@
-namespace GameDemo;
+namespace kyoukaitansa.pause_menu;
 
-using Chickensoft.GodotNodeInterfaces;
-using Godot;
 using Chickensoft.AutoInject;
+using Chickensoft.GodotNodeInterfaces;
 using Chickensoft.Introspection;
+using Godot;
 
 public interface IPauseMenu : IControl {
   event PauseMenu.MainMenuEventHandler MainMenu;
@@ -24,11 +24,11 @@ public partial class PauseMenu : Control, IPauseMenu {
 
   #region Nodes
 
-  // [Node] public IButton ResumeButton { get; set; } = default!;
-  // [Node] public IButton SaveButton { get; set; } = default!;
-  // [Node] public IButton MainMenuButton { get; set; } = default!;
-  // [Node] public IAnimationPlayer AnimationPlayer { get; set; } = default!;
-  // [Node] public IAnimationPlayer SaveOverlayAnimationPlayer { get; set; } = default!;
+  [Node] public IButton ResumeButton { get; set; } = default!;
+  [Node] public IButton SaveButton { get; set; } = default!;
+  [Node] public IButton MainMenuButton { get; set; } = default!;
+  [Node] public IAnimationPlayer AnimationPlayer { get; set; } = default!;
+  [Node] public IAnimationPlayer SaveOverlayAnimationPlayer { get; set; } = default!;
   [Node] public IVBoxContainer SaveOverlay { get; set; } = default!;
 
   #endregion Nodes
@@ -50,39 +50,39 @@ public partial class PauseMenu : Control, IPauseMenu {
   #endregion Signals
 
   public void OnReady() {
-    // MainMenuButton.Pressed += OnMainMenuPressed;
-    // ResumeButton.Pressed += OnResumePressed;
-    // SaveButton.Pressed += OnSavePressed;
-    // AnimationPlayer.AnimationFinished += OnAnimationFinished;
+    MainMenuButton.Pressed += OnMainMenuPressed;
+    ResumeButton.Pressed += OnResumePressed;
+    SaveButton.Pressed += OnSavePressed;
+    AnimationPlayer.AnimationFinished += OnAnimationFinished;
   }
 
   public void OnExitTree() {
-    // MainMenuButton.Pressed -= OnMainMenuPressed;
-    // ResumeButton.Pressed -= OnResumePressed;
-    // SaveButton.Pressed -= OnSavePressed;
-    // AnimationPlayer.AnimationFinished -= OnAnimationFinished;
+    MainMenuButton.Pressed -= OnMainMenuPressed;
+    ResumeButton.Pressed -= OnResumePressed;
+    SaveButton.Pressed -= OnSavePressed;
+    AnimationPlayer.AnimationFinished -= OnAnimationFinished;
   }
 
-  public void OnMainMenuPressed() => EmitSignal(SignalName.MainMenu);
-  public void OnResumePressed() => EmitSignal(SignalName.Resume);
-  public void OnSavePressed() => EmitSignal(SignalName.Save);
+  public void OnMainMenuPressed() => EmitSignal(PauseMenu.SignalName.MainMenu);
+  public void OnResumePressed() => EmitSignal(PauseMenu.SignalName.Resume);
+  public void OnSavePressed() => EmitSignal(PauseMenu.SignalName.Save);
 
   public void FadeIn() {
-    // AnimationPlayer.Play("fade_in");
+    AnimationPlayer.Play("fade_in");
   }
 
   public void OnAnimationFinished(StringName name)
-    => EmitSignal(SignalName.TransitionCompleted);
+    => EmitSignal(PauseMenu.SignalName.TransitionCompleted);
 
   public void FadeOut() {
-    // AnimationPlayer.Play("fade_out");
+    AnimationPlayer.Play("fade_out");
   }
 
   public void OnSaveStarted() => CallDeferred(nameof(Animate), "save_fade_in");
   public void OnSaveCompleted() =>
     CallDeferred(nameof(Animate), "save_fade_out");
 
-  private static void Animate(string animation) {
-    // SaveOverlayAnimationPlayer.Play(animation);
+  private void Animate(string animation) {
+    SaveOverlayAnimationPlayer.Play(animation);
   }
 }

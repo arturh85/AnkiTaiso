@@ -31,6 +31,10 @@
     "script-tabs": {
       "url": "https://github.com/MakovWait/godot-script-tabs",
       "subfolder": "addons/script-tabs"
+    },
+    "richtext2": {
+      "url": "https://github.com/chairfull/GodotRichTextLabel2",
+      "subfolder": "addons/richtext2"
     }
   }
 }

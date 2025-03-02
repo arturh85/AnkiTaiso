@@ -7,12 +7,12 @@ using Chickensoft.LogicBlocks;
 public partial class GameLogic {
   public partial record State {
     [Meta]
-    public partial record Won : State, LogicBlock<State>.IGet<state.GameLogic.Input.GoToMainMenu> {
+    public partial record Won : State, IGet<Input.GoToMainMenu> {
       public Won() {
-        this.OnEnter(() => Output(new state.GameLogic.Output.ShowWonScreen()));
+        this.OnEnter(() => Output(new Output.ShowWonScreen()));
       }
 
-      public LogicBlock<State>.Transition On(in state.GameLogic.Input.GoToMainMenu input) {
+      public Transition On(in Input.GoToMainMenu input) {
         Get<IAppRepo>().OnExitGame(PostGameAction.GoToMainMenu);
         return ToSelf();
       }

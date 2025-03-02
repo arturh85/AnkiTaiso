@@ -97,22 +97,16 @@ jobs:
           python-version: 3.11
         if: github.ref == 'refs/heads/main' && matrix.platform == 'linux'
 
+      - name: 🧾 Generate docs
+        if: github.ref == 'refs/heads/main' && matrix.platform == 'linux'
+        run: ./scripts/generate-docs.ps1
+        shell: pwsh
+
       - name: 🧾 Build docs
         if: github.ref == 'refs/heads/main' && matrix.platform == 'linux'
         run: |
           pip install mkdocs mkdocs-awesome-pages-plugin mkdocs-mermaid2-plugin mkdocs_puml_file mkdocs_puml plantuml
-          cp godot/src/app/state/AppLogic.g.puml docs/reference/
-          cp godot/src/game/state/GameLogic.g.puml docs/reference/
           mkdir public && mkdocs build -d public/docs
-
-#      - name: Deploy docs
-#        uses: mhausenblas/mkdocs-deploy-gh-pages@master
-#        if: github.ref == 'refs/heads/main' && matrix.platform == 'linux'
-#        # Or use mhausenblas/mkdocs-deploy-gh-pages@nomaterial to build without the mkdocs-material theme
-#        env:
-#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-#          CONFIG_FILE: mkdocs.yml
-#          EXTRA_PACKAGES: build-base mermaid2 awesome-pages
 
       - name: 🦺 Deploy docs
         uses: peaceiris/actions-gh-pages@v4

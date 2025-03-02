@@ -11,6 +11,7 @@ using menu;
 using menu.splash;
 using state;
 using utils;
+using Game = game.Game;
 
 public interface IApp : ICanvasLayer, IProvide<IAppRepo>;
 

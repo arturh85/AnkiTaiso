@@ -1,14 +1,16 @@
 namespace kyoukaitansa.game.state;
 
+using app.domain;
 using Chickensoft.Introspection;
 using Chickensoft.LogicBlocks;
-using kyoukaitansa.app.domain;
-using kyoukaitansa.game.domain;
+using domain;
+using GameDemo;
 
 public partial class GameLogic {
   public partial record State {
     [Meta]
-    public partial record MenuBackdrop : State, LogicBlock<State>.IGet<GameLogic.Input.Start>, LogicBlock<State>.IGet<GameLogic.Input.Initialize> {
+    public partial record MenuBackdrop : State,
+    IGet<Input.Start>, IGet<Input.Initialize> {
       public MenuBackdrop() {
         this.OnEnter(() => Get<IGameRepo>().SetIsMouseCaptured(false));
 
@@ -16,12 +18,12 @@ public partial class GameLogic {
         OnDetach(() => Get<IAppRepo>().GameEntered -= OnGameEntered);
       }
 
-      public void OnGameEntered() => Input(new GameLogic.Input.Start());
+      public void OnGameEntered() => Input(new Input.Start());
 
-      public LogicBlock<State>.Transition On(in GameLogic.Input.Start input) => To<GameLogic.State.Playing>();
+      public Transition On(in Input.Start input) => To<Playing>();
 
-      public LogicBlock<State>.Transition On(in GameLogic.Input.Initialize input) {
-        // Get<IGameRepo>().SetNumCoinsAtStart(input.NumCoinsInWorld);
+      public Transition On(in Input.Initialize input) {
+        Get<IGameRepo>().SetNumCoinsAtStart(input.NumCoinsInWorld);
         return ToSelf();
       }
     }

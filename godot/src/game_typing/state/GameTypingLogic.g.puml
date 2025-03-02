@@ -1,0 +1,16 @@
+@startuml GameTypingLogic
+state "GameTypingLogic State" as kyoukaitansa_game_typing_state_GameTypingLogic_State {
+  state "EnemySelected" as kyoukaitansa_game_typing_state_GameTypingLogic_State_EnemySelected
+  state "NothingSelected" as kyoukaitansa_game_typing_state_GameTypingLogic_State_NothingSelected
+}
+
+kyoukaitansa_game_typing_state_GameTypingLogic_State_EnemySelected --> kyoukaitansa_game_typing_state_GameTypingLogic_State_EnemySelected : Initialize
+kyoukaitansa_game_typing_state_GameTypingLogic_State_NothingSelected --> kyoukaitansa_game_typing_state_GameTypingLogic_State_EnemySelected : OnKeyDown
+
+kyoukaitansa_game_typing_state_GameTypingLogic_State : OnIsMouseCaptured() → CaptureMouse
+kyoukaitansa_game_typing_state_GameTypingLogic_State : OnIsPaused() → SetPauseMode
+kyoukaitansa_game_typing_state_GameTypingLogic_State_EnemySelected : OnEnter → ShowLostScreen
+kyoukaitansa_game_typing_state_GameTypingLogic_State_NothingSelected : OnEnter → ShowLostScreen
+
+[*] --> kyoukaitansa_game_typing_state_GameTypingLogic_State_NothingSelected
+@enduml

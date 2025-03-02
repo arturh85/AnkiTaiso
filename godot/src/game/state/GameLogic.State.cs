@@ -2,7 +2,8 @@ namespace kyoukaitansa.game.state;
 
 using Chickensoft.Introspection;
 using Chickensoft.LogicBlocks;
-using kyoukaitansa.game.domain;
+using domain;
+using GameDemo;
 
 public partial class GameLogic {
   [Meta]

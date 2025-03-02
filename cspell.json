@@ -17,6 +17,8 @@
     "**/*.godot",
     "**/*.gdshader",
     "**/*.json",
+    "**/*.res",
+    "**/*.ps1",
     "**/*.csproj",
     "**/*.sln",
     "**/*.import",
@@ -126,6 +128,7 @@
     "organised",
     "howto",
     "gdignore",
-    "Platformer"
+    "Platformer",
+    "Wordlists"
   ]
 }
