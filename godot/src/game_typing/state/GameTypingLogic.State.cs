@@ -7,7 +7,7 @@ using domain;
 public partial class GameTypingLogic {
   [Meta]
   public partial record State : StateLogic<State> {
-    protected State() {
+    public State() {
       OnAttach(() => {
         var gameRepo = Get<IGameTypingRepo>();
         // gameRepo.IsMouseCaptured.Sync += OnIsMouseCaptured;

@@ -1,6 +1,7 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
 using kyoukaitansa.game_typing.domain;
@@ -22,10 +23,16 @@ public partial class GameTyping : Node3D {
   public Vector3 PlayerPosition;
   public Vector3 SpawnPosition;
 
+  public PackedScene myEnemy;
+
   public void Setup() {
     GameTypingRepo = new GameTypingRepo();
     GameTypingLogic = new GameTypingLogic();
     GameTypingLogic.Set(GameTypingRepo);
+
+    myEnemy = GD.Load<PackedScene>("res://src/enemy/Enemy.tscn");
+
+    GD.Print("myEnemy build");
 
 
     GameTypingBinding = GameTypingLogic.Bind();
@@ -98,7 +105,7 @@ public partial class GameTyping : Node3D {
 
 
   public void SpawnStuff() {
-    if (_.Enemies.GetChildren().Count >= 5) {
+    if (_.Enemies.GetChildren().Count >= 5 || myEnemy == null) {
       return;
     }
     const float spawnRadius = 5.0f;
@@ -110,10 +117,14 @@ public partial class GameTyping : Node3D {
 
     Vector3 spawnPosition = FindValidSpawnPosition3D(rng, spawnRadius, minDistanceBetweenEnemies, maxSpawnAttempts);
 
-    var enemy = CreateEnemy3D(spawnPosition);
-    _.Enemies.AddChild(enemy);
 
-    GD.Print("Spawned Enemy " + enemy.GetText());
+    var start = Stopwatch.GetTimestamp();
+    var enemy = CreateEnemy3D(spawnPosition);
+    GD.Print("Created Enemy " + enemy.GetText() + " in " + Stopwatch.GetElapsedTime(start).TotalMilliseconds + " ms");
+    var start2 = Stopwatch.GetTimestamp();
+    _.Enemies.AddChild(enemy);
+    GD.Print("Added Enemy " + enemy.GetText() + " in " + Stopwatch.GetElapsedTime(start2).TotalMilliseconds + " ms");
+
   }
 
   private Vector3 FindValidSpawnPosition3D(RandomNumberGenerator rng, float radius, float minDistance,
@@ -160,13 +171,10 @@ public partial class GameTyping : Node3D {
       GD.Print("Enemy null?");
     }
 
-    var enemy = _.Enemy.Duplicate() as Enemy;
+    // var enemy = _.Enemy.Duplicate() as Enemy;
+    var enemy = myEnemy.Instantiate<Enemy>();
     enemy.Position = position;
     enemy.MovementTarget = PlayerPosition;
-
-    // Orient enemy to face player
-    enemy.LookAt(PlayerPosition, Vector3.Up);
-
     enemy.SetText(GetRandomWord());
     enemy.EnableA();
     return enemy;
