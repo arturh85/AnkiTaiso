@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c54yj60m0fflo"]
 
-[ext_resource type="Script" path="res://src/game_typing/GameTyping.cs" id="1_1s8go"]
+[ext_resource type="Script" uid="uid://0mfnac3xjha" path="res://src/game_typing/GameTyping.cs" id="1_1s8go"]
 [ext_resource type="PackedScene" uid="uid://d04amsl0japsx" path="res://src/enemy/Enemy.tscn" id="2_obrb3"]
 
 [node name="GameTyping" type="Node3D"]

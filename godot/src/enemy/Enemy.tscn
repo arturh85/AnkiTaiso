@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d04amsl0japsx"]
 
-[ext_resource type="Script" path="res://src/enemy/Enemy.cs" id="1_vod11"]
+[ext_resource type="Script" uid="uid://cyt2fhn5ovay5" path="res://src/enemy/Enemy.cs" id="1_vod11"]
 [ext_resource type="PackedScene" uid="uid://cd72hjoehd7tt" path="res://src/enemy/PS1_Zombie.gltf" id="2_2oi45"]
 
 [node name="Enemy" type="Node3D"]
