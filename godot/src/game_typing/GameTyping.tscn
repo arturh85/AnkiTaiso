@@ -12,6 +12,6 @@ script = ExtResource("1_1s8go")
 
 [node name="Enemy" parent="." instance=ExtResource("2_obrb3")]
 process_mode = 4
-transform = Transform3D(0.999778, 0, 0.021082, 0, 1, 0, -0.021082, 0, 0.999778, 0, 0, 0.0398726)
+transform = Transform3D(0.999778, 0, 0.021082, 0, 1, 0, -0.021082, 0, 0.999778, 0, 0.791304, 0.0398726)
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
