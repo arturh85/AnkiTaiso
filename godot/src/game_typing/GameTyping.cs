@@ -1,13 +1,15 @@
-using Godot;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Godot;
 using kyoukaitansa.game_typing.domain;
 using kyoukaitansa.game_typing.state;
 using kyoukaitansa.game.state;
 using Enemy = kyoukaitansa.enemy.Enemy;
+
+namespace kyoukaitansa.game_typing;
 
 [SceneTree]
 public partial class GameTyping : Node3D {
@@ -20,21 +22,19 @@ public partial class GameTyping : Node3D {
 
   #endregion State
 
+
   public Vector3 PlayerPosition;
   public Vector3 SpawnPosition;
 
-  public PackedScene myEnemy;
+  private const int MaxEnemyPanels = 4;
+  public List<string> WordList = new List<string>();
+
+  // public PackedScene myEnemy;
 
   public void Setup() {
     GameTypingRepo = new GameTypingRepo();
     GameTypingLogic = new GameTypingLogic();
     GameTypingLogic.Set(GameTypingRepo);
-
-    myEnemy = GD.Load<PackedScene>("res://src/enemy/Enemy.tscn");
-
-    GD.Print("myEnemy build");
-
-
     GameTypingBinding = GameTypingLogic.Bind();
     GameTypingBinding
       .Handle(
@@ -55,11 +55,35 @@ public partial class GameTyping : Node3D {
     LoadWordlist();
     SetPaused(true);
     Setup();
+
+    for (int i = 0; i < MaxEnemyPanels; i++) {
+      var panel = EnemyPanel.Instantiate();
+      panel.Hide();
+      _.GuiControls.AddChild(panel);
+    }
   }
 
   // Called every frame. 'delta' is the elapsed time since the previous frame.
   public override void _Process(double delta) {
+    if (paused) return;
+    var nearest = Enemy.GetNearestEnemies(PlayerPosition, _.Enemies, MaxEnemyPanels);
+
+    var idx = 0;
+    foreach (var child in _.GuiControls.GetChildren()) {
+      if (child is EnemyPanel panel) {
+        if (nearest.Count <= idx) {
+          panel.Hide();
+        }
+        else {
+          var enemy = nearest[idx];
+          panel.UpdateGui(enemy);
+        }
+
+        idx += 1;
+      }
+    }
   }
+
 
   public bool paused = true;
   public bool game_started = false;
@@ -68,7 +92,6 @@ public partial class GameTyping : Node3D {
   public void StartGame() {
     game_started = true;
     SetPaused(false);
-    _.Enemy.DisableA();
   }
 
   public void SetPaused(bool _paused) {
@@ -76,20 +99,15 @@ public partial class GameTyping : Node3D {
       return;
     }
 
-    GD.Print("SetPaused(" + _paused);
     paused = _paused;
     if (_paused) {
-      GD.Print("Stopping Timer");
       _.Timer.Stop();
     }
     else {
-      GD.Print("Starting Timer");
       _.Timer.Start();
     }
   }
 
-
-  public List<string> WordList = new List<string>();
 
   public void LoadWordlist() {
     var file = FileAccess.Open("res://assets/top_english_nouns_lower_10000.txt", FileAccess.ModeFlags.Read);
@@ -104,10 +122,11 @@ public partial class GameTyping : Node3D {
   }
 
 
-  public void SpawnStuff() {
-    if (_.Enemies.GetChildren().Count >= 5 || myEnemy == null) {
+  public void SpawnEnemy() {
+    if (_.Enemies.GetChildren().Count >= 5) {
       return;
     }
+
     const float spawnRadius = 5.0f;
     const float minDistanceBetweenEnemies = 2.0f;
     const int maxSpawnAttempts = 10;
@@ -116,23 +135,18 @@ public partial class GameTyping : Node3D {
     rng.Randomize();
 
     Vector3 spawnPosition = FindValidSpawnPosition3D(rng, spawnRadius, minDistanceBetweenEnemies, maxSpawnAttempts);
-
-
-    var start = Stopwatch.GetTimestamp();
     var enemy = CreateEnemy3D(spawnPosition);
-    GD.Print("Created Enemy " + enemy.GetText() + " in " + Stopwatch.GetElapsedTime(start).TotalMilliseconds + " ms");
-    var start2 = Stopwatch.GetTimestamp();
     _.Enemies.AddChild(enemy);
-    GD.Print("Added Enemy " + enemy.GetText() + " in " + Stopwatch.GetElapsedTime(start2).TotalMilliseconds + " ms");
-
+    // var start = Stopwatch.GetTimestamp();
+    // GD.Print("Created Enemy " + enemy.Prompt + " in " + Stopwatch.GetElapsedTime(start).TotalMilliseconds + " ms");
   }
 
   private Vector3 FindValidSpawnPosition3D(RandomNumberGenerator rng, float radius, float minDistance,
     int maxAttempts) {
-    var existingEnemies = _.Enemies.GetChildren().Cast<Enemy>().ToList();
+    var existingEnemies = Enumerable.Cast<Enemy>(_.Enemies.GetChildren()).ToList();
 
     for (int i = 0; i < maxAttempts; i++) {
-      Vector3 candidatePosition = GenerateRandomPosition3D(rng, SpawnPosition, radius);
+      Vector3 candidatePosition = GenerateRandomPositionInArc(rng, SpawnPosition, radius, MathF.PI / 2);
 
       if (!IsPositionOccupied3D(candidatePosition, existingEnemies, minDistance)) {
         return candidatePosition;
@@ -140,7 +154,26 @@ public partial class GameTyping : Node3D {
     }
 
     // Fallback to random position without collision check
-    return GenerateRandomPosition3D(rng, SpawnPosition, radius);
+    return GenerateRandomPositionInArc(rng, SpawnPosition, radius, MathF.PI / 2);
+  }
+
+  private Vector3 GenerateRandomPositionInArc(RandomNumberGenerator rng, Vector3 center, float radius,
+    float arcAngleRadians) {
+    // Calculate direction from player to the center point
+    Vector3 toCenter = center - PlayerPosition;
+    // Get the angle of this direction in the XZ plane (azimuth)
+    float thetaCenter = Mathf.Atan2(toCenter.Z, toCenter.X);
+    // Random angle within the arc around the center angle
+    float randomAngle = rng.RandfRange(thetaCenter - arcAngleRadians / 2, thetaCenter + arcAngleRadians / 2);
+    // Random distance from the player (0 to radius)
+    float distance = toCenter.Length();
+
+    // Calculate position in XZ plane around the player's position
+    float x = PlayerPosition.X + distance * Mathf.Cos(randomAngle);
+    float z = PlayerPosition.Z + distance * Mathf.Sin(randomAngle);
+
+    // Keep Y coordinate same as the center's Y (or set to PlayerPosition.Y if needed)
+    return new Vector3(x, center.Y, z);
   }
 
   private Vector3 GenerateRandomPosition3D(RandomNumberGenerator rng, Vector3 center, float radius) {
@@ -167,16 +200,8 @@ public partial class GameTyping : Node3D {
   }
 
   private Enemy CreateEnemy3D(Vector3 position) {
-    if (_.Enemy == null) {
-      GD.Print("Enemy null?");
-    }
-
-    // var enemy = _.Enemy.Duplicate() as Enemy;
-    var enemy = myEnemy.Instantiate<Enemy>();
+    var enemy = Enemy.Instantiate(GetRandomWord(), PlayerPosition);
     enemy.Position = position;
-    enemy.MovementTarget = PlayerPosition;
-    enemy.SetText(GetRandomWord());
-    enemy.EnableA();
     return enemy;
   }
 
@@ -185,6 +210,6 @@ public partial class GameTyping : Node3D {
   }
 
   public void _on_timer_timeout() {
-    SpawnStuff();
+    SpawnEnemy();
   }
 }

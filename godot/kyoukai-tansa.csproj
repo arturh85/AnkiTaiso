@@ -1,4 +1,4 @@
-<Project Sdk="Godot.NET.Sdk">
+<Project Sdk="Godot.NET.Sdk/4.4.0">
   <PropertyGroup>
     <TargetFramework>net9.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
@@ -261,14 +261,6 @@
     <Content Include="src\player_camera\.DS_Store" />
     <Content Include="src\player_camera\PlayerCamera.tscn" />
     <Content Include="src\player_camera\state\PlayerCameraLogic.g.puml" />
-    <Content Include="src\scenes\Enemy.tscn" />
-    <Content Include="src\scenes\scene.bin" />
-    <Content Include="src\scenes\scene.gltf" />
-    <Content Include="src\scenes\scene.gltf.import" />
-    <Content Include="src\scenes\Zombie.tscn" />
-    <Content Include="src\scenes\zombie_MAT.material" />
-    <Content Include="src\scenes\zombie_MAT_baseColor.jpeg" />
-    <Content Include="src\scenes\zombie_MAT_baseColor.jpeg.import" />
     <Content Include="src\win_menu\fireworks.gdshader" />
     <Content Include="src\win_menu\WinMenu.tscn" />
   </ItemGroup>

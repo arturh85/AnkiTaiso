@@ -12,6 +12,7 @@ using Chickensoft.SaveFileBuilder;
 using Chickensoft.Serialization;
 using Chickensoft.Serialization.Godot;
 using domain;
+using game_typing;
 using GameDemo;
 using Godot;
 using in_game_ui;

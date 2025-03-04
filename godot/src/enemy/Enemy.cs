@@ -1,67 +1,68 @@
 namespace kyoukaitansa.enemy;
 
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Godot;
 
 [SceneTree]
 public partial class Enemy : Node3D {
   public Vector3 MovementTarget;
+  public string Prompt;
+  public string Input;
+  public bool Moving;
 
-  private bool mooving = false;
+  [OnInstantiate]
+  private void Initialise(string prompt, Vector3 movementTarget) {
+    MovementTarget = movementTarget;
+    Prompt = prompt;
+    Input = "";
+  }
 
-  // Called when the node enters the scene tree for the first time.
+  public Vector3 GetGuiOffset() {
+    return _.GuiPosition.Position;
+  }
+
   public override void _Ready() {
-    _.Gui.VBoxContainer.Input.Text = "a";
     var player = _.scene.GetNode("AnimationPlayer") as AnimationPlayer;
     var anim = player!.GetAnimation("WalkZ");
     anim.LoopMode = Animation.LoopModeEnum.Linear;
     player.Play("ClimbGraveZ");
-
     player.AnimationFinished += OnAnimationFinished;
-    var container = _.Gui.Get();
-    container.Visible = false;
   }
 
   private void OnAnimationFinished(StringName animname) {
     if (animname == "ClimbGraveZ") {
-      mooving = true;
+      Moving = true;
       var player = _.scene.GetNode("AnimationPlayer") as AnimationPlayer;
       player.Play("WalkZ");
     }
   }
 
-  public void EnableA() {
-    Show();
-    ProcessMode = ProcessModeEnum.Inherit;
-    // SetProcess(true);
-  }
-  public void DisableA() {
-    Hide();
-    ProcessMode = ProcessModeEnum.Disabled;
-    // SetProcess(false);
+
+  public static List<Enemy> GetNearestEnemies(Vector3 playerPosition, Node3D enemies, int numberOfEnemies)
+  {
+    var enemiesWithDistance = enemies
+      .GetChildren()
+      .OfType<Enemy>()
+      .Where(enemy => enemy.Moving)
+      .Select(enemy => new {
+        Enemy = enemy,
+        // Calculate squared distances to avoid expensive square root operations
+        SqrDistance = playerPosition.DistanceSquaredTo(enemy.Position)
+      })
+      .OrderBy(e => e.SqrDistance)
+      .Take(numberOfEnemies)
+      .Select(e => e.Enemy)
+      .ToList();
+
+    return enemiesWithDistance!;
   }
 
-  public string GetText() {
-    return _.Gui.VBoxContainer.Prompt.Text;
-  }
-  public void SetText(string text) {
-    _.Gui.VBoxContainer.Prompt.Text = text;
-  }
-  public void SetTarget(Vector3 target) {
-    MovementTarget = target;
-  }
-
-  // Called every frame. 'delta' is the elapsed time since the previous frame.
   public override void _Process(double delta) {
-    var pos_3d = GlobalPosition + _.GuiPosition.Position;
-    var cam = GetViewport().GetCamera3D();
-    var pos_2d = cam.UnprojectPosition(pos_3d);
-    var container = _.Gui.Get();
-    container.GlobalPosition = pos_2d;
-    container.Visible = mooving && !cam.IsPositionBehind(pos_3d);
     LookAt(MovementTarget, Vector3.Up);
 
-    if (!mooving) return;
+    if (!Moving) return;
     //
     // if (MovementTarget == null) {
     //   GD.Print("NO movement target");
