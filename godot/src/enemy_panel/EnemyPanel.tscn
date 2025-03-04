@@ -1,18 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://dyp55frd0p2yo"]
+[gd_scene load_steps=3 format=3 uid="uid://dyp55frd0p2yo"]
 
-[ext_resource type="Script" uid="uid://b6mbstaftpedd" path="res://addons/richtext2/rich_text_animation.gd" id="1_6wtqd"]
-[ext_resource type="Script" uid="uid://5hv4pjs1xcht" path="res://addons/richtext2/text_effects/anims/rte_fader.gd" id="1_qvwt8"]
 [ext_resource type="Script" uid="uid://ocy0us1kd8gb" path="res://src/enemy_panel/EnemyPanel.cs" id="1_rojy2"]
-
-[sub_resource type="RichTextEffect" id="RichTextEffect_cksev"]
-resource_name = "fader"
-script = ExtResource("1_qvwt8")
-metadata/rt = 3947813231740
-
-[sub_resource type="RichTextEffect" id="RichTextEffect_rojy2"]
-resource_name = "fader"
-script = ExtResource("1_qvwt8")
-metadata/rt = 4166386802919
+[ext_resource type="Script" uid="uid://2f4fi75scxes" path="res://addons/richtext2/richer_text_label.gd" id="3_rojy2"]
 
 [node name="EnemyPanel" type="Control"]
 layout_mode = 3
@@ -28,10 +17,18 @@ layout_mode = 0
 offset_right = 202.0
 offset_bottom = 94.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+[node name="BackgroundContainer" type="ColorRect" parent="PanelContainer"]
+unique_name_in_owner = true
 layout_mode = 2
+color = Color(0, 0, 0, 1)
 
-[node name="Prompt" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/BackgroundContainer"]
+layout_mode = 2
+offset_right = 202.0
+offset_bottom = 94.0
+
+[node name="PromptLabel" type="RichTextLabel" parent="PanelContainer/BackgroundContainer/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 theme_override_font_sizes/bold_italics_font_size = 32
@@ -39,30 +36,11 @@ theme_override_font_sizes/italics_font_size = 32
 theme_override_font_sizes/mono_font_size = 32
 theme_override_font_sizes/normal_font_size = 32
 theme_override_font_sizes/bold_font_size = 32
-custom_effects = [SubResource("RichTextEffect_cksev")]
-script = ExtResource("1_6wtqd")
-progress = 1.0
-visible_character = 6
-_transforms = Array[Transform2D]([Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 54, 35), Transform2D(1, 0, 0, 1, 74, 35), Transform2D(1, 0, 0, 1, 99, 35), Transform2D(1, 0, 0, 1, 129, 35), Transform2D(1, 0, 0, 1, 149, 35)])
-_char_size = Array[Vector2]([Vector2(0, 0), Vector2(20, 25), Vector2(25, 25), Vector2(26, 25), Vector2(18, 25), Vector2(20, 25)])
-_alpha = Array[float]([1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
-_alpha_goal = Array[float]([1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
-_forced_finish_delay = -0.012625
-default_wait_time = 1.0
-play_on_bbcode = true
-play_speed = 30.0
-fade_out = false
-fade_in_speed = 10.0
-fade_out_speed = 120.0
-ctc_offset = Vector2(1, -0.5)
-ctc_on_finished = false
-ctc_on_wait = false
-shortcut_expression = true
-shortcut_bookmark = true
-signal_quotes = true
-signal_stars = true
+fit_content = true
+autowrap_mode = 0
+script = ExtResource("3_rojy2")
 bbcode = "PROMPT"
-effects = 2
+effects = 0
 alignment = 1
 color = Color(1, 1, 1, 1)
 emoji_scale = 1.0
@@ -110,9 +88,10 @@ meta_cursor = 2
 override_bbcodeEnabled = true
 override_clipContents = false
 override_fitContent = true
-metadata/_custom_type_script = "uid://b6mbstaftpedd"
+metadata/_custom_type_script = "uid://2f4fi75scxes"
 
-[node name="Input" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
+[node name="InputLabel" type="RichTextLabel" parent="PanelContainer/BackgroundContainer/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
 theme_override_colors/default_color = Color(1, 1, 0, 1)
@@ -122,29 +101,10 @@ theme_override_font_sizes/italics_font_size = 32
 theme_override_font_sizes/mono_font_size = 32
 theme_override_font_sizes/normal_font_size = 32
 theme_override_font_sizes/bold_font_size = 32
-custom_effects = [SubResource("RichTextEffect_rojy2")]
-script = ExtResource("1_6wtqd")
-progress = 1.0
-visible_character = 10
-_transforms = Array[Transform2D]([Transform2D(1, 0, 0, 1, 0, 0), Transform2D(1, 0, 0, 1, 32, 35), Transform2D(1, 0, 0, 1, 49, 35), Transform2D(1, 0, 0, 1, 67, 35), Transform2D(1, 0, 0, 1, 88, 35), Transform2D(1, 0, 0, 1, 96, 35), Transform2D(1, 0, 0, 1, 106, 35), Transform2D(1, 0, 0, 1, 131, 35), Transform2D(1, 0, 0, 1, 151, 35), Transform2D(1, 0, 0, 1, 175, 35)])
-_char_size = Array[Vector2]([Vector2(0, 0), Vector2(18, 25), Vector2(15, 25), Vector2(20, 25), Vector2(0, 25), Vector2(6, 25), Vector2(22, 25), Vector2(18, 25), Vector2(21, 25), Vector2(20, 25)])
-_alpha = Array[float]([1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
-_alpha_goal = Array[float]([1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0])
-_forced_finish_delay = -0.001275
-default_wait_time = 1.0
-play_on_bbcode = true
-play_speed = 30.0
-fade_out = false
-fade_in_speed = 10.0
-fade_out_speed = 120.0
-ctc_offset = Vector2(1, -0.5)
-ctc_on_finished = false
-ctc_on_wait = false
-shortcut_expression = true
-shortcut_bookmark = true
-signal_quotes = true
-signal_stars = true
-bbcode = "USER INPUT"
+fit_content = true
+autowrap_mode = 0
+script = ExtResource("3_rojy2")
+bbcode = "aasdf"
 effects = 2
 alignment = 1
 color = Color(1, 1, 0, 1)
@@ -193,4 +153,5 @@ meta_cursor = 2
 override_bbcodeEnabled = true
 override_clipContents = false
 override_fitContent = true
-metadata/_custom_type_script = "uid://b6mbstaftpedd"
+metadata/_custom_type_script = "uid://2f4fi75scxes"
+metadata/rand = Array[int]([2030990634, 127579308, 3715033161, 3289054673, 3680736943, 1157063674, 1819032016, 763331576])

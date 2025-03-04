@@ -38,6 +38,5 @@ public partial class Main : Node2D {
     => _ = GoTest.RunTests(Assembly.GetExecutingAssembly(), this, Environment);
 #endif
 
-  private void RunScene()
-    => GetTree().ChangeSceneToFile(App.APP_SCENE_PATH);
+  private void RunScene() => GetTree().ChangeSceneToFile(App.APP_SCENE_PATH);
 }

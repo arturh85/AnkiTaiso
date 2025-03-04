@@ -2,12 +2,11 @@ namespace kyoukaitansa.enemy;
 
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Godot;
 
 [SceneTree]
 public partial class Enemy : Node3D {
-  public Vector3 MovementTarget;
+  private Vector3 _movementTarget;
   public string Prompt;
   public string Input;
   public bool Moving;
@@ -18,28 +17,28 @@ public partial class Enemy : Node3D {
 
   [OnInstantiate]
   private void Initialise(string prompt, Vector3 movementTarget) {
-    MovementTarget = movementTarget;
+    _movementTarget = movementTarget;
     Prompt = prompt;
     Input = "";
   }
 
-  public Vector3 GetGuiOffset() {
-    return _.GuiPosition.Position;
-  }
+  public Vector3 GetGuiOffset() => GuiOffset.Position;
+
+  public AnimationPlayer GetAnimationPlayer() => (Model.GetNode(nameof(AnimationPlayer)) as AnimationPlayer)!;
 
   public override void _Ready() {
-    var player = _.scene.GetNode("AnimationPlayer") as AnimationPlayer;
-    var anim = player!.GetAnimation("WalkZ");
+    var player = GetAnimationPlayer();
+    var anim = player!.GetAnimation(EnemyAnimations.Walk);
     anim.LoopMode = Animation.LoopModeEnum.Linear;
-    player.Play("ClimbGraveZ");
+    player.Play(EnemyAnimations.ClimbGrave);
     player.AnimationFinished += OnAnimationFinished;
   }
 
   private void OnAnimationFinished(StringName animname) {
-    if (animname == "ClimbGraveZ") {
+    if (animname == EnemyAnimations.ClimbGrave) {
       Moving = true;
-      var player = _.scene.GetNode("AnimationPlayer") as AnimationPlayer;
-      player.Play("WalkZ");
+      var player = GetAnimationPlayer();
+      player.Play(EnemyAnimations.Walk);
     }
   }
 
@@ -64,18 +63,11 @@ public partial class Enemy : Node3D {
   }
 
   public override void _Process(double delta) {
-    LookAt(MovementTarget, Vector3.Up);
-
+    LookAt(_movementTarget, Vector3.Up);
     if (!Moving) return;
-    //
-    // if (MovementTarget == null) {
-    //   GD.Print("NO movement target");
-    //   return;
-    // }
-    Position = Position.MoveToward(MovementTarget, (float)delta * 1.1f);
-    var distance = Position.DistanceTo(MovementTarget);
+    Position = Position.MoveToward(_movementTarget, (float)delta * 1.1f);
+    var distance = Position.DistanceTo(_movementTarget);
     if (distance < 2.1) {
-      // GD.Print(_.Label.Text  + " freed");
       EmitSignal(nameof(OnDelete));
       QueueFree();
     }

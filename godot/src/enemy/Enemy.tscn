@@ -6,8 +6,10 @@
 [node name="Enemy" type="Node3D"]
 script = ExtResource("1_vod11")
 
-[node name="scene" parent="." instance=ExtResource("2_2oi45")]
+[node name="Model" parent="." instance=ExtResource("2_2oi45")]
+unique_name_in_owner = true
 transform = Transform3D(-0.49969, 0, 0.0176154, 0, 0.5, 0, -0.0176154, 0, -0.49969, 0, 1.45618, 0)
 
-[node name="GuiPosition" type="Node3D" parent="."]
+[node name="GuiOffset" type="Node3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.09199, -0.321946)

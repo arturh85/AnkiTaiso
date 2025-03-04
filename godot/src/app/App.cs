@@ -69,6 +69,8 @@ public partial class App : CanvasLayer, IApp {
     // for the overall app's state machine.
     Menu.NewGame += OnNewGame;
     Menu.LoadGame += OnLoadGame;
+    Menu.QuitGame += OnQuitGame;
+    Menu.Options += OnOptions;
 
     AnimationPlayer.AnimationFinished += OnAnimationFinished;
 
@@ -122,11 +124,20 @@ public partial class App : CanvasLayer, IApp {
 
     // Enter the first state to kick off the binding side effects.
     AppLogic.Start();
+
+    if (OS.IsDebugBuild()) {
+      AppRepo.SkipSplashScreen();
+      OnNewGame();
+    }
   }
 
   public void OnNewGame() => AppLogic.Input(new AppLogic.Input.NewGame());
 
   public void OnLoadGame() => AppLogic.Input(new AppLogic.Input.LoadGame());
+  public void OnQuitGame() => GetTree().Quit();
+  public void OnOptions()  {
+    GD.Print("OPTIONS");
+  }
 
   public void OnAnimationFinished(StringName animation) {
     // There's only two animations :)

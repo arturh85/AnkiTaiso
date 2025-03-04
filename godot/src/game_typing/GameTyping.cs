@@ -11,6 +11,8 @@ using Enemy = kyoukaitansa.enemy.Enemy;
 
 namespace kyoukaitansa.game_typing;
 
+using enemy_panel;
+
 [SceneTree]
 public partial class GameTyping : Node3D {
   #region State
@@ -118,9 +120,8 @@ public partial class GameTyping : Node3D {
       }
       else {
         var s = OS.GetKeycodeString(keyEvent.Keycode);
-        GD.Print(s);
         foreach (var enemy in _.Enemies.GetChildren().OfType<Enemy>()) {
-          if (enemy.Prompt.ToUpper().StartsWith(s)) {
+          if (enemy.Moving && enemy.Prompt.ToUpper().StartsWith(s)) {
             activeEnemy = enemy;
             activeEnemy.OnInput(keyEvent);
             activeEnemy.OnDelete += _on_active_enemy_deleted;

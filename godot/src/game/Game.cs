@@ -97,8 +97,6 @@ public partial class Game : Node3D, IGame {
     GameLogic = new GameLogic();
     GameLogic.Set(GameRepo);
     GameLogic.Set(AppRepo);
-
-    GD.Print("SpawnPosition: " + SpawnLocation.Position);
     GameTyping.PlayerPosition = Player.Position;
     GameTyping.SpawnPosition = SpawnLocation.Position;
 
@@ -180,39 +178,33 @@ public partial class Game : Node3D, IGame {
     GameBinding
       .Handle(
         (in GameLogic.Output.StartGame _) => {
-          GD.Print("Game State StartGame");
           PlayerCamera.UsePlayerCamera();
           InGameUi.Show();
           GameTyping.StartGame();
         })
       .Handle(
         (in GameLogic.Output.SetPauseMode output) => {
-          GD.Print("Game State SetPauseMode");
           CallDeferred(nameof(SetPauseMode), output.IsPaused);
           GameTyping.SetPaused(output.IsPaused);
         })
       .Handle(
         (in GameLogic.Output.CaptureMouse output) => {
-          // GD.Print("Game State CaptureMouse");
           // Input.MouseMode = output.IsMouseCaptured
           //   ? Input.MouseModeEnum.Captured
           //   : Input.MouseModeEnum.Visible;
         }
       )
       .Handle((in GameLogic.Output.ShowLostScreen _) => {
-        GD.Print("Game State ShowLostScreen");
         DeathMenu.Show();
         DeathMenu.FadeIn();
         DeathMenu.Animate();
       })
       .Handle((in GameLogic.Output.ExitLostScreen _) => DeathMenu.FadeOut())
       .Handle((in GameLogic.Output.ShowPauseMenu _) => {
-        GD.Print("Game State ShowPauseMenu");
         PauseMenu.Show();
         PauseMenu.FadeIn();
       })
       .Handle((in GameLogic.Output.ShowWonScreen _) => {
-        GD.Print("Game State ShowWonScreen");
         WinMenu.Show();
         WinMenu.FadeIn();
       })
@@ -237,8 +229,6 @@ public partial class Game : Node3D, IGame {
     // Trigger the first state's OnEnter callbacks so our bindings run.
     // Keeps everything in sync from the moment we start!
     GameLogic.Start();
-    GD.Print("Game State Start");
-
     GameLogic.Input(
       new GameLogic.Input.Initialize(NumCoinsInWorld: Map.GetCoinCount())
     );
