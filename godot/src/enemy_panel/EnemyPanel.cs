@@ -20,9 +20,20 @@ public partial class EnemyPanel : Control {
 
     if (CurrentEnemy != enemy) {
       _.PanelContainer.VBoxContainer.Prompt.Set("bbcode", enemy.Prompt);
+    }
+
+    var currentInput = _.PanelContainer.VBoxContainer.Prompt.Get("bbcode").ToString();
+    if (currentInput != enemy.Input) {
       _.PanelContainer.VBoxContainer.Input.Set("bbcode", enemy.Input);
     }
-    CurrentEnemy = enemy;
+    // if (enemy.Active) {
+    //   // _.PanelContainer.VBoxContainer.Input.Show();
+    // }
+    // else {
+    //   // _.PanelContainer.VBoxContainer.Input.Hide();
+    //   _.PanelContainer.VBoxContainer.Input.Set("bbcode", enemy.Input);
+    // }
 
+    CurrentEnemy = enemy;
   }
 }

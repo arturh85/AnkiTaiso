@@ -26,6 +26,7 @@ public partial class GameTyping : Node3D {
   public Vector3 PlayerPosition;
   public Vector3 SpawnPosition;
 
+  private Enemy? activeEnemy;
   private const int MaxEnemyPanels = 4;
   public List<string> WordList = new List<string>();
 
@@ -108,6 +109,27 @@ public partial class GameTyping : Node3D {
     }
   }
 
+  public override void _Input(InputEvent @event)
+  {
+    if (@event is InputEventKey keyEvent && keyEvent.Pressed)
+    {
+      if (activeEnemy != null) {
+        activeEnemy.OnInput(keyEvent);
+      }
+      else {
+        var s = OS.GetKeycodeString(keyEvent.Keycode);
+        GD.Print(s);
+        foreach (var enemy in _.Enemies.GetChildren().OfType<Enemy>()) {
+          if (enemy.Prompt.ToUpper().StartsWith(s)) {
+            activeEnemy = enemy;
+            activeEnemy.OnInput(keyEvent);
+            activeEnemy.OnDelete += _on_active_enemy_deleted;
+            break;
+          }
+        }
+      }
+    }
+  }
 
   public void LoadWordlist() {
     var file = FileAccess.Open("res://assets/top_english_nouns_lower_10000.txt", FileAccess.ModeFlags.Read);
@@ -211,5 +233,8 @@ public partial class GameTyping : Node3D {
 
   public void _on_timer_timeout() {
     SpawnEnemy();
+  }
+  public void _on_active_enemy_deleted() {
+    activeEnemy = null;
   }
 }

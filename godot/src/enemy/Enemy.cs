@@ -11,6 +11,10 @@ public partial class Enemy : Node3D {
   public string Prompt;
   public string Input;
   public bool Moving;
+  public bool Active;
+
+  [Signal]
+  public delegate void OnDeleteEventHandler();
 
   [OnInstantiate]
   private void Initialise(string prompt, Vector3 movementTarget) {
@@ -72,7 +76,31 @@ public partial class Enemy : Node3D {
     var distance = Position.DistanceTo(MovementTarget);
     if (distance < 2.1) {
       // GD.Print(_.Label.Text  + " freed");
+      EmitSignal(nameof(OnDelete));
       QueueFree();
     }
+  }
+
+  public void OnInput(InputEventKey keyEvent) {
+    var s = OS.GetKeycodeString(keyEvent.Keycode);
+    if (!keyEvent.ShiftPressed) {
+      s = s.ToLower();
+    }
+
+    if (Prompt.StartsWith(Input + s)) {
+      Input += s;
+      if (!Active) {
+        MakeActive();
+      }
+    }
+
+    if (Prompt == Input) {
+      EmitSignal(nameof(OnDelete));
+      QueueFree();
+    }
+  }
+
+  private void MakeActive() {
+    Active = true;
   }
 }

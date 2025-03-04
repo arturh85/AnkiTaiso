@@ -115,6 +115,8 @@ metadata/_custom_type_script = "uid://b6mbstaftpedd"
 [node name="Input" type="RichTextLabel" parent="PanelContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 45)
 layout_mode = 2
+theme_override_colors/default_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0.207672, 0.195324, 0.00386845, 1)
 theme_override_font_sizes/bold_italics_font_size = 32
 theme_override_font_sizes/italics_font_size = 32
 theme_override_font_sizes/mono_font_size = 32
@@ -145,7 +147,7 @@ signal_stars = true
 bbcode = "USER INPUT"
 effects = 2
 alignment = 1
-color = Color(1, 1, 1, 1)
+color = Color(1, 1, 0, 1)
 emoji_scale = 1.0
 font = ""
 font_auto_setup = true
