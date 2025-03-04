@@ -1,7 +1,11 @@
 namespace kyoukaitansa.app.domain;
 
 using System;
+using System.Collections.Generic;
+using System.Collections.Immutable;
+using data;
 using GameDemo;
+using Godot;
 
 /// <summary>
 ///   Pure application game logic repository shared between view-specific logic
@@ -36,6 +40,16 @@ public interface IAppRepo : IDisposable {
 
   /// <summary>Skips the splash screen.</summary>
   void SkipSplashScreen();
+
+
+  public void SetScenarios(Scenario[] scenarios);
+
+  public Scenario? GetActiveScenario();
+  public Scenario? GetScenario(StringName name);
+  public IEnumerable<string> GetScenarioIds();
+  void SetActiveScenario(string scenarioId, ScenarioOptions scenarioOptions);
+  StringName GetActiveScenarioId();
+  public ScenarioOptions? GetActiveScenarioOptions();
 }
 
 /// <summary>
@@ -49,6 +63,32 @@ public class AppRepo : IAppRepo {
   public event Action<PostGameAction>? GameExited;
 
   private bool _disposedValue;
+  private string _activeScenario;
+
+  private ImmutableDictionary<string,Scenario> _scenarios = ImmutableDictionary<string, Scenario>.Empty;
+  private ScenarioOptions? _activeScenarioOptions;
+
+  public void SetScenarios(Scenario[] scenarios) {
+    var dict = new Dictionary<string, Scenario>();
+    foreach (var scenario in scenarios) {
+      dict.Add(scenario.Id, scenario);
+    }
+    _scenarios = dict.ToImmutableDictionary();
+  }
+
+  public Scenario? GetScenario(StringName name) {
+    return _scenarios.GetValueOrDefault(name);
+  }
+
+  public IEnumerable<string> GetScenarioIds() => _scenarios.Keys;
+  public void SetActiveScenario(string scenarioId, ScenarioOptions scenarioOptions) {
+    _activeScenario = scenarioId;
+    _activeScenarioOptions = scenarioOptions;
+  }
+
+  public StringName GetActiveScenarioId() => _activeScenario;
+  public ScenarioOptions? GetActiveScenarioOptions() => _activeScenarioOptions;
+  public Scenario? GetActiveScenario() => GetScenario(_activeScenario);
 
   public void SkipSplashScreen() => SplashScreenSkipped?.Invoke();
 

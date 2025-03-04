@@ -36,6 +36,7 @@ public partial class EnemyPanel : Control {
 
     var currentInput = InputLabelBbcode;
     if (enemy.Active) {
+      ZIndex = 1000;
       BackgroundContainer.Color = _activeColor;
       var rest = enemy.Prompt.Substring(enemy.Input.Length + 1);
       var targetInput = string.Concat(enemy.Input, "[red]", enemy.Prompt.Substring(enemy.Input.Length, 1), "[]",
@@ -45,6 +46,7 @@ public partial class EnemyPanel : Control {
       }
     }
     else {
+      ZIndex = 100;
       BackgroundContainer.Color = _inactiveColor;
       if (currentInput != "") {
         InputLabelBbcode = "";

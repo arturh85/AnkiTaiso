@@ -68,13 +68,14 @@ public partial class Enemy : Node3D {
     Position = Position.MoveToward(_movementTarget, (float)delta * 1.1f);
     var distance = Position.DistanceTo(_movementTarget);
     if (distance < 2.1) {
-      EmitSignal(nameof(OnDelete));
+      EmitSignal(SignalName.OnDelete);
       QueueFree();
     }
   }
 
   public void OnInput(InputEventKey keyEvent) {
     var s = OS.GetKeycodeString(keyEvent.Keycode);
+
     if (!keyEvent.ShiftPressed) {
       s = s.ToLower();
     }
@@ -87,7 +88,7 @@ public partial class Enemy : Node3D {
     }
 
     if (Prompt == Input) {
-      EmitSignal(nameof(OnDelete));
+      EmitSignal(SignalName.OnDelete);
       QueueFree();
     }
   }

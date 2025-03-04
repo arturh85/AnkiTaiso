@@ -1,6 +1,7 @@
 namespace kyoukaitansa.map;
 
 using System.Linq;
+using app.domain;
 using Chickensoft.AutoInject;
 using Chickensoft.Collections;
 using Chickensoft.GodotNodeInterfaces;
@@ -23,6 +24,7 @@ IProvide<ISaveChunk<MapData>>, IProvide<EntityTable> {
 public partial class Map : Node3D, IMap {
   public override void _Notification(int what) => this.Notify(what);
 
+  [Dependency] public IAppRepo AppRepo => this.DependOn<IAppRepo>();
   #region Save
 
   [Dependency]
@@ -48,7 +50,7 @@ public partial class Map : Node3D, IMap {
 
   #endregion State
 
-  public int GetCoinCount() => 42;
+  public int GetCoinCount() => AppRepo.GetActiveScenarioOptions()?.WordsPlayed ?? 0;
 
   public void Setup() {
     MapLogic = new MapLogic();

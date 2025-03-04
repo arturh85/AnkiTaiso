@@ -117,3 +117,74 @@ text = "Quit"
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer3/VBoxContainer2"]
 layout_mode = 2
 theme_override_constants/margin_top = 160
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+
+[node name="ScenarioParentContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Title" type="Label" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/VBoxContainer"]
+layout_mode = 2
+text = "Select Scenario:"
+label_settings = SubResource("LabelSettings_5fc0a")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 24
+
+[node name="ScenarioContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ExampleScenario" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/ExampleScenario"]
+layout_mode = 2
+text = "SCENARIO"
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/ExampleScenario"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/ExampleScenario"]
+layout_mode = 2
+text = "LABEL"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Title" type="Label" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/VBoxContainer2"]
+layout_mode = 2
+text = "Scenario Options:"
+label_settings = SubResource("LabelSettings_5fc0a")
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_top = 24
+
+[node name="OptionWordsPlayed" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer"]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OptionWordsPlayed"]
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OptionWordsPlayed"]
+layout_mode = 2
+text = "Words Played"
+
+[node name="StartGameButton" type="Button" parent="MarginContainer/HBoxContainer/ScenarioParentContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Start Game"

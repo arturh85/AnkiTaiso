@@ -1,8 +1,10 @@
 namespace kyoukaitansa.app;
 
+using System.Text.Json;
 using Chickensoft.AutoInject;
 using Chickensoft.GodotNodeInterfaces;
 using Chickensoft.Introspection;
+using data;
 using domain;
 using game;
 using GameDemo;
@@ -74,6 +76,12 @@ public partial class App : CanvasLayer, IApp {
 
     AnimationPlayer.AnimationFinished += OnAnimationFinished;
 
+    var file = FileAccess.Open("res://src/data/scenarios.json", FileAccess.ModeFlags.Read);
+    var scenarios = JsonSerializer.Deserialize<Scenario[]>(file.GetAsText(), JsonSerializerOptions.Web);
+    if (scenarios == null) {
+      throw new GameException("failed to load scenarios.json");
+    }
+    AppRepo.SetScenarios(scenarios);
     this.Provide();
   }
 
@@ -124,14 +132,14 @@ public partial class App : CanvasLayer, IApp {
 
     // Enter the first state to kick off the binding side effects.
     AppLogic.Start();
-
-    if (OS.IsDebugBuild()) {
-      AppRepo.SkipSplashScreen();
-      OnNewGame();
-    }
   }
 
-  public void OnNewGame() => AppLogic.Input(new AppLogic.Input.NewGame());
+  public void OnNewGame(string scenarioId, int usedWors) {
+    AppLogic.Input(new AppLogic.Input.NewGame());
+    AppRepo.SetActiveScenario(scenarioId, new ScenarioOptions {
+      WordsPlayed = usedWors
+    });
+  }
 
   public void OnLoadGame() => AppLogic.Input(new AppLogic.Input.LoadGame());
   public void OnQuitGame() => GetTree().Quit();

@@ -13,6 +13,7 @@ Optional integration with [Anki](https://apps.ankiweb.net/) to practise the voca
 
 ## Based on
 
+- [WanaKana-net](https://github.com/MartinZikmund/WanaKana-net)
 - [Godot 4 Plugins](https://github.com/MakovWait/godot4-plugins)
 - Godot Tests: https://github.com/chickensoft-games/GoDotTest
 - [GodotSharp SourceGenerators](https://github.com/Cat-Lips/GodotSharp.SourceGenerators)
@@ -42,8 +43,6 @@ Optional integration with [Anki](https://apps.ankiweb.net/) to practise the voca
 ## Tools used
 
 - [GodotEnv](https://github.com/chickensoft-games/GodotEnv)
-- [English Words](https://github.com/dwyl/english-words)
-- [Top English Wordlists](https://github.com/david47k/top-english-wordlists)
 
 ## Special thanks to
 
