@@ -1,4 +1,4 @@
-namespace kyoukaitansa.game;
+namespace ankitaiso.game;
 
 using Chickensoft.Introspection;
 using Chickensoft.Serialization;

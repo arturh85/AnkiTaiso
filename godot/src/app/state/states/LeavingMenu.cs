@@ -1,4 +1,4 @@
-namespace kyoukaitansa.app.state;
+namespace ankitaiso.app.state;
 
 using Chickensoft.Introspection;
 using Chickensoft.LogicBlocks;

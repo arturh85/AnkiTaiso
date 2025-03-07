@@ -1,8 +1,8 @@
-// namespace kyoukaitansa.test.src.app.state;
+// namespace ankitaiso.test.src.app.state;
 //
 // using Chickensoft.GoDotTest;
 // using Godot;
-// using kyoukaitansa.app.state;
+// using ankitaiso.app.state;
 // using Shouldly;
 //
 // public class AppLogicTest : TestClass {

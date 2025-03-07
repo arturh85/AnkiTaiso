@@ -1,4 +1,4 @@
-namespace kyoukaitansa.player;
+namespace ankitaiso.player;
 
 using Chickensoft.AutoInject;
 using Chickensoft.GodotNodeInterfaces;

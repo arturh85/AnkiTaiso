@@ -1,4 +1,4 @@
-namespace kyoukaitansa.player.state;
+namespace ankitaiso.player.state;
 
 using app.domain;
 using Chickensoft.Introspection;

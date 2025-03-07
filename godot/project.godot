@@ -10,22 +10,21 @@ config_version=5
 
 [application]
 
-config/name="Kyoukai Tansa"
-config/description="境界探査 (Kyōkai Tansa) - \"Boundary Exploration\""
+config/name="AnkiTaiso"
+config/description="暗記体操 (Anki Taiso) - Anki empowered Godot 4 Typing Game"
 run/main_scene="res://src/Main.tscn"
 config/features=PackedStringArray("4.4", "C#", "Mobile")
-config/icon="res://icon.png"
+config/icon="uid://cugnd2frxdsmj"
 
 [display]
 
 window/size/viewport_width=1024
 window/size/viewport_height=768
-window/size/mode=2
 window/size/initial_position_type=3
 
 [dotnet]
 
-project/assembly_name="kyoukai-tansa"
+project/assembly_name="AnkiTaiso"
 
 [editor_plugins]
 

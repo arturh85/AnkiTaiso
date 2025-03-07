@@ -1,4 +1,4 @@
-namespace kyoukaitansa.in_game_ui.state;
+namespace ankitaiso.in_game_ui.state;
 
 using Chickensoft.Introspection;
 using Chickensoft.LogicBlocks;

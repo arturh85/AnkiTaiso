@@ -1,22 +1,19 @@
-namespace kyoukaitansa.utils;
+namespace ankitaiso.utils;
 
 using System;
 using System.Runtime.Serialization;
 
 public class GameException : ApplicationException {
-  public GameException()
-  {
+  public GameException() {
   }
 
-  protected GameException(SerializationInfo info, StreamingContext context) : base(info, context)
-  {
+  [Obsolete("Obsolete")]
+  protected GameException(SerializationInfo info, StreamingContext context) : base(info, context) {
   }
 
-  public GameException(string? message) : base(message)
-  {
+  public GameException(string? message) : base(message) {
   }
 
-  public GameException(string? message, Exception? innerException) : base(message, innerException)
-  {
+  public GameException(string? message, Exception? innerException) : base(message, innerException) {
   }
 }

@@ -1,4 +1,4 @@
-namespace kyoukaitansa.game.state;
+namespace ankitaiso.game.state;
 
 public partial class GameLogic {
   public static class Output {

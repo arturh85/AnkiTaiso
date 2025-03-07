@@ -1,4 +1,4 @@
-namespace kyoukaitansa.menu.splash;
+namespace ankitaiso.menu.splash;
 
 using app.domain;
 using Chickensoft.AutoInject;

@@ -1,8 +1,8 @@
-namespace kyoukaitansa.app.state;
+namespace ankitaiso.app.state;
 
+using ankitaiso.app.domain;
 using Chickensoft.Introspection;
 using Chickensoft.LogicBlocks;
-using kyoukaitansa.app.domain;
 
 public partial class AppLogic {
   public partial record State {

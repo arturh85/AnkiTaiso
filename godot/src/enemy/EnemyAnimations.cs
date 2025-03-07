@@ -1,4 +1,4 @@
-namespace kyoukaitansa.enemy;
+namespace ankitaiso.enemy;
 
 using Godot;
 

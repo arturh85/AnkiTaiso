@@ -1,4 +1,4 @@
-namespace kyoukaitansa.player.state;
+namespace ankitaiso.player.state;
 
 using Chickensoft.Introspection;
 using Chickensoft.LogicBlocks;

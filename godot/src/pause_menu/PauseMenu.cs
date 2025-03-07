@@ -1,4 +1,4 @@
-namespace kyoukaitansa.pause_menu;
+namespace ankitaiso.pause_menu;
 
 using Chickensoft.AutoInject;
 using Chickensoft.GodotNodeInterfaces;

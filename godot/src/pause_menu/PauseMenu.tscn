@@ -345,18 +345,18 @@ texture = ExtResource("3_w1cw3")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MarginContainer/CenterContainer/SaveOverlay/Panel/CenterContainer/Control"]
 libraries = {
-"": SubResource("AnimationLibrary_80o4u")
+&"": SubResource("AnimationLibrary_80o4u")
 }
 autoplay = "spin"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_7stnf")
+&"": SubResource("AnimationLibrary_7stnf")
 }
 
 [node name="SaveOverlayAnimationPlayer" type="AnimationPlayer" parent="."]
 unique_name_in_owner = true
 libraries = {
-"": SubResource("AnimationLibrary_u45i6")
+&"": SubResource("AnimationLibrary_u45i6")
 }

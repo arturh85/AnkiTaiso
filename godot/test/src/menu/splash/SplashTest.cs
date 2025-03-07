@@ -1,11 +1,11 @@
-// namespace kyoukaitansa.test.src.menu.splash;
+// namespace ankitaiso.test.src.menu.splash;
 //
 // using Chickensoft.AutoInject;
 // using Chickensoft.GodotNodeInterfaces;
 // using Chickensoft.GoDotTest;
 // using Godot;
-// using kyoukaitansa.app.domain;
-// using kyoukaitansa.menu.splash;
+// using ankitaiso.app.domain;
+// using ankitaiso.menu.splash;
 // using LightMock.Generator;
 // using LightMoq;
 //

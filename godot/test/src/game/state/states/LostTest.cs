@@ -1,10 +1,10 @@
-// namespace kyoukaitansa.test.src.game.state.states;
+// namespace ankitaiso.test.src.game.state.states;
 //
 // using System.Linq;
 // using Chickensoft.GoDotTest;
 // using Chickensoft.LogicBlocks;
 // using Godot;
-// using kyoukaitansa.game.state;
+// using ankitaiso.game.state;
 // using Shouldly;
 //
 // public class LostTest : TestClass {

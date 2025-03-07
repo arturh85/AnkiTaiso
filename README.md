@@ -1,6 +1,6 @@
-# Kyoukai Tansa
+# Anki Taiso
 
-境界探査 (Kyōkai Tansa) - "Boundary Exploration"
+Anki Taiso (暗記体操) - Anki empowered Godot 4 Typing Game
 
 <img src="docs/logo.jpg" width="400">
 
@@ -8,6 +8,21 @@
 
 [Typing of the Dead](https://en.wikipedia.org/wiki/The_Typing_of_the_Dead) inspired **Typing Game** with support for different alphabets.
 Optional integration with [Anki](https://apps.ankiweb.net/) to practise the vocabulary you are learning.
+
+---
+
+## Roadmap
+
+
+Milestone 1:
+
+- [ ] Basic Typing Game
+- [ ] Support Japanese Kanas
+
+Milestone 2:
+- [ ] Build/Update Wordlists from Anki Decks
+  - with Audio Playback on Success?
+- 
 
 ---
 
@@ -29,6 +44,9 @@ Optional integration with [Anki](https://apps.ankiweb.net/) to practise the voca
 - https://github.com/Dark-Peace/bottled-up-tilemap
 - https://github.com/Hugo4IT/Iconify
 - https://github.com/Ark2000/PankuConsole
+- https://github.com/LauraWebdev/godot_snap_path3d_points_to_floor
+- https://github.com/dxdesjardins/GDSave
+- https://github.com/Sirush/AnkiDotNet
 
 ## Other Links
 

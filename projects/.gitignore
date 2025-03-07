@@ -1,0 +1,9 @@
+nupkg/
+bin/
+obj/
+.generated/
+.vs/
+.idea/
+.csproj.old
+.csproj.old.*
+.DS_Store

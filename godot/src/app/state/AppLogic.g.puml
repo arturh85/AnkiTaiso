@@ -1,31 +1,31 @@
 @startuml AppLogic
-state "AppLogic State" as kyoukaitansa_app_state_AppLogic_State {
-  state "InGame" as kyoukaitansa_app_state_AppLogic_State_InGame
-  state "LeavingGame" as kyoukaitansa_app_state_AppLogic_State_LeavingGame
-  state "LeavingMenu" as kyoukaitansa_app_state_AppLogic_State_LeavingMenu
-  state "LoadingSaveFile" as kyoukaitansa_app_state_AppLogic_State_LoadingSaveFile
-  state "MainMenu" as kyoukaitansa_app_state_AppLogic_State_MainMenu
-  state "SplashScreen" as kyoukaitansa_app_state_AppLogic_State_SplashScreen
+state "AppLogic State" as ankitaiso_app_state_AppLogic_State {
+  state "InGame" as ankitaiso_app_state_AppLogic_State_InGame
+  state "LeavingGame" as ankitaiso_app_state_AppLogic_State_LeavingGame
+  state "LeavingMenu" as ankitaiso_app_state_AppLogic_State_LeavingMenu
+  state "LoadingSaveFile" as ankitaiso_app_state_AppLogic_State_LoadingSaveFile
+  state "MainMenu" as ankitaiso_app_state_AppLogic_State_MainMenu
+  state "SplashScreen" as ankitaiso_app_state_AppLogic_State_SplashScreen
 }
 
-kyoukaitansa_app_state_AppLogic_State_InGame --> kyoukaitansa_app_state_AppLogic_State_LeavingGame : EndGame
-kyoukaitansa_app_state_AppLogic_State_LeavingGame --> kyoukaitansa_app_state_AppLogic_State_InGame : FadeOutFinished
-kyoukaitansa_app_state_AppLogic_State_LeavingGame --> kyoukaitansa_app_state_AppLogic_State_MainMenu : FadeOutFinished
-kyoukaitansa_app_state_AppLogic_State_LeavingMenu --> kyoukaitansa_app_state_AppLogic_State_InGame : FadeOutFinished
-kyoukaitansa_app_state_AppLogic_State_LeavingMenu --> kyoukaitansa_app_state_AppLogic_State_LoadingSaveFile : FadeOutFinished
-kyoukaitansa_app_state_AppLogic_State_LoadingSaveFile --> kyoukaitansa_app_state_AppLogic_State_InGame : SaveFileLoaded
-kyoukaitansa_app_state_AppLogic_State_MainMenu --> kyoukaitansa_app_state_AppLogic_State_LeavingMenu : LoadGame
-kyoukaitansa_app_state_AppLogic_State_MainMenu --> kyoukaitansa_app_state_AppLogic_State_LeavingMenu : NewGame
-kyoukaitansa_app_state_AppLogic_State_SplashScreen --> kyoukaitansa_app_state_AppLogic_State_MainMenu : FadeOutFinished
+ankitaiso_app_state_AppLogic_State_InGame --> ankitaiso_app_state_AppLogic_State_LeavingGame : EndGame
+ankitaiso_app_state_AppLogic_State_LeavingGame --> ankitaiso_app_state_AppLogic_State_InGame : FadeOutFinished
+ankitaiso_app_state_AppLogic_State_LeavingGame --> ankitaiso_app_state_AppLogic_State_MainMenu : FadeOutFinished
+ankitaiso_app_state_AppLogic_State_LeavingMenu --> ankitaiso_app_state_AppLogic_State_InGame : FadeOutFinished
+ankitaiso_app_state_AppLogic_State_LeavingMenu --> ankitaiso_app_state_AppLogic_State_LoadingSaveFile : FadeOutFinished
+ankitaiso_app_state_AppLogic_State_LoadingSaveFile --> ankitaiso_app_state_AppLogic_State_InGame : SaveFileLoaded
+ankitaiso_app_state_AppLogic_State_MainMenu --> ankitaiso_app_state_AppLogic_State_LeavingMenu : LoadGame
+ankitaiso_app_state_AppLogic_State_MainMenu --> ankitaiso_app_state_AppLogic_State_LeavingMenu : NewGame
+ankitaiso_app_state_AppLogic_State_SplashScreen --> ankitaiso_app_state_AppLogic_State_MainMenu : FadeOutFinished
 
-kyoukaitansa_app_state_AppLogic_State_InGame : OnEnter → ShowGame
-kyoukaitansa_app_state_AppLogic_State_InGame : OnExit → HideGame
-kyoukaitansa_app_state_AppLogic_State_LeavingGame : OnFadeOutFinished → RemoveExistingGame, SetupGameScene
-kyoukaitansa_app_state_AppLogic_State_LeavingMenu : OnEnter → FadeToBlack
-kyoukaitansa_app_state_AppLogic_State_LoadingSaveFile : OnEnter → StartLoadingSaveFile
-kyoukaitansa_app_state_AppLogic_State_MainMenu : OnEnter → SetupGameScene, ShowMainMenu
-kyoukaitansa_app_state_AppLogic_State_SplashScreen : OnEnter → ShowSplashScreen
-kyoukaitansa_app_state_AppLogic_State_SplashScreen : OnSplashScreenSkipped() → HideSplashScreen
+ankitaiso_app_state_AppLogic_State_InGame : OnEnter → ShowGame
+ankitaiso_app_state_AppLogic_State_InGame : OnExit → HideGame
+ankitaiso_app_state_AppLogic_State_LeavingGame : OnFadeOutFinished → RemoveExistingGame, SetupGameScene
+ankitaiso_app_state_AppLogic_State_LeavingMenu : OnEnter → FadeToBlack
+ankitaiso_app_state_AppLogic_State_LoadingSaveFile : OnEnter → StartLoadingSaveFile
+ankitaiso_app_state_AppLogic_State_MainMenu : OnEnter → SetupGameScene, ShowMainMenu
+ankitaiso_app_state_AppLogic_State_SplashScreen : OnEnter → ShowSplashScreen
+ankitaiso_app_state_AppLogic_State_SplashScreen : OnSplashScreenSkipped() → HideSplashScreen
 
-[*] --> kyoukaitansa_app_state_AppLogic_State_SplashScreen
+[*] --> ankitaiso_app_state_AppLogic_State_SplashScreen
 @enduml

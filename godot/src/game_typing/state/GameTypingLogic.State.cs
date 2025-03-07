@@ -1,4 +1,4 @@
-namespace kyoukaitansa.game_typing.state;
+namespace ankitaiso.game_typing.state;
 
 using Chickensoft.Introspection;
 using Chickensoft.LogicBlocks;
@@ -9,13 +9,13 @@ public partial class GameTypingLogic {
   public partial record State : StateLogic<State> {
     public State() {
       OnAttach(() => {
-        var gameRepo = Get<IGameTypingRepo>();
+        // var gameRepo = Get<IGameTypingRepo>();
         // gameRepo.IsMouseCaptured.Sync += OnIsMouseCaptured;
         // gameRepo.IsPaused.Sync += OnIsPaused;
       });
 
       OnDetach(() => {
-        var gameRepo = Get<IGameTypingRepo>();
+        // var gameRepo = Get<IGameTypingRepo>();
         // gameRepo.IsMouseCaptured.Sync -= OnIsMouseCaptured;
         // gameRepo.IsPaused.Sync -= OnIsPaused;
       });

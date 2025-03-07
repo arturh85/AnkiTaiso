@@ -1,6 +1,6 @@
-using Enemy = kyoukaitansa.enemy.Enemy;
+using Enemy = ankitaiso.enemy.Enemy;
 
-namespace kyoukaitansa.game_typing;
+namespace ankitaiso.game_typing;
 
 using System;
 using System.Collections.Generic;
@@ -15,13 +15,14 @@ using enemy_panel;
 using game.state;
 using Godot;
 using state;
+using utils;
+using WanaKanaNet;
 
 [Meta(typeof(IAutoNode))]
 [SceneTree]
 public partial class GameTyping : Node3D {
   public override void _Notification(int what) => this.Notify(what);
 
-  public IGameTypingRepo GameTypingRepo { get; set; } = default!;
   public IGameTypingLogic GameTypingLogic { get; set; } = default!;
 
   public LogicBlock<GameTypingLogic.State>.IBinding GameTypingBinding { get; set; } = default!;
@@ -34,23 +35,30 @@ public partial class GameTyping : Node3D {
   public Stack<string> WordList = new();
 
   [Dependency] public IAppRepo AppRepo => this.DependOn<IAppRepo>();
+  [Dependency] public IGameTypingRepo GameTypingRepo => this.DependOn<IGameTypingRepo>();
+
+
+
+  public string BufferLabelBbcode {
+    get => BufferLabel.Get("bbcode").ToString();
+    set => BufferLabel.Set("bbcode", value);
+  }
 
   public void Setup() {
-    GameTypingRepo = new GameTypingRepo();
-    GameTypingLogic = new GameTypingLogic();
-    GameTypingLogic.Set(GameTypingRepo);
-    GameTypingBinding = GameTypingLogic.Bind();
-    GameTypingBinding
-      .Handle(
-        (in GameTypingLogic.Output.StartGame _) => {
-        });
-
-    // Trigger the first state's OnEnter callbacks so our bindings run.
-    // Keeps everything in sync from the moment we start!
-    GameTypingLogic.Start();
-    GD.Print("Game State Start");
-
-    GameTypingLogic.Input(new GameLogic.Input.Initialize());
+    // GameTypingLogic = new GameTypingLogic();
+    // GameTypingLogic.Set(GameTypingRepo);
+    // GameTypingBinding = GameTypingLogic.Bind();
+    // GameTypingBinding
+    //   .Handle(
+    //     (in GameTypingLogic.Output.StartGame _) => {
+    //     });
+    //
+    // // Trigger the first state's OnEnter callbacks so our bindings run.
+    // // Keeps everything in sync from the moment we start!
+    // GameTypingLogic.Start();
+    // GD.Print("Game State Start");
+    //
+    // GameTypingLogic.Input(new GameLogic.Input.Initialize());
 
     this.Provide();
   }
@@ -66,6 +74,7 @@ public partial class GameTyping : Node3D {
       panel.Hide();
       GuiControls.AddChild(panel);
     }
+    BufferLabelBbcode = "";
   }
 
   public void OnResolved() {
@@ -73,11 +82,12 @@ public partial class GameTyping : Node3D {
 
   // Called every frame. 'delta' is the elapsed time since the previous frame.
   public override void _Process(double delta) {
-    if (paused) return;
+    if (paused)
+      return;
     var nearest = Enemy.GetNearestEnemies(PlayerPosition, EnemiesContainer, MaxEnemyPanels);
 
     var idx = 0;
-    foreach (var child in _.GuiControls.GetChildren()) {
+    foreach (var child in GuiControls.GetChildren()) {
       if (child is EnemyPanel panel) {
         if (nearest.Count <= idx) {
           panel.Hide();
@@ -110,36 +120,49 @@ public partial class GameTyping : Node3D {
 
     paused = _paused;
     if (_paused) {
-      _.Timer.Stop();
+      SpawnTimer.Stop();
     }
     else {
-      _.Timer.Start();
+      SpawnTimer.Start();
     }
   }
 
-  public override void _Input(InputEvent @event)
-  {
-    if (@event is InputEventKey keyEvent && keyEvent.Pressed)
-    {
+
+  public override void _Input(InputEvent @event) {
+    if (@event is InputEventKey keyEvent && keyEvent.Pressed) {
+      var buffer = BufferLabelBbcode;
+      var s = KeyboardUtils.KeyToString(keyEvent.Keycode);
       if (activeEnemy != null) {
-        activeEnemy.OnInput(keyEvent);
+        activeEnemy.OnInput(s);
       }
       else {
-        var s = OS.GetKeycodeString(keyEvent.Keycode);
+        var found = false;
+        Enemy? lastEnemy = null;
         foreach (var enemy in EnemiesContainer.GetChildren().OfType<Enemy>()) {
-          if (enemy.Moving && enemy.Prompt.ToUpper().StartsWith(s)) {
-            activeEnemy = enemy;
-            activeEnemy.OnInput(keyEvent);
-            activeEnemy.OnDelete += _on_active_enemy_deleted;
-            break;
+          // foreach (var nextInput in enemy.NextInputs) {
+          //   if (nextInput.StartsWith())
+          // }
+          // if (enemy.AcceptsInput(s)) {
+          //   found = true;
+          //   activeEnemy = enemy;
+          //   activeEnemy.OnInput(s);
+          //   activeEnemy.OnDelete += _on_active_enemy_deleted;
+          //   break;
+          // }
+          lastEnemy = enemy;
+        }
+        if (!found) {
+          if (lastEnemy != null && WanaKana.IsJapanese(lastEnemy.Prompt)) {
+
           }
+
+          GameTypingRepo.IncreaseNumErrors();
         }
       }
     }
   }
 
-  public static void Shuffle<T>(IList<T> list)
-  {
+  public static void Shuffle<T>(IList<T> list) {
     int n = list.Count;
     while (n > 1) {
       n--;
@@ -151,17 +174,24 @@ public partial class GameTyping : Node3D {
   }
 
   public void LoadWordlist() {
-    var scenario = AppRepo.GetActiveScenario();
+    var scenario = GameTypingRepo.ActiveScenario;
+    if (scenario == null) {
+      return;
+    }
+
     var content = scenario.ReadWordList();
     WordList.Clear();
     var words = new List<string>();
-    var lines = Regex.Split(content, "\r\n|\r|\n");
+    var lines = LinesRegex().Split(content);
     foreach (var line in lines) {
       words.Add(line.Split("|")[0]);
     }
     Shuffle(words);
 
-    var options = AppRepo.GetActiveScenarioOptions();
+    var options = GameTypingRepo.ActiveScenarioOptions;
+    if (options == null) {
+      return;
+    }
     for (int i = 0; i < Math.Min(options.WordsPlayed, words.Count); i++) {
       WordList.Push(words[i]);
     }
@@ -243,5 +273,11 @@ public partial class GameTyping : Node3D {
 
   public void _on_timer_timeout() => SpawnEnemy();
 
-  public void _on_active_enemy_deleted() => activeEnemy = null;
+  public void _on_active_enemy_deleted() {
+    activeEnemy = null;
+    GameTypingRepo.IncreaseClearedWords();
+  }
+
+  [GeneratedRegex("\r\n|\r|\n")]
+  private static partial Regex LinesRegex();
 }

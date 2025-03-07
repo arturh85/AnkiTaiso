@@ -1,12 +1,15 @@
-namespace kyoukaitansa.menu;
+namespace ankitaiso.menu;
 
 using System;
+using System.Text.Json;
 using System.Text.RegularExpressions;
 using app.domain;
 using Chickensoft.AutoInject;
 using Chickensoft.GodotNodeInterfaces;
 using Chickensoft.Introspection;
 using data;
+using domain;
+using game_typing.domain;
 using Godot;
 using utils;
 
@@ -22,30 +25,38 @@ public interface IMenu : IControl {
 public partial class Menu : Control, IMenu {
   public override void _Notification(int what) => this.Notify(what);
 
-  private Scenario? _selectedScenario;
-
-
   public override void _Ready() {
     ScenarioParentContainer.Hide();
     ExampleScenario.Hide();
   }
 
   public void OnResolved() {
-    var ids = AppRepo.GetScenarioIds();
-    foreach (var id in ids) {
-      var scenario = AppRepo.GetScenario(id);
-      if (_selectedScenario == null) {
-        OnScenarioSelected(id);
-      }
+    var file = FileAccess.Open("res://src/data/scenarios.json", FileAccess.ModeFlags.Read);
+    var scenarios = JsonSerializer.Deserialize<Scenario[]>(file.GetAsText(), JsonSerializerOptions.Web);
+    if (scenarios == null) {
+      throw new GameException("failed to load scenarios.json");
+    }
 
-      var control = ExampleScenario.Duplicate() as Control;
-      var button =
+    GameTypingRepo.SetScenarios(scenarios);
+
+    var ids = GameTypingRepo.GetScenarioIds();
+    foreach (var id in ids) {
+      var scenario = GameTypingRepo.GetScenario(id)!;
+      var control = (ExampleScenario.Duplicate() as Control)!;
+      var button = (
         control.GetNode(nameof(_.MarginContainer.HBoxContainer.ScenarioParentContainer.ExampleScenario.Button)) as
-          Button;
+          Button)!;
       button.Text = scenario.Id;
       button.Pressed += () => OnScenarioSelected(id);
-      var label =
-        control.GetNode(nameof(_.MarginContainer.HBoxContainer.ScenarioParentContainer.ExampleScenario.Label)) as Label;
+      if (MenuRepo.GetActiveScenarioId() == null) {
+        OnScenarioSelected(id);
+        button.KeepPressedOutside = true;
+      }
+
+      var label = (
+          control.GetNode(nameof(_.MarginContainer.HBoxContainer.ScenarioParentContainer.ExampleScenario.Label)) as
+            Label)
+        !;
       label.Text = scenario.Title;
       control.Show();
       ScenarioContainer.AddChild(control);
@@ -53,10 +64,11 @@ public partial class Menu : Control, IMenu {
   }
 
   [Dependency] public IAppRepo AppRepo => this.DependOn<IAppRepo>();
-
+  [Dependency] public IGameTypingRepo GameTypingRepo => this.DependOn<IGameTypingRepo>();
+  [Dependency] public IMenuRepo MenuRepo => this.DependOn<IMenuRepo>();
 
   [Signal]
-  public delegate void NewGameEventHandler(string scenarioId, int usedWords);
+  public delegate void NewGameEventHandler();
 
   [Signal]
   public delegate void LoadGameEventHandler();
@@ -87,12 +99,13 @@ public partial class Menu : Control, IMenu {
     OptionsButton.Pressed += OnOptionsPressed;
     QuitButton.Pressed += OnQuitPressed;
     StartGameButton.Pressed += OnStartGamePressed;
-    _.MarginContainer.HBoxContainer.ScenarioParentContainer.OptionWordsPlayed.HSlider.ValueChanged += OnWordsPlayedChanged;
+    WordsPlayedHSlider.ValueChanged +=
+      OnWordsPlayedChanged;
   }
 
   private void OnWordsPlayedChanged(double value) {
     int cnt = (int)value;
-    _.MarginContainer.HBoxContainer.ScenarioParentContainer.OptionWordsPlayed.Label.Text = $"{cnt} Words Played";
+    WordsPlayedLabel.Text = $"{cnt} Words Played";
   }
 
   public void OnExitTree() {
@@ -101,26 +114,42 @@ public partial class Menu : Control, IMenu {
     OptionsButton.Pressed -= OnOptionsPressed;
     QuitButton.Pressed -= OnQuitPressed;
     StartGameButton.Pressed -= OnStartGamePressed;
-    _.MarginContainer.HBoxContainer.ScenarioParentContainer.OptionWordsPlayed.HSlider.ValueChanged -= OnWordsPlayedChanged;
+    WordsPlayedHSlider.ValueChanged -=
+      OnWordsPlayedChanged;
   }
 
   public void OnNewGamePressed() => ScenarioParentContainer.Show();
 
   public void OnScenarioSelected(string id) {
-    var scenario = AppRepo.GetScenario(id);
-    _selectedScenario = scenario;
+    MenuRepo.SetActiveScenarioId(id);
+    var scenario = GameTypingRepo.GetScenario(id);
     var content = scenario.ReadWordList();
-    var scenarioWord = Regex.Matches(content, "\n").Count;
-    _.MarginContainer.HBoxContainer.ScenarioParentContainer.OptionWordsPlayed.HSlider.MinValue = Math.Min(10, scenarioWord);
-    _.MarginContainer.HBoxContainer.ScenarioParentContainer.OptionWordsPlayed.HSlider.MaxValue = scenarioWord;
+    var scenarioWord = LinesRegex().Matches(content).Count;
+    WordsPlayedHSlider.MinValue =
+      Math.Min(10, scenarioWord);
+    WordsPlayedHSlider.MaxValue = scenarioWord;
+
+    // todo: highlight active scenario?
+    foreach (var child in ScenarioContainer.GetChildren()) {
+    }
   }
 
   public void OnStartGamePressed() {
-    EmitSignal(SignalName.NewGame, _selectedScenario.Id,
-      (int)_.MarginContainer.HBoxContainer.ScenarioParentContainer.OptionWordsPlayed.HSlider.Value);
+    var wordsPlayed = (int)WordsPlayedHSlider.Value;
+
+    GameTypingRepo.SetTotalWords(wordsPlayed);
+    GameTypingRepo.SetClearedWords(0);
+    GameTypingRepo.SetNumErrors(0);
+    var id = MenuRepo.GetActiveScenarioId();
+    GameTypingRepo.ActiveScenario = GameTypingRepo.GetScenario(id!);
+    GameTypingRepo.ActiveScenarioOptions = new ScenarioOptions() { WordsPlayed = wordsPlayed };
+    EmitSignal(SignalName.NewGame);
   }
 
   public void OnOptionsPressed() => EmitSignal(SignalName.Options);
   public void OnLoadGamePressed() => EmitSignal(SignalName.LoadGame);
   public void OnQuitPressed() => EmitSignal(SignalName.QuitGame);
+
+  [GeneratedRegex("\n")]
+  private static partial Regex LinesRegex();
 }

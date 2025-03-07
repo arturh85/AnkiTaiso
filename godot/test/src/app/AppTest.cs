@@ -1,16 +1,16 @@
-// namespace kyoukaitansa.test.src.app;
+// namespace ankitaiso.test.src.app;
 //
 // using Chickensoft.AutoInject;
 // using Chickensoft.GodotNodeInterfaces;
 // using Chickensoft.GoDotTest;
 // using Godot;
-// using kyoukaitansa.app;
-// using kyoukaitansa.app.domain;
-// using kyoukaitansa.app.state;
-// using kyoukaitansa.game;
-// using kyoukaitansa.menu;
-// using kyoukaitansa.menu.splash;
-// using kyoukaitansa.utils;
+// using ankitaiso.app;
+// using ankitaiso.app.domain;
+// using ankitaiso.app.state;
+// using ankitaiso.game;
+// using ankitaiso.menu;
+// using ankitaiso.menu.splash;
+// using ankitaiso.utils;
 // using LightMock.Generator;
 // using LightMoq;
 // using Shouldly;

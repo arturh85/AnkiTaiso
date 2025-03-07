@@ -1,4 +1,4 @@
-namespace kyoukaitansa.test.fixtures.save_data;
+namespace ankitaiso.test.fixtures.save_data;
 
 using game;
 

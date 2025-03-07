@@ -1,8 +1,8 @@
-namespace kyoukaitansa.test.src.app.domain;
+namespace ankitaiso.test.src.app.domain;
 
+using ankitaiso.app.domain;
 using Chickensoft.GoDotTest;
 using Godot;
-using kyoukaitansa.app.domain;
 using Shouldly;
 
 public class AppRepoTest : TestClass {

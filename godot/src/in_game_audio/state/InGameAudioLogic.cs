@@ -1,4 +1,4 @@
-namespace kyoukaitansa.in_game_audio.state;
+namespace ankitaiso.in_game_audio.state;
 
 using Chickensoft.Introspection;
 using Chickensoft.LogicBlocks;

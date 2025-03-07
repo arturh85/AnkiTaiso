@@ -1,8 +1,8 @@
-namespace kyoukaitansa.test.src.game.state;
+namespace ankitaiso.test.src.game.state;
 
+using ankitaiso.game.state;
 using Chickensoft.GoDotTest;
 using Godot;
-using kyoukaitansa.game.state;
 using Shouldly;
 
 public class GameLogicTest : TestClass {

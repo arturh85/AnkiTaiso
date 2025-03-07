@@ -1,4 +1,4 @@
-namespace kyoukaitansa.game_typing.state;
+namespace ankitaiso.game_typing.state;
 
 using Chickensoft.Introspection;
 using Chickensoft.LogicBlocks;

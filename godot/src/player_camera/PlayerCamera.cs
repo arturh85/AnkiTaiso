@@ -1,4 +1,4 @@
-namespace kyoukaitansa.player_camera;
+namespace ankitaiso.player_camera;
 
 using Chickensoft.AutoInject;
 using Chickensoft.GodotNodeInterfaces;

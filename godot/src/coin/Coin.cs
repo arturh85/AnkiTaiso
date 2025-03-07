@@ -1,11 +1,11 @@
 namespace GameDemo;
 
+using ankitaiso.game.domain;
 using Chickensoft.AutoInject;
 using Chickensoft.Collections;
 using Chickensoft.GodotNodeInterfaces;
-using Godot;
 using Chickensoft.Introspection;
-using kyoukaitansa.game.domain;
+using Godot;
 
 public interface ICoin : INode3D {
   public ICoinLogic CoinLogic { get; }

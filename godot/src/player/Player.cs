@@ -1,4 +1,4 @@
-namespace kyoukaitansa.player;
+namespace ankitaiso.player;
 
 using app.domain;
 using Chickensoft.AutoInject;

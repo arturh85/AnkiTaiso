@@ -1,5 +1,5 @@
 site_name: Kyōkai Tansa docs
-site_url: https://arturh85.github.io/kyoukai-tansa/docs/
+site_url: https://arturh85.github.io/anki-taiso/docs/
 use_directory_urls: true
 theme:
   name: readthedocs
@@ -19,4 +19,4 @@ nav:
   - ... | explanation/*.md
   - ... | reference/*.md
   - "Links":
-    - "Git Project": "https://github.com/arturh85/kyoukai-tansa"
+    - "Git Project": "https://github.com/arturh85/anki-taiso"

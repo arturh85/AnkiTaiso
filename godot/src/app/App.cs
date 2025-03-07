@@ -1,21 +1,23 @@
-namespace kyoukaitansa.app;
+namespace ankitaiso.app;
 
-using System.Text.Json;
+using System.Threading.Tasks;
 using Chickensoft.AutoInject;
 using Chickensoft.GodotNodeInterfaces;
 using Chickensoft.Introspection;
-using data;
+using Chickensoft.LogicBlocks;
+using data.model;
 using domain;
 using game;
-using GameDemo;
+using game_typing.domain;
 using Godot;
 using menu;
+using menu.domain;
 using menu.splash;
 using state;
 using utils;
 using Game = game.Game;
 
-public interface IApp : ICanvasLayer, IProvide<IAppRepo>;
+public interface IApp : ICanvasLayer, IProvide<IAppRepo>, IProvide<IGameTypingRepo>, IProvide<IMenuRepo>, IProvide<IDatabaseRepo>;
 
 [Meta(typeof(IAutoNode))]
 public partial class App : CanvasLayer, IApp {
@@ -37,16 +39,23 @@ public partial class App : CanvasLayer, IApp {
 
   #region Provisions
 
+  IDatabaseRepo IProvide<IDatabaseRepo>.Value() => DatabaseRepo;
   IAppRepo IProvide<IAppRepo>.Value() => AppRepo;
+  IGameTypingRepo IProvide<IGameTypingRepo>.Value() => GameTypingRepo;
+  IMenuRepo IProvide<IMenuRepo>.Value() => MenuRepo;
+
 
   #endregion Provisions
 
   #region State
 
+  public IMenuRepo MenuRepo { get; set; } = default!;
+  public IDatabaseRepo DatabaseRepo { get; set; } = default!;
   public IAppRepo AppRepo { get; set; } = default!;
+  public IGameTypingRepo GameTypingRepo { get; set; } = default!;
   public IAppLogic AppLogic { get; set; } = default!;
 
-  public AppLogic.IBinding AppBinding { get; set; } = default!;
+  public LogicBlock<AppLogic.State>.IBinding AppBinding { get; set; } = default!;
 
   #endregion State
 
@@ -62,6 +71,10 @@ public partial class App : CanvasLayer, IApp {
 
   public void Initialize() {
     Instantiator = new Instantiator(GetTree());
+    GameTypingRepo = new GameTypingRepo();
+    DatabaseRepo = new DatabaseRepo();
+    DatabaseRepo.InitDatabase();
+    MenuRepo = new MenuRepo();
     AppRepo = new AppRepo();
     AppLogic = new AppLogic();
     AppLogic.Set(AppRepo);
@@ -76,12 +89,6 @@ public partial class App : CanvasLayer, IApp {
 
     AnimationPlayer.AnimationFinished += OnAnimationFinished;
 
-    var file = FileAccess.Open("res://src/data/scenarios.json", FileAccess.ModeFlags.Read);
-    var scenarios = JsonSerializer.Deserialize<Scenario[]>(file.GetAsText(), JsonSerializerOptions.Web);
-    if (scenarios == null) {
-      throw new GameException("failed to load scenarios.json");
-    }
-    AppRepo.SetScenarios(scenarios);
     this.Provide();
   }
 
@@ -134,16 +141,13 @@ public partial class App : CanvasLayer, IApp {
     AppLogic.Start();
   }
 
-  public void OnNewGame(string scenarioId, int usedWors) {
+  public void OnNewGame() {
     AppLogic.Input(new AppLogic.Input.NewGame());
-    AppRepo.SetActiveScenario(scenarioId, new ScenarioOptions {
-      WordsPlayed = usedWors
-    });
   }
 
   public void OnLoadGame() => AppLogic.Input(new AppLogic.Input.LoadGame());
   public void OnQuitGame() => GetTree().Quit();
-  public void OnOptions()  {
+  public void OnOptions() {
     GD.Print("OPTIONS");
   }
 
@@ -191,4 +195,5 @@ public partial class App : CanvasLayer, IApp {
     Game.SaveFileLoaded -= OnSaveFileLoaded;
     AppLogic.Input(new AppLogic.Input.SaveFileLoaded());
   }
+
 }

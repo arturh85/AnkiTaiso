@@ -1,4 +1,4 @@
-namespace kyoukaitansa.game;
+namespace ankitaiso.game;
 
 using System;
 using System.IO.Abstractions;
@@ -18,8 +18,8 @@ using Godot;
 using in_game_ui;
 using map;
 using pause_menu;
-using player_camera;
 using player;
+using player_camera;
 using state;
 using MapData = map.MapData;
 using PlayerCameraData = player_camera.PlayerCameraData;

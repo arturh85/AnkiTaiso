@@ -1,4 +1,4 @@
-namespace kyoukaitansa.utils;
+namespace ankitaiso.utils;
 
 using Godot;
 

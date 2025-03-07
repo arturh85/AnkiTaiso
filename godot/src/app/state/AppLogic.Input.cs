@@ -1,6 +1,6 @@
-namespace kyoukaitansa.app.state;
+namespace ankitaiso.app.state;
 
-using kyoukaitansa.app.domain;
+using ankitaiso.app.domain;
 
 public partial class AppLogic {
   public static class Input {

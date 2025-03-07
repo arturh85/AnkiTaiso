@@ -1,9 +1,9 @@
 namespace GameDemo.Tests;
 
+using ankitaiso.game.domain;
 using Chickensoft.Collections;
 using Chickensoft.GoDotTest;
 using Godot;
-using kyoukaitansa.game.domain;
 using LightMock.Generator;
 // using Moq;
 using Shouldly;

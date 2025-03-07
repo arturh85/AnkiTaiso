@@ -6,7 +6,7 @@ You can configure which simulated graphics environments (`vulkan` and/or `opengl
 
 Currently, tests can only be run from the `ubuntu` runners. If you know how to make the workflow install mesa and a virtual window manager on macOS and Windows, we'd love to hear from you!
 
-Tests are executed by running the Godot test project in `kyoukai-tansa` from the command line and passing in the relevant arguments to Godot so that [GoDotTest] can discover and run tests.
+Tests are executed by running the Godot test project in `anki-taiso` from the command line and passing in the relevant arguments to Godot so that [GoDotTest] can discover and run tests.
 
 
 ## 👷 Testing

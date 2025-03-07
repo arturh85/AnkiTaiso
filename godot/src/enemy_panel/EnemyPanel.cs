@@ -1,7 +1,8 @@
-namespace kyoukaitansa.enemy_panel;
+namespace ankitaiso.enemy_panel;
 
 using enemy;
 using Godot;
+using WanaKanaNet;
 
 [SceneTree]
 public partial class EnemyPanel : Control {
@@ -36,17 +37,22 @@ public partial class EnemyPanel : Control {
 
     var currentInput = InputLabelBbcode;
     if (enemy.Active) {
-      ZIndex = 1000;
+      ZIndex = -1;
       BackgroundContainer.Color = _activeColor;
       var rest = enemy.Prompt.Substring(enemy.Input.Length + 1);
-      var targetInput = string.Concat(enemy.Input, "[red]", enemy.Prompt.Substring(enemy.Input.Length, 1), "[]",
+
+      GD.Print(enemy.Prompt);
+      GD.Print(enemy.Prompt.Length);
+      GD.Print(enemy.Prompt.Substring(0, 1));
+
+      var targetInput = string.Concat(enemy.Input, "[red]", Equalize(enemy, enemy.Prompt.Substring(enemy.Input.Length, 1)), "[]",
         rest.Length > 0 ? "~" + rest + "~" : "");
       if (currentInput != targetInput) {
         InputLabelBbcode = targetInput;
       }
     }
     else {
-      ZIndex = 100;
+      ZIndex = -2;
       BackgroundContainer.Color = _inactiveColor;
       if (currentInput != "") {
         InputLabelBbcode = "";
@@ -54,5 +60,15 @@ public partial class EnemyPanel : Control {
     }
 
     _currentEnemy = enemy;
+  }
+
+  public string Equalize(Enemy enemy, string input) {
+    if (WanaKana.IsHiragana(enemy.Prompt)) {
+      return WanaKana.ToHiragana(input);
+    }
+    if (WanaKana.IsKatakana(enemy.Prompt)) {
+      return WanaKana.ToKatakana(input);
+    }
+    return input;
   }
 }

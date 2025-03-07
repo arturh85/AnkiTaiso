@@ -1,4 +1,4 @@
-namespace kyoukaitansa.in_game_audio.state;
+namespace ankitaiso.in_game_audio.state;
 
 using app.domain;
 using Chickensoft.Introspection;

@@ -1,4 +1,4 @@
-// namespace kyoukaitansa.test.src.game;
+// namespace ankitaiso.test.src.game;
 //
 // using System.IO.Abstractions;
 // using System.Text.Json;
@@ -13,11 +13,11 @@
 // using Chickensoft.Serialization.Godot;
 // using GameDemo;
 // using Godot;
-// using kyoukaitansa.app.domain;
-// using kyoukaitansa.game;
-// using kyoukaitansa.game.domain;
-// using kyoukaitansa.game.state;
-// using kyoukaitansa.test.fixtures.save_data;
+// using ankitaiso.app.domain;
+// using ankitaiso.game;
+// using ankitaiso.game.domain;
+// using ankitaiso.game.state;
+// using ankitaiso.test.fixtures.save_data;
 // using LightMock;
 // using LightMock.Generator;
 // using LightMoq;

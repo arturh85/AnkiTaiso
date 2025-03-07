@@ -1,4 +1,4 @@
-namespace kyoukaitansa.player_camera.state;
+namespace ankitaiso.player_camera.state;
 
 using Chickensoft.Introspection;
 using Godot;

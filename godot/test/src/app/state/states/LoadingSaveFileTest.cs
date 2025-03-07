@@ -1,10 +1,10 @@
-// namespace kyoukaitansa.test.src.app.state.states;
+// namespace ankitaiso.test.src.app.state.states;
 //
 // using Chickensoft.GoDotTest;
 // using Chickensoft.LogicBlocks;
 // using Godot;
-// using kyoukaitansa.app.domain;
-// using kyoukaitansa.app.state;
+// using ankitaiso.app.domain;
+// using ankitaiso.app.state;
 // using LightMock.Generator;
 // using Shouldly;
 //

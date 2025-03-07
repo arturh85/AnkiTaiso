@@ -1,4 +1,4 @@
-namespace kyoukaitansa.in_game_audio;
+namespace ankitaiso.in_game_audio;
 
 using Chickensoft.GodotNodeInterfaces;
 using Godot;

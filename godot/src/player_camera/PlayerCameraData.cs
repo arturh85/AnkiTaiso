@@ -1,4 +1,4 @@
-namespace kyoukaitansa.player_camera;
+namespace ankitaiso.player_camera;
 
 using Chickensoft.Introspection;
 using Chickensoft.Serialization;

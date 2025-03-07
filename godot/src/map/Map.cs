@@ -1,4 +1,4 @@
-namespace kyoukaitansa.map;
+namespace ankitaiso.map;
 
 using System.Linq;
 using app.domain;
@@ -50,7 +50,7 @@ public partial class Map : Node3D, IMap {
 
   #endregion State
 
-  public int GetCoinCount() => AppRepo.GetActiveScenarioOptions()?.WordsPlayed ?? 0;
+  public int GetCoinCount() => 0;
 
   public void Setup() {
     MapLogic = new MapLogic();

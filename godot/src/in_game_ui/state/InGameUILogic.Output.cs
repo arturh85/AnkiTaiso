@@ -1,4 +1,4 @@
-namespace kyoukaitansa.in_game_ui.state;
+namespace ankitaiso.in_game_ui.state;
 
 public partial class InGameUILogic {
   public static class Output {

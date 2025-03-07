@@ -88,7 +88,10 @@ jobs:
       - name: 🦺 Build Projects
         run: cd godot; dotnet build
 
-      - name: 🌋 Run Tests in Godot
+      - name: 🌋 Run Unit Tests
+        run: cd godot; dotnet test || exit 1
+
+      - name: 🌋 Run Integration Tests in Godot
         run: |
           cd godot
           xvfb-run godot --audio-driver Dummy --rendering-driver ${{ matrix.render-driver }} --run-tests --quit-on-finish --coverage

@@ -1,10 +1,11 @@
-namespace kyoukaitansa.in_game_ui;
+namespace ankitaiso.in_game_ui;
 
 using app.domain;
 using Chickensoft.AutoInject;
 using Chickensoft.GodotNodeInterfaces;
 using Chickensoft.Introspection;
 using game.domain;
+using game_typing.domain;
 using GameDemo;
 using Godot;
 using state;
@@ -22,6 +23,7 @@ public partial class InGameUI : Control, IInGameUI {
 
   [Dependency] public IAppRepo AppRepo => DependentExtensions.DependOn<IAppRepo>(this);
   [Dependency] public IGameRepo GameRepo => DependentExtensions.DependOn<IGameRepo>(this);
+  [Dependency] public IGameTypingRepo GameTypingRepo => DependentExtensions.DependOn<IGameTypingRepo>(this);
 
   #endregion Dependencies
 
@@ -47,6 +49,7 @@ public partial class InGameUI : Control, IInGameUI {
     InGameUILogic.Set(this);
     InGameUILogic.Set(AppRepo);
     InGameUILogic.Set(GameRepo);
+    InGameUILogic.Set(GameTypingRepo);
 
     InGameUIBinding = InGameUILogic.Bind();
 

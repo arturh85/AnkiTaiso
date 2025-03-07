@@ -1,4 +1,4 @@
-namespace kyoukaitansa.player.state;
+namespace ankitaiso.player.state;
 
 public partial class PlayerLogic {
   /// <summary>Player settings.</summary>

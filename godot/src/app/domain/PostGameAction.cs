@@ -1,4 +1,4 @@
-namespace kyoukaitansa.app.domain;
+namespace ankitaiso.app.domain;
 
 public enum PostGameAction {
   GoToMainMenu,

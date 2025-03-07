@@ -1,9 +1,9 @@
 namespace GameDemo;
 
+using ankitaiso.game.domain;
 using Chickensoft.Collections;
 using Chickensoft.Introspection;
 using Chickensoft.LogicBlocks;
-using kyoukaitansa.game.domain;
 
 public partial class CoinLogic {
   public partial record State {

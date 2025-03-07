@@ -1,9 +1,8 @@
-namespace kyoukaitansa.utils;
+namespace ankitaiso.utils;
 
 using Godot;
 
-public static class BuiltinInputActions
-{
+public static class BuiltinInputActions {
 	public static readonly StringName UIAccept = "ui_accept";
 	public static readonly StringName UISelect = "ui_select";
 	public static readonly StringName UICancel = "ui_cancel";

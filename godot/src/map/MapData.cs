@@ -1,4 +1,4 @@
-namespace kyoukaitansa.map;
+namespace ankitaiso.map;
 
 using System.Collections.Generic;
 using Chickensoft.Introspection;

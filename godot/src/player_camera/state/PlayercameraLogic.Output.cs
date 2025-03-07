@@ -1,10 +1,8 @@
-namespace kyoukaitansa.player_camera.state;
+namespace ankitaiso.player_camera.state;
 using Godot;
 
-public partial class PlayerCameraLogic
-{
-  public static class Output
-  {
+public partial class PlayerCameraLogic {
+  public static class Output {
     public readonly record struct GimbalRotationChanged(
       Vector3 GimbalRotationHorizontal, Vector3 GimbalRotationVertical
     );

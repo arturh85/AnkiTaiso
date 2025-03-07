@@ -1,4 +1,4 @@
-namespace kyoukaitansa.game.state;
+namespace ankitaiso.game.state;
 
 using domain;
 using GameDemo;

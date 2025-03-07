@@ -1,10 +1,10 @@
-// namespace kyoukaitansa.test.src.menu;
+// namespace ankitaiso.test.src.menu;
 //
 // using System.Threading.Tasks;
 // using Chickensoft.GodotNodeInterfaces;
 // using Chickensoft.GoDotTest;
 // using Godot;
-// using kyoukaitansa.menu;
+// using ankitaiso.menu;
 // using LightMock.Generator;
 // using Shouldly;
 //
