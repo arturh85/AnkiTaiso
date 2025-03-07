@@ -1,43 +1,43 @@
 @startuml GameLogic
-state "GameLogic State" as kyoukaitansa_game_state_GameLogic_State {
-  state "Lost" as kyoukaitansa_game_state_GameLogic_State_Lost
-  state "MenuBackdrop" as kyoukaitansa_game_state_GameLogic_State_MenuBackdrop
-  state "Paused" as kyoukaitansa_game_state_GameLogic_State_Paused {
-    state "Saving" as kyoukaitansa_game_state_GameLogic_State_Saving
+state "GameLogic State" as ankitaiso_game_state_GameLogic_State {
+  state "Lost" as ankitaiso_game_state_GameLogic_State_Lost
+  state "MenuBackdrop" as ankitaiso_game_state_GameLogic_State_MenuBackdrop
+  state "Paused" as ankitaiso_game_state_GameLogic_State_Paused {
+    state "Saving" as ankitaiso_game_state_GameLogic_State_Saving
   }
-  state "Playing" as kyoukaitansa_game_state_GameLogic_State_Playing
-  state "Quit" as kyoukaitansa_game_state_GameLogic_State_Quit
-  state "RestartingGame" as kyoukaitansa_game_state_GameLogic_State_RestartingGame
-  state "Resuming" as kyoukaitansa_game_state_GameLogic_State_Resuming
-  state "Won" as kyoukaitansa_game_state_GameLogic_State_Won
+  state "Playing" as ankitaiso_game_state_GameLogic_State_Playing
+  state "Quit" as ankitaiso_game_state_GameLogic_State_Quit
+  state "RestartingGame" as ankitaiso_game_state_GameLogic_State_RestartingGame
+  state "Resuming" as ankitaiso_game_state_GameLogic_State_Resuming
+  state "Won" as ankitaiso_game_state_GameLogic_State_Won
 }
 
-kyoukaitansa_game_state_GameLogic_State_Lost --> kyoukaitansa_game_state_GameLogic_State_Quit : GoToMainMenu
-kyoukaitansa_game_state_GameLogic_State_Lost --> kyoukaitansa_game_state_GameLogic_State_RestartingGame : Start
-kyoukaitansa_game_state_GameLogic_State_MenuBackdrop --> kyoukaitansa_game_state_GameLogic_State_MenuBackdrop : Initialize
-kyoukaitansa_game_state_GameLogic_State_MenuBackdrop --> kyoukaitansa_game_state_GameLogic_State_Playing : Start
-kyoukaitansa_game_state_GameLogic_State_Paused --> kyoukaitansa_game_state_GameLogic_State_Quit : GoToMainMenu
-kyoukaitansa_game_state_GameLogic_State_Paused --> kyoukaitansa_game_state_GameLogic_State_Resuming : PauseButtonPressed
-kyoukaitansa_game_state_GameLogic_State_Paused --> kyoukaitansa_game_state_GameLogic_State_Saving : SaveRequested
-kyoukaitansa_game_state_GameLogic_State_Playing --> kyoukaitansa_game_state_GameLogic_State_Lost : EndGame
-kyoukaitansa_game_state_GameLogic_State_Playing --> kyoukaitansa_game_state_GameLogic_State_Paused : PauseButtonPressed
-kyoukaitansa_game_state_GameLogic_State_Playing --> kyoukaitansa_game_state_GameLogic_State_Quit : EndGame
-kyoukaitansa_game_state_GameLogic_State_Playing --> kyoukaitansa_game_state_GameLogic_State_Won : EndGame
-kyoukaitansa_game_state_GameLogic_State_Resuming --> kyoukaitansa_game_state_GameLogic_State_Playing : PauseMenuTransitioned
-kyoukaitansa_game_state_GameLogic_State_Saving --> kyoukaitansa_game_state_GameLogic_State_Paused : SaveCompleted
-kyoukaitansa_game_state_GameLogic_State_Saving --> kyoukaitansa_game_state_GameLogic_State_Saving : PauseButtonPressed
-kyoukaitansa_game_state_GameLogic_State_Won --> kyoukaitansa_game_state_GameLogic_State_Won : GoToMainMenu
+ankitaiso_game_state_GameLogic_State_Lost --> ankitaiso_game_state_GameLogic_State_Quit : GoToMainMenu
+ankitaiso_game_state_GameLogic_State_Lost --> ankitaiso_game_state_GameLogic_State_RestartingGame : Start
+ankitaiso_game_state_GameLogic_State_MenuBackdrop --> ankitaiso_game_state_GameLogic_State_MenuBackdrop : Initialize
+ankitaiso_game_state_GameLogic_State_MenuBackdrop --> ankitaiso_game_state_GameLogic_State_Playing : Start
+ankitaiso_game_state_GameLogic_State_Paused --> ankitaiso_game_state_GameLogic_State_Quit : GoToMainMenu
+ankitaiso_game_state_GameLogic_State_Paused --> ankitaiso_game_state_GameLogic_State_Resuming : PauseButtonPressed
+ankitaiso_game_state_GameLogic_State_Paused --> ankitaiso_game_state_GameLogic_State_Saving : SaveRequested
+ankitaiso_game_state_GameLogic_State_Playing --> ankitaiso_game_state_GameLogic_State_Lost : EndGame
+ankitaiso_game_state_GameLogic_State_Playing --> ankitaiso_game_state_GameLogic_State_Paused : PauseButtonPressed
+ankitaiso_game_state_GameLogic_State_Playing --> ankitaiso_game_state_GameLogic_State_Quit : EndGame
+ankitaiso_game_state_GameLogic_State_Playing --> ankitaiso_game_state_GameLogic_State_Won : EndGame
+ankitaiso_game_state_GameLogic_State_Resuming --> ankitaiso_game_state_GameLogic_State_Playing : PauseMenuTransitioned
+ankitaiso_game_state_GameLogic_State_Saving --> ankitaiso_game_state_GameLogic_State_Paused : SaveCompleted
+ankitaiso_game_state_GameLogic_State_Saving --> ankitaiso_game_state_GameLogic_State_Saving : PauseButtonPressed
+ankitaiso_game_state_GameLogic_State_Won --> ankitaiso_game_state_GameLogic_State_Won : GoToMainMenu
 
-kyoukaitansa_game_state_GameLogic_State : OnIsMouseCaptured() → CaptureMouse
-kyoukaitansa_game_state_GameLogic_State : OnIsPaused() → SetPauseMode
-kyoukaitansa_game_state_GameLogic_State_Lost : OnEnter → ShowLostScreen
-kyoukaitansa_game_state_GameLogic_State_Paused : OnEnter → ShowPauseMenu
-kyoukaitansa_game_state_GameLogic_State_Paused : OnExit → ExitPauseMenu
-kyoukaitansa_game_state_GameLogic_State_Playing : OnEnter → StartGame
-kyoukaitansa_game_state_GameLogic_State_Resuming : OnExit → HidePauseMenu
-kyoukaitansa_game_state_GameLogic_State_Saving : OnEnter → ShowPauseSaveOverlay, StartSaving
-kyoukaitansa_game_state_GameLogic_State_Saving : OnExit → HidePauseSaveOverlay
-kyoukaitansa_game_state_GameLogic_State_Won : OnEnter → ShowWonScreen
+ankitaiso_game_state_GameLogic_State : OnIsMouseCaptured() → CaptureMouse
+ankitaiso_game_state_GameLogic_State : OnIsPaused() → SetPauseMode
+ankitaiso_game_state_GameLogic_State_Lost : OnEnter → ShowLostScreen
+ankitaiso_game_state_GameLogic_State_Paused : OnEnter → ShowPauseMenu
+ankitaiso_game_state_GameLogic_State_Paused : OnExit → ExitPauseMenu
+ankitaiso_game_state_GameLogic_State_Playing : OnEnter → StartGame
+ankitaiso_game_state_GameLogic_State_Resuming : OnExit → HidePauseMenu
+ankitaiso_game_state_GameLogic_State_Saving : OnEnter → ShowPauseSaveOverlay, StartSaving
+ankitaiso_game_state_GameLogic_State_Saving : OnExit → HidePauseSaveOverlay
+ankitaiso_game_state_GameLogic_State_Won : OnEnter → ShowWonScreen
 
-[*] --> kyoukaitansa_game_state_GameLogic_State_MenuBackdrop
+[*] --> ankitaiso_game_state_GameLogic_State_MenuBackdrop
 @enduml

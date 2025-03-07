@@ -1,11 +1,11 @@
 @startuml InGameAudioLogic
-state "InGameAudioLogic State" as kyoukaitansa_in_game_audio_state_InGameAudioLogic_State
-kyoukaitansa_in_game_audio_state_InGameAudioLogic_State : OnCoinCollectionStarted() → PlayCoinCollected
-kyoukaitansa_in_game_audio_state_InGameAudioLogic_State : OnGameEnded() → PlayPlayerDied, StopGameMusic
-kyoukaitansa_in_game_audio_state_InGameAudioLogic_State : OnGameEntered() → PlayGameMusic
-kyoukaitansa_in_game_audio_state_InGameAudioLogic_State : OnJumped() → PlayJump
-kyoukaitansa_in_game_audio_state_InGameAudioLogic_State : OnJumpshroomUsed() → PlayBounce
-kyoukaitansa_in_game_audio_state_InGameAudioLogic_State : OnMainMenuEntered() → PlayMainMenuMusic
+state "InGameAudioLogic State" as ankitaiso_in_game_audio_state_InGameAudioLogic_State
+ankitaiso_in_game_audio_state_InGameAudioLogic_State : OnCoinCollectionStarted() → PlayCoinCollected
+ankitaiso_in_game_audio_state_InGameAudioLogic_State : OnGameEnded() → PlayPlayerDied, StopGameMusic
+ankitaiso_in_game_audio_state_InGameAudioLogic_State : OnGameEntered() → PlayGameMusic
+ankitaiso_in_game_audio_state_InGameAudioLogic_State : OnJumped() → PlayJump
+ankitaiso_in_game_audio_state_InGameAudioLogic_State : OnJumpshroomUsed() → PlayBounce
+ankitaiso_in_game_audio_state_InGameAudioLogic_State : OnMainMenuEntered() → PlayMainMenuMusic
 
-[*] --> kyoukaitansa_in_game_audio_state_InGameAudioLogic_State
+[*] --> ankitaiso_in_game_audio_state_InGameAudioLogic_State
 @enduml
