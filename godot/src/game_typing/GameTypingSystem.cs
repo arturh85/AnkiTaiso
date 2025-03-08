@@ -9,9 +9,6 @@ using utils;
 using WanaKanaNet;
 
 public class GameTypingSystem {
-
-
-
   private List<Vocab> EntriesLeft;
   private List<Vocab> EntriesInUse = new();
   private Vocab? EntryActive;
@@ -88,19 +85,12 @@ public class GameTypingSystem {
       if (EntryActive.Entry.StartsWith(EntryActive.InputBuffer + input)) {
         success = EntryActive.OnInput(input);
       }
-      else if (EntryActive.NextPlain != null) {
-        foreach (var nextPlain in EntryActive.NextPlain) {
+      else if (EntryActive.NextVariants != null) {
+        foreach (var nextPlain in EntryActive.NextVariants) {
           if (nextPlain.StartsWith(bufferInput)) {
             if (nextPlain == bufferInput) {
-              if (EntryActive.NextIsHiragana) {
-                success = EntryActive.OnInput(WanaKana.ToHiragana(bufferInput));
-                Buffer = "";
-              }
-
-              else if (EntryActive.NextIsKatakana) {
-                success = EntryActive.OnInput(WanaKana.ToKatakana(bufferInput));
-                Buffer = "";
-              }
+              success = EntryActive.OnInput(EntryActive.Next);
+              Buffer = "";
             }
             else {
               Buffer = bufferInput;
@@ -123,21 +113,13 @@ public class GameTypingSystem {
           break;
         }
 
-        if (vocab.NextPlain != null) {
-          foreach (var nextPlain in vocab.NextPlain) {
+        if (vocab.NextVariants != null) {
+          foreach (var nextPlain in vocab.NextVariants) {
             if (nextPlain.StartsWith(bufferInput)) {
               if (nextPlain == bufferInput) {
-                if (vocab.NextIsHiragana) {
-                  success = vocab.OnInput(WanaKana.ToHiragana(bufferInput));
-                  Buffer = "";
-                  SetActive(vocab);
-                }
-
-                if (vocab.NextIsKatakana) {
-                  success = vocab.OnInput(WanaKana.ToKatakana(bufferInput));
-                  Buffer = "";
-                  SetActive(vocab);
-                }
+                success = vocab.OnInput(vocab.Next);
+                Buffer = "";
+                SetActive(vocab);
               }
               else {
                 Buffer = bufferInput;
@@ -203,44 +185,48 @@ public enum VocabState {
 }
 
 public class Vocab {
-  public string Entry;
+  public readonly string Entry;
   public string Next;
   public string InputBuffer;
-  public List<string>? NextPlain;
-  public bool NextIsKatakana;
-  public bool NextIsHiragana;
+  public List<string>? NextVariants;
 
   public VocabState State;
 
   public Vocab(string entry) {
     Entry = entry.Trim();
+    Next = "";
     SetNext(0);
     State = VocabState.Hidden;
     InputBuffer = "";
   }
 
   private void SetNext(int idx) {
+    var oldNext = Next;
     var next = Entry[idx];
     Next = Entry.Substring(idx, 1);
-    NextIsHiragana = WanaKana.IsHiragana(next);
-    NextIsKatakana = !NextIsHiragana && WanaKana.IsKatakana(next);
-    if (NextIsHiragana || NextIsKatakana) {
+    var nextIsHiragana = WanaKana.IsHiragana(next);
+    var nextIsKatakana = !nextIsHiragana && WanaKana.IsKatakana(next);
+    if (nextIsHiragana || nextIsKatakana) {
       if (GameTypingUtils.IsSmallTsu(next)) {
         Next = Entry.Substring(idx, 2);
-        NextPlain = [WanaKana.ToRomaji(Next).Trim()];
+        NextVariants = [WanaKana.ToRomaji(Next).Trim()];
       }
       else if (Entry.Length > idx+1 && GameTypingUtils.IsSmallKana(Entry[idx+1])) {
         Next = Entry.Substring(idx, 2);
-        NextPlain = [WanaKana.ToRomaji(Entry.Substring(idx, 2)).Trim()];
+        NextVariants = [WanaKana.ToRomaji(Entry.Substring(idx, 2)).Trim()];
       }
       else {
-        NextPlain = [WanaKana.ToRomaji(next.ToString()).Trim()];
+        NextVariants = [WanaKana.ToRomaji(next.ToString()).Trim()];
       }
 
-      GameTypingUtils.PopulateAlternatives(Next, NextPlain);
+      if (next == 'ー') {
+        NextVariants.Add(WanaKana.ToRomaji(oldNext).Last().ToString());
+      }
+
+      GameTypingUtils.PopulateAlternatives(Next, NextVariants);
     }
     else {
-      NextPlain = null;
+      NextVariants = null;
     }
   }
 

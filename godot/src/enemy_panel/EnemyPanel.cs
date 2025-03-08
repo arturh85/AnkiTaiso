@@ -3,7 +3,6 @@ namespace ankitaiso.enemy_panel;
 using enemy;
 using game_typing;
 using Godot;
-using WanaKanaNet;
 
 [SceneTree]
 public partial class EnemyPanel : Control {
@@ -43,9 +42,8 @@ public partial class EnemyPanel : Control {
     if (enemy.Vocab.State == VocabState.Active) {
       ZIndex = -1;
       BackgroundContainer.Color = _activeColor;
-      var rest = enemy.Vocab.Entry.Substring(enemy.Vocab.InputBuffer.Length + 1);
-
-      var targetInput = string.Concat(enemy.Vocab.InputBuffer, "[red]", Equalize(enemy, enemy.Vocab.Entry.Substring(enemy.Vocab.InputBuffer.Length, 1)), "[]",
+      var rest = enemy.Vocab.Entry[(enemy.Vocab.InputBuffer.Length + enemy.Vocab.Next.Length)..];
+      var targetInput = string.Concat(enemy.Vocab.InputBuffer, "[red]", enemy.Vocab.Next, "[]",
         rest.Length > 0 ? "~" + rest + "~" : "");
       if (InputLabelBbcode != targetInput) {
         InputLabelBbcode = targetInput;
@@ -58,22 +56,10 @@ public partial class EnemyPanel : Control {
         InputLabelBbcode = "";
       }
     }
-
-    var targetDebugOutput = enemy.Vocab.NextPlain != null ? string.Join(", ", enemy.Vocab.NextPlain) : enemy.Vocab.Next.ToString();
+    var targetDebugOutput = enemy.Vocab.NextVariants != null ? string.Join(", ", enemy.Vocab.NextVariants) : enemy.Vocab.Next;
     if (DebugLabelBbcode != targetDebugOutput) {
       DebugLabelBbcode = targetDebugOutput;
     }
-
     _currentEnemy = enemy;
-  }
-
-  public string Equalize(Enemy enemy, string input) {
-    if (enemy.Vocab.NextIsHiragana) {
-      return WanaKana.ToHiragana(input);
-    }
-    if (enemy.Vocab.NextIsKatakana) {
-      return WanaKana.ToKatakana(input);
-    }
-    return input;
   }
 }
