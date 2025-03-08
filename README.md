@@ -2,7 +2,7 @@
 
 Anki Taiso (暗記体操) - Anki empowered Godot 4 Typing Game
 
-<img src="docs/logo.jpg" width="400">
+<img src="docs/AnkiTaiso-splash.png" width="400">
 
 ---
 
