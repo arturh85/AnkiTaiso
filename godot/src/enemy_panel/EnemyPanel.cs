@@ -21,6 +21,10 @@ public partial class EnemyPanel : Control {
     get => InputLabel.Get("bbcode").ToString();
     set => InputLabel.Set("bbcode", value);
   }
+  public string DebugLabelBbcode {
+    get => DebugLabel.Get("bbcode").ToString();
+    set => DebugLabel.Set("bbcode", value);
+  }
 
   [OnInstantiate]
   private void Initialise() {
@@ -36,7 +40,6 @@ public partial class EnemyPanel : Control {
       PromptLabelBbcode = enemy.Vocab.Entry;
     }
 
-    var currentInput = InputLabelBbcode;
     if (enemy.Vocab.State == VocabState.Active) {
       ZIndex = -1;
       BackgroundContainer.Color = _activeColor;
@@ -44,16 +47,21 @@ public partial class EnemyPanel : Control {
 
       var targetInput = string.Concat(enemy.Vocab.InputBuffer, "[red]", Equalize(enemy, enemy.Vocab.Entry.Substring(enemy.Vocab.InputBuffer.Length, 1)), "[]",
         rest.Length > 0 ? "~" + rest + "~" : "");
-      if (currentInput != targetInput) {
+      if (InputLabelBbcode != targetInput) {
         InputLabelBbcode = targetInput;
       }
     }
     else {
       ZIndex = -2;
       BackgroundContainer.Color = _inactiveColor;
-      if (currentInput != "") {
+      if (InputLabelBbcode != "") {
         InputLabelBbcode = "";
       }
+    }
+
+    var targetDebugOutput = enemy.Vocab.NextPlain.Join(", ");
+    if (DebugLabelBbcode != targetDebugOutput) {
+      DebugLabelBbcode = targetDebugOutput;
     }
 
     _currentEnemy = enemy;

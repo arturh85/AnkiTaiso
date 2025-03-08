@@ -151,6 +151,7 @@ unique_name_in_owner = true
 layout_mode = 2
 
 [node name="Button" type="Button" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/ExampleScenario"]
+custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 toggle_mode = true
 button_group = SubResource("ButtonGroup_ps8b8")
@@ -182,8 +183,10 @@ layout_mode = 2
 
 [node name="WordsPlayedHSlider" type="HSlider" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/HBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(250, 0)
+custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
+step = 10.0
+rounded = true
 
 [node name="WordsPlayedLabel" type="Label" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/HBoxContainer"]
 unique_name_in_owner = true
@@ -192,5 +195,6 @@ text = "Words Played"
 
 [node name="StartGameButton" type="Button" parent="MarginContainer/HBoxContainer/ScenarioParentContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "Start Game"

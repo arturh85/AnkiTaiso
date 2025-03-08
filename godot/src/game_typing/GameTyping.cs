@@ -101,6 +101,10 @@ public partial class GameTyping : Node3D {
         idx += 1;
       }
     }
+
+    if (BufferLabelBbcode != GameTypingSystem.Buffer) {
+      BufferLabelBbcode = GameTypingSystem.Buffer;
+    }
   }
 
 
@@ -203,7 +207,12 @@ public partial class GameTyping : Node3D {
 
 
   public void SpawnEnemy() {
-    if (EnemiesContainer.GetChildren().Count >= 5 || GameTypingSystem == null) {
+    if (EnemiesContainer.GetChildren().Count >= 5) {
+      return;
+    }
+
+    if (GameTypingSystem == null) {
+      GD.Print("Missing GameTypingSystem");
       return;
     }
 

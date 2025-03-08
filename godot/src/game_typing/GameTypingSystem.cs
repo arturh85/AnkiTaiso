@@ -9,11 +9,14 @@ using utils;
 using WanaKanaNet;
 
 public class GameTypingSystem {
+
+
+
   private List<Vocab> EntriesLeft;
   private List<Vocab> EntriesInUse = new();
   private Vocab? EntryActive;
 
-  public string Buffer { get; set; }
+  public string Buffer { get; set; } = "";
   public int ErrorCount { get; set; }
   public Dictionary<char, CharStatistic> StatisticByChar { get; set; } = new();
 
@@ -22,14 +25,11 @@ public class GameTypingSystem {
 
   public delegate void OnDelete();
 
-  // private Dictionary<
-
   public GameTypingSystem(IEnumerable<string> vocabs) {
     EntriesLeft = new List<Vocab>(vocabs.Reverse().Select(vocab => new Vocab(vocab)));
   }
 
-
-  public Vocab NextEntry(bool startVisible = true) {
+  public Vocab? NextEntry(bool startVisible = true) {
     var validNexts = EntriesInUse.Select(e => e.Entry[0]).ToArray();
     var found = false;
     Vocab? vocab = null;
@@ -43,22 +43,25 @@ public class GameTypingSystem {
       found = true;
       break;
     }
-
     if (!found && EntriesLeft.Count > 0) {
       var vocabIdx = EntriesLeft.Count - 1;
       vocab = EntriesLeft[vocabIdx];
       vocab.State = startVisible ? VocabState.Visible : VocabState.Hidden;
       EntriesLeft.RemoveAt(vocabIdx);
     }
-
-    EntriesInUse.Add(vocab);
+    if (vocab != null) {
+      EntriesInUse.Add(vocab);
+    }
     return vocab;
   }
 
   public List<Vocab> NextEntries(int count, bool startVisible = true) {
     var list = new List<Vocab>();
-    for (int i = 0; i < count; i++) {
-      list.Add(NextEntry(startVisible));
+    for (var i = 0; i < count; i++) {
+      var entry = NextEntry(startVisible);
+      if (entry != null) {
+        list.Add(entry);
+      }
     }
     return list;
   }
@@ -85,21 +88,26 @@ public class GameTypingSystem {
       if (EntryActive.Entry.StartsWith(EntryActive.InputBuffer + input)) {
         success = EntryActive.OnInput(input);
       }
-      else if (EntryActive.NextPlain != null && EntryActive.NextPlain.StartsWith(bufferInput)) {
-        if (EntryActive.NextPlain == bufferInput) {
-          if (EntryActive.NextIsHiragana) {
-            success = EntryActive.OnInput(WanaKana.ToHiragana(bufferInput));
-            Buffer = "";
-          }
+      else if (EntryActive.NextPlain != null) {
+        foreach (var nextPlain in EntryActive.NextPlain) {
+          if (nextPlain.StartsWith(bufferInput)) {
+            if (nextPlain == bufferInput) {
+              if (EntryActive.NextIsHiragana) {
+                success = EntryActive.OnInput(WanaKana.ToHiragana(bufferInput));
+                Buffer = "";
+              }
 
-          if (EntryActive.NextIsKatakana) {
-            success = EntryActive.OnInput(WanaKana.ToKatakana(bufferInput));
-            Buffer = "";
+              else if (EntryActive.NextIsKatakana) {
+                success = EntryActive.OnInput(WanaKana.ToKatakana(bufferInput));
+                Buffer = "";
+              }
+            }
+            else {
+              Buffer = bufferInput;
+              success = true;
+            }
+            break;
           }
-        }
-        else {
-          Buffer = bufferInput;
-          success = true;
         }
       }
     }
@@ -115,26 +123,28 @@ public class GameTypingSystem {
           break;
         }
 
-        if (vocab.NextPlain != null && vocab.NextPlain.StartsWith(bufferInput)) {
-          if (vocab.NextPlain == bufferInput) {
-            if (vocab.NextIsHiragana) {
-              success = vocab.OnInput(WanaKana.ToHiragana(bufferInput));
-              Buffer = "";
-              SetActive(vocab);
-              break;
-            }
+        if (vocab.NextPlain != null) {
+          foreach (var nextPlain in vocab.NextPlain) {
+            if (nextPlain.StartsWith(bufferInput)) {
+              if (nextPlain == bufferInput) {
+                if (vocab.NextIsHiragana) {
+                  success = vocab.OnInput(WanaKana.ToHiragana(bufferInput));
+                  Buffer = "";
+                  SetActive(vocab);
+                }
 
-            if (vocab.NextIsKatakana) {
-              success = vocab.OnInput(WanaKana.ToKatakana(bufferInput));
-              Buffer = "";
-              SetActive(vocab);
+                if (vocab.NextIsKatakana) {
+                  success = vocab.OnInput(WanaKana.ToKatakana(bufferInput));
+                  Buffer = "";
+                  SetActive(vocab);
+                }
+              }
+              else {
+                Buffer = bufferInput;
+                success = true;
+              }
               break;
             }
-          }
-          else {
-            Buffer = bufferInput;
-            success = true;
-            break;
           }
         }
       }
@@ -196,26 +206,34 @@ public class Vocab {
   public string Entry;
   public char Next;
   public string InputBuffer;
-  public string? NextPlain;
+  public string[]? NextPlain;
   public bool NextIsKatakana;
   public bool NextIsHiragana;
 
   public VocabState State;
 
-
   public Vocab(string entry) {
     Entry = entry.Trim();
-    SetNext(Entry[0]);
+    SetNext(0);
     State = VocabState.Hidden;
     InputBuffer = "";
   }
 
-  private void SetNext(char next) {
+  private void SetNext(int idx) {
+    var next = Entry[idx];
     Next = next;
     NextIsHiragana = WanaKana.IsHiragana(next);
     NextIsKatakana = !NextIsHiragana && WanaKana.IsKatakana(next);
     if (NextIsHiragana || NextIsKatakana) {
-      NextPlain = WanaKana.ToRomaji(next.ToString()).Trim();
+      if (GameTypingUtils.IsSmallTsu(next)) {
+        NextPlain = [WanaKana.ToRomaji(Entry.Substring(idx, 2)).Trim()];
+      }
+      else if (Entry.Length > idx+1 && GameTypingUtils.IsSmallKana(Entry[idx+1])) {
+        NextPlain = [WanaKana.ToRomaji(Entry.Substring(idx, 2)).Trim()];
+      }
+      else {
+        NextPlain = [WanaKana.ToRomaji(next.ToString()).Trim()];
+      }
     }
     else {
       NextPlain = null;
@@ -226,12 +244,10 @@ public class Vocab {
     if (Entry.StartsWith(InputBuffer + input)) {
       InputBuffer += input;
       if (InputBuffer.Length < Entry.Length) {
-        SetNext(Entry[InputBuffer.Length]);
+        SetNext(InputBuffer.Length);
       }
-
       return true;
     }
-
     return false;
   }
 }

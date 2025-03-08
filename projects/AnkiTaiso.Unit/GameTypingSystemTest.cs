@@ -1,9 +1,11 @@
 ﻿namespace anki_taiso.unit;
 
+using System.Drawing.Printing;
 using ankitaiso.game_typing;
 using FluentAssertions;
 using Godot;
 using Shouldly;
+using WanaKanaNet;
 using Xunit;
 
 public class GameTypingSystemTest {
@@ -12,8 +14,17 @@ public class GameTypingSystemTest {
     "s ./,_-+()[]{}", "cde"
   ];
   private static readonly IEnumerable<string> _japaneseWords = [
-    "カタカナ", "ひらがな"
+    "カタカナ", "ひらがな", "みっつ", "ロボット", "コンピュータ", "きゅうじつ"
   ];
+
+
+
+  [Fact]
+  public void EnglishClearOneEntryTest1() {
+    WanaKana.ToRomaji("コンピュータ").ShouldBe("konpyuuta");
+    WanaKana.ToRomaji("ピュ").ShouldBe("pyu");
+    WanaKana.ToRomaji("ピ").ShouldBe("pi");
+  }
 
   [Fact]
   public void EnglishClearOneEntryTest() {
@@ -128,6 +139,89 @@ public class GameTypingSystemTest {
     game.Buffer.Should().Be("n");
     game.OnInput(Key.A).ShouldBeTrue();
     game.Buffer.Should().Be("");
+    game.GetActiveEntry().ShouldBeNull();
+    game.ErrorCount.ShouldBe(0);
+  }
+
+  [Fact]
+  public void HiraganaTsuTest() {
+    var game = new GameTypingSystem(_japaneseWords);
+    var words = game.NextEntries(4);
+    words.Count.Should().Be(4);
+    game.OnInput(Key.M).ShouldBeTrue();
+    game.Buffer.Should().Be("m");
+    game.GetActiveEntry().ShouldBeNull();
+    game.OnInput(Key.I).ShouldBeTrue();
+    game.Buffer.Should().Be("");
+    game.GetActiveEntry().ShouldNotBeNull();
+    game.GetActiveEntry()!.Entry.ShouldBe("みっつ");
+    game.GetActiveEntry()!.InputBuffer.ShouldBe("み");
+    game.OnInput(Key.T).ShouldBeTrue();
+    game.Buffer.Should().Be("t");
+    game.OnInput(Key.T).ShouldBeTrue();
+    game.Buffer.Should().Be("tt");
+    game.OnInput(Key.S).ShouldBeTrue();
+    game.Buffer.Should().Be("tts");
+    game.OnInput(Key.U).ShouldBeTrue();
+    game.Buffer.Should().Be("");
+    game.GetActiveEntry().ShouldBeNull();
+    game.ErrorCount.ShouldBe(0);
+  }
+
+  [Fact]
+  public void KatakanaTsuTest() {
+    var game = new GameTypingSystem(_japaneseWords);
+    var words = game.NextEntries(4);
+    words.Count.Should().Be(4);
+    game.OnInput(Key.R).ShouldBeTrue();
+    game.Buffer.Should().Be("r");
+    game.GetActiveEntry().ShouldBeNull();
+    game.OnInput(Key.O).ShouldBeTrue();
+    game.Buffer.Should().Be("");
+    game.GetActiveEntry().ShouldNotBeNull();
+    game.GetActiveEntry()!.Entry.ShouldBe("ロボット");
+    game.GetActiveEntry()!.InputBuffer.ShouldBe("ロ");
+    game.OnInput(Key.B).ShouldBeTrue();
+    game.Buffer.Should().Be("b");
+    game.OnInput(Key.O).ShouldBeTrue();
+    game.Buffer.Should().Be("");
+    game.GetActiveEntry()!.InputBuffer.ShouldBe("ロボ");
+    game.OnInput(Key.T).ShouldBeTrue();
+    game.Buffer.Should().Be("t");
+    game.OnInput(Key.T).ShouldBeTrue();
+    game.Buffer.Should().Be("tt");
+    game.OnInput(Key.O).ShouldBeTrue();
+    game.GetActiveEntry().ShouldBeNull();
+    game.ErrorCount.ShouldBe(0);
+  }
+  [Fact]
+  public void JapanesePyuAndDashTest() {
+    var game = new GameTypingSystem(_japaneseWords);
+    var words = game.NextEntries(5);
+    words.Count.Should().Be(5);
+    game.OnInput(Key.K).ShouldBeTrue();
+    game.Buffer.Should().Be("k");
+    game.GetActiveEntry().ShouldBeNull();
+    game.OnInput(Key.O).ShouldBeTrue();
+    game.Buffer.Should().Be("");
+    game.GetActiveEntry().ShouldNotBeNull();
+    game.GetActiveEntry()!.Entry.ShouldBe("コンピュータ");
+    game.GetActiveEntry()!.InputBuffer.ShouldBe("コ");
+    game.OnInput(Key.N).ShouldBeTrue();
+    game.Buffer.Should().Be("");
+    game.GetActiveEntry()!.InputBuffer.ShouldBe("コン");
+    game.OnInput(Key.P).ShouldBeTrue();
+    game.Buffer.Should().Be("p");
+    game.OnInput(Key.Y).ShouldBeTrue();
+    game.Buffer.Should().Be("py");
+    game.OnInput(Key.U).ShouldBeTrue();
+    game.Buffer.Should().Be("");
+    game.GetActiveEntry()!.InputBuffer.ShouldBe("コンピュ");
+    game.OnInput(Key.Minus).ShouldBeTrue();
+    game.GetActiveEntry()!.InputBuffer.ShouldBe("コンピュー");
+    game.OnInput(Key.T).ShouldBeTrue();
+    game.Buffer.Should().Be("t");
+    game.OnInput(Key.A).ShouldBeTrue();
     game.GetActiveEntry().ShouldBeNull();
     game.ErrorCount.ShouldBe(0);
   }
