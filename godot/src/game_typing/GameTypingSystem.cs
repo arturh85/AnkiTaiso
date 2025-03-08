@@ -204,9 +204,9 @@ public enum VocabState {
 
 public class Vocab {
   public string Entry;
-  public char Next;
+  public string Next;
   public string InputBuffer;
-  public string[]? NextPlain;
+  public List<string>? NextPlain;
   public bool NextIsKatakana;
   public bool NextIsHiragana;
 
@@ -221,19 +221,23 @@ public class Vocab {
 
   private void SetNext(int idx) {
     var next = Entry[idx];
-    Next = next;
+    Next = Entry.Substring(idx, 1);
     NextIsHiragana = WanaKana.IsHiragana(next);
     NextIsKatakana = !NextIsHiragana && WanaKana.IsKatakana(next);
     if (NextIsHiragana || NextIsKatakana) {
       if (GameTypingUtils.IsSmallTsu(next)) {
-        NextPlain = [WanaKana.ToRomaji(Entry.Substring(idx, 2)).Trim()];
+        Next = Entry.Substring(idx, 2);
+        NextPlain = [WanaKana.ToRomaji(Next).Trim()];
       }
       else if (Entry.Length > idx+1 && GameTypingUtils.IsSmallKana(Entry[idx+1])) {
+        Next = Entry.Substring(idx, 2);
         NextPlain = [WanaKana.ToRomaji(Entry.Substring(idx, 2)).Trim()];
       }
       else {
         NextPlain = [WanaKana.ToRomaji(next.ToString()).Trim()];
       }
+
+      GameTypingUtils.PopulateAlternatives(Next, NextPlain);
     }
     else {
       NextPlain = null;

@@ -59,7 +59,7 @@ public partial class EnemyPanel : Control {
       }
     }
 
-    var targetDebugOutput = enemy.Vocab.NextPlain.Join(", ");
+    var targetDebugOutput = enemy.Vocab.NextPlain != null ? string.Join(", ", enemy.Vocab.NextPlain) : enemy.Vocab.Next.ToString();
     if (DebugLabelBbcode != targetDebugOutput) {
       DebugLabelBbcode = targetDebugOutput;
     }

@@ -20,10 +20,16 @@ public class GameTypingSystemTest {
 
 
   [Fact]
-  public void EnglishClearOneEntryTest1() {
+  public void WanaKanaAssumptionsTest() {
     WanaKana.ToRomaji("コンピュータ").ShouldBe("konpyuuta");
     WanaKana.ToRomaji("ピュ").ShouldBe("pyu");
     WanaKana.ToRomaji("ピ").ShouldBe("pi");
+
+    WanaKana.ToRomaji("ふ").ShouldBe("fu");
+    WanaKana.ToRomaji("じ").ShouldBe("ji");
+    WanaKana.ToRomaji("ぢ").ShouldBe("ji");
+    WanaKana.ToRomaji("づ").ShouldBe("zu");
+    WanaKana.ToRomaji("を").ShouldBe("wo");
   }
 
   [Fact]

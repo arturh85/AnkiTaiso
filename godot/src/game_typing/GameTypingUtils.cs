@@ -3,9 +3,7 @@ namespace ankitaiso.game_typing;
 using System.Collections.Generic;
 
 public static class GameTypingUtils {
-
-  private static readonly HashSet<int> SmallKanaCodePoints = new HashSet<int>
-  {
+  private static readonly HashSet<int> SmallKanaCodePoints = new HashSet<int> {
     // Small Hiragana
     0x3041, // ぁ
     0x3043, // ぃ
@@ -24,10 +22,10 @@ public static class GameTypingUtils {
     0x30A9, // ォ
     0x30E3, // ャ
     0x30E5, // ュ
-    0x30E7  // ョ
+    0x30E7 // ョ
   };
-  private static readonly HashSet<int> SmallTsuCodePoints = new HashSet<int>
-  {
+
+  private static readonly HashSet<int> SmallTsuCodePoints = new HashSet<int> {
     // Small Hiragana Tsu
     0x3063, // っ
 
@@ -35,7 +33,39 @@ public static class GameTypingUtils {
     0x30C3, // ッ
   };
 
+  private static readonly Dictionary<string, string[]> Alternatives = new() {
+    { "し", ["si"] }, // default shi
+    { "シ", ["si"] }, // default shi
+
+    { "ち", ["ti"] }, // default chi
+    { "チ", ["ti"] }, // default chi
+
+    { "つ", ["tu"] }, // default tsu
+    { "ツ", ["tu"] }, // default tsu
+
+    { "ふ", ["hu"] }, // default fu
+    { "フ", ["hu"] }, // default fu
+
+    { "じ", ["zi"] }, // default ji
+    { "ジ", ["zi"] }, // default ji
+
+    { "ぢ", ["di"] }, // default ji
+    { "ヂ", ["di"] }, // default ji
+
+    { "づ", ["du"] }, // default zu
+    { "ヅ", ["du"] }, // default zu
+
+    { "を", ["o"] }, // default wo
+    { "ヲ", ["o"] }, // default wo
+  };
+
   public static bool IsSmallKana(char c) => SmallKanaCodePoints.Contains(c);
   public static bool IsSmallTsu(char c) => SmallTsuCodePoints.Contains(c);
 
+  public static void PopulateAlternatives(string input, List<string> entries) {
+    if (!Alternatives.TryGetValue(input, out var alternatives)) {
+      return;
+    }
+    entries.AddRange(alternatives);
+  }
 }
