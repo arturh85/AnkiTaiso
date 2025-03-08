@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://cwsfvhqinjpy4"]
+[gd_scene load_steps=9 format=3 uid="uid://dt4tkay2l2l38"]
 
-[ext_resource type="Script" uid="uid://1va7h4ow3ld5" path="res://src/menu/Menu.cs" id="1_or2kc"]
-[ext_resource type="PackedScene" uid="uid://dt4tkay2l2l38" path="res://src/menu/menu_anki/MenuAnki.tscn" id="2_kwft6"]
+[ext_resource type="Script" uid="uid://bijgfw2uidgrx" path="res://src/menu/menu_anki/MenuAnki.cs" id="1_5dy0p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aq8ij"]
 bg_color = Color(1, 1, 1, 0.219608)
@@ -48,7 +47,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_orto1")
-script = ExtResource("1_or2kc")
+script = ExtResource("1_5dy0p")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -88,41 +87,12 @@ theme_override_constants/margin_top = 24
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="NewGameButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/VBoxContainer2"]
+[node name="BackButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/VBoxContainer2"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(2.08165e-12, 64)
 layout_mode = 2
 size_flags_horizontal = 3
-text = "New Game"
-
-[node name="LoadGameButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/VBoxContainer2"]
-unique_name_in_owner = true
-visible = false
-custom_minimum_size = Vector2(2.08165e-12, 64)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Load Game"
-
-[node name="FromAnkiButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/VBoxContainer2"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(2.08165e-12, 64)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "From Anki"
-
-[node name="OptionsButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/VBoxContainer2"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(2.08165e-12, 64)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Options"
-
-[node name="QuitButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/VBoxContainer2"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(2.08165e-12, 64)
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Quit"
+text = "Back"
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/VBoxContainer3/VBoxContainer2"]
 layout_mode = 2
@@ -142,7 +112,7 @@ size_flags_vertical = 8
 
 [node name="Title" type="Label" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/VBoxContainer"]
 layout_mode = 2
-text = "Select Scenario:"
+text = "Build from Anki Connect:"
 label_settings = SubResource("LabelSettings_5fc0a")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/VBoxContainer"]
@@ -150,25 +120,25 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_top = 24
 
-[node name="ScenarioContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer"]
+[node name="AnkiDecksContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ExampleScenario" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer"]
+[node name="ExampleAnkiDeck" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/ExampleScenario"]
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/ExampleAnkiDeck"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 toggle_mode = true
 button_group = SubResource("ButtonGroup_ps8b8")
 text = "SCENARIO"
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/ExampleScenario"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/ExampleAnkiDeck"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/ExampleScenario"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/ExampleAnkiDeck"]
 layout_mode = 2
 text = "LABEL"
 
@@ -218,8 +188,3 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "Start Game"
-
-[node name="MenuAnki" parent="." instance=ExtResource("2_kwft6")]
-unique_name_in_owner = true
-visible = false
-layout_mode = 1

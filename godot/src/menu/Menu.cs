@@ -97,10 +97,12 @@ public partial class Menu : Control, IMenu {
     NewGameButton.Pressed += OnNewGamePressed;
     LoadGameButton.Pressed += OnLoadGamePressed;
     OptionsButton.Pressed += OnOptionsPressed;
+    FromAnkiButton.Pressed += OnFromAnkiPressed;
     QuitButton.Pressed += OnQuitPressed;
     StartGameButton.Pressed += OnStartGamePressed;
     WordsPlayedHSlider.ValueChanged +=
       OnWordsPlayedChanged;
+    MenuAnki.Back += OnFromAnkiBackPressed;
   }
 
   private void OnWordsPlayedChanged(double value) {
@@ -116,6 +118,7 @@ public partial class Menu : Control, IMenu {
     StartGameButton.Pressed -= OnStartGamePressed;
     WordsPlayedHSlider.ValueChanged -=
       OnWordsPlayedChanged;
+    MenuAnki.Back -= OnFromAnkiBackPressed;
   }
 
   public void OnNewGamePressed() => ScenarioParentContainer.Show();
@@ -144,6 +147,16 @@ public partial class Menu : Control, IMenu {
     GameTypingRepo.ActiveScenario = GameTypingRepo.GetScenario(id!);
     GameTypingRepo.ActiveScenarioOptions = new ScenarioOptions() { WordsPlayed = wordsPlayed };
     EmitSignal(SignalName.NewGame);
+  }
+
+  public void OnFromAnkiPressed() {
+    _.MarginContainer.Get().Hide();
+    MenuAnki.Show();
+  }
+
+  public void OnFromAnkiBackPressed() {
+    _.MarginContainer.Get().Show();
+    MenuAnki.Hide();
   }
 
   public void OnOptionsPressed() => EmitSignal(SignalName.Options);

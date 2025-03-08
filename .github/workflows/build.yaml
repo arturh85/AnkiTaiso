@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        platform: [linux, windows]
+        platform: [linux, windows, android]
     defaults:
       run:
         # Use bash shells on all platforms.
@@ -80,18 +80,25 @@ jobs:
           godotenv addons install
 
       - name: 🦺 Build Projects
+        if: matrix.platform != 'android'
         run: |
           mkdir ${{ github.workspace }}/godot/build/
           cd godot
           godot -v --headless --export-release "${{ matrix.platform }}" build/AnkiTaiso-snapshop-${{ matrix.platform }}.zip || exit 1
 
+      - name: 🦺 Build Projects Android
+        if: matrix.platform == 'android'
+        run: |
+          mkdir ${{ github.workspace }}/godot/build/
+          cd godot
+          godot -v --headless --export-release "${{ matrix.platform }}" build/AnkiTaiso-snapshop-${{ matrix.platform }}.apk || exit 1
+
       - name: 🦺 Upload Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: Kyoukai Tansa - ${{ matrix.platform }}
+          name: AnkiTaiso-snapshop-${{ matrix.platform }}
           path: ${{ github.workspace }}/godot/build
 
-        
       - name: 🔬 Setup docs
         uses: actions/setup-python@v5
         with:

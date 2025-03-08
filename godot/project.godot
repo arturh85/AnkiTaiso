@@ -29,7 +29,7 @@ project/assembly_name="AnkiTaiso"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/expand-region/plugin.cfg", "res://addons/find-everywhere/plugin.cfg", "res://addons/imrp/plugin.cfg", "res://addons/previous-tab/plugin.cfg", "res://addons/richtext2/plugin.cfg", "res://addons/script-tabs/plugin.cfg")
+enabled=PackedStringArray("res://addons/richtext2/plugin.cfg")
 
 [file_customization]
 

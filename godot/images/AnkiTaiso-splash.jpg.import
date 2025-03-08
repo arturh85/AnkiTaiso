@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dm64xxanl4a8v"
-path="res://.godot/imported/AnkiTaiso-splash.png-be1124efd0b553c6c4744af2e1243589.ctex"
+uid="uid://c1gc6ujujpb4d"
+path="res://.godot/imported/AnkiTaiso-splash.jpg-1ea96059cc8ca42d868366a9b35a35ec.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://images/AnkiTaiso-splash.png"
-dest_files=["res://.godot/imported/AnkiTaiso-splash.png-be1124efd0b553c6c4744af2e1243589.ctex"]
+source_file="res://images/AnkiTaiso-splash.jpg"
+dest_files=["res://.godot/imported/AnkiTaiso-splash.jpg-1ea96059cc8ca42d868366a9b35a35ec.ctex"]
 
 [params]
 

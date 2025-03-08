@@ -7,6 +7,7 @@ using Chickensoft.Introspection;
 using Chickensoft.LogicBlocks;
 using data.model;
 using domain;
+using game_typing;
 using game;
 using game_typing.domain;
 using Godot;
@@ -17,7 +18,7 @@ using state;
 using utils;
 using Game = game.Game;
 
-public interface IApp : ICanvasLayer, IProvide<IAppRepo>, IProvide<IGameTypingRepo>, IProvide<IMenuRepo>, IProvide<IDatabaseRepo>;
+public interface IApp : ICanvasLayer, IProvide<IAppRepo>, IProvide<IGameTypingRepo>, IProvide<IMenuRepo>, IProvide<IDatabaseRepo>, IProvide<GameTypingSystem>;
 
 [Meta(typeof(IAutoNode))]
 public partial class App : CanvasLayer, IApp {
@@ -43,12 +44,14 @@ public partial class App : CanvasLayer, IApp {
   IAppRepo IProvide<IAppRepo>.Value() => AppRepo;
   IGameTypingRepo IProvide<IGameTypingRepo>.Value() => GameTypingRepo;
   IMenuRepo IProvide<IMenuRepo>.Value() => MenuRepo;
+  GameTypingSystem IProvide<GameTypingSystem>.Value() => GameTypingSystem;
 
 
   #endregion Provisions
 
   #region State
 
+  public GameTypingSystem GameTypingSystem { get; set; } = default!;
   public IMenuRepo MenuRepo { get; set; } = default!;
   public IDatabaseRepo DatabaseRepo { get; set; } = default!;
   public IAppRepo AppRepo { get; set; } = default!;
@@ -79,6 +82,7 @@ public partial class App : CanvasLayer, IApp {
     AppLogic = new AppLogic();
     AppLogic.Set(AppRepo);
     AppLogic.Set(new AppLogic.Data());
+    GameTypingSystem = new GameTypingSystem();
 
     // Listen for various menu signals. Each of these just translate to an input
     // for the overall app's state machine.

@@ -21,7 +21,6 @@ public partial class GameTyping : Node3D {
   public override void _Notification(int what) => this.Notify(what);
 
   public IGameTypingLogic GameTypingLogic { get; set; } = default!;
-  public GameTypingSystem GameTypingSystem { get; set; } = default!;
 
   public LogicBlock<GameTypingLogic.State>.IBinding GameTypingBinding { get; set; } = default!;
 
@@ -34,6 +33,7 @@ public partial class GameTyping : Node3D {
 
   [Dependency] public IAppRepo AppRepo => this.DependOn<IAppRepo>();
   [Dependency] public IGameTypingRepo GameTypingRepo => this.DependOn<IGameTypingRepo>();
+  [Dependency] public GameTypingSystem GameTypingSystem => this.DependOn<GameTypingSystem>();
 
   public string BufferLabelBbcode {
     get => BufferLabel.Get("bbcode").ToString();
@@ -73,6 +73,7 @@ public partial class GameTyping : Node3D {
   }
 
   public void OnResolved() {
+
   }
 
   // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -108,7 +109,7 @@ public partial class GameTyping : Node3D {
 
   public void StartGame() {
     LoadWordlist();
-    GameTypingSystem = new GameTypingSystem(WordList);
+    GameTypingSystem.RestartGame(WordList);
     _gameStarted = true;
     SetPaused(false);
   }

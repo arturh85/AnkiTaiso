@@ -23,6 +23,16 @@ public partial class Enemy : Node3D {
   private void Initialise(Vocab vocab, Vector3 movementTarget) {
     _movementTarget = movementTarget;
     Vocab = vocab;
+    Vocab.OnMistake += OnVocabMistake;
+  }
+
+
+  public void OnExitTree() {
+    Vocab.OnMistake -= OnVocabMistake;
+  }
+
+  public void OnVocabMistake(string key) {
+
   }
 
   public Vector3 GetGuiOffset() => GuiOffset.Position;

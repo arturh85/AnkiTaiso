@@ -4,6 +4,7 @@ using app.domain;
 using Chickensoft.AutoInject;
 using Chickensoft.GodotNodeInterfaces;
 using Chickensoft.Introspection;
+using game_typing;
 using game.domain;
 using game_typing.domain;
 using GameDemo;
@@ -12,7 +13,7 @@ using state;
 using InGameUILogic = state.InGameUILogic;
 
 public interface IInGameUI : IControl {
-  void SetCoinsLabel(int coins, int totalCoins);
+  void UpdateLabel(int leftVocab, int totalVocab);
 }
 
 [Meta(typeof(IAutoNode))]
@@ -24,6 +25,8 @@ public partial class InGameUI : Control, IInGameUI {
   [Dependency] public IAppRepo AppRepo => DependentExtensions.DependOn<IAppRepo>(this);
   [Dependency] public IGameRepo GameRepo => DependentExtensions.DependOn<IGameRepo>(this);
   [Dependency] public IGameTypingRepo GameTypingRepo => DependentExtensions.DependOn<IGameTypingRepo>(this);
+
+  [Dependency] public GameTypingSystem GameTypingSystem => this.DependOn<GameTypingSystem>();
 
   #endregion Dependencies
 
@@ -53,21 +56,24 @@ public partial class InGameUI : Control, IInGameUI {
 
     InGameUIBinding = InGameUILogic.Bind();
 
-    InGameUIBinding
-      .Handle((in InGameUILogic.Output.NumCoinsChanged output) =>
-        SetCoinsLabel(
-          output.NumCoinsCollected, output.NumCoinsAtStart
-        )
-      );
+    // InGameUIBinding
+    //   .Handle((in InGameUILogic.Output.NumCoinsChanged output) =>
+    //     SetCoinsLabel(
+    //       output.NumCoinsCollected, output.NumCoinsAtStart
+    //     )
+    //   );
+
+    GameTypingSystem.OnLeftCountChanged += UpdateLabel;
 
     InGameUILogic.Start();
   }
 
-  public void SetCoinsLabel(int coins, int totalCoins) =>
-    CoinsLabel.Text = $"{coins}/{totalCoins}";
+  public void UpdateLabel(int leftVocab, int totalVocab) =>
+    CoinsLabel.Text = $"{totalVocab - leftVocab}/{totalVocab}";
 
   public void OnExitTree() {
     InGameUILogic.Stop();
     InGameUIBinding.Dispose();
+    GameTypingSystem.OnLeftCountChanged -= UpdateLabel;
   }
 }
