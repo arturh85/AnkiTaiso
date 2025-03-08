@@ -26,14 +26,23 @@ public class GameTypingSystemTest {
     words[1].Entry.Should().Be("bce");
     words[3].Entry.Should().Be("cde");
     game.GetActiveEntry().ShouldBeNull();
+
+    game.ErrorCount.ShouldBe(0);
     game.OnInput(Key.X).ShouldBeFalse();
+    game.ErrorCount.ShouldBe(1);
+
     game.OnInput(Key.A).ShouldBeTrue();
     game.GetActiveEntry().ShouldNotBeNull();
     game.GetActiveEntry()!.Entry.ShouldBe("abc");
+    game.ErrorCount.ShouldBe(1);
+    game.OnInput(Key.Y).ShouldBeFalse();
+    game.StatisticByChar['y'].FailCount.ShouldBe(1);
+    game.ErrorCount.ShouldBe(2);
     game.OnInput(Key.B).ShouldBeTrue();
     game.OnInput(Key.C).ShouldBeTrue();
     game.GetActiveEntry().ShouldBeNull();
     game.GetEntriesInUse().Count.Should().Be(3);
+    game.ErrorCount.ShouldBe(2);
   }
 
   [Fact]
@@ -58,6 +67,7 @@ public class GameTypingSystemTest {
     game.OnInput(Key.Braceleft).ShouldBeTrue();
     game.OnInput(Key.Braceright).ShouldBeTrue();
     game.GetActiveEntry().ShouldBeNull();
+    game.ErrorCount.ShouldBe(0);
   }
 
   [Fact]
@@ -88,6 +98,7 @@ public class GameTypingSystemTest {
     game.OnInput(Key.A).ShouldBeTrue();
     game.Buffer.Should().Be("");
     game.GetActiveEntry().ShouldBeNull();
+    game.ErrorCount.ShouldBe(0);
   }
 
   [Fact]
@@ -118,5 +129,6 @@ public class GameTypingSystemTest {
     game.OnInput(Key.A).ShouldBeTrue();
     game.Buffer.Should().Be("");
     game.GetActiveEntry().ShouldBeNull();
+    game.ErrorCount.ShouldBe(0);
   }
 }

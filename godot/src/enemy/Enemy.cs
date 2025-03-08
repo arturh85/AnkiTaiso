@@ -2,39 +2,27 @@ namespace ankitaiso.enemy;
 
 using System.Collections.Generic;
 using System.Linq;
+using game_typing;
 using Godot;
-using utils;
-using WanaKanaNet;
 
 [SceneTree]
 public partial class Enemy : Node3D {
   private Vector3 _movementTarget;
 
-  public string Prompt = "";
-  // public string RawPrompt;
-  public string Input = "";
-  public string[] NextInputs = [];
+  // public string Prompt = "";
+  // // public string RawPrompt;
+  // public string Input = "";
+  // public string[] NextInputs = [];
   public bool Moving;
-  public bool Active;
+  public Vocab Vocab;
 
   [Signal]
   public delegate void OnDeleteEventHandler();
 
   [OnInstantiate]
-  private void Initialise(string prompt, Vector3 movementTarget) {
+  private void Initialise(Vocab vocab, Vector3 movementTarget) {
     _movementTarget = movementTarget;
-    Prompt = prompt;
-    // RawPrompt = WanaKana.ToRomaji(prompt).Trim();
-    Input = "";
-    NextInputs = BuildNextInputs(prompt[..1]);
-  }
-
-  private string[] BuildNextInputs(string nextChar) {
-    // if (WanaKana.IsHiragana(nextChar)) {
-    //
-    // }
-
-    return [nextChar];
+    Vocab = vocab;
   }
 
   public Vector3 GetGuiOffset() => GuiOffset.Position;
@@ -52,6 +40,7 @@ public partial class Enemy : Node3D {
   private void OnAnimationFinished(StringName animname) {
     if (animname == EnemyAnimations.ClimbGrave) {
       Moving = true;
+      Vocab.State = VocabState.Visible;
       var player = GetAnimationPlayer();
       player.Play(EnemyAnimations.Walk);
     }
@@ -77,6 +66,10 @@ public partial class Enemy : Node3D {
   }
 
   public override void _Process(double delta) {
+    if (Vocab.State == VocabState.Completed) {
+      EmitSignal(SignalName.OnDelete);
+      QueueFree();
+    }
     LookAt(_movementTarget, Vector3.Up);
     if (!Moving)
       return;
@@ -91,24 +84,21 @@ public partial class Enemy : Node3D {
   // }
 
   public void OnInput(string s) {
-    if (Prompt.StartsWith(Input + s)) {
-      Input += s;
-      NextInputs = BuildNextInputs(Prompt.Substring(Input.Length, 1));
-      if (!Active) {
-        MakeActive();
-      }
-    }
-
-    if (Prompt == Input) {
-      EmitSignal(SignalName.OnDelete);
-      QueueFree();
-    }
-    else {
-      GD.Print(Prompt + " != " + Input);
-    }
+    // if (Prompt.StartsWith(Input + s)) {
+    //   Input += s;
+    //   NextInputs = BuildNextInputs(Prompt.Substring(Input.Length, 1));
+    //   if (!Active) {
+    //     MakeActive();
+    //   }
+    // }
+    //
+    // if (Prompt == Input) {
+    //   EmitSignal(SignalName.OnDelete);
+    //   QueueFree();
+    // }
+    // else {
+    //   GD.Print(Prompt + " != " + Input);
+    // }
   }
 
-  private void MakeActive() {
-    Active = true;
-  }
 }

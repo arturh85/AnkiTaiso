@@ -10,10 +10,12 @@ using WanaKanaNet;
 
 public class GameTypingSystem {
   private List<Vocab> EntriesLeft;
-  private List<Vocab> EntriesInUse;
+  private List<Vocab> EntriesInUse = new();
   private Vocab? EntryActive;
 
   public string Buffer { get; set; }
+  public int ErrorCount { get; set; }
+  public Dictionary<char, CharStatistic> StatisticByChar { get; set; } = new();
 
   private DateTimeOffset? Start;
   private DateTimeOffset? End;
@@ -24,40 +26,59 @@ public class GameTypingSystem {
 
   public GameTypingSystem(IEnumerable<string> vocabs) {
     EntriesLeft = new List<Vocab>(vocabs.Reverse().Select(vocab => new Vocab(vocab)));
-    EntriesInUse = new();
   }
 
 
-  public List<Vocab> NextEntries(int count) {
+  public Vocab NextEntry(bool startVisible = true) {
+    var validNexts = EntriesInUse.Select(e => e.Entry[0]).ToArray();
+    var found = false;
+    Vocab? vocab = null;
+    for (var idx = EntriesLeft.Count - 1; idx >= 0; idx--) {
+      vocab = EntriesLeft[idx];
+      if (validNexts.Contains(vocab.Entry[0])) {
+        continue;
+      }
+      vocab.State = startVisible ? VocabState.Visible : VocabState.Hidden;
+      EntriesLeft.Remove(vocab);
+      found = true;
+      break;
+    }
+
+    if (!found && EntriesLeft.Count > 0) {
+      var vocabIdx = EntriesLeft.Count - 1;
+      vocab = EntriesLeft[vocabIdx];
+      vocab.State = startVisible ? VocabState.Visible : VocabState.Hidden;
+      EntriesLeft.RemoveAt(vocabIdx);
+    }
+
+    EntriesInUse.Add(vocab);
+    return vocab;
+  }
+
+  public List<Vocab> NextEntries(int count, bool startVisible = true) {
     var list = new List<Vocab>();
     for (int i = 0; i < count; i++) {
-      var skipStart = list.Concat(EntriesInUse).Select(e => e.Entry[0]);
-      var found = false;
-      for (var idx = EntriesLeft.Count - 1; idx >= 0 ; idx--) {
-        var vocab = EntriesLeft[idx];
-        if (!skipStart.Contains(vocab.Entry[0])) {
-          list.Add(vocab);
-          EntriesLeft.Remove(vocab);
-          found = true;
-          break;
-        }
-      }
-      if (!found && EntriesLeft.Count > 0) {
-        list.Add(EntriesLeft.Last());
-        EntriesLeft.RemoveAt(EntriesLeft.Count - 1);
-      }
+      list.Add(NextEntry(startVisible));
     }
-    EntriesInUse.AddRange(list);
     return list;
   }
 
+  private void SetActive(Vocab vocab) {
+    EntryActive = vocab;
+    vocab.State = VocabState.Active;
+  }
+
   public bool OnInput(Key key) {
+    var success = false;
+    var input = KeyboardUtils.KeyToString(key);
+    if (input.Length == 0) {
+      return true;
+    }
+
     if (Start == null) {
       Start = DateTimeOffset.Now;
     }
 
-    var success = false;
-    var input = KeyboardUtils.KeyToString(key);
     var bufferInput = Buffer + input;
 
     if (EntryActive != null) {
@@ -81,11 +102,16 @@ public class GameTypingSystem {
           success = true;
         }
       }
-    } else {
+    }
+    else {
       foreach (var vocab in EntriesInUse) {
+        if (vocab.State == VocabState.Hidden) {
+          continue;
+        }
+
         if (vocab.Entry.StartsWith(input)) {
           success = vocab.OnInput(input);
-          EntryActive = vocab;
+          SetActive(vocab);
           break;
         }
 
@@ -94,13 +120,14 @@ public class GameTypingSystem {
             if (vocab.NextIsHiragana) {
               success = vocab.OnInput(WanaKana.ToHiragana(bufferInput));
               Buffer = "";
-              EntryActive = vocab;
+              SetActive(vocab);
               break;
             }
+
             if (vocab.NextIsKatakana) {
               success = vocab.OnInput(WanaKana.ToKatakana(bufferInput));
               Buffer = "";
-              EntryActive = vocab;
+              SetActive(vocab);
               break;
             }
           }
@@ -112,13 +139,34 @@ public class GameTypingSystem {
         }
       }
     }
+
     if (EntryActive != null && EntryActive.Entry == EntryActive.InputBuffer) {
+      EntryActive.State = VocabState.Completed;
       EntriesInUse.Remove(EntryActive);
       EntryActive = null;
     }
+
     if (EntriesInUse.Count == 0 && EntriesLeft.Count == 0) {
       End = DateTimeOffset.Now;
     }
+
+    if (!success) {
+      ErrorCount += 1;
+    }
+
+    var c = input[0];
+    if (!StatisticByChar.TryGetValue(c, out var value)) {
+      value = new CharStatistic(c);
+      StatisticByChar.Add(c, value);
+    }
+
+    if (success) {
+      value.SuccessCount += 1;
+    }
+    else {
+      value.FailCount += 1;
+    }
+
     return success;
   }
 
@@ -131,6 +179,17 @@ public class CharStatistic {
   public char character;
   public int FailCount;
   public int SuccessCount;
+
+  public CharStatistic(char c) {
+    character = c;
+  }
+}
+
+public enum VocabState {
+  Hidden,
+  Visible,
+  Active,
+  Completed
 }
 
 public class Vocab {
@@ -141,9 +200,14 @@ public class Vocab {
   public bool NextIsKatakana;
   public bool NextIsHiragana;
 
+  public VocabState State;
+
+
   public Vocab(string entry) {
-    Entry = entry;
-    SetNext(entry[0]);
+    Entry = entry.Trim();
+    SetNext(Entry[0]);
+    State = VocabState.Hidden;
+    InputBuffer = "";
   }
 
   private void SetNext(char next) {
@@ -164,6 +228,7 @@ public class Vocab {
       if (InputBuffer.Length < Entry.Length) {
         SetNext(Entry[InputBuffer.Length]);
       }
+
       return true;
     }
 

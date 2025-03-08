@@ -24,6 +24,7 @@ public partial class GameTyping : Node3D {
   public override void _Notification(int what) => this.Notify(what);
 
   public IGameTypingLogic GameTypingLogic { get; set; } = default!;
+  public GameTypingSystem GameTypingSystem { get; set; } = default!;
 
   public LogicBlock<GameTypingLogic.State>.IBinding GameTypingBinding { get; set; } = default!;
 
@@ -109,6 +110,7 @@ public partial class GameTyping : Node3D {
 
   public void StartGame() {
     LoadWordlist();
+    GameTypingSystem = new GameTypingSystem(WordList);
     game_started = true;
     SetPaused(false);
   }
@@ -130,35 +132,36 @@ public partial class GameTyping : Node3D {
 
   public override void _Input(InputEvent @event) {
     if (@event is InputEventKey keyEvent && keyEvent.Pressed) {
-      var buffer = BufferLabelBbcode;
-      var s = KeyboardUtils.KeyToString(keyEvent.Keycode);
-      if (activeEnemy != null) {
-        activeEnemy.OnInput(s);
-      }
-      else {
-        var found = false;
-        Enemy? lastEnemy = null;
-        foreach (var enemy in EnemiesContainer.GetChildren().OfType<Enemy>()) {
-          // foreach (var nextInput in enemy.NextInputs) {
-          //   if (nextInput.StartsWith())
-          // }
-          // if (enemy.AcceptsInput(s)) {
-          //   found = true;
-          //   activeEnemy = enemy;
-          //   activeEnemy.OnInput(s);
-          //   activeEnemy.OnDelete += _on_active_enemy_deleted;
-          //   break;
-          // }
-          lastEnemy = enemy;
-        }
-        if (!found) {
-          if (lastEnemy != null && WanaKana.IsJapanese(lastEnemy.Prompt)) {
-
-          }
-
-          GameTypingRepo.IncreaseNumErrors();
-        }
-      }
+    //   var buffer = BufferLabelBbcode;
+    //   var s = KeyboardUtils.KeyToString(keyEvent.Keycode);
+    //   if (activeEnemy != null) {
+    //     activeEnemy.OnInput(s);
+    //   }
+    //   else {
+    //     var found = false;
+    //     Enemy? lastEnemy = null;
+    //     foreach (var enemy in EnemiesContainer.GetChildren().OfType<Enemy>()) {
+    //       // foreach (var nextInput in enemy.NextInputs) {
+    //       //   if (nextInput.StartsWith())
+    //       // }
+    //       // if (enemy.AcceptsInput(s)) {
+    //       //   found = true;
+    //       //   activeEnemy = enemy;
+    //       //   activeEnemy.OnInput(s);
+    //       //   activeEnemy.OnDelete += _on_active_enemy_deleted;
+    //       //   break;
+    //       // }
+    //       lastEnemy = enemy;
+    //     }
+    //     if (!found) {
+    //       if (lastEnemy != null && WanaKana.IsJapanese(lastEnemy.Prompt)) {
+    //
+    //       }
+    //
+    //       GameTypingRepo.IncreaseNumErrors();
+    //     }
+    //   }
+      GameTypingSystem.OnInput(keyEvent.Keycode);
     }
   }
 
@@ -200,7 +203,7 @@ public partial class GameTyping : Node3D {
 
 
   public void SpawnEnemy() {
-    if (EnemiesContainer.GetChildren().Count >= 5) {
+    if (EnemiesContainer.GetChildren().Count >= 5 || GameTypingSystem == null) {
       return;
     }
 
@@ -264,7 +267,7 @@ public partial class GameTyping : Node3D {
   }
 
   private Enemy CreateEnemy3D(Vector3 position) {
-    var enemy = Enemy.Instantiate(PopRandomWord(), PlayerPosition);
+    var enemy = Enemy.Instantiate(GameTypingSystem.NextEntry(false), PlayerPosition);
     enemy.Position = position;
     return enemy;
   }

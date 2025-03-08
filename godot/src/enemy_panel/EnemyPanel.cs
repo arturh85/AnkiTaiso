@@ -1,6 +1,7 @@
 namespace ankitaiso.enemy_panel;
 
 using enemy;
+using game_typing;
 using Godot;
 using WanaKanaNet;
 
@@ -32,20 +33,16 @@ public partial class EnemyPanel : Control {
     GlobalPosition = pos2D;
     Visible = !cam.IsPositionBehind(pos3D);
     if (_currentEnemy != enemy) {
-      PromptLabelBbcode = enemy.Prompt;
+      PromptLabelBbcode = enemy.Vocab.Entry;
     }
 
     var currentInput = InputLabelBbcode;
-    if (enemy.Active) {
+    if (enemy.Vocab.State == VocabState.Active) {
       ZIndex = -1;
       BackgroundContainer.Color = _activeColor;
-      var rest = enemy.Prompt.Substring(enemy.Input.Length + 1);
+      var rest = enemy.Vocab.Entry.Substring(enemy.Vocab.InputBuffer.Length + 1);
 
-      GD.Print(enemy.Prompt);
-      GD.Print(enemy.Prompt.Length);
-      GD.Print(enemy.Prompt.Substring(0, 1));
-
-      var targetInput = string.Concat(enemy.Input, "[red]", Equalize(enemy, enemy.Prompt.Substring(enemy.Input.Length, 1)), "[]",
+      var targetInput = string.Concat(enemy.Vocab.InputBuffer, "[red]", Equalize(enemy, enemy.Vocab.Entry.Substring(enemy.Vocab.InputBuffer.Length, 1)), "[]",
         rest.Length > 0 ? "~" + rest + "~" : "");
       if (currentInput != targetInput) {
         InputLabelBbcode = targetInput;
@@ -63,10 +60,10 @@ public partial class EnemyPanel : Control {
   }
 
   public string Equalize(Enemy enemy, string input) {
-    if (WanaKana.IsHiragana(enemy.Prompt)) {
+    if (enemy.Vocab.NextIsHiragana) {
       return WanaKana.ToHiragana(input);
     }
-    if (WanaKana.IsKatakana(enemy.Prompt)) {
+    if (enemy.Vocab.NextIsKatakana) {
       return WanaKana.ToKatakana(input);
     }
     return input;
