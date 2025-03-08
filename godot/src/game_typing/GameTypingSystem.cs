@@ -14,6 +14,7 @@ public class GameTypingSystem {
   private Vocab? EntryActive;
 
   public string Buffer { get; set; } = "";
+  public int TotalCount { get; set; }
   public int ErrorCount { get; set; }
   public Dictionary<char, CharStatistic> StatisticByChar { get; set; } = new();
 
@@ -24,6 +25,11 @@ public class GameTypingSystem {
 
   public GameTypingSystem(IEnumerable<string> vocabs) {
     EntriesLeft = new List<Vocab>(vocabs.Reverse().Select(vocab => new Vocab(vocab)));
+    TotalCount = EntriesLeft.Count;
+  }
+  public GameTypingSystem(IEnumerable<Vocab> vocabs) {
+    EntriesLeft = new List<Vocab>(vocabs.Reverse());
+    TotalCount = EntriesLeft.Count;
   }
 
   public Vocab? NextEntry(bool startVisible = true) {
@@ -87,17 +93,18 @@ public class GameTypingSystem {
       }
       else if (EntryActive.NextVariants != null) {
         foreach (var nextPlain in EntryActive.NextVariants) {
-          if (nextPlain.StartsWith(bufferInput)) {
-            if (nextPlain == bufferInput) {
-              success = EntryActive.OnInput(EntryActive.Next);
-              Buffer = "";
-            }
-            else {
-              Buffer = bufferInput;
-              success = true;
-            }
-            break;
+          if (!nextPlain.StartsWith(bufferInput)) {
+            continue;
           }
+          if (nextPlain == bufferInput) {
+            success = EntryActive.OnInput(EntryActive.Next);
+            Buffer = "";
+          }
+          else {
+            Buffer = bufferInput;
+            success = true;
+          }
+          break;
         }
       }
     }
@@ -106,52 +113,48 @@ public class GameTypingSystem {
         if (vocab.State == VocabState.Hidden) {
           continue;
         }
-
         if (vocab.Entry.StartsWith(input)) {
           success = vocab.OnInput(input);
           SetActive(vocab);
           break;
         }
 
-        if (vocab.NextVariants != null) {
-          foreach (var nextPlain in vocab.NextVariants) {
-            if (nextPlain.StartsWith(bufferInput)) {
-              if (nextPlain == bufferInput) {
-                success = vocab.OnInput(vocab.Next);
-                Buffer = "";
-                SetActive(vocab);
-              }
-              else {
-                Buffer = bufferInput;
-                success = true;
-              }
-              break;
-            }
+        if (vocab.NextVariants == null) {
+          continue;
+        }
+
+        foreach (var nextPlain in vocab.NextVariants) {
+          if (!nextPlain.StartsWith(bufferInput)) {
+            continue;
           }
+          if (nextPlain == bufferInput) {
+            success = vocab.OnInput(vocab.Next);
+            Buffer = "";
+            SetActive(vocab);
+          } else {
+            Buffer = bufferInput;
+            success = true;
+          }
+          break;
         }
       }
     }
-
     if (EntryActive != null && EntryActive.Entry == EntryActive.InputBuffer) {
       EntryActive.State = VocabState.Completed;
       EntriesInUse.Remove(EntryActive);
       EntryActive = null;
     }
-
     if (EntriesInUse.Count == 0 && EntriesLeft.Count == 0) {
       End = DateTimeOffset.Now;
     }
-
     if (!success) {
       ErrorCount += 1;
     }
-
     var c = input[0];
     if (!StatisticByChar.TryGetValue(c, out var value)) {
       value = new CharStatistic(c);
       StatisticByChar.Add(c, value);
     }
-
     if (success) {
       value.SuccessCount += 1;
     }

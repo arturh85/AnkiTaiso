@@ -12,11 +12,8 @@ using Chickensoft.Introspection;
 using Chickensoft.LogicBlocks;
 using domain;
 using enemy_panel;
-using game.state;
 using Godot;
 using state;
-using utils;
-using WanaKanaNet;
 
 [Meta(typeof(IAutoNode))]
 [SceneTree]
@@ -37,8 +34,6 @@ public partial class GameTyping : Node3D {
 
   [Dependency] public IAppRepo AppRepo => this.DependOn<IAppRepo>();
   [Dependency] public IGameTypingRepo GameTypingRepo => this.DependOn<IGameTypingRepo>();
-
-
 
   public string BufferLabelBbcode {
     get => BufferLabel.Get("bbcode").ToString();
@@ -66,7 +61,6 @@ public partial class GameTyping : Node3D {
 
   // Called when the node enters the scene tree for the first time.
   public override void _Ready() {
-    GD.Print("GameTyping Ready");
     SetPaused(true);
     Setup();
 
@@ -83,7 +77,7 @@ public partial class GameTyping : Node3D {
 
   // Called every frame. 'delta' is the elapsed time since the previous frame.
   public override void _Process(double delta) {
-    if (paused)
+    if (_paused)
       return;
     var nearest = Enemy.GetNearestEnemies(PlayerPosition, EnemiesContainer, MaxEnemyPanels);
 
@@ -108,23 +102,22 @@ public partial class GameTyping : Node3D {
   }
 
 
-  public bool paused = true;
-  public bool game_started = false;
+  private bool _paused = true;
+  private bool _gameStarted;
 
 
   public void StartGame() {
     LoadWordlist();
     GameTypingSystem = new GameTypingSystem(WordList);
-    game_started = true;
+    _gameStarted = true;
     SetPaused(false);
   }
 
-  public void SetPaused(bool _paused) {
-    if (!game_started) {
+  public void SetPaused(bool paused) {
+    if (!_gameStarted) {
       return;
     }
-
-    paused = _paused;
+    _paused = paused;
     if (_paused) {
       SpawnTimer.Stop();
     }
@@ -136,47 +129,16 @@ public partial class GameTyping : Node3D {
 
   public override void _Input(InputEvent @event) {
     if (@event is InputEventKey keyEvent && keyEvent.Pressed) {
-    //   var buffer = BufferLabelBbcode;
-    //   var s = KeyboardUtils.KeyToString(keyEvent.Keycode);
-    //   if (activeEnemy != null) {
-    //     activeEnemy.OnInput(s);
-    //   }
-    //   else {
-    //     var found = false;
-    //     Enemy? lastEnemy = null;
-    //     foreach (var enemy in EnemiesContainer.GetChildren().OfType<Enemy>()) {
-    //       // foreach (var nextInput in enemy.NextInputs) {
-    //       //   if (nextInput.StartsWith())
-    //       // }
-    //       // if (enemy.AcceptsInput(s)) {
-    //       //   found = true;
-    //       //   activeEnemy = enemy;
-    //       //   activeEnemy.OnInput(s);
-    //       //   activeEnemy.OnDelete += _on_active_enemy_deleted;
-    //       //   break;
-    //       // }
-    //       lastEnemy = enemy;
-    //     }
-    //     if (!found) {
-    //       if (lastEnemy != null && WanaKana.IsJapanese(lastEnemy.Prompt)) {
-    //
-    //       }
-    //
-    //       GameTypingRepo.IncreaseNumErrors();
-    //     }
-    //   }
-      GameTypingSystem.OnInput(keyEvent.Keycode);
+      GameTypingSystem?.OnInput(keyEvent.Keycode);
     }
   }
 
-  public static void Shuffle<T>(IList<T> list) {
-    int n = list.Count;
+  private static void Shuffle<T>(IList<T> list) {
+    var n = list.Count;
     while (n > 1) {
       n--;
-      int k = Random.Shared.Next(n + 1);
-      T value = list[k];
-      list[k] = list[n];
-      list[n] = value;
+      var k = Random.Shared.Next(n + 1);
+      (list[k], list[n]) = (list[n], list[k]);
     }
   }
 
@@ -188,13 +150,9 @@ public partial class GameTyping : Node3D {
 
     var content = scenario.ReadWordList();
     WordList.Clear();
-    var words = new List<string>();
     var lines = LinesRegex().Split(content);
-    foreach (var line in lines) {
-      words.Add(line.Split("|")[0]);
-    }
+    var words = lines.Select(line => line.Split("|")[0]).ToList();
     Shuffle(words);
-
     var options = GameTypingRepo.ActiveScenarioOptions;
     if (options == null) {
       return;
@@ -202,7 +160,6 @@ public partial class GameTyping : Node3D {
     for (int i = 0; i < Math.Min(options.WordsPlayed, words.Count); i++) {
       WordList.Push(words[i]);
     }
-    GD.Print("WordList Loaded");
   }
 
 
@@ -210,24 +167,22 @@ public partial class GameTyping : Node3D {
     if (EnemiesContainer.GetChildren().Count >= 5) {
       return;
     }
-
     if (GameTypingSystem == null) {
       GD.Print("Missing GameTypingSystem");
       return;
     }
-
+    var vocab = GameTypingSystem.NextEntry(false);
+    if (vocab == null) {
+      return;
+    }
     const float spawnRadius = 5.0f;
     const float minDistanceBetweenEnemies = 2.0f;
     const int maxSpawnAttempts = 10;
-
     var rng = new RandomNumberGenerator();
     rng.Randomize();
-
     Vector3 spawnPosition = FindValidSpawnPosition3D(rng, spawnRadius, minDistanceBetweenEnemies, maxSpawnAttempts);
-    var enemy = CreateEnemy3D(spawnPosition);
+    var enemy = CreateEnemy3D(vocab, spawnPosition);
     EnemiesContainer.AddChild(enemy);
-    // var start = Stopwatch.GetTimestamp();
-    // GD.Print("Created Enemy " + enemy.Prompt + " in " + Stopwatch.GetElapsedTime(start).TotalMilliseconds + " ms");
   }
 
   private Vector3 FindValidSpawnPosition3D(RandomNumberGenerator rng, float radius, float minDistance,
@@ -275,8 +230,8 @@ public partial class GameTyping : Node3D {
     return false;
   }
 
-  private Enemy CreateEnemy3D(Vector3 position) {
-    var enemy = Enemy.Instantiate(GameTypingSystem.NextEntry(false), PlayerPosition);
+  private Enemy CreateEnemy3D(Vocab vocab, Vector3 position) {
+    var enemy = Enemy.Instantiate(vocab, PlayerPosition);
     enemy.Position = position;
     return enemy;
   }

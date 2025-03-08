@@ -83,7 +83,7 @@ jobs:
         run: |
           mkdir ${{ github.workspace }}/godot/build/
           cd godot
-          godot -v --headless --export-release ${{ matrix.platform }} || exit 1
+          godot -v --headless --export-release "${{ matrix.platform }}" build/AnkiTaiso-snapshop-${{ matrix.platform }}.zip || exit 1
 
       - name: 🦺 Upload Artifact
         uses: actions/upload-artifact@v4
@@ -91,6 +91,7 @@ jobs:
           name: Kyoukai Tansa - ${{ matrix.platform }}
           path: ${{ github.workspace }}/godot/build
 
+        
       - name: 🔬 Setup docs
         uses: actions/setup-python@v5
         with:

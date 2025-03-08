@@ -20,6 +20,7 @@ config/icon="uid://cugnd2frxdsmj"
 
 window/size/viewport_width=1024
 window/size/viewport_height=768
+window/size/mode=2
 window/size/initial_position_type=3
 
 [dotnet]
