@@ -78,26 +78,50 @@ jobs:
           export PATH="$PATH:/root/.dotnet/tools"
           cd godot/
           godotenv addons install
+#
+#      - name: 🦺 Build Projects
+#        if: matrix.platform != 'android'
+#        run: |
+#          mkdir ${{ github.workspace }}/godot/build/
+#          cd godot
+#          godot -v --headless --export-release "${{ matrix.platform }}" build/AnkiTaiso-snapshop-${{ matrix.platform }}.zip || exit 1
+#
+#      - name: 🦺 Build Projects Android
+#        if: matrix.platform == 'android'
+#        run: |
+#          mkdir ${{ github.workspace }}/godot/build/
+#          cd godot
+#          godot -v --headless --export-release "${{ matrix.platform }}" build/AnkiTaiso-snapshop-${{ matrix.platform }}.apk || exit 1
+#
+#      - name: 🦺 Upload Artifact
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: AnkiTaiso-snapshop-${{ matrix.platform }}
+#          path: ${{ github.workspace }}/godot/build
 
-      - name: 🦺 Build Projects
-        if: matrix.platform != 'android'
-        run: |
-          mkdir ${{ github.workspace }}/godot/build/
-          cd godot
-          godot -v --headless --export-release "${{ matrix.platform }}" build/AnkiTaiso-snapshop-${{ matrix.platform }}.zip || exit 1
 
-      - name: 🦺 Build Projects Android
-        if: matrix.platform == 'android'
-        run: |
-          mkdir ${{ github.workspace }}/godot/build/
-          cd godot
-          godot -v --headless --export-release "${{ matrix.platform }}" build/AnkiTaiso-snapshop-${{ matrix.platform }}.apk || exit 1
 
-      - name: 🦺 Upload Artifact
-        uses: actions/upload-artifact@v4
+      - name: export game
+        id: export
+        # Use latest version (see releases for all versions)
+        uses: firebelley/godot-export@v6.0.0
         with:
-          name: AnkiTaiso-snapshop-${{ matrix.platform }}
-          path: ${{ github.workspace }}/godot/build
+          # Defining all the required inputs
+          godot_executable_download_url: https://github.com/godotengine/godot/releases/download/4.4-stable/Godot_v4.4-stable_mono_linux_x86_64.zip
+          godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/4.4-stable/Godot_v4.4-stable_mono_export_templates.tpz
+          relative_project_path: ./godot/
+          archive_output: true
+          presets_to_export: "${{ matrix.platform }}"
+
+        # This release action has worked well for me. However, you can most likely use any release action of your choosing.
+        # https://github.com/ncipollo/release-action
+      - name: create release
+        uses: ncipollo/release-action@v1.14.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          generateReleaseNotes: true
+          tag: ${{ github.ref_name }}
+          artifacts: ${{ steps.export.outputs.archive_directory }}/*
 
       - name: 🔬 Setup docs
         uses: actions/setup-python@v5

@@ -70,7 +70,7 @@ jobs:
           # Use .NET-enabled version of Godot (the default is also true).
           use-dotnet: true
           # Include the Godot Export Templates (the default is false).
-          include-templates: false
+          include-templates: true
 
       - name: 🔬 Verify Setup
         run: |
