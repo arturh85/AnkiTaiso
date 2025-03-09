@@ -58,8 +58,6 @@
     </li>
         </ul>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#net-versioning">.NET Versioning</a>
-    </li>
     <li class="toctree-l2"><a class="reference internal" href="#application-entry-point">🏁 Application Entry Point</a>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#running-the-project">⏯ Running the Project</a>
@@ -121,10 +119,15 @@
               
                 <h1 id="getting-started">Getting Started</h1>
 <h2 id="getting-started_1">🥚 Getting Started</h2>
-<p>First install GodotEnv which manages our addons:</p>
+<p>Requirements:</p>
+<ul>
+<li><a href="https://dotnet.microsoft.com/en-us/download/dotnet/9.0">Dotnet 9</a></li>
+<li><a href="https://godotengine.org/download/">Godot 4.4 Mono</a></li>
+</ul>
+<p>Then install <a href="https://github.com/chickensoft-games/GodotEnv">GodotEnv</a> which manages our addons:</p>
 <pre><code>dotnet tool install --global Chickensoft.GodotEnv
 </code></pre>
-<p>Then we install all addons with this command:</p>
+<p>And install all addons with this command:</p>
 <pre><code>godotenv addons install
 </code></pre>
 <h2 id="environment-setup">🏝 Environment Setup</h2>
@@ -134,10 +137,8 @@
 <blockquote>
 <p>Please double-check that the provided VSCode settings don't conflict with your existing settings.</p>
 </blockquote>
-<h2 id="net-versioning">.NET Versioning</h2>
-<p>The included <a href="../../godot/global.json"><code>global.json</code></a> specifies the version of the .NET SDK and <code>Godot.NET.Sdk</code> that the game should use. Using a <code>global.json</code> file allows [Renovatebot] to provide your repository with automatic dependency update pull requests whenever a new version of [GodotSharp] is released.</p>
 <h2 id="application-entry-point">🏁 Application Entry Point</h2>
-<p>The <code>Main.tscn</code> and <code>Main.cs</code> scene and script file are the entry point of your game. In general, you probably won't need to modify these unless you're doing something highly custom.</p>
+<p>The <code>Main.tscn</code> and <code>Main.cs</code> scene and script file are the entry point of the game. In general, you probably won't need to modify these unless you're doing something highly custom.</p>
 <p>If the game is running a release build, the <code>Main.cs</code> file will just immediately change the scene to <code>src/Game.tscn</code>. If the game is running in debug mode <em>and</em> GoDotTest has received the correct command line arguments to begin testing, the game will switch to the testing scene and hand off control to GoDotTest to run the game's tests.</p>
 <p>In general, prefer editing <code>src/Game.tscn</code> over <code>src/Main.tscn</code>.</p>
 <p>The provided debug configurations in <code>.vscode/launch.json</code> allow you to easily debug tests (or just the currently open test, provided its filename matches its class name).</p>
