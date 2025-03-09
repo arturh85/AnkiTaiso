@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        platform: [linux, windows, android]
+        platform: [linux, windows]
     defaults:
       run:
         # Use bash shells on all platforms.
