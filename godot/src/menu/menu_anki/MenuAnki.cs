@@ -13,15 +13,22 @@ using utils;
 
 public interface IMenuAnki : IControl {
   event MenuAnki.BackEventHandler Back;
+  public GDTask UpdateDialog();
 }
 
 [Meta(typeof(IAutoNode))]
-[SceneTree]
+// [SceneTree]
 public partial class MenuAnki : Control, IMenuAnki {
   public override void _Notification(int what) => this.Notify(what);
 
   [Signal]
   public delegate void BackEventHandler();
+
+  [Node] public IHBoxContainer ExampleAnkiDeck { get; set; } = default!;
+  [Node] public ILineEdit AnkiUrlEdit { get; set; } = default!;
+  [Node] public IVBoxContainer AnkiDecksContainer { get; set; } = default!;
+  [Node] public IButton BackButton { get; set; } = default!;
+
   public override void _Ready() {
     // ScenarioParentContainer.Hide();
     ExampleAnkiDeck.Hide();
@@ -44,14 +51,12 @@ public partial class MenuAnki : Control, IMenuAnki {
     foreach (var deckName in deckNames) {
       var control = (ExampleAnkiDeck.Duplicate() as Control)!;
       var button = (
-        control.GetNode(nameof(_.MarginContainer.HBoxContainer.ScenarioParentContainer.ExampleAnkiDeck.Button)) as
+        control.GetNode("Button") as
           Button)!;
       button.Text = deckName;
       // button.Pressed += () => OnScenarioSelected(id);
-      var label = (
-          control.GetNode(nameof(_.MarginContainer.HBoxContainer.ScenarioParentContainer.ExampleAnkiDeck.Label)) as
-            Label)
-        !;
+      var label = control.GetNode("Label") as
+            Label        ;
       label.Text = deckName;
       control.Show();
       AnkiDecksContainer.AddChild(control);

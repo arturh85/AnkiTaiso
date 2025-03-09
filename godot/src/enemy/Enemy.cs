@@ -2,10 +2,12 @@ namespace ankitaiso.enemy;
 
 using System.Collections.Generic;
 using System.Linq;
+using Chickensoft.AutoInject;
+using Chickensoft.GodotNodeInterfaces;
 using game_typing;
 using Godot;
 
-[SceneTree]
+// [SceneTree]
 public partial class Enemy : Node3D {
   private Vector3 _movementTarget;
 
@@ -18,6 +20,8 @@ public partial class Enemy : Node3D {
 
   [Signal]
   public delegate void OnDeleteEventHandler();
+  [Node] public INode3D GuiOffset { get; set; } = default!;
+  [Node] public INode3D Model { get; set; } = default!;
 
   [OnInstantiate]
   private void Initialise(Vocab vocab, Vector3 movementTarget) {

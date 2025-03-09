@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using app.domain;
 using Chickensoft.AutoInject;
+using Chickensoft.GodotNodeInterfaces;
 using Chickensoft.Introspection;
 using Chickensoft.LogicBlocks;
 using domain;
@@ -16,7 +17,6 @@ using Godot;
 using state;
 
 [Meta(typeof(IAutoNode))]
-[SceneTree]
 public partial class GameTyping : Node3D {
   public override void _Notification(int what) => this.Notify(what);
 
@@ -35,6 +35,10 @@ public partial class GameTyping : Node3D {
   [Dependency] public IGameTypingRepo GameTypingRepo => this.DependOn<IGameTypingRepo>();
   [Dependency] public GameTypingSystem GameTypingSystem => this.DependOn<GameTypingSystem>();
 
+  [Node] public IRichTextLabel BufferLabel { get; set; } = default!;
+  [Node] public IControl GuiControls { get; set; } = default!;
+  [Node] public Node3D EnemiesContainer { get; set; } = default!;
+  [Node] public ITimer SpawnTimer { get; set; } = default!;
   public string BufferLabelBbcode {
     get => BufferLabel.Get("bbcode").ToString();
     set => BufferLabel.Set("bbcode", value);

@@ -10,7 +10,9 @@ public record Scenario {
   public required string Locale { get; set; }
 
   public string ReadWordList() {
-    var file = FileAccess.Open("res://src/data/" + WordList, FileAccess.ModeFlags.Read);
+    var contents = ResourceLoader.Load("src/data/" + WordList);
+    if (contents == null) { return "error"; }
+    var file = FileAccess.Open(contents.ResourcePath, FileAccess.ModeFlags.Read);
     var content = file.GetAsText();
     file.Close();
     return content;

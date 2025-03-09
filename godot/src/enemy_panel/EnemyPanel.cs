@@ -1,15 +1,23 @@
 namespace ankitaiso.enemy_panel;
 
+using Chickensoft.AutoInject;
+using Chickensoft.GodotNodeInterfaces;
 using enemy;
 using game_typing;
 using Godot;
 
-[SceneTree]
+// [SceneTree]
 public partial class EnemyPanel : Control {
   private Enemy? _currentEnemy;
 
   private Color _activeColor = Color.FromHtml("604540");
   private Color _inactiveColor = Color.FromHtml("000000");
+
+
+  [Node] public IRichTextLabel PromptLabel { get; set; } = default!;
+  [Node] public IRichTextLabel InputLabel { get; set; } = default!;
+  [Node] public IRichTextLabel DebugLabel { get; set; } = default!;
+  [Node] public IColorRect BackgroundContainer { get; set; } = default!;
 
   public string PromptLabelBbcode {
     get => PromptLabel.Get("bbcode").ToString();
