@@ -24,12 +24,22 @@ public class AnkiConnectApi {
     _httpClient = new HttpClient();
   }
 
-  public async Task<string[]> ListDeckNames(Uri baseUrl) {
-    var request = AnkiRequest<string[]>.ListDeckNames();
+  private async Task<AnkiResponse<T>> CallAnkiConnect<T>(AnkiRequest<T> request, Uri baseUrl) {
     var json = JsonSerializer.Serialize(request, JsonSerializerOptions.Web);
     var content = new StringContent(json, Encoding.UTF8, "application/json");
     var result = await _httpClient.PostAsync(baseUrl, content);
     var response = await request.DeserializeResponse(result);
+    return response;
+  }
+
+  public async Task<string[]> ListDeckNames(Uri baseUrl) {
+    var request = AnkiRequest.ListDeckNames();
+    var response = await CallAnkiConnect(request, baseUrl);
+    return response.Result ?? [];
+  }
+  public async Task<long[]> FindCardsByDeck(Uri baseUrl, string deckname) {
+    var request = AnkiRequest.FindCards($"deck:\"{deckname}\"");
+    var response = await CallAnkiConnect(request, baseUrl);
     return response.Result ?? [];
   }
 }
@@ -39,14 +49,9 @@ class AnkiResponse<T> {
   public string? Error { get; set; } = default!;
 }
 
-// class AnkiRequest {
-// }
-
-
-class AnkiRequest<T> {
-
-  public static AnkiRequest<string[]> FindCards(string queryString) {
-    return new AnkiRequest<string[]> {
+class AnkiRequest {
+  public static AnkiRequest<long[]> FindCards(string queryString) {
+    return new AnkiRequest<long[]> {
       Action = "findCards",
       Params = new AnkiRequestParams { Query = queryString }
     };
@@ -57,7 +62,9 @@ class AnkiRequest<T> {
       Version = 6
     };
   }
+}
 
+class AnkiRequest<T> {
   public required string Action { get; set; } = default!;
   public int Version { get; set; } = 6;
   [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
