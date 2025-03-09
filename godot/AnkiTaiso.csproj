@@ -1,6 +1,6 @@
 <Project Sdk="Godot.NET.Sdk/4.4.0">
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
@@ -286,6 +286,7 @@
     <PackageReference Include="Chickensoft.Serialization.Godot" Version="0.7.6" />
     <PackageReference Include="Chickensoft.LogicBlocks" Version="5.16.0" />
     <PackageReference Include="Chickensoft.LogicBlocks.DiagramGenerator" Version="5.16.0" PrivateAssets="all" OutputItemType="analyzer" />
+    <PackageReference Include="System.Net.Http" Version="4.3.4" />
     <PackageReference Include="WanaKana-net" Version="1.0.0" />
   </ItemGroup>
 </Project>

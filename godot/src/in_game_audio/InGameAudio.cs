@@ -62,8 +62,8 @@ public partial class InGameAudio : Node {
       .Handle((in InGameAudioLogic.Output.PlayJump _) =>
         PlayerJumped.Play()
       )
-      .Handle((in InGameAudioLogic.Output.PlayMainMenuMusic _) =>
-        StartMainMenuMusic()
+      .Handle((in InGameAudioLogic.Output.PlayMainMenuMusic _) => { }
+        // StartMainMenuMusic()
       )
       .Handle((in InGameAudioLogic.Output.PlayGameMusic _) => StartGameMusic())
       .Handle((in InGameAudioLogic.Output.StopGameMusic _) =>

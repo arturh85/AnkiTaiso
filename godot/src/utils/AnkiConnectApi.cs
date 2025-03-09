@@ -3,8 +3,11 @@ namespace ankitaiso.utils;
 using System;
 using System.Net.Http;
 using System.Net.Http.Json;
+using System.Text;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Fractural.Tasks;
 
 public class AnkiConnectApi {
   private static AnkiConnectApi? _instance = null;
@@ -22,19 +25,26 @@ public class AnkiConnectApi {
   }
 
   public async Task<string[]> ListDeckNames(Uri baseUrl) {
-    var request = AnkiRequest.ListDeckNames();
-    var result = await _httpClient.PostAsync(baseUrl, JsonContent.Create(request));
+    var request = AnkiRequest<string[]>.ListDeckNames();
+    var json = JsonSerializer.Serialize(request, JsonSerializerOptions.Web);
+    var content = new StringContent(json, Encoding.UTF8, "application/json");
+    var result = await _httpClient.PostAsync(baseUrl, content);
     var response = await request.DeserializeResponse(result);
     return response.Result ?? [];
   }
 }
 
-internal class AnkiResponse<T> {
-  public T? Result;
-  public string? Error;
+class AnkiResponse<T> {
+  public T? Result { get; set; } = default!;
+  public string? Error { get; set; } = default!;
 }
 
-internal class AnkiRequest {
+// class AnkiRequest {
+// }
+
+
+class AnkiRequest<T> {
+
   public static AnkiRequest<string[]> FindCards(string queryString) {
     return new AnkiRequest<string[]> {
       Action = "findCards",
@@ -43,16 +53,15 @@ internal class AnkiRequest {
   }
   public static AnkiRequest<string[]> ListDeckNames() {
     return new AnkiRequest<string[]> {
-      Action = "deckNames"
+      Action = "deckNames",
+      Version = 6
     };
   }
-}
 
-
-internal class AnkiRequest<T> {
-  public required string Action;
-  public int Version = 6;
-  public AnkiRequestParams Params;
+  public required string Action { get; set; } = default!;
+  public int Version { get; set; } = 6;
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+  public AnkiRequestParams? Params { get; set; } = default!;
 
   public async Task<AnkiResponse<T>> DeserializeResponse(HttpResponseMessage response) {
     var obj = await JsonSerializer.DeserializeAsync<AnkiResponse<T>>(response.Content.ReadAsStream(), JsonSerializerOptions.Web);
@@ -68,7 +77,7 @@ internal class AnkiRequest<T> {
 
 }
 
-internal class AnkiRequestParams {
+class AnkiRequestParams {
   public string? Query;
   public string[]? Cards;
 }

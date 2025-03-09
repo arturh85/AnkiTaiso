@@ -1,12 +1,15 @@
 namespace ankitaiso.menu.menu_anki;
 
+using System;
 using app.domain;
 using Chickensoft.AutoInject;
 using Chickensoft.GodotNodeInterfaces;
 using Chickensoft.Introspection;
 using domain;
+using Fractural.Tasks;
 using game_typing.domain;
 using Godot;
+using utils;
 
 public interface IMenuAnki : IControl {
   event MenuAnki.BackEventHandler Back;
@@ -29,6 +32,32 @@ public partial class MenuAnki : Control, IMenuAnki {
 
   }
 
+  public async GDTask UpdateDialog() {
+    var ankiUrl = new Uri(AnkiUrlEdit.Text.Trim());
+    var ankiService = AnkiConnectApi.GetInstance();
+
+    var deckNames = await ankiService.ListDeckNames(ankiUrl);
+    // clear existing childs
+    foreach (var child in AnkiDecksContainer.GetChildren()) {
+      child.QueueFree();
+    }
+    foreach (var deckName in deckNames) {
+      var control = (ExampleAnkiDeck.Duplicate() as Control)!;
+      var button = (
+        control.GetNode(nameof(_.MarginContainer.HBoxContainer.ScenarioParentContainer.ExampleAnkiDeck.Button)) as
+          Button)!;
+      button.Text = deckName;
+      // button.Pressed += () => OnScenarioSelected(id);
+      var label = (
+          control.GetNode(nameof(_.MarginContainer.HBoxContainer.ScenarioParentContainer.ExampleAnkiDeck.Label)) as
+            Label)
+        !;
+      label.Text = deckName;
+      control.Show();
+      AnkiDecksContainer.AddChild(control);
+    }
+  }
+
   [Dependency] public IAppRepo AppRepo => DependentExtensions.DependOn<IAppRepo>(this);
   [Dependency] public IGameTypingRepo GameTypingRepo => DependentExtensions.DependOn<IGameTypingRepo>(this);
   [Dependency] public IMenuRepo MenuRepo => DependentExtensions.DependOn<IMenuRepo>(this);
@@ -48,7 +77,7 @@ public partial class MenuAnki : Control, IMenuAnki {
 
   public void OnReady() {
     BackButton.Pressed += OnBackPressed;
-    // NewGameButton.Pressed += OnNewGamePressed;
+    // Button.Pressed += OnNewGamePressed;
     // LoadGameButton.Pressed += OnLoadGamePressed;
     // OptionsButton.Pressed += OnOptionsPressed;
     // QuitButton.Pressed += OnQuitPressed;

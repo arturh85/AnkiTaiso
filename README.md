@@ -35,6 +35,7 @@ Milestone 2:
 
 ## Potential Addons:
 
+- https://github.com/Fractural/GDTask
 - https://gitlab.com/Xecestel/sound-manager
 - https://github.com/98teg/SpriteMesh
 - https://github.com/OlliO6/Better-inspector-godot-CSharp

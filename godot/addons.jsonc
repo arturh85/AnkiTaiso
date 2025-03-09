@@ -35,6 +35,10 @@
     "richtext2": {
       "url": "https://github.com/chairfull/GodotRichTextLabel2",
       "subfolder": "addons/richtext2"
+    },
+    "GDTask": {
+      "url": "https://github.com/Fractural/GDTask",
+      "subfolder": "addons/GDTask"
     }
   }
 }

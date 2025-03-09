@@ -1,4 +1,4 @@
-# Kyōkai Tansa Docs
+# Anki Taiso Docs
 
 Project Documentation organised by [The Documentation System](https://documentation.divio.com/).
 

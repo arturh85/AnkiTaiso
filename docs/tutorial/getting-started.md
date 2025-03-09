@@ -2,11 +2,16 @@
 
 ## 🥚 Getting Started
 
-First install GodotEnv which manages our addons:
+Requirements:
+
+- [Dotnet 9](https://dotnet.microsoft.com/en-us/download/dotnet/9.0)
+- [Godot 4.4 Mono](https://godotengine.org/download/)
+
+Then install [GodotEnv](https://github.com/chickensoft-games/GodotEnv) which manages our addons:
 
     dotnet tool install --global Chickensoft.GodotEnv
 
-Then we install all addons with this command:
+And install all addons with this command:
 
     godotenv addons install
 
@@ -20,13 +25,9 @@ This template includes some Visual Studio Code settings in `.vscode/settings.jso
 
 > Please double-check that the provided VSCode settings don't conflict with your existing settings.
 
-## .NET Versioning
-
-The included [`global.json`](../../godot/global.json) specifies the version of the .NET SDK and `Godot.NET.Sdk` that the game should use. Using a `global.json` file allows [Renovatebot] to provide your repository with automatic dependency update pull requests whenever a new version of [GodotSharp] is released.
-
 ## 🏁 Application Entry Point
 
-The `Main.tscn` and `Main.cs` scene and script file are the entry point of your game. In general, you probably won't need to modify these unless you're doing something highly custom.
+The `Main.tscn` and `Main.cs` scene and script file are the entry point of the game. In general, you probably won't need to modify these unless you're doing something highly custom.
 
 If the game is running a release build, the `Main.cs` file will just immediately change the scene to `src/Game.tscn`. If the game is running in debug mode *and* GoDotTest has received the correct command line arguments to begin testing, the game will switch to the testing scene and hand off control to GoDotTest to run the game's tests.
 

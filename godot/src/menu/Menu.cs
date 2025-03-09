@@ -9,6 +9,7 @@ using Chickensoft.GodotNodeInterfaces;
 using Chickensoft.Introspection;
 using data;
 using domain;
+using Fractural.Tasks;
 using game_typing.domain;
 using Godot;
 using utils;
@@ -149,8 +150,9 @@ public partial class Menu : Control, IMenu {
     EmitSignal(SignalName.NewGame);
   }
 
-  public void OnFromAnkiPressed() {
+  public async void OnFromAnkiPressed() {
     _.MarginContainer.Get().Hide();
+    await MenuAnki.UpdateDialog();
     MenuAnki.Show();
   }
 
