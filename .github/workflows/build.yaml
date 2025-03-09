@@ -20,7 +20,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        platform: [linux, windows]
+        platform: [windows]
     defaults:
       run:
         # Use bash shells on all platforms.
@@ -78,26 +78,53 @@ jobs:
           export PATH="$PATH:/root/.dotnet/tools"
           cd godot/
           godotenv addons install
+#
+#      - name: 🦺 Build Projects
+#        if: matrix.platform != 'android'
+#        run: |
+#          mkdir ${{ github.workspace }}/godot/build/
+#          cd godot
+#          godot -v --headless --export-release "${{ matrix.platform }}" build/AnkiTaiso-snapshop-${{ matrix.platform }}.zip || exit 1
+#
+#      - name: 🦺 Build Projects Android
+#        if: matrix.platform == 'android'
+#        run: |
+#          mkdir ${{ github.workspace }}/godot/build/
+#          cd godot
+#          godot -v --headless --export-release "${{ matrix.platform }}" build/AnkiTaiso-snapshop-${{ matrix.platform }}.apk || exit 1
+#
+#      - name: 🦺 Upload Artifact
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: AnkiTaiso-snapshop-${{ matrix.platform }}
+#          path: ${{ github.workspace }}/godot/build
 
-      - name: 🦺 Build Projects
-        if: matrix.platform != 'android'
+      - name: 🔬 Install wine
+        if: matrix.platform == 'windows'
+        id: wine_install
         run: |
-          mkdir ${{ github.workspace }}/godot/build/
-          cd godot
-          godot -v --headless --export-release "${{ matrix.platform }}" build/AnkiTaiso-snapshop-${{ matrix.platform }}.zip || exit 1
+          sudo apt install wine64
+          echo "WINE_PATH=$(which wine64)" >> $GITHUB_OUTPUT
 
-      - name: 🦺 Build Projects Android
-        if: matrix.platform == 'android'
-        run: |
-          mkdir ${{ github.workspace }}/godot/build/
-          cd godot
-          godot -v --headless --export-release "${{ matrix.platform }}" build/AnkiTaiso-snapshop-${{ matrix.platform }}.apk || exit 1
-
-      - name: 🦺 Upload Artifact
-        uses: actions/upload-artifact@v4
+      - name: 🦺 Export game
+        id: export
+        uses: firebelley/godot-export@v6.0.0
         with:
-          name: AnkiTaiso-snapshop-${{ matrix.platform }}
-          path: ${{ github.workspace }}/godot/build
+          godot_executable_download_url: https://github.com/godotengine/godot/releases/download/4.4-stable/Godot_v4.4-stable_mono_linux_x86_64.zip
+          godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/4.4-stable/Godot_v4.4-stable_mono_export_templates.tpz
+          relative_project_path: ./godot/
+          archive_output: true
+          presets_to_export: "${{ matrix.platform }}"
+          wine_path: ${{ steps.wine_install.outputs.WINE_PATH }}
+
+      - name: 🦺 Create release
+        if: github.event_name == 'release' && github.event.action == 'created'
+        uses: ncipollo/release-action@v1.14.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          generateReleaseNotes: true
+          tag: ${{ github.ref_name }}
+          artifacts: ${{ steps.export.outputs.archive_directory }}/*
 
       - name: 🔬 Setup docs
         uses: actions/setup-python@v5
