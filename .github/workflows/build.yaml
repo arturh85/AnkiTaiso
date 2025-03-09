@@ -1,8 +1,8 @@
 name: 🤖 Release Build
 on:
   push:
-  pull_request:
-
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+'
 
 jobs:
   build:
@@ -18,9 +18,6 @@ jobs:
       DOTNET_NOLOGO: true
       GODOT_SILENCE_ROOT_WARNING: true
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        platform: [windows]
     defaults:
       run:
         # Use bash shells on all platforms.
@@ -47,63 +44,19 @@ jobs:
       - name: 💾 Install apt dependencies
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
-          packages: binutils rsync xvfb
+          packages: binutils rsync xvfb wine64
           version: 1.0
 
-      - name: 🤖 Setup Godot
-        uses: chickensoft-games/setup-godot@v2
-        with:
-          # Version must include major, minor, and patch, and be >= 4.0.0
-          # Pre-release label is optional.
-          #
-          # In this case, we are using the version from global.json.
-          #
-          # This allows checks on renovatebot PR's to succeed whenever
-          # renovatebot updates the Godot SDK version.
-          version: godot/global.json
-          cache: true
-          # Use .NET-enabled version of Godot (the default is also true).
-          use-dotnet: true
-          # Include the Godot Export Templates (the default is false).
-          include-templates: true
-
-      - name: 🔬 Verify Setup
-        run: |
-          dotnet --version
-          godot --version
-
-      - name: 🧑‍🔬 Generate .NET Bindings
+      - name: 🧑‍🔬 Install addons
         run: |
           dotnet tool install --global Chickensoft.GodotEnv
           export PATH="$PATH:/root/.dotnet/tools"
           cd godot/
           godotenv addons install
-#
-#      - name: 🦺 Build Projects
-#        if: matrix.platform != 'android'
-#        run: |
-#          mkdir ${{ github.workspace }}/godot/build/
-#          cd godot
-#          godot -v --headless --export-release "${{ matrix.platform }}" build/AnkiTaiso-snapshop-${{ matrix.platform }}.zip || exit 1
-#
-#      - name: 🦺 Build Projects Android
-#        if: matrix.platform == 'android'
-#        run: |
-#          mkdir ${{ github.workspace }}/godot/build/
-#          cd godot
-#          godot -v --headless --export-release "${{ matrix.platform }}" build/AnkiTaiso-snapshop-${{ matrix.platform }}.apk || exit 1
-#
-#      - name: 🦺 Upload Artifact
-#        uses: actions/upload-artifact@v4
-#        with:
-#          name: AnkiTaiso-snapshop-${{ matrix.platform }}
-#          path: ${{ github.workspace }}/godot/build
 
-      - name: 🔬 Install wine
-        if: matrix.platform == 'windows'
+      - name: 🔬 Wine
         id: wine_install
         run: |
-          sudo apt install wine64
           echo "WINE_PATH=$(which wine64)" >> $GITHUB_OUTPUT
 
       - name: 🦺 Export game
@@ -114,11 +67,10 @@ jobs:
           godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/4.4-stable/Godot_v4.4-stable_mono_export_templates.tpz
           relative_project_path: ./godot/
           archive_output: true
-          presets_to_export: "${{ matrix.platform }}"
+          presets_to_export: "windows, linux"
           wine_path: ${{ steps.wine_install.outputs.WINE_PATH }}
 
       - name: 🦺 Create release
-        if: github.event_name == 'release' && github.event.action == 'created'
         uses: ncipollo/release-action@v1.14.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -130,22 +82,18 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: 3.11
-        if: github.ref == 'refs/heads/main' && matrix.platform == 'linux'
 
       - name: 🧾 Generate docs
-        if: github.ref == 'refs/heads/main' && matrix.platform == 'linux'
         run: ./scripts/generate-docs.ps1
         shell: pwsh
 
       - name: 🧾 Build docs
-        if: github.ref == 'refs/heads/main' && matrix.platform == 'linux'
         run: |
           pip install mkdocs mkdocs-awesome-pages-plugin mkdocs-mermaid2-plugin mkdocs_puml_file mkdocs_puml plantuml
           mkdir public && mkdocs build -d public/docs
 
       - name: 🦺 Deploy docs
         uses: peaceiris/actions-gh-pages@v4
-        if: github.ref == 'refs/heads/main' && matrix.platform == 'linux'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public

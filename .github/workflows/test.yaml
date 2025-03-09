@@ -1,11 +1,11 @@
-name: 🖼 Visual Tests
+name: 🖼 Tests
 on:
   push:
   pull_request:
 
 jobs:
-  visual_tests:
-    name: 🖼 Visual Tests with ${{ matrix.render-driver }}
+  test:
+    name: 🖼 Tests with ${{ matrix.render-driver }}
     runs-on: ubuntu-latest
     # Only run the workflow if it's not a PR or if it's a PR from a fork.
     # This prevents duplicate workflows from running on PR's that originate
@@ -70,7 +70,7 @@ jobs:
           # Use .NET-enabled version of Godot (the default is also true).
           use-dotnet: true
           # Include the Godot Export Templates (the default is false).
-          include-templates: true
+          include-templates: false
 
       - name: 🔬 Verify Setup
         run: |

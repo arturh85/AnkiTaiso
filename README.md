@@ -22,7 +22,9 @@ Milestone 1:
 Milestone 2:
 - [ ] Build/Update Wordlists from Anki Decks
   - with Audio Playback on Success?
-- 
+
+Nice to have:
+- [ ] Find out why [SceneTree] breaks Export for Win/Mac
 
 ---
 
