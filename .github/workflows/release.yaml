@@ -76,9 +76,9 @@ jobs:
 
       - name: 🔬 Append Version to Filename
         run: |
-          mv ${{ steps.export.outputs.build_directory }}/windows/AnkiTaiso-windows.zip ${{ steps.export.outputs.build_directory }}/windows/AnkiTaiso-windows-v${{ github.event.inputs.version }}.zip
-          mv ${{ steps.export.outputs.build_directory }}/linux/AnkiTaiso-linux.zip ${{ steps.export.outputs.build_directory }}/linux/AnkiTaiso-linux-v${{ github.event.inputs.version }}.zip
-          mv ${{ steps.export.outputs.build_directory }}/mac/AnkiTaiso-mac.zip ${{ steps.export.outputs.build_directory }}/mac/AnkiTaiso-mac-v${{ github.event.inputs.version }}.zip
+          mv ${{ steps.export.outputs.build_directory }}/windows/AnkiTaiso.zip ${{ steps.export.outputs.build_directory }}/windows/AnkiTaiso-windows-v${{ github.event.inputs.version }}.zip
+          mv ${{ steps.export.outputs.build_directory }}/linux/AnkiTaiso.zip ${{ steps.export.outputs.build_directory }}/linux/AnkiTaiso-linux-v${{ github.event.inputs.version }}.zip
+          mv ${{ steps.export.outputs.build_directory }}/mac/AnkiTaiso.zip ${{ steps.export.outputs.build_directory }}/mac/AnkiTaiso-mac-v${{ github.event.inputs.version }}.zip
 
       - name: '⤴️ Push Version Change'
         run: |

@@ -2,7 +2,7 @@ class_name GameSettings extends Resource
 
 ## Remember to set the volume sliders with max value of 1 and step of 0.001 to apply the volume changes properly.
 @export var AUDIO_VOLUMES := {
-	"music": 0.0,
+	"music": 1.0,
 	"sfx": 1.0,
 	"voice": 1.0,
 	"ui": 1.0,

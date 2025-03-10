@@ -45,6 +45,24 @@ jobs:
           packages: binutils rsync xvfb wine64 unzip
           version: 1.0
 
+      - name: 🤖 Setup Godot
+        uses: chickensoft-games/setup-godot@v2
+        with:
+          # Version must include major, minor, and patch, and be >= 4.0.0
+          # Pre-release label is optional.
+          #
+          # In this case, we are using the version from global.json.
+          #
+          # This allows checks on renovatebot PR's to succeed whenever
+          # renovatebot updates the Godot SDK version.
+          version: godot/global.json
+          cache: true
+          # Use .NET-enabled version of Godot (the default is also true).
+          use-dotnet: true
+          # Include the Godot Export Templates (the default is false).
+          include-templates: true
+
+
       - name: 🧑‍🔬 Install addons
         run: |
           dotnet tool install --global Chickensoft.GodotEnv
@@ -76,19 +94,17 @@ jobs:
           echo "SHORT_SHA=$("${{ github.sha }}".SubString(0, 8))" >> $env:GITHUB_ENV
         shell: pwsh
 
-      - name: 🔬 DEBUG
-        run: |
-          ls -alh godot/.godot/
-
       - name: 🔬 Unzip releases
         run: |
+          cat /home/runner/.local/share/godot/mono/build_logs/*/msbuild_log.txt
+
           mkdir -p /tmp/release/windows
           mkdir -p /tmp/release/linux
           mkdir -p /tmp/release/mac
 
-          unzip ${{ steps.export.outputs.build_directory }}/windows/AnkiTaiso-windows.zip -d /tmp/release/windows/
-          unzip ${{ steps.export.outputs.build_directory }}/linux/AnkiTaiso-linux.zip -d /tmp/release/linux/
-          unzip ${{ steps.export.outputs.build_directory }}/mac/AnkiTaiso-mac.zip -d /tmp/release/mac/
+          unzip ${{ steps.export.outputs.build_directory }}/windows/AnkiTaiso.zip -d /tmp/release/windows/
+          unzip ${{ steps.export.outputs.build_directory }}/linux/AnkiTaiso.zip -d /tmp/release/linux/
+          unzip ${{ steps.export.outputs.build_directory }}/mac/AnkiTaiso.zip -d /tmp/release/mac/
 
       - name: 🦺 Upload Artifact Windows
         uses: actions/upload-artifact@v4

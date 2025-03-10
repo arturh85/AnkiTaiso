@@ -4,11 +4,14 @@ using System.Collections.Generic;
 using System.Linq;
 using Chickensoft.AutoInject;
 using Chickensoft.GodotNodeInterfaces;
+using Chickensoft.Introspection;
 using game_typing;
 using Godot;
 
-// [SceneTree]
+[Meta(typeof(IAutoNode))]
 public partial class Enemy : Node3D {
+  public override void _Notification(int what) => this.Notify(what);
+
   private Vector3 _movementTarget;
 
   // public string Prompt = "";
@@ -92,27 +95,4 @@ public partial class Enemy : Node3D {
       Position = Position.MoveToward(_movementTarget, (float)delta * 1.1f);
     }
   }
-
-  // public bool AcceptsInput(string input) {
-  //   return Moving && Prompt.StartsWith(input);
-  // }
-
-  public void OnInput(string s) {
-    // if (Prompt.StartsWith(Input + s)) {
-    //   Input += s;
-    //   NextInputs = BuildNextInputs(Prompt.Substring(Input.Length, 1));
-    //   if (!Active) {
-    //     MakeActive();
-    //   }
-    // }
-    //
-    // if (Prompt == Input) {
-    //   EmitSignal(SignalName.OnDelete);
-    //   QueueFree();
-    // }
-    // else {
-    //   GD.Print(Prompt + " != " + Input);
-    // }
-  }
-
 }

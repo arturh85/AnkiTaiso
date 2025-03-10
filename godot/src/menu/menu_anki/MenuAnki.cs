@@ -1,19 +1,19 @@
 namespace ankitaiso.menu.menu_anki;
 
 using System;
+using System.Threading.Tasks;
 using app.domain;
 using Chickensoft.AutoInject;
 using Chickensoft.GodotNodeInterfaces;
 using Chickensoft.Introspection;
 using domain;
-using Fractural.Tasks;
 using game_typing.domain;
 using Godot;
 using utils;
 
 public interface IMenuAnki : IControl {
   event MenuAnki.BackEventHandler Back;
-  public GDTask UpdateDialog();
+  public Task UpdateDialog();
 }
 
 [Meta(typeof(IAutoNode))]
@@ -39,7 +39,7 @@ public partial class MenuAnki : Control, IMenuAnki {
 
   }
 
-  public async GDTask UpdateDialog() {
+  public async Task UpdateDialog() {
     var ankiUrl = new Uri(AnkiUrlEdit.Text.Trim());
     var ankiService = AnkiConnectApi.GetInstance();
 

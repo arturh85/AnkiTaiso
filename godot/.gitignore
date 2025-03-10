@@ -12,6 +12,7 @@ obj/
 .csproj.old
 .csproj.old.*
 .DS_Store
+/*.zip
 
 *.translation
 addons/*

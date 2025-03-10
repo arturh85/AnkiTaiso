@@ -2,12 +2,15 @@ namespace ankitaiso.enemy_panel;
 
 using Chickensoft.AutoInject;
 using Chickensoft.GodotNodeInterfaces;
+using Chickensoft.Introspection;
 using enemy;
 using game_typing;
 using Godot;
 
 // [SceneTree]
+[Meta(typeof(IAutoNode))]
 public partial class EnemyPanel : Control {
+  public override void _Notification(int what) => this.Notify(what);
   private Enemy? _currentEnemy;
 
   private Color _activeColor = Color.FromHtml("604540");

@@ -2,12 +2,10 @@ namespace ankitaiso.utils;
 
 using System;
 using System.Net.Http;
-using System.Net.Http.Json;
 using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
-using Fractural.Tasks;
 
 public class AnkiConnectApi {
   private static AnkiConnectApi? _instance = null;
