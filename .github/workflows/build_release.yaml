@@ -85,23 +85,3 @@ jobs:
           generateReleaseNotes: true
           tag: ${{ github.ref_name }}
           artifacts: ${{ steps.export.outputs.build_directory }}/*/*.zip
-
-      - name: 🔬 Setup docs
-        uses: actions/setup-python@v5
-        with:
-          python-version: 3.11
-
-      - name: 🧾 Generate docs
-        run: ./scripts/generate-docs.ps1
-        shell: pwsh
-
-      - name: 🧾 Build docs
-        run: |
-          pip install mkdocs mkdocs-awesome-pages-plugin mkdocs-mermaid2-plugin mkdocs_puml_file mkdocs_puml plantuml
-          mkdir public && mkdocs build -d public/docs
-
-      - name: 🦺 Deploy docs
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./public
