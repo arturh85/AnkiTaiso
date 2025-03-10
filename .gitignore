@@ -3,4 +3,4 @@ nupkg/
 .idea/
 .DS_Store
 *.sln.*.user
-
+*.g.puml

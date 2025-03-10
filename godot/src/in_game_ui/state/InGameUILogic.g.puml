@@ -1,7 +1,0 @@
-@startuml InGameUILogic
-state "InGameUILogic State" as ankitaiso_in_game_ui_state_InGameUILogic_State
-ankitaiso_in_game_ui_state_InGameUILogic_State : OnTotalChanged() → NumCoinsChanged
-ankitaiso_in_game_ui_state_InGameUILogic_State : OnWordCleared() → NumCoinsChanged
-
-[*] --> ankitaiso_in_game_ui_state_InGameUILogic_State
-@enduml
