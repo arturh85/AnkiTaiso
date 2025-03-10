@@ -28,7 +28,7 @@ jobs:
         with:
           # If using git-lfs (large file storage), this ensures that your files
           # are checked out properly.
-          lfs: false
+          lfs: true
           # Make sure any git submodules are checked out as well.
           submodules: 'recursive'
 

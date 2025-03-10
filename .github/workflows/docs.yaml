@@ -1,6 +1,8 @@
 name: 🧾 Docs
 on:
   push:
+    paths:
+      - docs/**
     branches:
       - main
 
