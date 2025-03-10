@@ -27,12 +27,23 @@ Optional integration with [Anki](https://apps.ankiweb.net/) to practise the voca
 
 Milestone 1:
 
-- [ ] Basic Typing Game
+- [x] Basic Typing Game
 - [x] Support Japanese Kanas
+- [ ] Fix release build 
 
 Milestone 2:
 - [ ] Build/Update Wordlists from Anki Decks
-  - [ ] with Audio Playback on Success
+  - [ ] Import Audio from Anki or generate with TTS as fallback
+- [ ] Audio Playback on Success
+  - [ ] alternative Game Mode for Listening Comprehension where Audio is played first 
+- [ ] Input Test Mode for Checking Keyboard Layouts
+- [ ] Music & Sound effects
+- [ ] Visual effects for typing like shooting the zombie enemies
+
+Milestone 3:
+- [ ] Game Mode for learning/practising Alphabets / Hiragana / Katakana  
+  - [ ] SRS-style system for showing characters you type wrongly more often, maybe until a confidence threshold is reached? 
+- [ ] Store Play Statistics so Users can track their improvement
 
 ## :wave: Contributing
 

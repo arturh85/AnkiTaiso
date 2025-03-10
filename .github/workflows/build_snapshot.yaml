@@ -26,7 +26,7 @@ jobs:
         with:
           # If using git-lfs (large file storage), this ensures that your files
           # are checked out properly.
-          lfs: true
+          lfs: false
           # Make sure any git submodules are checked out as well.
           submodules: 'recursive'
 
@@ -44,24 +44,6 @@ jobs:
         with:
           packages: binutils rsync xvfb wine64 unzip
           version: 1.0
-
-      - name: 🤖 Setup Godot
-        uses: chickensoft-games/setup-godot@v2
-        with:
-          # Version must include major, minor, and patch, and be >= 4.0.0
-          # Pre-release label is optional.
-          #
-          # In this case, we are using the version from global.json.
-          #
-          # This allows checks on renovatebot PR's to succeed whenever
-          # renovatebot updates the Godot SDK version.
-          version: godot/global.json
-          cache: true
-          # Use .NET-enabled version of Godot (the default is also true).
-          use-dotnet: true
-          # Include the Godot Export Templates (the default is false).
-          include-templates: true
-
 
       - name: 🧑‍🔬 Install addons
         run: |
@@ -96,8 +78,6 @@ jobs:
 
       - name: 🔬 Unzip releases
         run: |
-          cat /home/runner/.local/share/godot/mono/build_logs/*/msbuild_log.txt
-
           mkdir -p /tmp/release/windows
           mkdir -p /tmp/release/linux
           mkdir -p /tmp/release/mac
@@ -109,17 +89,17 @@ jobs:
       - name: 🦺 Upload Artifact Windows
         uses: actions/upload-artifact@v4
         with:
-          name: AnkiTaiso-windows-${{ env.SHORT_SHA}}
+          name: AnkiTaiso-windows-${{ env.SHORT_SHA }}
           path: /tmp/release/windows/
 
       - name: 🦺 Upload Artifact Linux
         uses: actions/upload-artifact@v4
         with:
-          name: AnkiTaiso-linux-${{ env.SHORT_SHA}}
+          name: AnkiTaiso-linux-${{ env.SHORT_SHA }}
           path: /tmp/release/linux/
 
       - name: 🦺 Upload Artifact Mac
         uses: actions/upload-artifact@v4
         with:
-          name: AnkiTaiso-mac-${{ env.SHORT_SHA}}
+          name: AnkiTaiso-mac-${{ env.SHORT_SHA }}
           path: /tmp/release/mac/
