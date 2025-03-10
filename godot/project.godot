@@ -14,7 +14,6 @@ config/name="AnkiTaiso"
 config/description="暗記体操 (Anki Taiso) - Anki empowered Godot 4 Typing Game"
 run/main_scene="res://src/Main.tscn"
 config/features=PackedStringArray("4.4", "C#", "Mobile")
-config/icon="uid://cugnd2frxdsmj"
 
 [autoload]
 
