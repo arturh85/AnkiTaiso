@@ -1,12 +1,10 @@
-name: 🤖 Release Build
+name: 🤖 Build Snapshot
 on:
-  push:
-    tags:
-      - 'v[0-9]+.[0-9]+.[0-9]+'
+  workflow_dispatch:
 
 jobs:
   build:
-    name: 🤖 Release Build
+    name: 🤖 Build Snapshot
     permissions:
       contents: write
     # Only run the workflow if it's not a PR or if it's a PR from a fork.
@@ -44,7 +42,7 @@ jobs:
       - name: 💾 Install apt dependencies
         uses: awalsh128/cache-apt-pkgs-action@latest
         with:
-          packages: binutils rsync xvfb wine64
+          packages: binutils rsync xvfb wine64 unzip
           version: 1.0
 
       - name: 🧑‍🔬 Install addons
@@ -53,6 +51,7 @@ jobs:
           export PATH="$PATH:/root/.dotnet/tools"
           cd godot/
           godotenv addons install
+          mkdir -p /tmp/godot-publish-dotnet/8031-ExportRelease-osx-x64
 
       - name: 🔬 Wine
         id: wine_install
@@ -72,16 +71,39 @@ jobs:
           presets_to_export: "windows, linux, mac"
           wine_path: ${{ steps.wine_install.outputs.WINE_PATH }}
 
-      - name: 🔬 Append Version to Filename
+      - name: 🔬 Extract short SHA
         run: |
-          mv ${{ steps.export.outputs.build_directory }}/windows/AnkiTaiso-windows.zip ${{ steps.export.outputs.build_directory }}/windows/AnkiTaiso-windows-${{ github.ref_name }}.zip
-          mv ${{ steps.export.outputs.build_directory }}/linux/AnkiTaiso-linux.zip ${{ steps.export.outputs.build_directory }}/linux/AnkiTaiso-linux-${{ github.ref_name }}.zip
-          mv ${{ steps.export.outputs.build_directory }}/mac/AnkiTaiso-mac.zip ${{ steps.export.outputs.build_directory }}/mac/AnkiTaiso-mac-${{ github.ref_name }}.zip
+          echo "SHORT_SHA=$("${{ github.sha }}".SubString(0, 8))" >> $env:GITHUB_ENV
+        shell: pwsh
 
-      - name: 🦺 Create release
-        uses: ncipollo/release-action@v1.14.0
+      - name: 🔬 DEBUG
+        run: |
+          ls -alh godot/.godot/
+
+      - name: 🔬 Unzip releases
+        run: |
+          mkdir -p /tmp/release/windows
+          mkdir -p /tmp/release/linux
+          mkdir -p /tmp/release/mac
+
+          unzip ${{ steps.export.outputs.build_directory }}/windows/AnkiTaiso-windows.zip -d /tmp/release/windows/
+          unzip ${{ steps.export.outputs.build_directory }}/linux/AnkiTaiso-linux.zip -d /tmp/release/linux/
+          unzip ${{ steps.export.outputs.build_directory }}/mac/AnkiTaiso-mac.zip -d /tmp/release/mac/
+
+      - name: 🦺 Upload Artifact Windows
+        uses: actions/upload-artifact@v4
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          generateReleaseNotes: true
-          tag: ${{ github.ref_name }}
-          artifacts: ${{ steps.export.outputs.build_directory }}/*/*.zip
+          name: AnkiTaiso-windows-${{ env.SHORT_SHA}}
+          path: /tmp/release/windows/
+
+      - name: 🦺 Upload Artifact Linux
+        uses: actions/upload-artifact@v4
+        with:
+          name: AnkiTaiso-linux-${{ env.SHORT_SHA}}
+          path: /tmp/release/linux/
+
+      - name: 🦺 Upload Artifact Mac
+        uses: actions/upload-artifact@v4
+        with:
+          name: AnkiTaiso-mac-${{ env.SHORT_SHA}}
+          path: /tmp/release/mac/

@@ -1,71 +1,57 @@
-# Anki Taiso
+<div align='center'>
 
-Anki Taiso (暗記体操) - Anki empowered Godot 4 Typing Game
+<img src=https://github.com/arturh85/AnkiTaiso/blob/main/docs/AnkiTaiso-splash.png alt="logo" width=400 height= />
 
-<img src="docs/AnkiTaiso-splash.png" width="400">
+<h1>Anki Taiso (暗記体操)</h1>
+<p>Anki empowered Godot 4 Typing Game</p>
 
----
+<h4> <a href="https://arturh85.github.io/AnkiTaiso/docs/"> Documentation </a> <span> · </span> <a href="https://github.com/arturh85/AnkiTaiso/issues"> Report Bug </a> </h4>
+
+</div>
+
+## :star2: About the Project
 
 [Typing of the Dead](https://en.wikipedia.org/wiki/The_Typing_of_the_Dead) inspired **Typing Game** with support for different alphabets.
 Optional integration with [Anki](https://apps.ankiweb.net/) to practise the vocabulary you are learning.
 
----
+### :dart: Features
 
-## Roadmap
+- **Anki Integration**: Import Word Lists from your Anki Decks to train on the words you already learn!
+- **Japanese Support**: Japanese Hiragana and Katakana supported out of the big without switching keyboard layouts 
 
+## :toolbox: Getting Started
+
+- see [Getting Started Guide](https://arturh85.github.io/AnkiTaiso/docs/tutorial/getting-started/)
+
+## :compass: Roadmap
 
 Milestone 1:
 
 - [ ] Basic Typing Game
-- [ ] Support Japanese Kanas
+- [x] Support Japanese Kanas
 
 Milestone 2:
 - [ ] Build/Update Wordlists from Anki Decks
-  - with Audio Playback on Success?
+  - [ ] with Audio Playback on Success
 
-Nice to have:
-- [ ] Find out why [SceneTree] breaks Export for Win/Mac
+## :wave: Contributing
 
----
+Contributions are always welcome! 
 
-## Based on
+Looking for:
 
-- [WanaKana-net](https://github.com/MartinZikmund/WanaKana-net)
-- [Godot 4 Plugins](https://github.com/MakovWait/godot4-plugins)
-- Godot Tests: https://github.com/chickensoft-games/GoDotTest
-- [GodotSharp SourceGenerators](https://github.com/Cat-Lips/GodotSharp.SourceGenerators)
+- people who know different languages like korean and want to help me test them
+- level designers to make the levels for fun
+- sound designers for music/sound effects
 
-## Potential Addons:
+## :page_with_curl: License
 
-- https://github.com/Fractural/GDTask
-- https://gitlab.com/Xecestel/sound-manager
-- https://github.com/98teg/SpriteMesh
-- https://github.com/OlliO6/Better-inspector-godot-CSharp
-- https://github.com/2shady4u/godot-sqlite
-- https://github.com/AnidemDex/Godot-DialogPlugin
-- https://github.com/SirLich/gd-explorer
-- https://github.com/Dark-Peace/bottled-up-tilemap
-- https://github.com/Hugo4IT/Iconify
-- https://github.com/Ark2000/PankuConsole
-- https://github.com/LauraWebdev/godot_snap_path3d_points_to_floor
-- https://github.com/dxdesjardins/GDSave
-- https://github.com/Sirush/AnkiDotNet
+Distributed under the MIT License. See LICENSE for more information.
 
-## Other Links
+## :gem: Acknowledgements
 
-- https://git.sr.ht/~foosoft/anki-connect
+Use this section to mention useful resources and libraries that you have used in your projects.
 
-## Other projects
-
-- https://github.com/Maaack/Godot-Game-Template
-- https://github.com/Maaack/Godot-Menus-Template
-- https://github.com/TinyTakinTeller/TakinGodotTemplate
-
-## Tools used
-
-- [GodotEnv](https://github.com/chickensoft-games/GodotEnv)
-
-## Special thanks to
-
-- [ChickenSoft](https://chickensoft.games/) for their open source contributions!
-
+- [ChickenSoft](https://chickensoft.games/) for their C# support libraries
+- [WanaKana-net](https://github.com/MartinZikmund/WanaKana-net) for Japanese language
+- [GodotEnv](https://github.com/chickensoft-games/GodotEnv) for Godot Addon Management

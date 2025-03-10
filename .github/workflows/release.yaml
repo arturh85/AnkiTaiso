@@ -1,0 +1,94 @@
+name: '🗂 Release new version'
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version (no 'v' prefix)"
+        required: true
+
+jobs:
+  create_version_pull_request:
+    name: '🗂 Release new version'
+    runs-on: ubuntu-latest
+    steps:
+      - name: 🧾 Checkout
+        uses: actions/checkout@v4
+        with:
+          # If using git-lfs (large file storage), this ensures that your files
+          # are checked out properly.
+          lfs: true
+          # Make sure any git submodules are checked out as well.
+          submodules: 'recursive'
+
+      - name: '📝 Change Version'
+        uses: vers-one/dotnet-project-version-updater@v1.7
+        with:
+          file: "godot/AnkiTaiso.csproj"
+          version: ${{ github.event.inputs.version }}
+
+      - name: '⤴️ Commit Version Change'
+        run: |
+          git config user.name "${{ github.actor }}"
+          git config user.email "${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com"
+          git add .
+          git commit -m "🔖 Release v${{ github.event.inputs.version }}"
+
+
+      - name: 💽 Setup .NET SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          # Use the .NET SDK from global.json in the root of the repository.
+          global-json-file: godot/global.json
+
+      - name: 📦 Restore Dependencies
+        run: cd godot; dotnet restore
+
+      - name: 💾 Install apt dependencies
+        uses: awalsh128/cache-apt-pkgs-action@latest
+        with:
+          packages: binutils rsync xvfb wine64
+          version: 1.0
+
+      - name: 🧑‍🔬 Install addons
+        run: |
+          dotnet tool install --global Chickensoft.GodotEnv
+          export PATH="$PATH:/root/.dotnet/tools"
+          cd godot/
+          godotenv addons install
+
+      - name: 🔬 Wine
+        id: wine_install
+        run: |
+          echo "WINE_PATH=$(which wine64)" >> $GITHUB_OUTPUT
+
+      - name: 🦺 Export game
+        id: export
+        uses: firebelley/godot-export@v6.0.0
+        with:
+          godot_executable_download_url: https://github.com/godotengine/godot/releases/download/4.4-stable/Godot_v4.4-stable_mono_linux_x86_64.zip
+          godot_export_templates_download_url: https://github.com/godotengine/godot/releases/download/4.4-stable/Godot_v4.4-stable_mono_export_templates.tpz
+          relative_project_path: ./godot/
+          archive_output: false
+          verbose: true
+          cache: true
+          presets_to_export: "windows, linux, mac"
+          wine_path: ${{ steps.wine_install.outputs.WINE_PATH }}
+
+      - name: 🔬 Append Version to Filename
+        run: |
+          mv ${{ steps.export.outputs.build_directory }}/windows/AnkiTaiso-windows.zip ${{ steps.export.outputs.build_directory }}/windows/AnkiTaiso-windows-v${{ github.event.inputs.version }}.zip
+          mv ${{ steps.export.outputs.build_directory }}/linux/AnkiTaiso-linux.zip ${{ steps.export.outputs.build_directory }}/linux/AnkiTaiso-linux-v${{ github.event.inputs.version }}.zip
+          mv ${{ steps.export.outputs.build_directory }}/mac/AnkiTaiso-mac.zip ${{ steps.export.outputs.build_directory }}/mac/AnkiTaiso-mac-v${{ github.event.inputs.version }}.zip
+
+      - name: '⤴️ Push Version Change'
+        run: |
+          git tag v${{ github.event.inputs.version }}
+          git push --tag
+
+      - name: 🦺 Create release
+        uses: ncipollo/release-action@v1.14.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          generateReleaseNotes: true
+          tag: v${{ github.event.inputs.version }}
+          artifacts: ${{ steps.export.outputs.build_directory }}/*/*.zip
