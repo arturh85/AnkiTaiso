@@ -1,20 +1,19 @@
 namespace GameDemo.Tests;
 
+using System;
 using ankitaiso.game.domain;
 using Chickensoft.Collections;
 using Chickensoft.GoDotTest;
 using Godot;
-using LightMock.Generator;
-// using Moq;
 using Shouldly;
 
-public class GameRepoTest : TestClass {
+// using Moq;
+
+public class GameRepoTest : TestClass, IDisposable {
   private AutoProp<bool> _isMouseCaptured = default!;
   private AutoProp<bool> _isPaused = default!;
   private AutoProp<Vector3> _playerGlobalPosition = default!;
   private AutoProp<Basis> _cameraBasis = default!;
-  private AutoProp<int> _numCoinsCollected = default!;
-  private AutoProp<int> _numCoinsAtStart = default!;
 
   private GameRepo _repo = default!;
 
@@ -26,16 +25,11 @@ public class GameRepoTest : TestClass {
     _isPaused = new(false);
     _playerGlobalPosition = new(Vector3.Zero);
     _cameraBasis = new(Basis.Identity);
-    _numCoinsCollected = new(0);
-    _numCoinsAtStart = new(0);
-
     _repo = new(
       _isMouseCaptured,
       _isPaused,
       _playerGlobalPosition,
-      _cameraBasis,
-      _numCoinsCollected,
-      _numCoinsAtStart
+      _cameraBasis
     );
   }
 
@@ -183,36 +177,18 @@ public class GameRepoTest : TestClass {
   }
 
   [Test]
-  public void OnJumpshroomUsedInvokesEvent() {
-    var called = 0;
-
-    void onJumpshroomUsed() => called++;
-
-    _repo.OnJumpshroomUsed();
-    _repo.JumpshroomUsed += onJumpshroomUsed;
-    _repo.OnJumpshroomUsed();
-
-    called.ShouldBe(1);
-  }
-
-  [Test]
-  public void SetNumCoinsAtStart() {
-    _repo.SetNumCoinsAtStart(5);
-
-    _repo.NumCoinsAtStart.Value.ShouldBe(5);
-  }
-
-  [Test]
-  public void SetNumCoinsCollected() {
-    _repo.SetNumCoinsCollected(5);
-
-    _repo.NumCoinsCollected.Value.ShouldBe(5);
-  }
-
-  [Test]
   public void GlobalCameraDirection() {
     _repo.SetCameraBasis(Basis.Identity);
 
     _repo.GlobalCameraDirection.ShouldBe(Vector3.Forward);
+  }
+
+  public void Dispose() {
+    GC.SuppressFinalize(this);
+    _isMouseCaptured.Dispose();
+    _isPaused.Dispose();
+    _playerGlobalPosition.Dispose();
+    _cameraBasis.Dispose();
+    _repo.Dispose();
   }
 }

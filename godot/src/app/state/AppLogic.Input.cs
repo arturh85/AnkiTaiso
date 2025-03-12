@@ -1,6 +1,6 @@
 namespace ankitaiso.app.state;
 
-using ankitaiso.app.domain;
+using domain;
 
 public partial class AppLogic {
   public static class Input {

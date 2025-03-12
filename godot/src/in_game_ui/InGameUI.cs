@@ -5,18 +5,16 @@ using Chickensoft.AutoInject;
 using Chickensoft.GodotNodeInterfaces;
 using Chickensoft.Introspection;
 using game_typing;
-using game.domain;
 using game_typing.domain;
-using GameDemo;
+using game.domain;
 using Godot;
-using state;
-using InGameUILogic = state.InGameUILogic;
 
 public interface IInGameUI : IControl {
-  void UpdateLabel(int leftVocab, int totalVocab);
+  void UpdateProgressLabel(int leftVocab, int totalVocab);
 }
 
 [Meta(typeof(IAutoNode))]
+[SceneTree]
 public partial class InGameUI : Control, IInGameUI {
   public override void _Notification(int what) => this.Notify(what);
 
@@ -30,50 +28,27 @@ public partial class InGameUI : Control, IInGameUI {
 
   #endregion Dependencies
 
-  #region Nodes
-
-  [Node] public ILabel CoinsLabel { get; set; } = default!;
-
-  #endregion Nodes
-
-  #region State
-
-  public IInGameUILogic InGameUILogic { get; set; } = default!;
-
-  public InGameUILogic.IBinding InGameUIBinding { get; set; } = default!;
-
-  #endregion State
-
   public void Setup() {
-    InGameUILogic = new InGameUILogic();
   }
 
   public void OnResolved() {
-    InGameUILogic.Set(this);
-    InGameUILogic.Set(AppRepo);
-    InGameUILogic.Set(GameRepo);
-    InGameUILogic.Set(GameTypingRepo);
-
-    InGameUIBinding = InGameUILogic.Bind();
-
-    // InGameUIBinding
-    //   .Handle((in InGameUILogic.Output.NumCoinsChanged output) =>
-    //     SetCoinsLabel(
-    //       output.NumCoinsCollected, output.NumCoinsAtStart
-    //     )
-    //   );
-
-    GameTypingSystem.OnLeftCountChanged += UpdateLabel;
-
-    InGameUILogic.Start();
+    GameTypingSystem.OnLeftCountChanged += UpdateProgressLabel;
+    UpdateTimer.Timeout += UpdateStatisticLabel;
   }
-
-  public void UpdateLabel(int leftVocab, int totalVocab) =>
-    CoinsLabel.Text = $"{totalVocab - leftVocab}/{totalVocab}";
 
   public void OnExitTree() {
-    InGameUILogic.Stop();
-    InGameUIBinding.Dispose();
-    GameTypingSystem.OnLeftCountChanged -= UpdateLabel;
+    GameTypingSystem.OnLeftCountChanged -= UpdateProgressLabel;
+    UpdateTimer.Timeout -= UpdateStatisticLabel;
   }
+
+  public void UpdateStatisticLabel() {
+    // if (GameTypingSystem.Start == null) {
+    //
+    // }
+
+    StatisticLabel.Text = $"";
+  }
+
+  public void UpdateProgressLabel(int leftVocab, int totalVocab) =>
+    ProgressLabel.Text = $"{totalVocab - leftVocab}/{totalVocab}";
 }

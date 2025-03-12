@@ -104,3 +104,34 @@ jobs:
           # when the tests fail.
 
           echo "Finished running tests in Godot with emulated ${{ matrix.render-driver }} graphics."
+
+      - uses: dorny/paths-filter@v3
+        id: changes
+        with:
+          filters: |
+            docs:
+              - 'docs/**'
+
+      - name: 🔬 Setup docs
+        if: steps.changes.outputs.docs == 'true'
+        uses: actions/setup-python@v5
+        with:
+          python-version: 3.11
+
+      - name: 🧾 Generate docs
+        if: steps.changes.outputs.docs == 'true'
+        run: ./scripts/generate-docs.ps1
+        shell: pwsh
+
+      - name: 🧾 Build docs
+        if: steps.changes.outputs.docs == 'true'
+        run: |
+          pip install mkdocs mkdocs-awesome-pages-plugin mkdocs-mermaid2-plugin mkdocs_puml_file mkdocs_puml plantuml
+          mkdir public && mkdocs build -d public/docs
+
+      - name: 🦺 Deploy docs
+        if: steps.changes.outputs.docs == 'true'
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public

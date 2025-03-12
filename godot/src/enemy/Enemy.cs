@@ -19,7 +19,7 @@ public partial class Enemy : Node3D {
   // public string Input = "";
   // public string[] NextInputs = [];
   public bool Moving;
-  public Vocab Vocab;
+  public Vocab Vocab = null!;
 
   [Signal]
   public delegate void OnDeleteEventHandler();

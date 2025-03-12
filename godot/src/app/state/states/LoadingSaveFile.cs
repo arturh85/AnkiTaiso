@@ -6,11 +6,11 @@ using Chickensoft.LogicBlocks;
 public partial class AppLogic {
   public partial record State {
     [Meta]
-    public partial record LoadingSaveFile : state.AppLogic.State, LogicBlock<state.AppLogic.State>.IGet<state.AppLogic.Input.SaveFileLoaded> {
+    public partial record LoadingSaveFile : State, IGet<Input.SaveFileLoaded> {
       public LoadingSaveFile() {
-        this.OnEnter(() => Output(new state.AppLogic.Output.StartLoadingSaveFile()));
+        this.OnEnter(() => Output(new Output.StartLoadingSaveFile()));
       }
-      public LogicBlock<state.AppLogic.State>.Transition On(in state.AppLogic.Input.SaveFileLoaded input) => To<InGame>();
+      public Transition On(in Input.SaveFileLoaded input) => To<InGame>();
     }
   }
 }

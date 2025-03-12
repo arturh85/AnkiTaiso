@@ -38,6 +38,7 @@ public partial class EnemyPanel : Control {
 
   [OnInstantiate]
   private void Initialise() {
+    _currentEnemy = null;
   }
 
   public void UpdateGui(Enemy enemy) {

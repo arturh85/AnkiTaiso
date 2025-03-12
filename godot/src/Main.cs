@@ -1,11 +1,7 @@
 namespace ankitaiso;
 
 using app;
-using data.model;
 using Godot;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-
 #if DEBUG
 using System.Reflection;
 using Chickensoft.GoDotTest;

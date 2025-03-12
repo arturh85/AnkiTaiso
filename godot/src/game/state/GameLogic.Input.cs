@@ -1,7 +1,6 @@
 namespace ankitaiso.game.state;
 
 using domain;
-using GameDemo;
 
 public partial class GameLogic {
   public static class Input {

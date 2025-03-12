@@ -14,7 +14,7 @@ public partial class PlayerLogic {
     [Meta, Id("player_logic_state_alive_airborne_liftoff")]
     public partial record Liftoff : Airborne {
       public Liftoff() {
-        this.OnEnter(() => Output(new state.PlayerLogic.Output.Animations.Jump()));
+        this.OnEnter(() => Output(new Output.Animations.Jump()));
       }
     }
   }

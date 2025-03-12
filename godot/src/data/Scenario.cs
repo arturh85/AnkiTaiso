@@ -1,6 +1,7 @@
 namespace ankitaiso.data;
 
 using Godot;
+using utils;
 
 public record Scenario {
   public required string Id { get; set; }
@@ -11,6 +12,9 @@ public record Scenario {
 
   public string ReadWordList() {
     var file = FileAccess.Open("res://src/data/" + WordList, FileAccess.ModeFlags.Read);
+    if (file == null) {
+      throw new GameException($"failed to find bundled {WordList}");
+    }
     var content = file.GetAsText();
     file.Close();
     return content;

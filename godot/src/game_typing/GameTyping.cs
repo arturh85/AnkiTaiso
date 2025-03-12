@@ -8,21 +8,15 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using app.domain;
 using Chickensoft.AutoInject;
-using Chickensoft.GodotNodeInterfaces;
 using Chickensoft.Introspection;
-using Chickensoft.LogicBlocks;
 using domain;
 using enemy_panel;
 using Godot;
-using state;
 
 [Meta(typeof(IAutoNode))]
+[SceneTree]
 public partial class GameTyping : Node3D {
   public override void _Notification(int what) => this.Notify(what);
-
-  public IGameTypingLogic GameTypingLogic { get; set; } = default!;
-
-  public LogicBlock<GameTypingLogic.State>.IBinding GameTypingBinding { get; set; } = default!;
 
   public Vector3 PlayerPosition;
   public Vector3 SpawnPosition;
@@ -35,10 +29,10 @@ public partial class GameTyping : Node3D {
   [Dependency] public IGameTypingRepo GameTypingRepo => this.DependOn<IGameTypingRepo>();
   [Dependency] public GameTypingSystem GameTypingSystem => this.DependOn<GameTypingSystem>();
 
-  [Node] public IRichTextLabel BufferLabel { get; set; } = default!;
-  [Node] public IControl GuiControls { get; set; } = default!;
-  [Node] public Node3D EnemiesContainer { get; set; } = default!;
-  [Node] public ITimer SpawnTimer { get; set; } = default!;
+  // [Node] public IRichTextLabel BufferLabel { get; set; } = default!;
+  // [Node] public IControl GuiControls { get; set; } = default!;
+  // [Node] public Node3D EnemiesContainer { get; set; } = default!;
+  // [Node] public ITimer SpawnTimer { get; set; } = default!;
   public string BufferLabelBbcode {
     get => BufferLabel.Get("bbcode").ToString();
     set => BufferLabel.Set("bbcode", value);
@@ -148,7 +142,7 @@ public partial class GameTyping : Node3D {
   }
 
   public void LoadWordlist() {
-    var scenario = GameTypingRepo.ActiveScenario;
+    var scenario = this.GameTypingRepo.ActiveScenario;
     if (scenario == null) {
       return;
     }
@@ -225,7 +219,7 @@ public partial class GameTyping : Node3D {
     return new Vector3(x, center.Y, z);
   }
 
-  private bool IsPositionOccupied3D(Vector3 position, List<Enemy> existingEnemies, float minDistance) {
+  private static bool IsPositionOccupied3D(Vector3 position, List<Enemy> existingEnemies, float minDistance) {
     foreach (var enemy in existingEnemies) {
       if (enemy.Position.DistanceTo(position) < minDistance) {
         return true;
@@ -247,7 +241,6 @@ public partial class GameTyping : Node3D {
 
   public void _on_active_enemy_deleted() {
     activeEnemy = null;
-    GameTypingRepo.IncreaseClearedWords();
   }
 
   [GeneratedRegex("\r\n|\r|\n")]

@@ -15,7 +15,7 @@ public interface IDatabaseRepo : IDisposable {
 public class DatabaseRepo : IDatabaseRepo {
   private bool _disposedValue;
 
-  private ServiceProvider _serviceProvider;
+  private ServiceProvider? _serviceProvider;
   public async Task InitDatabase() {
     var services = new ServiceCollection();
     services.AddDbContext<DatabaseContext>();
@@ -24,7 +24,7 @@ public class DatabaseRepo : IDatabaseRepo {
     dbContext?.EnsureUp2date();
   }
 
-  public DatabaseContext? GetContext() => _serviceProvider.GetService<DatabaseContext>();
+  public DatabaseContext? GetContext() => _serviceProvider?.GetService<DatabaseContext>();
 
   #region Internals
 
@@ -32,7 +32,7 @@ public class DatabaseRepo : IDatabaseRepo {
     if (!_disposedValue) {
       if (disposing) {
         // Dispose managed objects.
-        _serviceProvider.Dispose();
+        _serviceProvider?.Dispose();
       }
 
       _disposedValue = true;

@@ -3,6 +3,7 @@ namespace ankitaiso.player;
 using Chickensoft.AutoInject;
 using Chickensoft.GodotNodeInterfaces;
 using Chickensoft.Introspection;
+using Chickensoft.LogicBlocks;
 using Godot;
 using state;
 
@@ -17,7 +18,7 @@ public partial class PlayerModel : Node3D {
   public IPlayerLogic PlayerLogic => DependentExtensions.DependOn<IPlayerLogic>(this);
   #endregion Dependencies
 
-  public PlayerLogic.IBinding PlayerBinding { get; set; } =
+  public LogicBlock<PlayerLogic.State>.IBinding PlayerBinding { get; set; } =
     default!;
 
   #region Nodes

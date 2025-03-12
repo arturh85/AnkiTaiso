@@ -3,7 +3,6 @@ namespace ankitaiso.game.state;
 using Chickensoft.Introspection;
 using Chickensoft.LogicBlocks;
 using domain;
-using GameDemo;
 
 public partial class GameLogic {
   public partial record State {

@@ -1,6 +1,5 @@
 namespace ankitaiso.map;
 
-using System.Linq;
 using app.domain;
 using Chickensoft.AutoInject;
 using Chickensoft.Collections;
@@ -9,7 +8,6 @@ using Chickensoft.Introspection;
 using Chickensoft.SaveFileBuilder;
 using game;
 using game.domain;
-using GameDemo;
 using Godot;
 using state;
 using MapLogic = state.MapLogic;
@@ -66,17 +64,6 @@ public partial class Map : Node3D, IMap {
         // ones already collected (so we can remove them when we load a save
         // file).
         return new MapData() {
-          CoinsBeingCollected = data.CoinsBeingCollected.ToDictionary(
-            keySelector: (coinName) => coinName,
-            elementSelector: coinName => {
-              var coin = EntityTable.Get<ICoin>(coinName)!;
-              return new CoinData() {
-                StateMachine = coin.CoinLogic,
-                GlobalTransform = coin.GlobalTransform
-              };
-            }
-          ),
-          CollectedCoinIds = data.CollectedCoinIds
         };
       },
       onLoad: (chunk, data) => {
@@ -101,17 +88,8 @@ public partial class Map : Node3D, IMap {
         // Update our state blackboard data with the loaded data.
         var mapLogicData = MapLogic.Get<MapLogic.Data>();
 
-        mapLogicData.CollectedCoinIds = data.CollectedCoinIds;
-
-        mapLogicData.CoinsBeingCollected =
-          data.CoinsBeingCollected.Keys.ToList();
-
-        var numCoinsCollected = data.CollectedCoinIds.Count +
-          data.CoinsBeingCollected.Count;
-
         MapLogic.Input(
           new MapLogic.Input.GameLoadedFromSaveFile(
-            NumCoinsCollected: numCoinsCollected
           )
         );
       }

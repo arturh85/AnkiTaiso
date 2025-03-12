@@ -6,12 +6,12 @@ using Chickensoft.LogicBlocks;
 public partial class PlayerLogic {
   public abstract partial record State {
     [Meta, Id("player_logic_state_alive_grounded_idle")]
-    public partial record Idle : Grounded, LogicBlock<state.PlayerLogic.State>.IGet<state.PlayerLogic.Input.StartedMovingHorizontally> {
+    public partial record Idle : Grounded, IGet<Input.StartedMovingHorizontally> {
       public Idle() {
-        this.OnEnter(() => Output(new state.PlayerLogic.Output.Animations.Idle()));
+        this.OnEnter(() => Output(new Output.Animations.Idle()));
       }
 
-      public LogicBlock<state.PlayerLogic.State>.Transition On(in state.PlayerLogic.Input.StartedMovingHorizontally input) =>
+      public Transition On(in Input.StartedMovingHorizontally input) =>
         To<Moving>();
     }
   }

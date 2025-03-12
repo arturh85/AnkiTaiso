@@ -4,8 +4,8 @@ using app.domain;
 using Chickensoft.AutoInject;
 using Chickensoft.GodotNodeInterfaces;
 using Chickensoft.Introspection;
+using Chickensoft.LogicBlocks;
 using game.domain;
-using GameDemo;
 using Godot;
 using state;
 using InGameAudioLogic = state.InGameAudioLogic;
@@ -37,7 +37,7 @@ public partial class InGameAudio : Node {
 
   public IInGameAudioLogic InGameAudioLogic { get; set; } = default!;
 
-  public InGameAudioLogic.IBinding InGameAudioBinding { get; set; } = default!;
+  public LogicBlock<InGameAudioLogic.State>.IBinding InGameAudioBinding { get; set; } = default!;
 
   #endregion State
 
@@ -62,8 +62,8 @@ public partial class InGameAudio : Node {
       .Handle((in InGameAudioLogic.Output.PlayJump _) =>
         PlayerJumped.Play()
       )
-      .Handle((in InGameAudioLogic.Output.PlayMainMenuMusic _) => { }
-        // StartMainMenuMusic()
+      .Handle((in InGameAudioLogic.Output.PlayMainMenuMusic _) =>
+        StartMainMenuMusic()
       )
       .Handle((in InGameAudioLogic.Output.PlayGameMusic _) => StartGameMusic())
       .Handle((in InGameAudioLogic.Output.StopGameMusic _) =>

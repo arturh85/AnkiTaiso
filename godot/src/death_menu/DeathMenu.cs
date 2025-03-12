@@ -2,8 +2,8 @@ namespace GameDemo;
 
 using Chickensoft.AutoInject;
 using Chickensoft.GodotNodeInterfaces;
-using Godot;
 using Chickensoft.Introspection;
+using Godot;
 
 public interface IDeathMenu : IControl {
   event DeathMenu.TryAgainEventHandler TryAgain;

@@ -8,7 +8,7 @@ public partial class PlayerLogic {
     [Meta, Id("player_logic_state_alive_airborne_falling")]
     public partial record Falling : Airborne {
       public Falling() {
-        this.OnEnter(() => Output(new state.PlayerLogic.Output.Animations.Fall()));
+        this.OnEnter(() => Output(new Output.Animations.Fall()));
       }
     }
   }

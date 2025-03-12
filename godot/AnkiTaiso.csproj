@@ -45,17 +45,6 @@
   <ItemGroup>
     <Content Include="src\app\App.tscn" />
     <Content Include="src\app\state\AppLogic.g.puml" />
-    <Content Include="src\coin\.DS_Store" />
-    <Content Include="src\coin\audio\coin_collected.mp3" />
-    <Content Include="src\coin\audio\coin_collected.mp3.import" />
-    <Content Include="src\coin\Coin.tscn" />
-    <Content Include="src\coin\CollectorDetector.tscn" />
-    <Content Include="src\coin\visuals\coin_model.glb" />
-    <Content Include="src\coin\visuals\coin_model.glb.import" />
-    <Content Include="src\coin\visuals\coin_normal.tres" />
-    <Content Include="src\coin\visuals\coin_roughness.tres" />
-    <Content Include="src\coin\visuals\coin_texture.tres" />
-    <Content Include="src\coin\visuals\teleport_3d.gdshader" />
     <Content Include="src\data\en\top_english_nouns_lower_10000.txt" />
     <Content Include="src\data\scenarios.json" />
     <Content Include="src\death_menu\DeathMenu.gdshader" />
@@ -78,7 +67,6 @@
     <Content Include="src\in_game_audio\sounds\jump.wav.import" />
     <Content Include="src\in_game_audio\sounds\menu_music.mp3" />
     <Content Include="src\in_game_audio\sounds\menu_music.mp3.import" />
-    <Content Include="src\in_game_ui\coin_scene\CoinScene.tscn" />
     <Content Include="src\in_game_ui\InGameUI.tscn" />
     <Content Include="src\map\bushes\bush.obj" />
     <Content Include="src\map\bushes\bush.obj.import" />
@@ -275,7 +263,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.2" />
     <PackageReference Include="System.IO.Abstractions" Version="22.0.11" />
     <PackageReference Include="EnvironmentAbstractions" Version="5.0.0" />
-    <PackageReference Include="GodotSharp.SourceGenerators" Version="2.5.0" PrivateAssets="all" OutputItemType="analyzer" />
+    <PackageReference Include="GodotSharp.SourceGenerators" Version="2.5.0" />
     <PackageReference Include="Chickensoft.SaveFileBuilder" Version="1.1.0" />
     <PackageReference Include="Chickensoft.AutoInject" Version="2.5.0" PrivateAssets="all" />
     <PackageReference Include="Chickensoft.Collections" Version="1.13.1" />

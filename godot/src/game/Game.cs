@@ -8,18 +8,12 @@ using Chickensoft.AutoInject;
 using Chickensoft.Collections;
 using Chickensoft.GodotNodeInterfaces;
 using Chickensoft.Introspection;
+using Chickensoft.LogicBlocks;
 using Chickensoft.SaveFileBuilder;
 using Chickensoft.Serialization;
 using Chickensoft.Serialization.Godot;
 using domain;
-using game_typing;
-using GameDemo;
 using Godot;
-using in_game_ui;
-using map;
-using pause_menu;
-using player;
-using player_camera;
 using state;
 using MapData = map.MapData;
 using PlayerCameraData = player_camera.PlayerCameraData;
@@ -33,6 +27,7 @@ IProvide<IGameRepo>, IProvide<ISaveChunk<GameData>>, IProvide<EntityTable> {
 }
 
 [Meta(typeof(IAutoNode))]
+[SceneTree]
 public partial class Game : Node3D, IGame {
   public override void _Notification(int what) => this.Notify(what);
 
@@ -56,23 +51,23 @@ public partial class Game : Node3D, IGame {
   public IGameRepo GameRepo { get; set; } = default!;
   public IGameLogic GameLogic { get; set; } = default!;
 
-  public GameLogic.IBinding GameBinding { get; set; } = default!;
+  public LogicBlock<GameLogic.State>.IBinding GameBinding { get; set; } = default!;
 
   #endregion State
 
   #region Nodes
-
-  [Node] public Node3D SpawnLocation { get; set; } = default!;
-  [Node] public GameTyping GameTyping { get; set; } = default!;
-  [Node] public IPlayerCamera PlayerCamera { get; set; } = default!;
-
-  [Node] public IPlayer Player { get; set; } = default!;
-
-  [Node] public IMap Map { get; set; } = default!;
-  [Node] public IInGameUI InGameUi { get; set; } = default!;
-  [Node] public IDeathMenu DeathMenu { get; set; } = default!;
-  [Node] public IWinMenu WinMenu { get; set; } = default!;
-  [Node] public IPauseMenu PauseMenu { get; set; } = default!;
+  //
+  // [Node] public Node3D SpawnLocation { get; set; } = default!;
+  // [Node] public GameTyping GameTyping { get; set; } = default!;
+  // [Node] public IPlayerCamera PlayerCamera { get; set; } = default!;
+  //
+  // [Node] public IPlayer Player { get; set; } = default!;
+  //
+  // [Node] public IMap Map { get; set; } = default!;
+  // [Node] public IInGameUI InGameUi { get; set; } = default!;
+  // [Node] public IDeathMenu DeathMenu { get; set; } = default!;
+  // [Node] public IWinMenu WinMenu { get; set; } = default!;
+  // [Node] public IPauseMenu PauseMenu { get; set; } = default!;
 
   #endregion Nodes
 
@@ -283,7 +278,7 @@ public partial class Game : Node3D, IGame {
   }
 
   private void FinishedLoadingSaveFile() {
-    EmitSignal(Game.SignalName.SaveFileLoaded);
+    EmitSignal(SignalName.SaveFileLoaded);
   }
 
   private void SetPauseMode(bool isPaused) => GetTree().Paused = isPaused;

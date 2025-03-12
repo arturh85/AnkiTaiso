@@ -3,7 +3,6 @@ namespace ankitaiso.player_camera.state;
 using Chickensoft.Introspection;
 using Chickensoft.LogicBlocks;
 using game.domain;
-using GameDemo;
 using Godot;
 
 public partial class PlayerCameraLogic {

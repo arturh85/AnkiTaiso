@@ -4,7 +4,6 @@ using app.domain;
 using Chickensoft.Introspection;
 using Chickensoft.LogicBlocks;
 using domain;
-using GameDemo;
 
 public partial class GameLogic {
   public partial record State {
@@ -22,10 +21,7 @@ public partial class GameLogic {
 
       public Transition On(in Input.Start input) => To<Playing>();
 
-      public Transition On(in Input.Initialize input) {
-        Get<IGameRepo>().SetNumCoinsAtStart(input.NumCoinsInWorld);
-        return ToSelf();
-      }
+      public Transition On(in Input.Initialize input) => ToSelf();
     }
   }
 }

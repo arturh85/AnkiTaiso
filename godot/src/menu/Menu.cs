@@ -11,7 +11,6 @@ using data;
 using domain;
 using game_typing.domain;
 using Godot;
-using menu_anki;
 using utils;
 
 public interface IMenu : IControl {
@@ -22,13 +21,22 @@ public interface IMenu : IControl {
 }
 
 [Meta(typeof(IAutoNode))]
+[SceneTree]
 public partial class Menu : Control, IMenu {
   public override void _Notification(int what) => this.Notify(what);
 
-
-  [Node] public IVBoxContainer ScenarioContainer { get; set; } = default!;
-  [Node] public IVBoxContainer ScenarioParentContainer { get; set; } = default!;
-  [Node] public IHBoxContainer ExampleScenario { get; set; } = default!;
+  // [Node] public IVBoxContainer ScenarioContainer { get; set; } = default!;
+  // [Node] public IVBoxContainer ScenarioParentContainer { get; set; } = default!;
+  // [Node] public IHBoxContainer ExampleScenario { get; set; } = default!;
+  // [Node] public IButton NewGameButton { get; set; } = default!;
+  // [Node] public IButton LoadGameButton { get; set; } = default!;
+  // [Node] public IButton OptionsButton { get; set; } = default!;
+  // [Node] public IButton FromAnkiButton { get; set; } = default!;
+  // [Node] public IButton QuitButton { get; set; } = default!;
+  // [Node] public IButton StartGameButton { get; set; } = default!;
+  // [Node] public IHSlider WordsPlayedHSlider { get; set; } = default!;
+  // [Node] public IMenuAnki MenuAnki { get; set; } = default!;
+  // [Node] public ILabel WordsPlayedLabel { get; set; } = default!;
 
   public override void _Ready() {
     ScenarioParentContainer.Hide();
@@ -57,9 +65,7 @@ public partial class Menu : Control, IMenu {
         OnScenarioSelected(id);
         button.KeepPressedOutside = true;
       }
-
-      var label =
-        control.GetNode("Label") as Label;
+      var label = (control.GetNode("Label") as Label)!;
       label.Text = scenario.Title;
       control.Show();
       ScenarioContainer.AddChild(control);
@@ -96,15 +102,6 @@ public partial class Menu : Control, IMenu {
     }
   }
 
-  [Node] public IButton NewGameButton { get; set; } = default!;
-  [Node] public IButton LoadGameButton { get; set; } = default!;
-  [Node] public IButton OptionsButton { get; set; } = default!;
-  [Node] public IButton FromAnkiButton { get; set; } = default!;
-  [Node] public IButton QuitButton { get; set; } = default!;
-  [Node] public IButton StartGameButton { get; set; } = default!;
-  [Node] public IHSlider WordsPlayedHSlider { get; set; } = default!;
-  [Node] public IMenuAnki MenuAnki { get; set; } = default!;
-  [Node] public ILabel WordsPlayedLabel { get; set; } = default!;
   public void OnReady() {
     NewGameButton.Pressed += OnNewGamePressed;
     LoadGameButton.Pressed += OnLoadGamePressed;
@@ -138,23 +135,18 @@ public partial class Menu : Control, IMenu {
   public void OnScenarioSelected(string id) {
     MenuRepo.SetActiveScenarioId(id);
     var scenario = GameTypingRepo.GetScenario(id);
+    if (scenario == null) {
+      return;
+    }
     var content = scenario.ReadWordList();
     var scenarioWord = LinesRegex().Matches(content).Count;
     WordsPlayedHSlider.MinValue =
       Math.Min(10, scenarioWord);
     WordsPlayedHSlider.MaxValue = scenarioWord;
-
-    // todo: highlight active scenario?
-    foreach (var child in ScenarioContainer.GetChildren()) {
-    }
   }
 
   public void OnStartGamePressed() {
     var wordsPlayed = (int)WordsPlayedHSlider.Value;
-
-    GameTypingRepo.SetTotalWords(wordsPlayed);
-    GameTypingRepo.SetClearedWords(0);
-    GameTypingRepo.SetNumErrors(0);
     var id = MenuRepo.GetActiveScenarioId();
     GameTypingRepo.ActiveScenario = GameTypingRepo.GetScenario(id!);
     GameTypingRepo.ActiveScenarioOptions = new ScenarioOptions() { WordsPlayed = wordsPlayed };

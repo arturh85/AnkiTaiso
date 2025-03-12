@@ -63,16 +63,16 @@ public partial class PauseMenu : Control, IPauseMenu {
     AnimationPlayer.AnimationFinished -= OnAnimationFinished;
   }
 
-  public void OnMainMenuPressed() => EmitSignal(PauseMenu.SignalName.MainMenu);
-  public void OnResumePressed() => EmitSignal(PauseMenu.SignalName.Resume);
-  public void OnSavePressed() => EmitSignal(PauseMenu.SignalName.Save);
+  public void OnMainMenuPressed() => EmitSignal(SignalName.MainMenu);
+  public void OnResumePressed() => EmitSignal(SignalName.Resume);
+  public void OnSavePressed() => EmitSignal(SignalName.Save);
 
   public void FadeIn() {
     AnimationPlayer.Play("fade_in");
   }
 
   public void OnAnimationFinished(StringName name)
-    => EmitSignal(PauseMenu.SignalName.TransitionCompleted);
+    => EmitSignal(SignalName.TransitionCompleted);
 
   public void FadeOut() {
     AnimationPlayer.Play("fade_out");

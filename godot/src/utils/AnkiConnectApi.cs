@@ -7,8 +7,8 @@ using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-public class AnkiConnectApi {
-  private static AnkiConnectApi? _instance = null;
+public class AnkiConnectApi : IDisposable {
+  private static AnkiConnectApi? _instance;
   private HttpClient _httpClient;
 
   public static AnkiConnectApi GetInstance() {
@@ -40,14 +40,19 @@ public class AnkiConnectApi {
     var response = await CallAnkiConnect(request, baseUrl);
     return response.Result ?? [];
   }
+
+  public void Dispose() {
+    GC.SuppressFinalize(this);
+    _httpClient.Dispose();
+  }
 }
 
-class AnkiResponse<T> {
+internal sealed class AnkiResponse<T> {
   public T? Result { get; set; } = default!;
   public string? Error { get; set; } = default!;
 }
 
-class AnkiRequest {
+internal sealed class AnkiRequest {
   public static AnkiRequest<long[]> FindCards(string queryString) {
     return new AnkiRequest<long[]> {
       Action = "findCards",
@@ -62,7 +67,7 @@ class AnkiRequest {
   }
 }
 
-class AnkiRequest<T> {
+internal sealed class AnkiRequest<T> {
   public required string Action { get; set; } = default!;
   public int Version { get; set; } = 6;
   [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
@@ -82,7 +87,7 @@ class AnkiRequest<T> {
 
 }
 
-class AnkiRequestParams {
+internal sealed class AnkiRequestParams {
   public string? Query;
-  public string[]? Cards;
+  // public string[]? Cards;
 }

@@ -8,11 +8,11 @@ using Godot;
 using utils;
 
 public class GameTypingSystem {
-  private List<Vocab> EntriesLeft;
+  private List<Vocab> EntriesLeft = null!;
   private List<Vocab> EntriesInUse = new();
   private Vocab? EntryActive;
 
-  public string Buffer { get; set; } = "";
+  public string Buffer { get; set; } = null!;
   public int TotalCount { get; set; }
 
   public int StatisticTotalSuccess { get; set; }
@@ -22,17 +22,14 @@ public class GameTypingSystem {
   private DateTimeOffset? Start;
   private DateTimeOffset? End;
 
-  public delegate void OnDelete();
+  public event OnMistakeEvent? OnMistake;
+  public delegate void OnMistakeEvent(string key, Vocab? vocab);
 
-  public event OnMistakeEventHandler OnMistake;
-  public delegate void OnMistakeEventHandler(string key, Vocab? vocab);
-
-  public event OnLeftCountChangedEventHandler OnLeftCountChanged;
-  public delegate void OnLeftCountChangedEventHandler(int leftCount, int totalCount);
+  public event OnLeftCountChangedEvent? OnLeftCountChanged;
+  public delegate void OnLeftCountChangedEvent(int leftCount, int totalCount);
 
   public GameTypingSystem() {
-    EntriesLeft = [];
-    TotalCount = EntriesLeft.Count;
+    RestartGame((IEnumerable<Vocab>)[]);
   }
 
   public GameTypingSystem(IEnumerable<string> vocabs) {

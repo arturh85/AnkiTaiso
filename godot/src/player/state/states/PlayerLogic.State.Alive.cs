@@ -1,15 +1,13 @@
 namespace ankitaiso.player.state;
 
 using Chickensoft.Introspection;
-using Chickensoft.LogicBlocks;
 using game.domain;
-using GameDemo;
 using Godot;
 
 public partial class PlayerLogic {
   public partial record State {
     [Meta]
-    public abstract partial record Alive : state.PlayerLogic.State, LogicBlock<state.PlayerLogic.State>.IGet<state.PlayerLogic.Input.PhysicsTick>, LogicBlock<state.PlayerLogic.State>.IGet<state.PlayerLogic.Input.Moved>, LogicBlock<state.PlayerLogic.State>.IGet<state.PlayerLogic.Input.Pushed>, LogicBlock<state.PlayerLogic.State>.IGet<state.PlayerLogic.Input.Killed> {
+    public abstract partial record Alive : State, IGet<Input.PhysicsTick>, IGet<Input.Moved>, IGet<Input.Pushed>, IGet<Input.Killed> {
       // Movement is allowed in any state (even in the air), so these inputs
       // handle movement for each substate unless overridden.
       //
@@ -17,18 +15,18 @@ public partial class PlayerLogic {
       // a MoveEnabled substate and extend it for states where movement is
       // allowed.
 
-      public virtual LogicBlock<state.PlayerLogic.State>.Transition On(in state.PlayerLogic.Input.Killed input) {
+      public virtual Transition On(in Input.Killed input) {
         Get<IGameRepo>().OnGameEnded(GameOverReason.Lost);
 
         return To<Dead>();
       }
 
-      public virtual LogicBlock<state.PlayerLogic.State>.Transition On(in state.PlayerLogic.Input.PhysicsTick input) {
+      public virtual Transition On(in Input.PhysicsTick input) {
         var delta = input.Delta;
         var player = Get<IPlayer>();
-        var settings = Get<state.PlayerLogic.Settings>();
+        var settings = Get<Settings>();
         var gameRepo = Get<IGameRepo>();
-        var data = Get<state.PlayerLogic.Data>();
+        var data = Get<Data>();
 
         var moveDirection =
           player.GetGlobalInputVector(gameRepo.CameraBasis.Value);
@@ -62,17 +60,17 @@ public partial class PlayerLogic {
         velocity.Y += settings.Gravity * (float)delta;
 
         Output(
-          new state.PlayerLogic.Output.MovementComputed(nextRotationBasis, velocity)
+          new Output.MovementComputed(nextRotationBasis, velocity)
         );
 
         return ToSelf();
       }
 
-      public virtual LogicBlock<state.PlayerLogic.State>.Transition On(in state.PlayerLogic.Input.Moved input) {
+      public virtual Transition On(in Input.Moved input) {
         var player = Get<IPlayer>();
-        var settings = Get<state.PlayerLogic.Settings>();
+        var settings = Get<Settings>();
         var gameRepo = Get<IGameRepo>();
-        var data = Get<state.PlayerLogic.Data>();
+        var data = Get<Data>();
 
         // Tell the game the player has moved.
         // Anything that subscribes to our position (like the camera) will
@@ -118,38 +116,38 @@ public partial class PlayerLogic {
 
         if (justHitFloor) {
           Input(
-            new state.PlayerLogic.Input.HitFloor(IsMovingHorizontally: isMovingHorizontally)
+            new Input.HitFloor(IsMovingHorizontally: isMovingHorizontally)
           );
         }
         else if (justLeftFloor) {
           Input(
-            new state.PlayerLogic.Input.LeftFloor(IsFalling: hasNegativeYVelocity)
+            new Input.LeftFloor(IsFalling: hasNegativeYVelocity)
           );
         }
         else if (justStartedFalling) {
-          Input(new state.PlayerLogic.Input.StartedFalling());
+          Input(new Input.StartedFalling());
         }
 
         // Grounded status hasn't changed. Check for changes in horizontal
         // movement.
 
         if (justStartedMovingHorizontally) {
-          Input(new state.PlayerLogic.Input.StartedMovingHorizontally());
+          Input(new Input.StartedMovingHorizontally());
         }
         else if (justStoppedMovingHorizontally) {
-          Input(new state.PlayerLogic.Input.StoppedMovingHorizontally());
+          Input(new Input.StoppedMovingHorizontally());
         }
 
         return ToSelf();
       }
 
-      public LogicBlock<state.PlayerLogic.State>.Transition On(in state.PlayerLogic.Input.Pushed input) {
+      public Transition On(in Input.Pushed input) {
         var player = Get<IPlayer>();
         var velocity = player.Velocity;
 
         // Apply force
         velocity += input.GlobalForceImpulseVector;
-        Output(new state.PlayerLogic.Output.VelocityChanged(velocity));
+        Output(new Output.VelocityChanged(velocity));
 
         // Remain in current state. Next physics tick will end up applying the
         // force which will make us re-evaluate our state in On(in Input.Moved)

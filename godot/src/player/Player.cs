@@ -5,6 +5,7 @@ using Chickensoft.AutoInject;
 using Chickensoft.Collections;
 using Chickensoft.GodotNodeInterfaces;
 using Chickensoft.Introspection;
+using Chickensoft.LogicBlocks;
 using Chickensoft.SaveFileBuilder;
 using game;
 using game.domain;
@@ -110,7 +111,7 @@ public partial class Player : CharacterBody3D, IPlayer, IProvide<IPlayerLogic> {
   public IPlayerLogic PlayerLogic { get; set; } = default!;
   public PlayerLogic.Settings Settings { get; set; } = default!;
 
-  public PlayerLogic.IBinding PlayerBinding { get; set; } = default!;
+  public LogicBlock<PlayerLogic.State>.IBinding PlayerBinding { get; set; } = default!;
 
   public void Setup() {
     Settings = new PlayerLogic.Settings(

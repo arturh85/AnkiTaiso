@@ -43,9 +43,6 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 visible = false
 
-[node name="SubViewport" parent="InGameUi/HBoxContainer/MarginContainer/HBoxContainer/MarginContainer/SubViewportContainer" index="0"]
-render_target_update_mode = 0
-
 [node name="InGameAudio" parent="." instance=ExtResource("6_wnbqg")]
 
 [node name="DeathMenu" parent="." instance=ExtResource("7_35ldn")]

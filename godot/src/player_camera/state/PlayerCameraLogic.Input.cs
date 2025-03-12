@@ -1,4 +1,5 @@
 namespace ankitaiso.player_camera.state;
+
 using Godot;
 
 public partial class PlayerCameraLogic {

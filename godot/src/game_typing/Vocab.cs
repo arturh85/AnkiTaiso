@@ -12,8 +12,8 @@ public class Vocab {
 
   public VocabState State;
 
-  public event OnMistakeEventHandler OnMistake;
-  public delegate void OnMistakeEventHandler(string key);
+  public event OnMistakeEvent? OnMistake;
+  public delegate void OnMistakeEvent(string key);
 
   public Vocab(string entry) {
     Entry = entry.Trim();
@@ -63,7 +63,7 @@ public class Vocab {
       return true;
     }
 
-    OnMistake.Invoke(input);
+    OnMistake?.Invoke(input);
     return false;
   }
 }

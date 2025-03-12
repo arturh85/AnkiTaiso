@@ -3,10 +3,10 @@ namespace ankitaiso.player_camera;
 using Chickensoft.AutoInject;
 using Chickensoft.GodotNodeInterfaces;
 using Chickensoft.Introspection;
+using Chickensoft.LogicBlocks;
 using Chickensoft.SaveFileBuilder;
 using game;
 using game.domain;
-using GameDemo;
 using Godot;
 using state;
 
@@ -75,7 +75,7 @@ public partial class PlayerCamera : Node3D, IPlayerCamera {
 
   public IPlayerCameraLogic CameraLogic { get; set; } = default!;
 
-  public PlayerCameraLogic.IBinding CameraBinding { get; set; } = default!;
+  public LogicBlock<PlayerCameraLogic.State>.IBinding CameraBinding { get; set; } = default!;
 
   #endregion State
 

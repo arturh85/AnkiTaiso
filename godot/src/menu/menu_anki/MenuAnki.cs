@@ -17,17 +17,17 @@ public interface IMenuAnki : IControl {
 }
 
 [Meta(typeof(IAutoNode))]
-// [SceneTree]
+[SceneTree]
 public partial class MenuAnki : Control, IMenuAnki {
   public override void _Notification(int what) => this.Notify(what);
 
   [Signal]
   public delegate void BackEventHandler();
 
-  [Node] public IHBoxContainer ExampleAnkiDeck { get; set; } = default!;
-  [Node] public ILineEdit AnkiUrlEdit { get; set; } = default!;
-  [Node] public IVBoxContainer AnkiDecksContainer { get; set; } = default!;
-  [Node] public IButton BackButton { get; set; } = default!;
+  // [Node] public IHBoxContainer ExampleAnkiDeck { get; set; } = default!;
+  // [Node] public ILineEdit AnkiUrlEdit { get; set; } = default!;
+  // [Node] public IVBoxContainer AnkiDecksContainer { get; set; } = default!;
+  // [Node] public IButton BackButton { get; set; } = default!;
 
   public override void _Ready() {
     // ScenarioParentContainer.Hide();
@@ -55,8 +55,7 @@ public partial class MenuAnki : Control, IMenuAnki {
           Button)!;
       button.Text = deckName;
       // button.Pressed += () => OnScenarioSelected(id);
-      var label = control.GetNode("Label") as
-            Label        ;
+      var label = (control.GetNode("Label") as Label)!;
       label.Text = deckName;
       control.Show();
       AnkiDecksContainer.AddChild(control);
@@ -82,23 +81,9 @@ public partial class MenuAnki : Control, IMenuAnki {
 
   public void OnReady() {
     BackButton.Pressed += OnBackPressed;
-    // Button.Pressed += OnNewGamePressed;
-    // LoadGameButton.Pressed += OnLoadGamePressed;
-    // OptionsButton.Pressed += OnOptionsPressed;
-    // QuitButton.Pressed += OnQuitPressed;
-    // StartGameButton.Pressed += OnStartGamePressed;
-    // WordsPlayedHSlider.ValueChanged +=
-    //   OnWordsPlayedChanged;
   }
   public void OnExitTree() {
     BackButton.Pressed -= OnBackPressed;
-    // NewGameButton.Pressed -= OnNewGamePressed;
-    // LoadGameButton.Pressed -= OnLoadGamePressed;
-    // OptionsButton.Pressed -= OnOptionsPressed;
-    // QuitButton.Pressed -= OnQuitPressed;
-    // StartGameButton.Pressed -= OnStartGamePressed;
-    // WordsPlayedHSlider.ValueChanged -=
-    //   OnWordsPlayedChanged;
   }
 
 }

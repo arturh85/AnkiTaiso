@@ -1,11 +1,12 @@
 namespace ankitaiso.test.src.app.domain;
 
+using System;
 using ankitaiso.app.domain;
 using Chickensoft.GoDotTest;
 using Godot;
 using Shouldly;
 
-public class AppRepoTest : TestClass {
+public class AppRepoTest : TestClass, IDisposable {
   private AppRepo _repo = default!;
 
   public AppRepoTest(Node testScene) : base(testScene) { }
@@ -86,5 +87,10 @@ public class AppRepoTest : TestClass {
     Should.NotThrow(_repo.Dispose);
     // Redundant dispose shouldn't do anything.
     Should.NotThrow(_repo.Dispose);
+  }
+
+  public void Dispose() {
+    GC.SuppressFinalize(this);
+    _repo.Dispose();
   }
 }

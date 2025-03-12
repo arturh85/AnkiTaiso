@@ -1,31 +1,31 @@
 namespace ankitaiso.app.state;
 
-using ankitaiso.app.domain;
 using Chickensoft.Introspection;
 using Chickensoft.LogicBlocks;
+using domain;
 
 public partial class AppLogic {
   public partial record State {
     [Meta]
-    public partial record MainMenu : state.AppLogic.State, LogicBlock<state.AppLogic.State>.IGet<state.AppLogic.Input.NewGame>, LogicBlock<state.AppLogic.State>.IGet<state.AppLogic.Input.LoadGame> {
+    public partial record MainMenu : State, IGet<Input.NewGame>, IGet<Input.LoadGame> {
       public MainMenu() {
         this.OnEnter(
           () => {
-            Get<state.AppLogic.Data>().ShouldLoadExistingGame = false;
+            Get<Data>().ShouldLoadExistingGame = false;
 
-            Output(new state.AppLogic.Output.SetupGameScene());
+            Output(new Output.SetupGameScene());
 
             Get<IAppRepo>().OnMainMenuEntered();
 
-            Output(new state.AppLogic.Output.ShowMainMenu());
+            Output(new Output.ShowMainMenu());
           }
         );
       }
 
-      public LogicBlock<state.AppLogic.State>.Transition On(in state.AppLogic.Input.NewGame input) => To<LeavingMenu>();
+      public Transition On(in Input.NewGame input) => To<LeavingMenu>();
 
-      public LogicBlock<state.AppLogic.State>.Transition On(in state.AppLogic.Input.LoadGame input) {
-        Get<state.AppLogic.Data>().ShouldLoadExistingGame = true;
+      public Transition On(in Input.LoadGame input) {
+        Get<Data>().ShouldLoadExistingGame = true;
 
         return To<LeavingMenu>();
       }

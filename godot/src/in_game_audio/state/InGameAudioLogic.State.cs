@@ -4,7 +4,6 @@ using app.domain;
 using Chickensoft.Introspection;
 using Chickensoft.LogicBlocks;
 using game.domain;
-using GameDemo;
 
 public partial class InGameAudioLogic {
   [Meta]
@@ -13,10 +12,7 @@ public partial class InGameAudioLogic {
       OnAttach(() => {
         var appRepo = Get<IAppRepo>();
         var gameRepo = Get<IGameRepo>();
-        gameRepo.CoinCollectionStarted += OnCoinCollectionStarted;
-        gameRepo.JumpshroomUsed += OnJumpshroomUsed;
         gameRepo.Ended += OnGameEnded;
-        gameRepo.Jumped += OnJumped;
         appRepo.MainMenuEntered += OnMainMenuEntered;
         appRepo.GameEntered += OnGameEntered;
       });
@@ -24,19 +20,11 @@ public partial class InGameAudioLogic {
       OnDetach(() => {
         var appRepo = Get<IAppRepo>();
         var gameRepo = Get<IGameRepo>();
-        gameRepo.CoinCollectionStarted -= OnCoinCollectionStarted;
-        gameRepo.JumpshroomUsed -= OnJumpshroomUsed;
         gameRepo.Ended -= OnGameEnded;
-        gameRepo.Jumped -= OnJumped;
         appRepo.MainMenuEntered -= OnMainMenuEntered;
         appRepo.GameEntered -= OnGameEntered;
       });
     }
-
-    public void OnCoinCollectionStarted(ICoin _) =>
-      Output(new Output.PlayCoinCollected());
-
-    public void OnJumpshroomUsed() => Output(new Output.PlayBounce());
 
     public void OnGameEnded(GameOverReason reason) {
       Output(new Output.StopGameMusic());
