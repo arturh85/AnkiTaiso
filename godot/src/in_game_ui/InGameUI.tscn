@@ -59,3 +59,4 @@ theme_override_constants/margin_left = 24
 
 [node name="UpdateTimer" type="Timer" parent="."]
 unique_name_in_owner = true
+autostart = true

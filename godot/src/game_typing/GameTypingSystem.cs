@@ -186,14 +186,6 @@ public class GameTypingSystem {
     if (EntriesInUse.Count == 0 && EntriesLeft.Count == 0) {
       End = DateTimeOffset.Now;
     }
-    if (success) {
-      OnHit?.Invoke(input, EntryActive);
-      StatisticTotalSuccess += 1;
-    }
-    else {
-      OnMistake?.Invoke(input, EntryActive);
-      StatisticTotalError += 1;
-    }
     var c = input[0];
     if (!StatisticByChar.TryGetValue(c, out var value)) {
       value = new CharStatistic(c);
@@ -201,9 +193,13 @@ public class GameTypingSystem {
     }
 
     if (success) {
+      OnHit?.Invoke(input, EntryActive);
+      StatisticTotalSuccess += 1;
       value.SuccessCount += 1;
     }
     else {
+      OnMistake?.Invoke(input, EntryActive);
+      StatisticTotalError += 1;
       value.FailCount += 1;
     }
 
@@ -213,4 +209,13 @@ public class GameTypingSystem {
   public Vocab? GetActiveEntry() => EntryActive;
 
   public ImmutableList<Vocab> GetEntriesInUse() => EntriesInUse.ToImmutableList();
+
+  public TimeSpan? GetDuration() {
+    if (Start == null) {
+      return null;
+    }
+    var end = End ?? DateTimeOffset.Now;
+    var diff = end - Start;
+    return diff;
+  }
 }
