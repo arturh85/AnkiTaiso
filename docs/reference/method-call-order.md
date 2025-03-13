@@ -1,6 +1,8 @@
-# Scene Call Order
+# Method Call Order
 
-### Init Order
+Here is the order in which the various methods you can override are called: 
+
+### On Create Order
 
 1. Constructor
 1. OnSceneInstantiated
@@ -16,7 +18,10 @@
 1. OnReady
 1. OnAfterReady
 
-### QueueFree Order
+Please notice that `_Ready` is called before the dependencies are resolved. 
+That happens in `OnResolved` or later `OnReady`.
+
+### On Free Order
 
 1. OnPredelete
 1. _ExitTree

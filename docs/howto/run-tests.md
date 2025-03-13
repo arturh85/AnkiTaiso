@@ -1,4 +1,4 @@
-### 🚥 Tests
+### 🚥 Run Tests
 
 Tests run directly inside the GitHub runner machine (using [chickensoft-games/setup-godot]) on every push to the repository. If the tests fail to pass, the workflow will also fail to pass.
 
@@ -10,8 +10,6 @@ Tests are executed by running the Godot test project in `anki-taiso` from the co
 
 
 ## 👷 Testing
-
-An example test is included in `test/src/GameTest.cs` that demonstrates how to write a test for your package using [GoDotTest] and [godot-test-driver].
 
 > [GoDotTest] is an easy-to-use testing framework for Godot and C# that allows you to run tests from the command line, collect code coverage, and debug tests in VSCode.
 

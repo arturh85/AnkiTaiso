@@ -15,6 +15,17 @@ And install all addons with this command:
 
     godotenv addons install
 
+### Optional Tools:
+
+For code coverage reports you may also install those tools:
+
+```sh
+dotnet tool install --global coverlet.console
+dotnet tool update --global coverlet.console
+dotnet tool install --global dotnet-reportgenerator-globaltool
+dotnet tool update --global dotnet-reportgenerator-globaltool
+```
+
 ## 🏝 Environment Setup
 
 For the provided debug configurations and test coverage to work correctly, you must setup your development environment correctly. The [Chickensoft Setup Docs][setup-docs] describe how to setup your Godot and C# development environment, using Chickensoft's best practice recommendations.

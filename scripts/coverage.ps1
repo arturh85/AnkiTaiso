@@ -16,6 +16,7 @@
 #
 #   You can build coverlet yourself, but you will need to edit the path to
 #   coverlet below to point to your local build of the coverlet dll.
+cd ..
 dotnet build --no-restore
 
 coverlet `

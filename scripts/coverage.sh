@@ -22,6 +22,7 @@
 # If you need help with coverage, feel free to join the Chickensoft Discord.
 # https://chickensoft.games
 
+cd ..
 dotnet build --no-restore
 
 coverlet \

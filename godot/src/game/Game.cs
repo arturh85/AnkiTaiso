@@ -8,6 +8,8 @@ using Chickensoft.AutoInject;
 using Chickensoft.Collections;
 using Chickensoft.GodotNodeInterfaces;
 using Chickensoft.Introspection;
+using Chickensoft.Log;
+using Chickensoft.Log.Godot;
 using Chickensoft.LogicBlocks;
 using Chickensoft.SaveFileBuilder;
 using Chickensoft.Serialization;
@@ -31,6 +33,7 @@ IProvide<IGameRepo>, IProvide<ISaveChunk<GameData>>, IProvide<EntityTable> {
 [SceneTree]
 public partial class Game : Node3D, IGame {
   public override void _Notification(int what) => this.Notify(what);
+  private ILog _log = new Log(nameof(Game), new GDWriter());
 
   #region Save
   [Signal]
@@ -161,7 +164,7 @@ public partial class Game : Node3D, IGame {
       onLoad: async () => {
         // Load the game data from disk.
         if (!FileSystem.File.Exists(SaveFilePath)) {
-          GD.Print("No save file to load");
+          _log.Err("No save file to load");
           return null;
         }
 

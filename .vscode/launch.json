@@ -14,7 +14,7 @@
       "internalConsoleOptions": "openOnSessionStart",
       "pipeTransport": {
         "debuggerPath": "${extensionInstallFolder:muhammad-sammy.csharp}/.debugger/netcoredbg/netcoredbg",
-        "pipeCwd": "${workspaceFolder}",
+        "pipeCwd": "${workspaceFolder}/godot",
         "pipeProgram": "${env:GODOT}",
         "pipeArgs": [
           "--debug"
@@ -39,7 +39,7 @@
           //   export NETCOREDBG="/path/to/netcoredbg/bin/netcoredbg"
           //
           "debuggerPath": "${env:NETCOREDBG}",
-          "pipeCwd": "${workspaceFolder}",
+          "pipeCwd": "${workspaceFolder}/godot",
           "pipeProgram": "${env:GODOT}",
           "pipeArgs": [
             "--debug"
@@ -54,7 +54,7 @@
       "preLaunchTask": "build",
       "program": "${env:GODOT}",
       "args": [],
-      "cwd": "${workspaceFolder}",
+      "cwd": "${workspaceFolder}/godot",
       "stopAtEntry": false,
       "console": "integratedTerminal"
     },
@@ -69,7 +69,7 @@
       "args": [
         "${fileDirname}/${fileBasenameNoExtension}.tscn"
       ],
-      "cwd": "${workspaceFolder}",
+      "cwd": "${workspaceFolder}/godot",
       "stopAtEntry": false,
       "console": "integratedTerminal"
     },
@@ -84,7 +84,7 @@
         "--run-tests",
         "--quit-on-finish"
       ],
-      "cwd": "${workspaceFolder}",
+      "cwd": "${workspaceFolder}/godot",
       "stopAtEntry": false,
       "console": "integratedTerminal"
     },
@@ -99,7 +99,7 @@
         "--run-tests=${fileBasenameNoExtension}",
         "--quit-on-finish"
       ],
-      "cwd": "${workspaceFolder}",
+      "cwd": "${workspaceFolder}/godot",
       "stopAtEntry": false,
       "console": "integratedTerminal"
     },

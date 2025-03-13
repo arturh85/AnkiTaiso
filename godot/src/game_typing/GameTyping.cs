@@ -30,40 +30,14 @@ public partial class GameTyping : Node3D {
   [Dependency] public IGameTypingRepo GameTypingRepo => this.DependOn<IGameTypingRepo>();
   [Dependency] public GameTypingSystem GameTypingSystem => this.DependOn<GameTypingSystem>();
 
-  // [Node] public IRichTextLabel BufferLabel { get; set; } = default!;
-  // [Node] public IControl GuiControls { get; set; } = default!;
-  // [Node] public Node3D EnemiesContainer { get; set; } = default!;
-  // [Node] public ITimer SpawnTimer { get; set; } = default!;
   public string BufferLabelBbcode {
     get => BufferLabel.Get("bbcode").ToString();
     set => BufferLabel.Set("bbcode", value);
   }
 
-  public void Setup() {
-    // GameTypingLogic = new GameTypingLogic();
-    // GameTypingLogic.Set(GameTypingRepo);
-    // GameTypingBinding = GameTypingLogic.Bind();
-    // GameTypingBinding
-    //   .Handle(
-    //     (in GameTypingLogic.Output.StartGame _) => {
-    //     });
-    //
-    // // Trigger the first state's OnEnter callbacks so our bindings run.
-    // // Keeps everything in sync from the moment we start!
-    // GameTypingLogic.Start();
-    // GD.Print("Game State Start");
-    //
-    // GameTypingLogic.Input(new GameLogic.Input.Initialize());
-
-    this.Provide();
-  }
-
-  // Called when the node enters the scene tree for the first time.
-  public override void _Ready() {
+  public void OnReady() {
     SetPaused(true);
-    Setup();
-
-    for (int i = 0; i < MaxEnemyPanels; i++) {
+    for (var i = 0; i < MaxEnemyPanels; i++) {
       var panel = EnemyPanel.Instantiate();
       panel.Hide();
       GuiControls.AddChild(panel);
@@ -77,8 +51,10 @@ public partial class GameTyping : Node3D {
 
   // Called every frame. 'delta' is the elapsed time since the previous frame.
   public override void _Process(double delta) {
-    if (_paused)
+    if (_paused) {
       return;
+    }
+
     var nearest = NodeUtils.GetNearestNodes<Enemy>(PlayerPosition, EnemiesContainer, MaxEnemyPanels, e => e.Moving);
 
     var idx = 0;
@@ -126,10 +102,9 @@ public partial class GameTyping : Node3D {
     }
   }
 
-
   public override void _Input(InputEvent @event) {
-    if (@event is InputEventKey keyEvent && keyEvent.Pressed) {
-      GameTypingSystem?.OnInput(keyEvent.Keycode);
+    if (@event is InputEventKey { Pressed: true } keyEvent) {
+      GameTypingSystem.OnInput(keyEvent.Keycode);
     }
   }
 
@@ -157,18 +132,14 @@ public partial class GameTyping : Node3D {
     if (options == null) {
       return;
     }
-    for (int i = 0; i < Math.Min(options.WordsPlayed, words.Count); i++) {
+    for (var i = 0; i < Math.Min(options.WordsPlayed, words.Count); i++) {
       WordList.Push(words[i]);
     }
   }
 
 
-  public void SpawnEnemy() {
+  private void SpawnEnemy() {
     if (EnemiesContainer.GetChildren().Count >= 5) {
-      return;
-    }
-    if (GameTypingSystem == null) {
-      GD.Print("Missing GameTypingSystem");
       return;
     }
     var vocab = GameTypingSystem.NextEntry(false);
@@ -180,7 +151,7 @@ public partial class GameTyping : Node3D {
     const int maxSpawnAttempts = 10;
     var rng = new RandomNumberGenerator();
     rng.Randomize();
-    Vector3 spawnPosition = FindValidSpawnPosition3D(rng, spawnRadius, minDistanceBetweenEnemies, maxSpawnAttempts);
+    var spawnPosition = FindValidSpawnPosition3D(rng, spawnRadius, minDistanceBetweenEnemies, maxSpawnAttempts);
     var enemy = CreateEnemy3D(vocab, spawnPosition);
     EnemiesContainer.AddChild(enemy);
   }
@@ -189,8 +160,8 @@ public partial class GameTyping : Node3D {
     int maxAttempts) {
     var existingEnemies = Enumerable.Cast<Enemy>(EnemiesContainer.GetChildren()).ToList();
 
-    for (int i = 0; i < maxAttempts; i++) {
-      Vector3 candidatePosition = NodeUtils.GenerateRandomPositionInArc(rng, PlayerPosition, SpawnPosition, radius);
+    for (var i = 0; i < maxAttempts; i++) {
+      var candidatePosition = NodeUtils.GenerateRandomPositionInArc(rng, PlayerPosition, SpawnPosition, radius);
 
       if (!IsPositionOccupied3D(candidatePosition, existingEnemies, minDistance)) {
         return candidatePosition;
@@ -212,18 +183,16 @@ public partial class GameTyping : Node3D {
   }
 
   private Enemy CreateEnemy3D(Vocab vocab, Vector3 position) {
-    var enemy = Enemy.Instantiate(vocab, GameTypingSystem, PlayerPosition);
+    var enemy = Enemy.Instantiate(vocab, PlayerPosition);
     enemy.Position = position;
     return enemy;
   }
 
   private string PopRandomWord() => WordList.Count > 0 ? WordList.Pop() : "empty";
 
-  public void _on_timer_timeout() => SpawnEnemy();
+  private void _on_timer_timeout() => SpawnEnemy();
 
-  public void _on_active_enemy_deleted() {
-    activeEnemy = null;
-  }
+  private void _on_active_enemy_deleted() => activeEnemy = null;
 
   [GeneratedRegex("\r\n|\r|\n")]
   private static partial Regex LinesRegex();

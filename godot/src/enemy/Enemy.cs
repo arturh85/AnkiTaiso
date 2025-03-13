@@ -14,36 +14,31 @@ public partial class Enemy : Node3D {
   private Vector3 _movementTarget;
   public bool Moving;
   public Vocab Vocab = null!;
+  [Dependency] public GameTypingSystem GameTypingSystem => this.DependOn<GameTypingSystem>();
 
   [Signal]
   public delegate void OnDeleteEventHandler();
 
-  private GameTypingSystem _gameTypingSystem = null!;
-
   [OnInstantiate]
-  private void Initialise(Vocab vocab, GameTypingSystem gameTypingSystem, Vector3 movementTarget) {
+  private void Initialise(Vocab vocab, Vector3 movementTarget) {
     _movementTarget = movementTarget;
     Vocab = vocab;
-    _gameTypingSystem = gameTypingSystem;
   }
 
-  public void OnEnterTree() {
-    _gameTypingSystem.OnHit += OnVocabHit;
-    _gameTypingSystem.OnMistake += OnVocabMistake;
-  }
-
-  public void OnExitTree() {
-    _gameTypingSystem.OnHit -= OnVocabHit;
-    _gameTypingSystem.OnMistake -= OnVocabMistake;
-  }
-
-  public override void _Ready() {
+  public void OnReady() {
     var player = GetAnimationPlayer();
     var anim = player.GetAnimation(EnemyAnimations.Walk);
     anim.LoopMode = Animation.LoopModeEnum.Linear;
     player.Play(EnemyAnimations.ClimbGrave);
     player.AnimationFinished += OnAnimationFinished;
     ImpactSprite.Hide();
+
+    GameTypingSystem.OnHit += OnVocabHit;
+    GameTypingSystem.OnMistake += OnVocabMistake;
+  }
+  public void OnExitTree() {
+    GameTypingSystem.OnHit -= OnVocabHit;
+    GameTypingSystem.OnMistake -= OnVocabMistake;
   }
 
   private void OnVocabHit(string key, Vocab? vocab) {

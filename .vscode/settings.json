@@ -162,5 +162,6 @@
       "source": "PowerShell"
     }
   },
-  "dotnet.formatting.organizeImportsOnFormat": true
+  "dotnet.formatting.organizeImportsOnFormat": true,
+  "godotTools.editorPath.godot4": "/Applications/Godot_mono.app"
 }
