@@ -22,10 +22,9 @@ Optional integration with [Anki](https://apps.ankiweb.net/) to practise the voca
 
 ## :gear: Install & Play
 
-- (optional) Install [Anki Connect](https://ankiweb.net/shared/info/2055492159) to [Anki](https://apps.ankiweb.net/) to import from your [Anki Decks](https://ankiweb.net/shared/decks)
 - Download [latest release](https://github.com/arturh85/AnkiTaiso/releases)
 - Extract the downloaded ZIP and start the executable
-
+- (optional) Install [Anki Connect](https://ankiweb.net/shared/info/2055492159) addon for [Anki](https://apps.ankiweb.net/) to import from your [Anki Decks](https://ankiweb.net/shared/decks)
 
 ## :compass: Roadmap
 
@@ -54,7 +53,7 @@ Milestone 3:
 ## :toolbox: Getting Started Developing
 
 - see [Getting Started Guide](https://arturh85.github.io/AnkiTaiso/docs/tutorial/getting-started/)
--
+
 ## :wave: Contributing
 
 Contributions are always welcome! 

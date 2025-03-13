@@ -19,4 +19,4 @@ nav:
   - ... | explanation/*.md
   - ... | reference/*.md
   - "Links":
-    - "Git Project": "https://github.com/arturh85/AnkiTaiso"
+    - "GitHub Project": "https://github.com/arturh85/AnkiTaiso"
