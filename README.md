@@ -20,17 +20,22 @@ Optional integration with [Anki](https://apps.ankiweb.net/) to practise the voca
 - **Japanese Support**: Japanese Hiragana and Katakana supported out of the box without switching keyboard layouts
 - **Multiplatform**: Windows / Linux / Mac Support (no Android/iOS release planned)
 
-## :toolbox: Getting Started
+## :gear: Install & Play
 
-- see [Getting Started Guide](https://arturh85.github.io/AnkiTaiso/docs/tutorial/getting-started/)
+- (optional) Install [Anki Connect](https://ankiweb.net/shared/info/2055492159) to [Anki](https://apps.ankiweb.net/) to import from your [Anki Decks](https://ankiweb.net/shared/decks)
+- Download [latest release](https://github.com/arturh85/AnkiTaiso/releases)
+- Extract the downloaded ZIP and start the executable
+
 
 ## :compass: Roadmap
 
 Milestone 1:
 
-- [x] Basic Typing Game
-- [x] Support Japanese Kanas
-- [ ] Fix release build 
+- [x] Splash Screens, Menu
+- [x] Basic Ingame UI with hits per minute & level progress
+- [x] Basic Typing Game with zombies moving toward the player
+- [x] Support for English and Japanese Words with Hiragana & Katakana
+- [x] Basic visual feedback on hits/mistakes
 
 Milestone 2:
 - [ ] Build/Update Wordlists from Anki Decks
@@ -46,6 +51,10 @@ Milestone 3:
   - [ ] SRS-style system for showing characters you type wrongly more often, maybe until a confidence threshold is reached? 
 - [ ] Store Play Statistics so Users can track their improvement
 
+## :toolbox: Getting Started Developing
+
+- see [Getting Started Guide](https://arturh85.github.io/AnkiTaiso/docs/tutorial/getting-started/)
+-
 ## :wave: Contributing
 
 Contributions are always welcome! 
