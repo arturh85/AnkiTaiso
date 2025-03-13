@@ -238,20 +238,35 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.09199, -0.321946)
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.65112, -0.142355)
 
-[node name="BulletOffsets" type="Node" parent="."]
+[node name="BulletHitOffsets" type="Node" parent="."]
 unique_name_in_owner = true
 
-[node name="Node3D" type="Node3D" parent="BulletOffsets"]
+[node name="Node3D" type="Node3D" parent="BulletHitOffsets"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.159442, 2.34844, -0.188498)
 
-[node name="Node3D2" type="Node3D" parent="BulletOffsets"]
+[node name="Node3D2" type="Node3D" parent="BulletHitOffsets"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.258444, 2.34844, -0.188498)
 
-[node name="Node3D3" type="Node3D" parent="BulletOffsets"]
+[node name="Node3D3" type="Node3D" parent="BulletHitOffsets"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.139266, 2.00485, -0.188498)
 
-[node name="Node3D4" type="Node3D" parent="BulletOffsets"]
+[node name="Node3D4" type="Node3D" parent="BulletHitOffsets"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.101955, 2.00485, -0.188498)
+
+[node name="BulletMissOffsets" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="Node3D" type="Node3D" parent="BulletMissOffsets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.06271, 2.15178, 0)
+
+[node name="Node3D2" type="Node3D" parent="BulletMissOffsets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.39101, 2.15178, 0)
+
+[node name="Node3D3" type="Node3D" parent="BulletMissOffsets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.976804, 2.78557, 0)
+
+[node name="Node3D4" type="Node3D" parent="BulletMissOffsets"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.746222, 2.78557, 0)
 
 [node name="ImpactSprite" type="AnimatedSprite3D" parent="."]
 unique_name_in_owner = true

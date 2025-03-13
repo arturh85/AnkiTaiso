@@ -12,6 +12,7 @@ using Chickensoft.Introspection;
 using domain;
 using enemy_panel;
 using Godot;
+using utils;
 
 [Meta(typeof(IAutoNode))]
 [SceneTree]
@@ -78,7 +79,7 @@ public partial class GameTyping : Node3D {
   public override void _Process(double delta) {
     if (_paused)
       return;
-    var nearest = Enemy.GetNearestEnemies(PlayerPosition, EnemiesContainer, MaxEnemyPanels);
+    var nearest = NodeUtils.GetNearestNodes<Enemy>(PlayerPosition, EnemiesContainer, MaxEnemyPanels, e => e.Moving);
 
     var idx = 0;
     foreach (var child in GuiControls.GetChildren()) {
@@ -174,7 +175,7 @@ public partial class GameTyping : Node3D {
     if (vocab == null) {
       return;
     }
-    const float spawnRadius = 5.0f;
+    const float spawnRadius = MathF.PI / 2;
     const float minDistanceBetweenEnemies = 2.0f;
     const int maxSpawnAttempts = 10;
     var rng = new RandomNumberGenerator();
@@ -189,7 +190,7 @@ public partial class GameTyping : Node3D {
     var existingEnemies = Enumerable.Cast<Enemy>(EnemiesContainer.GetChildren()).ToList();
 
     for (int i = 0; i < maxAttempts; i++) {
-      Vector3 candidatePosition = GenerateRandomPositionInArc(rng, SpawnPosition, radius, MathF.PI / 2);
+      Vector3 candidatePosition = NodeUtils.GenerateRandomPositionInArc(rng, PlayerPosition, SpawnPosition, radius);
 
       if (!IsPositionOccupied3D(candidatePosition, existingEnemies, minDistance)) {
         return candidatePosition;
@@ -197,27 +198,9 @@ public partial class GameTyping : Node3D {
     }
 
     // Fallback to random position without collision check
-    return GenerateRandomPositionInArc(rng, SpawnPosition, radius, MathF.PI / 2);
+    return NodeUtils.GenerateRandomPositionInArc(rng, PlayerPosition, SpawnPosition, radius);
   }
 
-  private Vector3 GenerateRandomPositionInArc(RandomNumberGenerator rng, Vector3 center, float radius,
-    float arcAngleRadians) {
-    // Calculate direction from player to the center point
-    Vector3 toCenter = center - PlayerPosition;
-    // Get the angle of this direction in the XZ plane (azimuth)
-    float thetaCenter = Mathf.Atan2(toCenter.Z, toCenter.X);
-    // Random angle within the arc around the center angle
-    float randomAngle = rng.RandfRange(thetaCenter - arcAngleRadians / 2, thetaCenter + arcAngleRadians / 2);
-    // Random distance from the player (0 to radius)
-    float distance = toCenter.Length();
-
-    // Calculate position in XZ plane around the player's position
-    float x = PlayerPosition.X + distance * Mathf.Cos(randomAngle);
-    float z = PlayerPosition.Z + distance * Mathf.Sin(randomAngle);
-
-    // Keep Y coordinate same as the center's Y (or set to PlayerPosition.Y if needed)
-    return new Vector3(x, center.Y, z);
-  }
 
   private static bool IsPositionOccupied3D(Vector3 position, List<Enemy> existingEnemies, float minDistance) {
     foreach (var enemy in existingEnemies) {
@@ -225,7 +208,6 @@ public partial class GameTyping : Node3D {
         return true;
       }
     }
-
     return false;
   }
 
