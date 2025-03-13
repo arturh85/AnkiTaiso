@@ -22,6 +22,9 @@ public class GameTypingSystem {
   private DateTimeOffset? Start;
   private DateTimeOffset? End;
 
+  public event OnWonEvent? OnWon;
+  public delegate void OnWonEvent();
+
   public event OnHitEvent? OnHit;
   public delegate void OnHitEvent(string key, Vocab? vocab);
   public event OnMistakeEvent? OnMistake;
@@ -182,10 +185,12 @@ public class GameTypingSystem {
       EntriesInUse.Remove(EntryActive);
       EntryActive = null;
       OnLeftCountChanged?.Invoke(EntriesLeft.Count + EntriesInUse.Count, TotalCount);
+      if (EntriesInUse.Count == 0 && EntriesLeft.Count == 0) {
+        End = DateTimeOffset.Now;
+        OnWon?.Invoke();
+      }
     }
-    if (EntriesInUse.Count == 0 && EntriesLeft.Count == 0) {
-      End = DateTimeOffset.Now;
-    }
+
     var c = input[0];
     if (!StatisticByChar.TryGetValue(c, out var value)) {
       value = new CharStatistic(c);

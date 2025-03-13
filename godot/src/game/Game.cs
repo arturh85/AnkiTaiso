@@ -13,6 +13,7 @@ using Chickensoft.SaveFileBuilder;
 using Chickensoft.Serialization;
 using Chickensoft.Serialization.Godot;
 using domain;
+using game_typing;
 using Godot;
 using state;
 using MapData = map.MapData;
@@ -55,22 +56,6 @@ public partial class Game : Node3D, IGame {
 
   #endregion State
 
-  #region Nodes
-  //
-  // [Node] public Node3D SpawnLocation { get; set; } = default!;
-  // [Node] public GameTyping GameTyping { get; set; } = default!;
-  // [Node] public IPlayerCamera PlayerCamera { get; set; } = default!;
-  //
-  // [Node] public IPlayer Player { get; set; } = default!;
-  //
-  // [Node] public IMap Map { get; set; } = default!;
-  // [Node] public IInGameUI InGameUi { get; set; } = default!;
-  // [Node] public IDeathMenu DeathMenu { get; set; } = default!;
-  // [Node] public IWinMenu WinMenu { get; set; } = default!;
-  // [Node] public IPauseMenu PauseMenu { get; set; } = default!;
-
-  #endregion Nodes
-
   #region Provisions
 
   IGameRepo IProvide<IGameRepo>.Value() => GameRepo;
@@ -80,6 +65,7 @@ public partial class Game : Node3D, IGame {
   #region Dependencies
 
   [Dependency] public IAppRepo AppRepo => DependentExtensions.DependOn<IAppRepo>(this);
+  [Dependency] public GameTypingSystem GameTypingSystem => DependentExtensions.DependOn<GameTypingSystem>(this);
 
   #endregion Dependencies
 
@@ -125,6 +111,8 @@ public partial class Game : Node3D, IGame {
     PauseMenu.TransitionCompleted += OnPauseMenuTransitioned;
     PauseMenu.Save += OnPauseMenuSaveRequested;
 
+    GameTypingSystem.OnWon += OnGameWon;
+
     GameChunk = new SaveChunk<GameData>(
       (chunk) => {
         var gameData = new GameData() {
@@ -149,6 +137,20 @@ public partial class Game : Node3D, IGame {
     // while loading an existing save file.
   }
 
+  public void OnExitTree() {
+    DeathMenu.TryAgain -= OnStart;
+    DeathMenu.MainMenu -= OnMainMenu;
+    DeathMenu.TransitionCompleted -= OnDeathMenuTransitioned;
+    WinMenu.MainMenu -= OnMainMenu;
+    PauseMenu.MainMenu -= OnMainMenu;
+    PauseMenu.Resume -= OnResume;
+    PauseMenu.TransitionCompleted -= OnPauseMenuTransitioned;
+    GameTypingSystem.OnWon -= OnGameWon;
+
+    GameLogic.Stop();
+    GameBinding.Dispose();
+    GameRepo.Dispose();
+  }
   public void OnResolved() {
     SaveFile = new SaveFile<GameData>(
       root: GameChunk,
@@ -237,6 +239,11 @@ public partial class Game : Node3D, IGame {
     }
   }
 
+  public void OnGameWon() =>
+    GameLogic.Input(new GameLogic.Input.EndGame(GameOverReason.Won));
+  public void OnGameLost() =>
+    GameLogic.Input(new GameLogic.Input.EndGame(GameOverReason.Lost));
+
   public void OnMainMenu() =>
     GameLogic.Input(new GameLogic.Input.GoToMainMenu());
 
@@ -258,19 +265,6 @@ public partial class Game : Node3D, IGame {
   public void OnDeathMenuTransitioned() =>
     GameLogic.Input(new GameLogic.Input.DeathMenuTransitioned());
 
-  public void OnExitTree() {
-    DeathMenu.TryAgain -= OnStart;
-    DeathMenu.MainMenu -= OnMainMenu;
-    DeathMenu.TransitionCompleted -= OnDeathMenuTransitioned;
-    WinMenu.MainMenu -= OnMainMenu;
-    PauseMenu.MainMenu -= OnMainMenu;
-    PauseMenu.Resume -= OnResume;
-    PauseMenu.TransitionCompleted -= OnPauseMenuTransitioned;
-
-    GameLogic.Stop();
-    GameBinding.Dispose();
-    GameRepo.Dispose();
-  }
 
   public void LoadExistingGame() {
     SaveFile.Load()
