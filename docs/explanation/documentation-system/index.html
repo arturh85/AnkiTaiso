@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://arturh85.github.io/AnkiTaiso/docs/reference/spellcheck/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><link rel="canonical" href="https://arturh85.github.io/AnkiTaiso/docs/explanation/documentation-system/" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>Spellcheck - Anki Taiso docs</title>
+    <title>Documentation System - Anki Taiso docs</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
@@ -15,9 +15,9 @@
     
       <script>
         // Current page data
-        var mkdocs_page_name = "Spellcheck";
-        var mkdocs_page_input_path = "reference/spellcheck.md";
-        var mkdocs_page_url = "/AnkiTaiso/docs/reference/spellcheck/";
+        var mkdocs_page_name = "Documentation System";
+        var mkdocs_page_input_path = "explanation/documentation-system.md";
+        var mkdocs_page_url = "/AnkiTaiso/docs/explanation/documentation-system/";
       </script>
     
     <!--[if lt IE 9]>
@@ -53,29 +53,27 @@
               </ul>
               <p class="caption"><span class="caption-text">How-to Guides</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../howto/tests/">Tests</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howto/release-version/">Release version</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../howto/update-godot-version/">Update godot version</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howto/run-tests/">Run tests</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Explanations</span></p>
-              <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../explanation/how-godot-works/">How Godot works</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../explanation/scene-call-order/">Scene Call Order</a>
-                  </li>
-              </ul>
-              <p class="caption"><span class="caption-text">Technical Reference</span></p>
               <ul class="current">
-                  <li class="toctree-l1"><a class="reference internal" href="../api/">Api</a>
-                  </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../godot-editor-shortcuts/">Godot Editor Shortcuts</a>
-                  </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Spellcheck</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Documentation System</a>
     <ul class="current">
     </ul>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../state-flow/">State Flow</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../how-godot-works/">How Godot works</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Technical Reference</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/godot-editor-shortcuts/">Godot Editor Shortcuts</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/method-call-order/">Method Call Order</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/state-flow/">State Flow</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Links</span></p>
@@ -97,8 +95,8 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" aria-label="Docs"></a></li>
-          <li class="breadcrumb-item">Technical Reference</li>
-      <li class="breadcrumb-item active">Spellcheck</li>
+          <li class="breadcrumb-item">Explanations</li>
+      <li class="breadcrumb-item active">Documentation System</li>
     <li class="wy-breadcrumbs-aside">
     </li>
   </ul>
@@ -107,17 +105,60 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h3 id="spellcheck">🧑‍🏫 Spellcheck</h3>
-<p>A spell check runs on every push to the repository. The spellcheck workflow settings can be configured in <a href=".github/workflows/spellcheck.yaml"><code>.github/workflows/spellcheck.yaml</code></a>.</p>
-<p>The [Code Spell Checker][cspell] plugin for VSCode is recommended to help you catch typos before you commit them. If you need add a word to the dictionary or ignore a certain path, you can edit the project's <code>cspell.json</code> file.</p>
-<p>You can also words to the local <code>cspell.json</code> file from VSCode by hovering over a misspelled word and selecting <code>Quick Fix...</code> and then <code>Add "{word}" to config: cspell.json</code>.</p>
-<p><img alt="Fix Spelling" src="../images/spelling_fix.png" /></p>
+                <h1 id="documentation-system">Documentation System</h1>
+<p>Project Documentation organised by <a href="https://documentation.divio.com/">The Documentation System</a>.</p>
+<p>There is a secret that needs to be understood in order to write good software documentation:
+there isn’t one thing called documentation, there are four.</p>
+<p>They are: <code>tutorials</code>, <code>how-to guides</code>, <code>technical reference</code> and <code>explanation</code>.
+They represent four different purposes or functions, and require four different approaches to their creation.</p>
+<p>Understanding the implications of this will help improve most documentation - often immensely.</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Tutorials</th>
+<th>How-to guides</th>
+<th>Reference</th>
+<th>Explanation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>oriented <br/>to</td>
+<td>learning</td>
+<td>a goal</td>
+<td>information</td>
+<td>understanding</td>
+</tr>
+<tr>
+<td>must</td>
+<td>allow the newcomer <br/>to get started</td>
+<td>show how to solve<br/> a specific problem</td>
+<td>describe the <br/>machinery</td>
+<td>explain</td>
+</tr>
+<tr>
+<td>its form</td>
+<td>a lesson</td>
+<td>a series of steps</td>
+<td>dry description</td>
+<td>discursive <br/>explanation</td>
+</tr>
+<tr>
+<td>analogy</td>
+<td>teaching a small<br/> child how to cook</td>
+<td>a recipe in a<br/> cookery book</td>
+<td>a reference <br/>encyclopedia <br/>article</td>
+<td>an article on culinary<br/> social history</td>
+</tr>
+</tbody>
+</table>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../godot-editor-shortcuts/" class="btn btn-neutral float-left" title="Godot Editor Shortcuts"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../state-flow/" class="btn btn-neutral float-right" title="State Flow">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../howto/run-tests/" class="btn btn-neutral float-left" title="Run tests"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../how-godot-works/" class="btn btn-neutral float-right" title="How Godot works">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -140,10 +181,10 @@
   <span class="rst-current-version" data-toggle="rst-current-version">
     
     
-      <span><a href="../godot-editor-shortcuts/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../../howto/run-tests/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../state-flow/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../how-godot-works/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>

@@ -5,23 +5,19 @@
          <lastmod>2025-03-13</lastmod>
     </url>
     <url>
+         <loc>https://arturh85.github.io/AnkiTaiso/docs/explanation/documentation-system/</loc>
+         <lastmod>2025-03-13</lastmod>
+    </url>
+    <url>
          <loc>https://arturh85.github.io/AnkiTaiso/docs/explanation/how-godot-works/</loc>
          <lastmod>2025-03-13</lastmod>
     </url>
     <url>
-         <loc>https://arturh85.github.io/AnkiTaiso/docs/explanation/scene-call-order/</loc>
+         <loc>https://arturh85.github.io/AnkiTaiso/docs/howto/release-version/</loc>
          <lastmod>2025-03-13</lastmod>
     </url>
     <url>
-         <loc>https://arturh85.github.io/AnkiTaiso/docs/howto/tests/</loc>
-         <lastmod>2025-03-13</lastmod>
-    </url>
-    <url>
-         <loc>https://arturh85.github.io/AnkiTaiso/docs/howto/update-godot-version/</loc>
-         <lastmod>2025-03-13</lastmod>
-    </url>
-    <url>
-         <loc>https://arturh85.github.io/AnkiTaiso/docs/reference/api/</loc>
+         <loc>https://arturh85.github.io/AnkiTaiso/docs/howto/run-tests/</loc>
          <lastmod>2025-03-13</lastmod>
     </url>
     <url>
@@ -29,7 +25,7 @@
          <lastmod>2025-03-13</lastmod>
     </url>
     <url>
-         <loc>https://arturh85.github.io/AnkiTaiso/docs/reference/spellcheck/</loc>
+         <loc>https://arturh85.github.io/AnkiTaiso/docs/reference/method-call-order/</loc>
          <lastmod>2025-03-13</lastmod>
     </url>
     <url>

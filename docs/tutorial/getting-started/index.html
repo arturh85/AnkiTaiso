@@ -51,6 +51,10 @@
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">Getting Started</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#getting-started_1">🥚 Getting Started</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#optional-tools">Optional Tools:</a>
+    </li>
+        </ul>
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#environment-setup">🏝 Environment Setup</a>
         <ul>
@@ -67,25 +71,23 @@
               </ul>
               <p class="caption"><span class="caption-text">How-to Guides</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../howto/tests/">Tests</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howto/release-version/">Release version</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../howto/update-godot-version/">Update godot version</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../howto/run-tests/">Run tests</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Explanations</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../explanation/how-godot-works/">How Godot works</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../explanation/documentation-system/">Documentation System</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../explanation/scene-call-order/">Scene Call Order</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../explanation/how-godot-works/">How Godot works</a>
                   </li>
               </ul>
               <p class="caption"><span class="caption-text">Technical Reference</span></p>
               <ul>
-                  <li class="toctree-l1"><a class="reference internal" href="../../reference/api/">Api</a>
-                  </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../reference/godot-editor-shortcuts/">Godot Editor Shortcuts</a>
                   </li>
-                  <li class="toctree-l1"><a class="reference internal" href="../../reference/spellcheck/">Spellcheck</a>
+                  <li class="toctree-l1"><a class="reference internal" href="../../reference/method-call-order/">Method Call Order</a>
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../../reference/state-flow/">State Flow</a>
                   </li>
@@ -131,6 +133,13 @@
 </code></pre>
 <p>And install all addons with this command:</p>
 <pre><code>godotenv addons install
+</code></pre>
+<h3 id="optional-tools">Optional Tools:</h3>
+<p>For code coverage reports you may also install those tools:</p>
+<pre><code class="language-sh">dotnet tool install --global coverlet.console
+dotnet tool update --global coverlet.console
+dotnet tool install --global dotnet-reportgenerator-globaltool
+dotnet tool update --global dotnet-reportgenerator-globaltool
 </code></pre>
 <h2 id="environment-setup">🏝 Environment Setup</h2>
 <p>For the provided debug configurations and test coverage to work correctly, you must setup your development environment correctly. The [Chickensoft Setup Docs][setup-docs] describe how to setup your Godot and C# development environment, using Chickensoft's best practice recommendations.</p>
@@ -179,7 +188,7 @@
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
         <a href="../.." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../../howto/tests/" class="btn btn-neutral float-right" title="Tests">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../../howto/release-version/" class="btn btn-neutral float-right" title="Release version">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -205,7 +214,7 @@
       <span><a href="../.." style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../../howto/tests/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../../howto/release-version/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
