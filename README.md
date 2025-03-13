@@ -17,7 +17,8 @@ Optional integration with [Anki](https://apps.ankiweb.net/) to practise the voca
 ### :dart: Features
 
 - **Anki Integration**: Import Word Lists from your Anki Decks to train on the words you already learn!
-- **Japanese Support**: Japanese Hiragana and Katakana supported out of the big without switching keyboard layouts 
+- **Japanese Support**: Japanese Hiragana and Katakana supported out of the box without switching keyboard layouts
+- **Multiplatform**: Windows / Linux / Mac Support (no Android/iOS release planned)
 
 ## :toolbox: Getting Started
 

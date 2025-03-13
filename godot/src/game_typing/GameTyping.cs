@@ -230,7 +230,7 @@ public partial class GameTyping : Node3D {
   }
 
   private Enemy CreateEnemy3D(Vocab vocab, Vector3 position) {
-    var enemy = Enemy.Instantiate(vocab, PlayerPosition);
+    var enemy = Enemy.Instantiate(vocab, GameTypingSystem, PlayerPosition);
     enemy.Position = position;
     return enemy;
   }

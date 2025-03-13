@@ -4,3 +4,4 @@ nupkg/
 .DS_Store
 *.sln.*.user
 *.g.puml
+/_library

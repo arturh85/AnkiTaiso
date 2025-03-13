@@ -22,6 +22,8 @@ public class GameTypingSystem {
   private DateTimeOffset? Start;
   private DateTimeOffset? End;
 
+  public event OnHitEvent? OnHit;
+  public delegate void OnHitEvent(string key, Vocab? vocab);
   public event OnMistakeEvent? OnMistake;
   public delegate void OnMistakeEvent(string key, Vocab? vocab);
 
@@ -185,6 +187,7 @@ public class GameTypingSystem {
       End = DateTimeOffset.Now;
     }
     if (success) {
+      OnHit?.Invoke(input, EntryActive);
       StatisticTotalSuccess += 1;
     }
     else {

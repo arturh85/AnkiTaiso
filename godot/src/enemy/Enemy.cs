@@ -1,5 +1,6 @@
 namespace ankitaiso.enemy;
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Chickensoft.AutoInject;
@@ -9,6 +10,7 @@ using game_typing;
 using Godot;
 
 [Meta(typeof(IAutoNode))]
+[SceneTree]
 public partial class Enemy : Node3D {
   public override void _Notification(int what) => this.Notify(what);
 
@@ -23,28 +25,19 @@ public partial class Enemy : Node3D {
 
   [Signal]
   public delegate void OnDeleteEventHandler();
-  [Node] public INode3D GuiOffset { get; set; } = default!;
-  [Node] public INode3D Model { get; set; } = default!;
+
+  private GameTypingSystem _gameTypingSystem = null!;
 
   [OnInstantiate]
-  private void Initialise(Vocab vocab, Vector3 movementTarget) {
+  private void Initialise(Vocab vocab, GameTypingSystem gameTypingSystem, Vector3 movementTarget) {
     _movementTarget = movementTarget;
     Vocab = vocab;
-    Vocab.OnMistake += OnVocabMistake;
+    _gameTypingSystem = gameTypingSystem;
   }
 
+  public void OnEnterTree() => _gameTypingSystem.OnMistake += OnVocabMistake;
 
-  public void OnExitTree() {
-    Vocab.OnMistake -= OnVocabMistake;
-  }
-
-  public void OnVocabMistake(string key) {
-
-  }
-
-  public Vector3 GetGuiOffset() => GuiOffset.Position;
-
-  public AnimationPlayer GetAnimationPlayer() => (Model.GetNode(nameof(AnimationPlayer)) as AnimationPlayer)!;
+  public void OnExitTree() => _gameTypingSystem.OnMistake -= OnVocabMistake;
 
   public override void _Ready() {
     var player = GetAnimationPlayer();
@@ -52,7 +45,31 @@ public partial class Enemy : Node3D {
     anim.LoopMode = Animation.LoopModeEnum.Linear;
     player.Play(EnemyAnimations.ClimbGrave);
     player.AnimationFinished += OnAnimationFinished;
+    ImpactSprite.Hide();
   }
+
+  public void OnVocabMistake(string key, Vocab? vocab) {
+    if (vocab != Vocab) {
+      return;
+    }
+
+    var offsets = BulletOffsets.GetChildren();
+    var randomIndx = Random.Shared.Next(0, offsets.Count);
+    var offset = offsets[randomIndx] as Node3D;
+    var sprite = new AnimatedSprite3D();
+    sprite.SpriteFrames = ImpactSprite.SpriteFrames;
+    sprite.SpeedScale = ImpactSprite.SpeedScale;
+    sprite.Animation = ImpactSprite.Animation;
+    sprite.Position = offset.Position;
+    sprite.Play("default");
+    sprite.Show();
+    sprite.AnimationFinished += () => sprite.QueueFree();
+    AddChild(sprite);
+  }
+
+  public Vector3 GetGuiOffset() => GuiOffset.Position;
+
+  public AnimationPlayer GetAnimationPlayer() => (Model.GetNode(nameof(AnimationPlayer)) as AnimationPlayer)!;
 
   private void OnAnimationFinished(StringName animname) {
     if (animname == EnemyAnimations.ClimbGrave) {
@@ -87,6 +104,7 @@ public partial class Enemy : Node3D {
       EmitSignal(SignalName.OnDelete);
       QueueFree();
     }
+
     LookAt(_movementTarget, Vector3.Up);
     if (!Moving)
       return;

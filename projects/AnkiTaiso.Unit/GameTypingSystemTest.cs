@@ -17,8 +17,6 @@ public class GameTypingSystemTest {
     "カタカナ", "ひらがな", "みっつ", "ロボット", "コンピュータ", "きゅうじつ"
   ];
 
-
-
   [Fact]
   public void WanaKanaAssumptionsTest() {
     WanaKana.ToRomaji("コンピュータ").ShouldBe("konpyuuta");
@@ -59,6 +57,7 @@ public class GameTypingSystemTest {
     game.OnInput(Key.C).ShouldBeTrue();
     game.GetActiveEntry().ShouldBeNull();
     game.GetEntriesInUse().Count.Should().Be(3);
+    game.StatisticTotalSuccess.ShouldBe(3);
     game.StatisticTotalError.ShouldBe(2);
   }
 
