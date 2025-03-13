@@ -115,7 +115,7 @@ public partial class Menu : Control, IMenu {
   }
 
   private void OnWordsPlayedChanged(double value) {
-    int cnt = (int)value;
+    var cnt = (int)value;
     WordsPlayedLabel.Text = $"{cnt} Words Played";
   }
 
@@ -154,13 +154,13 @@ public partial class Menu : Control, IMenu {
   }
 
   public async void OnFromAnkiPressed() {
-    // MarginContainer.Hide();
+    _.MarginContainer.Get().Hide();
     await MenuAnki.UpdateDialog();
     MenuAnki.Show();
   }
 
   public void OnFromAnkiBackPressed() {
-    // _.MarginContainer.Get().Show();
+    _.MarginContainer.Get().Show();
     MenuAnki.Hide();
   }
 

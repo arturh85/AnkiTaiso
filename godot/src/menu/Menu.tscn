@@ -105,6 +105,7 @@ text = "Load Game"
 
 [node name="FromAnkiButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/VBoxContainer2"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(2.08165e-12, 64)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -112,6 +113,7 @@ text = "From Anki"
 
 [node name="OptionsButton" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer3/VBoxContainer2"]
 unique_name_in_owner = true
+visible = false
 custom_minimum_size = Vector2(2.08165e-12, 64)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -202,6 +204,7 @@ layout_mode = 2
 text = "Words Played"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer"]
+visible = false
 layout_mode = 2
 
 [node name="RandomizeCheckButton" type="CheckButton" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/HBoxContainer2"]

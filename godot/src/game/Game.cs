@@ -110,7 +110,6 @@ public partial class Game : Node3D, IGame {
     PauseMenu.Resume += OnResume;
     PauseMenu.TransitionCompleted += OnPauseMenuTransitioned;
     PauseMenu.Save += OnPauseMenuSaveRequested;
-
     GameTypingSystem.OnWon += OnGameWon;
 
     GameChunk = new SaveChunk<GameData>(
@@ -162,7 +161,7 @@ public partial class Game : Node3D, IGame {
       onLoad: async () => {
         // Load the game data from disk.
         if (!FileSystem.File.Exists(SaveFilePath)) {
-          GD.Print("No save file to load :'(");
+          GD.Print("No save file to load");
           return null;
         }
 
