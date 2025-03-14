@@ -1,6 +1,7 @@
 namespace ankitaiso.utils;
 
 using System;
+using System.Collections.Generic;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
@@ -40,6 +41,17 @@ public class AnkiConnectApi : IDisposable {
     var response = await CallAnkiConnect(request, baseUrl);
     return response.Result ?? [];
   }
+  public async Task<CardInfo[]> CardsInfo(Uri baseUrl, long[] cards) {
+    var request = AnkiRequest.CardsInfo(cards);
+    var response = await CallAnkiConnect(request, baseUrl);
+    return response.Result ?? [];
+  }
+
+  public async Task<NoteInfo[]> NotesInfo(Uri baseUrl, long[] notes) {
+    var request = AnkiRequest.NotesInfo(notes);
+    var response = await CallAnkiConnect(request, baseUrl);
+    return response.Result ?? [];
+  }
 
   public void Dispose() {
     GC.SuppressFinalize(this);
@@ -65,6 +77,56 @@ internal sealed class AnkiRequest {
       Version = 6
     };
   }
+  public static AnkiRequest<CardInfo[]> CardsInfo(long[] cards) {
+    return new AnkiRequest<CardInfo[]> {
+      Action = "cardsInfo",
+      Version = 6,
+      Params = new AnkiRequestParams { Cards = cards }
+    };
+  }
+  public static AnkiRequest<NoteInfo[]> NotesInfo(long[] notes) {
+    return new AnkiRequest<NoteInfo[]> {
+      Action = "notesInfo",
+      Version = 6,
+      Params = new AnkiRequestParams { Notes = notes }
+    };
+  }
+}
+
+public class NoteInfo {
+  public long NoteId { get; set; }
+  public string? Profile { get; set; }
+  public string? ModelName { get; set; }
+  public string[]? Tags { get; set; }
+  public required Dictionary<string, CardInfoField> Fields { get; set; }
+  public long Mod { get; set; }
+  public long[]? Cards { get; set; }
+}
+
+public class CardInfoField {
+  public string? Value { get; set; }
+  public int Order { get; set; }
+}
+
+public class CardInfo {
+  public string? Answer { get; set; }
+  public string? Question { get; set; }
+  public string? DeckName { get; set; }
+  public string? ModelName { get; set; }
+  public int FieldOrder { get; set; }
+  public required Dictionary<string, CardInfoField> Fields { get; set; }
+  public string? Css { get; set; }
+  public long CardId { get; set; }
+  public int Interval { get; set; }
+  public long Note { get; set; }
+  public int Ord { get; set; }
+  public int Type { get; set; }
+  public int Queue { get; set; }
+  public int Due { get; set; }
+  public int Reps { get; set; }
+  public int Lapses { get; set; }
+  public int Left { get; set; }
+  public long Mod { get; set; }
 }
 
 internal sealed class AnkiRequest<T> {
@@ -88,6 +150,10 @@ internal sealed class AnkiRequest<T> {
 }
 
 internal sealed class AnkiRequestParams {
-  public string? Query;
-  // public string[]? Cards;
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+  public string? Query { get; set; }
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+  public long[]? Cards { get; set; }
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+  public long[]? Notes { get; set; }
 }

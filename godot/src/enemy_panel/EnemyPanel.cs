@@ -7,7 +7,7 @@ using enemy;
 using game_typing;
 using Godot;
 
-// [SceneTree]
+[SceneTree]
 [Meta(typeof(IAutoNode))]
 public partial class EnemyPanel : Control {
   public override void _Notification(int what) => this.Notify(what);
@@ -16,11 +16,6 @@ public partial class EnemyPanel : Control {
   private Color _activeColor = Color.FromHtml("604540");
   private Color _inactiveColor = Color.FromHtml("000000");
 
-
-  [Node] public IRichTextLabel PromptLabel { get; set; } = default!;
-  [Node] public IRichTextLabel InputLabel { get; set; } = default!;
-  [Node] public IRichTextLabel DebugLabel { get; set; } = default!;
-  [Node] public IColorRect BackgroundContainer { get; set; } = default!;
 
   public string PromptLabelBbcode {
     get => PromptLabel.Get("bbcode").ToString();
@@ -31,6 +26,7 @@ public partial class EnemyPanel : Control {
     get => InputLabel.Get("bbcode").ToString();
     set => InputLabel.Set("bbcode", value);
   }
+
   public string DebugLabelBbcode {
     get => DebugLabel.Get("bbcode").ToString();
     set => DebugLabel.Set("bbcode", value);
@@ -47,31 +43,40 @@ public partial class EnemyPanel : Control {
     var pos2D = cam.UnprojectPosition(pos3D);
     GlobalPosition = pos2D;
     Visible = !cam.IsPositionBehind(pos3D);
-    if (_currentEnemy != enemy) {
-      PromptLabelBbcode = enemy.Vocab.Entry;
-    }
-
-    if (enemy.Vocab.State == VocabState.Active) {
+    var vocab = enemy.Vocab;
+    if (vocab.State == VocabState.Active) {
       ZIndex = -1;
+    }
+    else {
+      ZIndex = -2;
+    }
+    UpdateVocab(vocab);
+    _currentEnemy = enemy;
+  }
+
+  public void UpdateVocab(Vocab vocab) {
+    if (PromptLabelBbcode != vocab.Entry) {
+      PromptLabelBbcode = vocab.Entry;
+    }
+    if (vocab.State == VocabState.Active) {
       BackgroundContainer.Color = _activeColor;
-      var rest = enemy.Vocab.Entry[(enemy.Vocab.InputBuffer.Length + enemy.Vocab.Next.Length)..];
-      var targetInput = string.Concat(enemy.Vocab.InputBuffer, "[red]", enemy.Vocab.Next, "[]",
+      var rest = vocab.Entry[(vocab.InputBuffer.Length + vocab.Next.Length)..];
+      var targetInput = string.Concat(vocab.InputBuffer, "[red]", vocab.Next, "[]",
         rest.Length > 0 ? "~" + rest + "~" : "");
       if (InputLabelBbcode != targetInput) {
         InputLabelBbcode = targetInput;
       }
     }
     else {
-      ZIndex = -2;
       BackgroundContainer.Color = _inactiveColor;
       if (InputLabelBbcode != "") {
         InputLabelBbcode = "";
       }
     }
-    var targetDebugOutput = enemy.Vocab.NextVariants != null ? string.Join(", ", enemy.Vocab.NextVariants) : enemy.Vocab.Next;
+
+    var targetDebugOutput = vocab.NextVariants != null ? string.Join(", ", vocab.NextVariants) : vocab.Next;
     if (DebugLabelBbcode != targetDebugOutput) {
       DebugLabelBbcode = targetDebugOutput;
     }
-    _currentEnemy = enemy;
   }
 }

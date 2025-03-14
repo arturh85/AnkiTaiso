@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://dt4tkay2l2l38"]
+[gd_scene load_steps=10 format=3 uid="uid://dt4tkay2l2l38"]
 
 [ext_resource type="Script" uid="uid://bijgfw2uidgrx" path="res://src/menu/menu_anki/MenuAnki.cs" id="1_5dy0p"]
+[ext_resource type="PackedScene" uid="uid://dyp55frd0p2yo" path="res://src/enemy_panel/EnemyPanel.tscn" id="2_gulas"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aq8ij"]
 bg_color = Color(1, 1, 1, 0.219608)
@@ -133,6 +134,11 @@ text = "http://127.0.0.1:8765"
 layout_mode = 2
 text = "Anki Connect URL"
 
+[node name="UpdateAnkiUrlButton" type="Button" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Update"
+
 [node name="AnkiDecksContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -161,7 +167,7 @@ size_flags_vertical = 8
 
 [node name="Title" type="Label" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/VBoxContainer2"]
 layout_mode = 2
-text = "Scenario Options:"
+text = "Field Mapping:"
 label_settings = SubResource("LabelSettings_5fc0a")
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/VBoxContainer2"]
@@ -169,35 +175,56 @@ layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_top = 24
 
+[node name="ErrorLabel" type="Label" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/VBoxContainer2/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer"]
 layout_mode = 2
 
-[node name="WordsPlayedHSlider" type="HSlider" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/HBoxContainer"]
+[node name="FieldPromptSelect" type="OptionButton" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
-step = 10.0
-rounded = true
 
-[node name="WordsPlayedLabel" type="Label" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/HBoxContainer"]
-unique_name_in_owner = true
+[node name="FieldPromptLabel" type="Label" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/HBoxContainer"]
 layout_mode = 2
-text = "Words Played"
+text = "Field for what to Type"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer"]
+layout_mode = 2
+
+[node name="FieldKanjiSelect" type="OptionButton" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/HBoxContainer4"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+
+[node name="FieldKanjiLabel" type="Label" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Field for Kanji"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer"]
 layout_mode = 2
 
-[node name="RandomizeCheckButton" type="CheckButton" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/HBoxContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Random Item Preview: "
+
+[node name="RandomizeEnemyPanelButton" type="Button" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/HBoxContainer2/VBoxContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+text = "Randomize"
+
+[node name="PreviewEnemyPanel" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/HBoxContainer2" instance=ExtResource("2_gulas")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 
-[node name="RandomizeLabel" type="Label" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/HBoxContainer2"]
-layout_mode = 2
-text = "Randomize List"
-
-[node name="StartGameButton" type="Button" parent="MarginContainer/HBoxContainer/ScenarioParentContainer"]
+[node name="ImportUpdateButton" type="Button" parent="MarginContainer/HBoxContainer/ScenarioParentContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-text = "Start Game"
+text = "Import/Update"

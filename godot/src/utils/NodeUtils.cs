@@ -3,6 +3,7 @@ namespace ankitaiso.utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Chickensoft.GodotNodeInterfaces;
 using enemy;
 using Godot;
 
@@ -14,7 +15,7 @@ public static class NodeUtils {
     return child as T;
   }
 
-  public static List<T> GetNearestNodes<T>(Vector3 position, Node3D parent, int count, Func<T, bool>? filter) where T : Node3D {
+  public static List<T> NearestNodes<T>(Vector3 position, Node3D parent, int count, Func<T, bool>? filter) where T : Node3D {
     var enemiesWithDistance = parent
       .GetChildren()
       .OfType<T>()
@@ -32,7 +33,7 @@ public static class NodeUtils {
     return enemiesWithDistance;
   }
 
-  public static Vector3 GenerateRandomPositionInArc(RandomNumberGenerator rng, Vector3 target, Vector3 center, float arcAngleRadians) {
+  public static Vector3 RandomPositionInArc(RandomNumberGenerator rng, Vector3 target, Vector3 center, float arcAngleRadians) {
     // Calculate direction from player to the center point
     var toCenter = center - target;
     // Get the angle of this direction in the XZ plane (azimuth)
@@ -48,5 +49,11 @@ public static class NodeUtils {
 
     // Keep Y coordinate same as the center's Y (or set to PlayerPosition.Y if needed)
     return new Vector3(x, center.Y, z);
+  }
+
+  public static void ClearOptions(OptionButton button) {
+    for (int i = 0; i < button.ItemCount; i++) {
+      button.RemoveItem(0);
+    }
   }
 }

@@ -33,7 +33,7 @@ IProvide<IGameRepo>, IProvide<ISaveChunk<GameData>>, IProvide<EntityTable> {
 [SceneTree]
 public partial class Game : Node3D, IGame {
   public override void _Notification(int what) => this.Notify(what);
-  private ILog _log = new Log(nameof(Game), new GDWriter());
+  private readonly Log _log = new (nameof(Game), new GDWriter());
 
   #region Save
   [Signal]

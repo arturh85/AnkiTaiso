@@ -41,9 +41,7 @@ public partial class InGameAudio : Node {
 
   #endregion State
 
-  public void Setup() {
-    InGameAudioLogic = new InGameAudioLogic();
-  }
+  public void Setup() => InGameAudioLogic = new InGameAudioLogic();
 
   public void OnResolved() {
     InGameAudioLogic.Set(AppRepo);
@@ -62,8 +60,9 @@ public partial class InGameAudio : Node {
       .Handle((in InGameAudioLogic.Output.PlayJump _) =>
         PlayerJumped.Play()
       )
-      .Handle((in InGameAudioLogic.Output.PlayMainMenuMusic _) =>
-        StartMainMenuMusic()
+      .Handle((in InGameAudioLogic.Output.PlayMainMenuMusic _) => {
+          // StartMainMenuMusic();
+        }
       )
       .Handle((in InGameAudioLogic.Output.PlayGameMusic _) => StartGameMusic())
       .Handle((in InGameAudioLogic.Output.StopGameMusic _) =>

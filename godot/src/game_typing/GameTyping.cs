@@ -55,7 +55,7 @@ public partial class GameTyping : Node3D {
       return;
     }
 
-    var nearest = NodeUtils.GetNearestNodes<Enemy>(PlayerPosition, EnemiesContainer, MaxEnemyPanels, e => e.Moving);
+    var nearest = NodeUtils.NearestNodes<Enemy>(PlayerPosition, EnemiesContainer, MaxEnemyPanels, e => e.Moving);
 
     var idx = 0;
     foreach (var child in GuiControls.GetChildren()) {
@@ -161,7 +161,7 @@ public partial class GameTyping : Node3D {
     var existingEnemies = Enumerable.Cast<Enemy>(EnemiesContainer.GetChildren()).ToList();
 
     for (var i = 0; i < maxAttempts; i++) {
-      var candidatePosition = NodeUtils.GenerateRandomPositionInArc(rng, PlayerPosition, SpawnPosition, radius);
+      var candidatePosition = NodeUtils.RandomPositionInArc(rng, PlayerPosition, SpawnPosition, radius);
 
       if (!IsPositionOccupied3D(candidatePosition, existingEnemies, minDistance)) {
         return candidatePosition;
@@ -169,7 +169,7 @@ public partial class GameTyping : Node3D {
     }
 
     // Fallback to random position without collision check
-    return NodeUtils.GenerateRandomPositionInArc(rng, PlayerPosition, SpawnPosition, radius);
+    return NodeUtils.RandomPositionInArc(rng, PlayerPosition, SpawnPosition, radius);
   }
 
 
