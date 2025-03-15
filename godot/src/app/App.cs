@@ -192,6 +192,7 @@ public partial class App : CanvasLayer, IApp {
     Menu.NewGame -= OnNewGame;
 
     AnimationPlayer.AnimationFinished -= OnAnimationFinished;
+    DatabaseRepo.Dispose();
   }
 
   public void OnSaveFileLoaded() {

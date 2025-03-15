@@ -1,11 +1,12 @@
 namespace ankitaiso.domain;
 
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using data;
-using data.model;
 using game_typing;
 using Microsoft.Extensions.DependencyInjection;
+using model;
 using utils;
 
 public interface IDatabaseRepo : IDisposable {
@@ -29,22 +30,35 @@ public class DatabaseRepo : IDatabaseRepo {
   }
 
 
-  public Task StoreRun(GameTypingSystem system, Scenario scenario) {
+  public async Task StoreRun(GameTypingSystem system, Scenario scenario) {
+    var stats = new List<TypingGameStatistic>();
+
+    foreach (var (c, charStat) in system.StatisticByChar) {
+
+      var stat = new TypingGameStatistic {
+        Character = c.ToString(),
+        HitSuccess = charStat.SuccessCount,
+        HitFailures = charStat.FailCount
+      };
+      stats.Add(stat);
+    }
+
     var run = new TypingGameRun {
       Title = scenario.Title,
       Start = system.GetStart().GetValueOrDefault(),
       End = system.GetEnd().GetValueOrDefault(),
       HitSuccess = system.StatisticTotalSuccess,
       HitFailures = system.StatisticTotalError,
-      IsComplete = system.GetEnd() != null
+      IsComplete = system.GetEnd() != null,
+      Statistics = stats
     };
 
-    var context = GetContext();
-    if (context == null) {
+    await using var dbContext = GetContext();
+    if (dbContext == null) {
       throw new GameException("missing db context");
     }
-    context.Runs.Add(run);
-    return Task.CompletedTask;
+    dbContext.Runs.Add(run);
+    await dbContext.SaveChangesAsync(true);
   }
 
   public DatabaseContext? GetContext() => _serviceProvider?.GetService<DatabaseContext>();
