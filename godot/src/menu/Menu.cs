@@ -44,7 +44,7 @@ public partial class Menu : Control, IMenu {
   }
 
   public void OnResolved() {
-    var file = FileAccess.Open("res://src/data/scenarios.json", FileAccess.ModeFlags.Read);
+    using var file = FileAccess.Open("res://src/data/scenarios.json", FileAccess.ModeFlags.Read);
     var scenarios = JsonSerializer.Deserialize<Scenario[]>(file.GetAsText(), JsonSerializerOptions.Web);
     if (scenarios == null) {
       throw new GameException("failed to load scenarios.json");
@@ -153,9 +153,9 @@ public partial class Menu : Control, IMenu {
     EmitSignal(SignalName.NewGame);
   }
 
-  public async void OnFromAnkiPressed() {
+  public void OnFromAnkiPressed() {
     _.MarginContainer.Get().Hide();
-    await MenuAnki.UpdateDialog();
+    MenuAnki.UpdateDialog();
     MenuAnki.Show();
   }
 

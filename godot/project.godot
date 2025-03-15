@@ -40,6 +40,10 @@ folder_colors={
 "res://src/": "yellow"
 }
 
+[gui]
+
+theme/custom="uid://bxypldkf2mpbp"
+
 [input]
 
 interact={

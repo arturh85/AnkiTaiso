@@ -37,7 +37,7 @@ public class GameTypingSystem {
     RestartGame((IEnumerable<Vocab>)[]);
   }
 
-  public GameTypingSystem(IEnumerable<string> vocabs) {
+  public GameTypingSystem(IEnumerable<VocabEntry> vocabs) {
     RestartGame(vocabs);
   }
 
@@ -58,16 +58,16 @@ public class GameTypingSystem {
     EntryActive = null;
   }
 
-  public void RestartGame(IEnumerable<string> vocabs) => RestartGame(vocabs.Select(entry => new Vocab(entry)));
+  public void RestartGame(IEnumerable<VocabEntry> vocabs) => RestartGame(vocabs.Select(entry => new Vocab(entry)));
 
 
   public Vocab? NextEntry(bool startVisible = true) {
-    var validNexts = EntriesInUse.Select(e => e.Entry[0]).ToArray();
+    var validNexts = EntriesInUse.Select(e => e.Entry.Prompt[0]).ToArray();
     var found = false;
     Vocab? vocab = null;
     for (var idx = EntriesLeft.Count - 1; idx >= 0; idx--) {
       vocab = EntriesLeft[idx];
-      if (validNexts.Contains(vocab.Entry[0])) {
+      if (validNexts.Contains(vocab.Entry.Prompt[0])) {
         continue;
       }
 
@@ -122,7 +122,7 @@ public class GameTypingSystem {
     var bufferInput = Buffer + input;
 
     if (EntryActive != null) {
-      if (EntryActive.Entry.StartsWith(EntryActive.InputBuffer + input)) {
+      if (EntryActive.Entry.Prompt.StartsWith(EntryActive.InputBuffer + input)) {
         success = EntryActive.OnInput(input);
       }
       else if (EntryActive.NextVariants != null) {
@@ -150,7 +150,7 @@ public class GameTypingSystem {
           continue;
         }
 
-        if (vocab.Entry.StartsWith(input)) {
+        if (vocab.Entry.Prompt.StartsWith(input)) {
           success = vocab.OnInput(input);
           SetActive(vocab);
           break;
@@ -180,7 +180,7 @@ public class GameTypingSystem {
       }
     }
 
-    if (EntryActive != null && EntryActive.Entry == EntryActive.InputBuffer) {
+    if (EntryActive != null && EntryActive.Entry.Prompt == EntryActive.InputBuffer) {
       EntryActive.State = VocabState.Completed;
       EntriesInUse.Remove(EntryActive);
       EntryActive = null;
