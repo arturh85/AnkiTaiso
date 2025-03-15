@@ -1,5 +1,6 @@
 namespace ankitaiso.app;
 
+using ankitaiso.domain;
 using Chickensoft.AutoInject;
 using Chickensoft.GodotNodeInterfaces;
 using Chickensoft.Introspection;
@@ -191,6 +192,7 @@ public partial class App : CanvasLayer, IApp {
     Menu.NewGame -= OnNewGame;
 
     AnimationPlayer.AnimationFinished -= OnAnimationFinished;
+    DatabaseRepo.Dispose();
   }
 
   public void OnSaveFileLoaded() {

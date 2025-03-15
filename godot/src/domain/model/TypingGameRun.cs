@@ -1,8 +1,10 @@
-namespace ankitaiso.data.model;
+namespace ankitaiso.domain.model;
 
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using data.model;
 using Microsoft.EntityFrameworkCore;
 
 [Table("TypingGameRuns")]
@@ -14,10 +16,12 @@ public class TypingGameRun {
   [Required]
   public string Title { get; set; } = string.Empty;
 
-  public DateTime Start { get; set; }
-  public DateTime End { get; set; }
+  public DateTimeOffset Start { get; set; }
+  public DateTimeOffset End { get; set; }
 
   public int HitSuccess { get; set; }
   public int HitFailures { get; set; }
   public bool IsComplete { get; set; }
+
+  public List<TypingGameStatistic> Statistics { get; set; } = [];
 }

@@ -19,8 +19,11 @@ public class GameTypingSystem {
   public int StatisticTotalError { get; set; }
   public Dictionary<char, CharStatistic> StatisticByChar { get; set; } = new();
 
-  private DateTimeOffset? Start;
-  private DateTimeOffset? End;
+  private DateTimeOffset? _start;
+  private DateTimeOffset? _end;
+
+  public DateTimeOffset? GetStart() => _start;
+  public DateTimeOffset? GetEnd() => _end;
 
   public event OnWonEvent? OnWon;
   public delegate void OnWonEvent();
@@ -51,8 +54,8 @@ public class GameTypingSystem {
     OnLeftCountChanged?.Invoke(EntriesLeft.Count, TotalCount);
     StatisticTotalError = 0;
     Buffer = "";
-    Start = null;
-    End = null;
+    _start = null;
+    _end = null;
     StatisticByChar = new();
     EntriesInUse = new();
     EntryActive = null;
@@ -115,8 +118,8 @@ public class GameTypingSystem {
       return true;
     }
 
-    if (Start == null) {
-      Start = DateTimeOffset.Now;
+    if (_start == null) {
+      _start = DateTimeOffset.Now;
     }
 
     var bufferInput = Buffer + input;
@@ -187,7 +190,7 @@ public class GameTypingSystem {
       completed = true;
       OnLeftCountChanged?.Invoke(EntriesLeft.Count + EntriesInUse.Count, TotalCount);
       if (EntriesInUse.Count == 0 && EntriesLeft.Count == 0) {
-        End = DateTimeOffset.Now;
+        _end = DateTimeOffset.Now;
         OnWon?.Invoke();
       }
     }
@@ -221,11 +224,11 @@ public class GameTypingSystem {
   public ImmutableList<Vocab> GetEntriesInUse() => EntriesInUse.ToImmutableList();
 
   public TimeSpan? GetDuration() {
-    if (Start == null) {
+    if (_start == null) {
       return null;
     }
-    var end = End ?? DateTimeOffset.Now;
-    var diff = end - Start;
+    var end = _end ?? DateTimeOffset.Now;
+    var diff = end - _start;
     return diff;
   }
 }

@@ -4,6 +4,7 @@ using System.Linq;
 using data.model;
 using Godot;
 using Microsoft.EntityFrameworkCore;
+using model;
 
 public class DatabaseContext : DbContext {
   private const int VERSION = 1;
@@ -19,12 +20,14 @@ public class DatabaseContext : DbContext {
     if (!Version.Any()) {
       Version.Add(new DatabaseVersion() { Version = VERSION });
       SaveChanges();
+      GD.Print("New Database created");
     }
     else {
       var version = Version.ToList().First();
       if (version.Version != VERSION) {
         Database.EnsureDeleted();
         Database.EnsureCreated();
+        GD.Print("Database recreated to update schema");
       }
     }
   }

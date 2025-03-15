@@ -3,15 +3,13 @@ namespace ankitaiso.utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Chickensoft.GodotNodeInterfaces;
-using enemy;
 using Godot;
 
 public static class NodeUtils {
   public static T? RandomChild<T>(Node node) where T : Node {
-    var childs = node.GetChildren();
-    var idx = Random.Shared.Next(0, childs.Count);
-    var child = childs[idx];
+    var children = node.GetChildren();
+    var idx = Random.Shared.Next(0, children.Count);
+    var child = children[idx];
     return child as T;
   }
 
@@ -39,20 +37,20 @@ public static class NodeUtils {
     // Get the angle of this direction in the XZ plane (azimuth)
     var thetaCenter = Mathf.Atan2(toCenter.Z, toCenter.X);
     // Random angle within the arc around the center angle
-    var randomAngle = rng.RandfRange(thetaCenter - (arcAngleRadians / 2), thetaCenter + arcAngleRadians / 2);
+    var randomAngle = rng.RandfRange(thetaCenter - (arcAngleRadians / 2), thetaCenter + (arcAngleRadians / 2));
     // Random distance from the player (0 to radius)
     var distance = toCenter.Length();
 
     // Calculate position in XZ plane around the player's position
-    var x = target.X + distance * Mathf.Cos(randomAngle);
-    var z = target.Z + distance * Mathf.Sin(randomAngle);
+    var x = target.X + (distance * Mathf.Cos(randomAngle));
+    var z = target.Z + (distance * Mathf.Sin(randomAngle));
 
     // Keep Y coordinate same as the center's Y (or set to PlayerPosition.Y if needed)
     return new Vector3(x, center.Y, z);
   }
 
   public static void ClearOptions(OptionButton button) {
-    for (int i = 0; i < button.ItemCount; i++) {
+    while (button.ItemCount > 0) {
       button.RemoveItem(0);
     }
   }

@@ -4,6 +4,7 @@ using System;
 using System.IO.Abstractions;
 using System.Linq;
 using System.Text.Json;
+using ankitaiso.domain;
 using ankitaiso.player_camera;
 using app.domain;
 using Chickensoft.AutoInject;
@@ -18,7 +19,9 @@ using Chickensoft.Serialization;
 using Chickensoft.Serialization.Godot;
 using domain;
 using game_typing;
+using game_typing.domain;
 using Godot;
+using Microsoft.EntityFrameworkCore.Storage;
 using state;
 using MapData = map.MapData;
 using PlayerCameraData = player_camera.PlayerCameraData;
@@ -71,6 +74,8 @@ public partial class Game : Node3D, IGame {
 
   [Dependency] public IAppRepo AppRepo => DependentExtensions.DependOn<IAppRepo>(this);
   [Dependency] public GameTypingSystem GameTypingSystem => DependentExtensions.DependOn<GameTypingSystem>(this);
+  [Dependency] public IDatabaseRepo DatabaseRepo => DependentExtensions.DependOn<IDatabaseRepo>(this);
+  [Dependency] public IGameTypingRepo GameTypingRepo => DependentExtensions.DependOn<IGameTypingRepo>(this);
 
   #endregion Dependencies
 
@@ -250,8 +255,11 @@ public partial class Game : Node3D, IGame {
     }
   }
 
-  public void OnGameWon() =>
+  public void OnGameWon() {
     GameLogic.Input(new GameLogic.Input.EndGame(GameOverReason.Won));
+    DatabaseRepo.StoreRun(GameTypingSystem, GameTypingRepo.ActiveScenario!);
+  }
+
   public void OnGameLost() =>
     GameLogic.Input(new GameLogic.Input.EndGame(GameOverReason.Lost));
 
