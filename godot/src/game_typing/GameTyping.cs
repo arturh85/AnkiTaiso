@@ -79,7 +79,7 @@ public partial class GameTyping : Node3D {
     else if (EnemiesContainer.GetChildCount() == 0 && _timeStartcamera == 0.0) { // finished waypoint
       _timeStartcamera = _timeLastWaypoint;
       if (_currentWaypoint == Waypoints.Count - 1) {
-        // TODO game won
+        _currentWaypoint = 0;
       }
       _timeLastWaypoint += delta;
     }
