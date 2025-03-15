@@ -10,7 +10,7 @@ using Godot;
 using utils;
 
 public class ScenarioManager {
-  public static string UserScenarioPath = "user://scenarios";
+  public static readonly string UserScenarioPath = "user://scenarios";
   public static string DeckDirPath(string deckName) => $"{UserScenarioPath}/{deckName}";
   public static string WordListPath(string deckName) => $"{DeckDirPath(deckName)}/{WORDLIST_FILENAME}";
   private const string WORDLIST_FILENAME = "wordlist.txt";

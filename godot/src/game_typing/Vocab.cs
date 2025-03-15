@@ -10,7 +10,7 @@ public class Vocab {
   public string Next;
   public string InputBuffer;
   public List<string>? NextVariants;
-  private static HangeulRomaniser _hangeulRomaniser = new HangeulRomaniser();
+  private static readonly HangeulRomaniser _hangeulRomaniser = new HangeulRomaniser();
 
   public VocabState State;
 

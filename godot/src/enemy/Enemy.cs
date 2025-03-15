@@ -15,7 +15,7 @@ public partial class Enemy : Node3D {
   private Vector3 _movementTarget;
   public bool Moving;
   public Vocab Vocab = null!;
-  public bool dead = false;
+  public bool dead;
   [Dependency] public GameTypingSystem GameTypingSystem => this.DependOn<GameTypingSystem>();
 
   [Signal]
