@@ -20,8 +20,8 @@ config/icon="uid://cugnd2frxdsmj"
 
 [display]
 
-window/size/viewport_width=1602
-window/size/viewport_height=903
+window/size/viewport_width=1600
+window/size/viewport_height=900
 window/size/mode=2
 window/size/initial_position_type=3
 
