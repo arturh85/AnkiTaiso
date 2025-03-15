@@ -46,6 +46,7 @@
     <Content Include="src\app\App.tscn" />
     <Content Include="src\app\state\AppLogic.g.puml" />
     <Content Include="src\data\en\top_english_nouns_lower_10000.txt" />
+    <Content Include="src\data\ja\core2000.txt" />
     <Content Include="src\data\scenarios.json" />
     <Content Include="src\death_menu\DeathMenu.gdshader" />
     <Content Include="src\death_menu\DeathMenu.tscn" />

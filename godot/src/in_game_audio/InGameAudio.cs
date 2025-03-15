@@ -2,11 +2,10 @@ namespace ankitaiso.in_game_audio;
 
 using app.domain;
 using Chickensoft.AutoInject;
-using Chickensoft.GodotNodeInterfaces;
 using Chickensoft.Introspection;
 using Chickensoft.LogicBlocks;
-using data;
 using game_typing;
+using game_typing.domain;
 using game.domain;
 using Godot;
 using state;
@@ -22,6 +21,7 @@ public partial class InGameAudio : Node {
   [Dependency] public IAppRepo AppRepo => DependentExtensions.DependOn<IAppRepo>(this);
 
   [Dependency] public IGameRepo GameRepo => DependentExtensions.DependOn<IGameRepo>(this);
+  [Dependency] public IGameTypingRepo GameTypingRepo => DependentExtensions.DependOn<IGameTypingRepo>(this);
   [Dependency] public GameTypingSystem GameTypingSystem => this.DependOn<GameTypingSystem>();
 
   #endregion Dependencies
@@ -68,11 +68,10 @@ public partial class InGameAudio : Node {
   }
 
   private void OnHit(string key, Vocab? vocab) {
-    if (vocab != null && vocab.State == VocabState.Completed && vocab.Entry.AudioFilename != null) {
-      // ScenarioManager.DeckDirPath()
-      // ClearedWordPlayer.Stream.ResourcePath =
-      // ClearedWordPlayer.Play();
-
+    if (vocab != null && vocab.State == VocabState.Completed && vocab.Entry.AudioFilename != null && GameTypingRepo.ActiveScenario != null) {
+      var audioPath = $"{ScenarioManager.DeckDirPath(GameTypingRepo.ActiveScenario.Id)}/{vocab.Entry.AudioFilename}";
+      ClearedWordPlayer.Stream = AudioStreamMP3.LoadFromFile(audioPath);
+      ClearedWordPlayer.Play();
     }
   }
 

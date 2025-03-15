@@ -30,6 +30,19 @@ public class GameTypingRepo : IGameTypingRepo {
     foreach (var scenario in scenarios) {
       dict.Add(scenario.Id, scenario);
     }
+
+    var dirs = DirAccess.GetDirectoriesAt(ScenarioManager.UserScenarioPath);
+    foreach (var deckName in dirs) {
+      var scenario = new Scenario {
+        Id = deckName,
+        Title = deckName,
+        Source = "",
+        WordList = ScenarioManager.WordListPath(deckName),
+        Locale = ""
+      };
+      dict.Add(deckName, scenario);
+    }
+
     _scenarios = dict.ToImmutableDictionary();
   }
 

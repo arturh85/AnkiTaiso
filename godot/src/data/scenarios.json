@@ -3,14 +3,14 @@
     "id": "en_top1000",
     "title": "Top 10.000 English Nouns",
     "source": "https://github.com/david47k/top-english-wordlists",
-    "wordlist": "en/top_english_nouns_lower_10000.txt",
+    "wordlist": "res://src/data/en/top_english_nouns_lower_10000.txt",
     "locale": "en-US"
   },
   {
     "id": "ja_core2000",
     "title": "Japanese Kana Core 2000",
     "source": "https://ankiweb.net/shared/info/2141233552",
-    "wordlist": "ja/core2000.txt",
+    "wordlist": "res://src/data/ja/core2000.txt",
     "locale": "ja_JP"
   }
 ]
