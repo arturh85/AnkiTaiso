@@ -11,7 +11,7 @@ public record Scenario {
   public required string Locale { get; set; }
 
   public string ReadWordList() {
-    using var file = FileAccess.Open("res://src/data/" + WordList, FileAccess.ModeFlags.Read);
+    using var file = FileAccess.Open(WordList, FileAccess.ModeFlags.Read);
     if (file == null) {
       throw new GameException($"failed to find bundled {WordList}");
     }

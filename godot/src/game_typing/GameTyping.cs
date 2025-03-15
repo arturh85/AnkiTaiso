@@ -126,7 +126,7 @@ public partial class GameTyping : Node3D {
     var content = scenario.ReadWordList();
     WordList.Clear();
     var lines = LinesRegex().Split(content);
-    var words = lines.Select(line => line.Split("|")[0]).ToList();
+    var words = lines.ToList();
     Shuffle(words);
     var options = GameTypingRepo.ActiveScenarioOptions;
     if (options == null) {

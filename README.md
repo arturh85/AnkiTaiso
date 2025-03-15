@@ -18,6 +18,7 @@ Optional integration with [Anki](https://apps.ankiweb.net/) to practise the voca
 
 - **Anki Integration**: Import Word Lists from your Anki Decks to train on the words you already learn!
 - **Japanese Support**: Japanese Hiragana and Katakana supported out of the box without switching keyboard layouts
+- **Korean Support**: Korean 
 - **Multiplatform**: Windows / Linux / Mac Support (no Android/iOS release planned)
 
 ## :gear: Install & Play
@@ -37,11 +38,11 @@ Milestone 1:
 - [x] Basic visual feedback on hits/mistakes
 
 Milestone 2:
-- [ ] Build/Update Wordlists from Anki Decks
-  - [ ] Import Audio from Anki or generate with TTS as fallback
-- [ ] Audio Playback on Success
-  - [ ] alternative Game Mode for Listening Comprehension where Audio is played first 
-- [ ] Input Test Mode for Checking Keyboard Layouts
+- [x] Build/Update Wordlists from Anki Decks
+  - [x] Import Audio from Anki or generate with TTS as fallback
+- [x] Audio Playback on Success
+- [x] Support for Korean and Chinese
+  [ ] Input Test Mode for Checking Keyboard Layouts
 - [ ] Music & Sound effects
 - [ ] Visual effects for typing like shooting the zombie enemies
 
@@ -61,7 +62,7 @@ Contributions are always welcome!
 Looking for:
 
 - people who know different languages like korean and want to help me test them
-- level designers to make the levels for fun
+- level designers to make the levels fun
 - sound designers for music/sound effects
 
 ## :page_with_curl: License

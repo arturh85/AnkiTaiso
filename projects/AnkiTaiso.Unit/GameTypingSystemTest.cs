@@ -15,6 +15,12 @@ public class GameTypingSystemTest {
   private static readonly IEnumerable<string> _japaneseWords = [
     "カタカナ", "ひらがな", "みっつ", "ロボット", "コンピュータ", "きゅうじつ"
   ];
+  private static readonly IEnumerable<string> _koreanWords = [
+    "살다"
+  ];
+  private static readonly IEnumerable<string> _chineseWords = [
+    "昨天"
+  ];
 
   [Fact]
   public void WanaKanaAssumptionsTest() {
@@ -27,6 +33,16 @@ public class GameTypingSystemTest {
     WanaKana.ToRomaji("ぢ").ShouldBe("ji");
     WanaKana.ToRomaji("づ").ShouldBe("zu");
     WanaKana.ToRomaji("を").ShouldBe("wo");
+
+    var korean = "음";
+    WanaKana.ToRomaji(korean).ShouldBe(korean);
+    WanaKana.IsHiragana(korean).ShouldBeFalse();
+    WanaKana.IsKatakana(korean).ShouldBeFalse();
+    WanaKana.IsKana(korean).ShouldBeFalse();
+    WanaKana.IsKanji(korean).ShouldBeFalse();
+    WanaKana.IsRomaji(korean).ShouldBeFalse();
+    WanaKana.IsJapanese(korean).ShouldBeFalse();
+    WanaKana.IsMixed(korean).ShouldBeFalse();
   }
 
   [Fact]
@@ -226,6 +242,65 @@ public class GameTypingSystemTest {
     game.OnInput(Key.T).ShouldBeTrue();
     game.Buffer.Should().Be("t");
     game.OnInput(Key.A).ShouldBeTrue();
+    game.GetActiveEntry().ShouldBeNull();
+    game.StatisticTotalError.ShouldBe(0);
+  }
+  [Fact]
+  public void KoreanTest() {
+    var game = new GameTypingSystem(_koreanWords.Select(w => new VocabEntry(w)));
+    var words = game.NextEntries(1);
+    words.Count.Should().Be(1);
+    game.OnInput(Key.S).ShouldBeTrue();
+    game.Buffer.Should().Be("s");
+    game.GetActiveEntry().ShouldBeNull();
+    game.OnInput(Key.A).ShouldBeTrue();
+    game.Buffer.Should().Be("sa");
+    game.GetActiveEntry().ShouldBeNull();
+    game.OnInput(Key.L).ShouldBeTrue();
+    game.Buffer.Should().Be("");
+    game.GetActiveEntry().ShouldNotBeNull();
+    game.GetActiveEntry()!.Entry.Prompt.ShouldBe("살다");
+    game.GetActiveEntry()!.InputBuffer.ShouldBe("살");
+    game.GetActiveEntry()!.NextVariants.Should().NotBeNull();
+    game.GetActiveEntry()!.NextVariants.Should().NotBeEmpty();
+    game.GetActiveEntry()!.NextVariants![0].ShouldBe("da");
+    game.OnInput(Key.D).ShouldBeTrue();
+    game.Buffer.Should().Be("d");
+    game.OnInput(Key.A).ShouldBeTrue();
+    game.Buffer.Should().Be("");
+    game.GetActiveEntry().ShouldBeNull();
+    game.StatisticTotalError.ShouldBe(0);
+  }
+  [Fact]
+  public void ChineseTest() {
+    var game = new GameTypingSystem(_chineseWords.Select(w => new VocabEntry(w)));
+    var words = game.NextEntries(1);
+    words.Count.Should().Be(1);
+    words[0].NextVariants.Should().NotBeNull();
+    words[0].NextVariants.Should().NotBeEmpty();
+    words[0].NextVariants![0].Should().Be("zuo");
+    game.OnInput(Key.Z).ShouldBeTrue();
+    game.Buffer.Should().Be("z");
+    game.GetActiveEntry().ShouldBeNull();
+    game.OnInput(Key.U).ShouldBeTrue();
+    game.Buffer.Should().Be("zu");
+    game.GetActiveEntry().ShouldBeNull();
+    game.OnInput(Key.O).ShouldBeTrue();
+    game.Buffer.Should().Be("");
+    game.GetActiveEntry().ShouldNotBeNull();
+    game.GetActiveEntry()!.Entry.Prompt.ShouldBe("昨天");
+    game.GetActiveEntry()!.InputBuffer.ShouldBe("昨");
+    game.GetActiveEntry()!.NextVariants.Should().NotBeNull();
+    game.GetActiveEntry()!.NextVariants.Should().NotBeEmpty();
+    game.GetActiveEntry()!.NextVariants![0].ShouldBe("tian");
+    game.OnInput(Key.T).ShouldBeTrue();
+    game.Buffer.Should().Be("t");
+    game.OnInput(Key.I).ShouldBeTrue();
+    game.Buffer.Should().Be("ti");
+    game.OnInput(Key.A).ShouldBeTrue();
+    game.Buffer.Should().Be("tia");
+    game.OnInput(Key.N).ShouldBeTrue();
+    game.Buffer.Should().Be("");
     game.GetActiveEntry().ShouldBeNull();
     game.StatisticTotalError.ShouldBe(0);
   }

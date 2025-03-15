@@ -33,7 +33,7 @@ public static class GameTypingUtils {
     0x30C3, // ッ
   };
 
-  private static readonly Dictionary<string, string[]> Alternatives = new() {
+  private static readonly Dictionary<string, string[]> KanaAlternatives = new() {
     { "し", ["si"] }, // default shi
     { "シ", ["si"] }, // default shi
 
@@ -62,8 +62,8 @@ public static class GameTypingUtils {
   public static bool IsSmallKana(char c) => SmallKanaCodePoints.Contains(c);
   public static bool IsSmallTsu(char c) => SmallTsuCodePoints.Contains(c);
 
-  public static void PopulateAlternatives(string input, List<string> entries) {
-    if (!Alternatives.TryGetValue(input, out var alternatives)) {
+  public static void PopulateKanaAlternatives(string input, List<string> entries) {
+    if (!KanaAlternatives.TryGetValue(input, out var alternatives)) {
       return;
     }
     entries.AddRange(alternatives);
