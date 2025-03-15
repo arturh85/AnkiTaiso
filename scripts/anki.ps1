@@ -1,7 +1,7 @@
 Set-Location (Split-Path -Path $Script:MyInvocation.MyCommand.Path)
 
-$deckName = "Japanese - Core 2000"  # Set your deck name here
-$outputFile = "../godot/src/data/ja/core2000.json" # Output file
+$deckName = "Korean Vocabulary by Evita"  # Set your deck name here
+$outputFile = "../godot/src/data/ko/korean_by_evita.txt" # Output file
 $ankiConnectUrl = "http://127.0.0.1:8765"
 
 # Properly format the query string
@@ -55,7 +55,7 @@ foreach ($cardId in $cards) {
 }
 
 # Get the field values for each note with a progress bar
-$outputData = @()
+$outputLines = @()
 $noteCount = $noteIds.Count
 $i = 0
 foreach ($noteId in $noteIds | Select-Object -Unique) {
@@ -72,25 +72,14 @@ foreach ($noteId in $noteIds | Select-Object -Unique) {
 
   if ($noteResponse.result) {
     $fields = $noteResponse.result[0].fields
-    $vocabularyKana = $fields."Vocabulary-Kana".value
-    $vocabularyEnglish = $fields."Vocabulary-English".value
-    $vocabularyKanji = $fields."Vocabulary-Kanji".value
-    $vocabularyAudio = $fields."Vocabulary-Audio".value
-    if ($vocabularyAudio -match "\[audio:(.+?)\]") {
-      $vocabularyAudio = $matches[1]
-    }
-    if ($vocabularyAudio -match "") {
-      $vocabularyAudio = null
-    }
-    $outputData += [PSCustomObject]@{
-      "prompt" = $vocabularyKana.Replace("&nbsp;", " "),
-      "title" = $vocabularyKanji.Replace("&nbsp;", " "),
-      "translation" = $vocabularyEnglish.Replace("&nbsp;", " "),
-      "audioFilename" = $vocabularyEnglish.Replace("&nbsp;", " ")
-    }
+    $vocabularyKana = $fields."Korean".value
+    $vocabularyEnglish = $fields."English".value
+    $vocabularyKanji = $fields."Hanja".value
+    $outputLines += "$vocabularyKana | $vocabularyKanji | $vocabularyEnglish".Replace("&nbsp;", " ")
   }
 }
-# Write to output JSON file
-$outputData | ConvertTo-Json -Depth 2 | Set-Content -Path $outputFile -Encoding UTF8
+
+# Write to output file
+$outputLines | Set-Content -Path $outputFile -Encoding UTF8
 
 Write-Host "Export completed: $outputFile"

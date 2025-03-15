@@ -45,9 +45,10 @@
   <ItemGroup>
     <Content Include="src\app\App.tscn" />
     <Content Include="src\app\state\AppLogic.g.puml" />
-    <Content Include="src\data\en\top_english_nouns_lower_10000.txt" />
-    <Content Include="src\data\ja\core2000.txt" />
+    <Content Include="src\data\ja_core2000.txt" />
+    <Content Include="src\data\ko_korean_by_evita.txt" />
     <Content Include="src\data\scenarios.json" />
+    <Content Include="src\data\en_top_english_nouns_lower_10000.txt" />
     <Content Include="src\death_menu\DeathMenu.gdshader" />
     <Content Include="src\death_menu\DeathMenu.tscn" />
     <Content Include="src\game\.DS_Store" />

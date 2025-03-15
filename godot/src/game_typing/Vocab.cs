@@ -2,6 +2,7 @@ namespace ankitaiso.game_typing;
 
 using System.Collections.Generic;
 using System.Linq;
+using utils;
 using WanaKanaNet;
 
 public class Vocab {
@@ -9,6 +10,7 @@ public class Vocab {
   public string Next;
   public string InputBuffer;
   public List<string>? NextVariants;
+  private static HangeulRomaniser _hangeulRomaniser = new HangeulRomaniser();
 
   public VocabState State;
 
@@ -46,8 +48,17 @@ public class Vocab {
 
       GameTypingUtils.PopulateAlternatives(Next, NextVariants);
     }
-    else {
+    else if (WanaKana.IsRomaji(next)) {
       NextVariants = null;
+    }
+    else {
+      var roman = _hangeulRomaniser.Romanise(next);
+      if (roman != null) {
+        NextVariants = [roman];
+      }
+      else {
+        NextVariants = null;
+      }
     }
   }
 

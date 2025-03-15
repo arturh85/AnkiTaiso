@@ -15,6 +15,9 @@ public class GameTypingSystemTest {
   private static readonly IEnumerable<string> _japaneseWords = [
     "カタカナ", "ひらがな", "みっつ", "ロボット", "コンピュータ", "きゅうじつ"
   ];
+  private static readonly IEnumerable<string> _koreanWords = [
+    "살다"
+  ];
 
   [Fact]
   public void WanaKanaAssumptionsTest() {
@@ -27,6 +30,16 @@ public class GameTypingSystemTest {
     WanaKana.ToRomaji("ぢ").ShouldBe("ji");
     WanaKana.ToRomaji("づ").ShouldBe("zu");
     WanaKana.ToRomaji("を").ShouldBe("wo");
+
+    var korean = "음";
+    WanaKana.ToRomaji(korean).ShouldBe(korean);
+    WanaKana.IsHiragana(korean).ShouldBeFalse();
+    WanaKana.IsKatakana(korean).ShouldBeFalse();
+    WanaKana.IsKana(korean).ShouldBeFalse();
+    WanaKana.IsKanji(korean).ShouldBeFalse();
+    WanaKana.IsRomaji(korean).ShouldBeFalse();
+    WanaKana.IsJapanese(korean).ShouldBeFalse();
+    WanaKana.IsMixed(korean).ShouldBeFalse();
   }
 
   [Fact]
@@ -228,5 +241,36 @@ public class GameTypingSystemTest {
     game.OnInput(Key.A).ShouldBeTrue();
     game.GetActiveEntry().ShouldBeNull();
     game.StatisticTotalError.ShouldBe(0);
+  }
+  [Fact]
+  public void KoreanTest() {
+    var game = new GameTypingSystem(_koreanWords.Select(w => new VocabEntry(w)));
+    var words = game.NextEntries(1);
+    words.Count.Should().Be(1);
+    game.OnInput(Key.K).ShouldBeTrue();
+    // game.Buffer.Should().Be("k");
+    // game.GetActiveEntry().ShouldBeNull();
+    // game.OnInput(Key.O).ShouldBeTrue();
+    // game.Buffer.Should().Be("");
+    // game.GetActiveEntry().ShouldNotBeNull();
+    // game.GetActiveEntry()!.Entry.Prompt.ShouldBe("コンピュータ");
+    // game.GetActiveEntry()!.InputBuffer.ShouldBe("コ");
+    // game.OnInput(Key.N).ShouldBeTrue();
+    // game.Buffer.Should().Be("");
+    // game.GetActiveEntry()!.InputBuffer.ShouldBe("コン");
+    // game.OnInput(Key.P).ShouldBeTrue();
+    // game.Buffer.Should().Be("p");
+    // game.OnInput(Key.Y).ShouldBeTrue();
+    // game.Buffer.Should().Be("py");
+    // game.OnInput(Key.U).ShouldBeTrue();
+    // game.Buffer.Should().Be("");
+    // game.GetActiveEntry()!.InputBuffer.ShouldBe("コンピュ");
+    // game.OnInput(Key.Minus).ShouldBeTrue();
+    // game.GetActiveEntry()!.InputBuffer.ShouldBe("コンピュー");
+    // game.OnInput(Key.T).ShouldBeTrue();
+    // game.Buffer.Should().Be("t");
+    // game.OnInput(Key.A).ShouldBeTrue();
+    // game.GetActiveEntry().ShouldBeNull();
+    // game.StatisticTotalError.ShouldBe(0);
   }
 }

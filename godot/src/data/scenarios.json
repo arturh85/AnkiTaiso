@@ -3,14 +3,21 @@
     "id": "en_top1000",
     "title": "Top 10.000 English Nouns",
     "source": "https://github.com/david47k/top-english-wordlists",
-    "wordlist": "res://src/data/en/top_english_nouns_lower_10000.txt",
+    "wordlist": "res://src/data/en_top_english_nouns_lower_10000.txt",
     "locale": "en-US"
   },
   {
     "id": "ja_core2000",
     "title": "Japanese Kana Core 2000",
     "source": "https://ankiweb.net/shared/info/2141233552",
-    "wordlist": "res://src/data/ja/core2000.txt",
+    "wordlist": "res://src/data/ja_core2000.txt",
+    "locale": "ja_JP"
+  },
+  {
+    "id": "ko_korean_vocabs",
+    "title": "Korean Vocabs by Evita",
+    "source": "https://ankiweb.net/shared/info/4066961604",
+    "wordlist": "res://src/data/ko_korean_by_evita.txt",
     "locale": "ja_JP"
   }
 ]

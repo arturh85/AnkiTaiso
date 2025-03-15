@@ -184,10 +184,10 @@ public partial class MenuAnki : Control, IMenuAnki {
 
   private VocabMapping BuildMapping() =>
     new() {
-      PromptKey = FieldPromptSelect.GetItemText(FieldPromptSelect.Selected),
-      TranslationKey = FieldTranslationSelect.GetItemText(FieldTranslationSelect.Selected),
-      TitleKey = FieldTitleSelect.GetItemText(FieldTitleSelect.Selected),
-      AudioKey = FieldAudioSelect.GetItemText(FieldAudioSelect.Selected)
+      PromptKey = FieldPromptSelect.Selected == -1 ? null! : FieldPromptSelect.GetItemText(FieldPromptSelect.Selected),
+      TranslationKey = FieldTranslationSelect.Selected == -1 ? null : FieldTranslationSelect.GetItemText(FieldTranslationSelect.Selected),
+      TitleKey = FieldTitleSelect.Selected == -1 ? null : FieldTitleSelect.GetItemText(FieldTitleSelect.Selected),
+      AudioKey = FieldAudioSelect.Selected == -1 ? null : FieldAudioSelect.GetItemText(FieldAudioSelect.Selected)
     };
 
   private void OnConfigChanged(long _index) {

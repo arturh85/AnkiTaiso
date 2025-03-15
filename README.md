@@ -37,11 +37,10 @@ Milestone 1:
 - [x] Basic visual feedback on hits/mistakes
 
 Milestone 2:
-- [ ] Build/Update Wordlists from Anki Decks
-  - [ ] Import Audio from Anki or generate with TTS as fallback
-- [ ] Audio Playback on Success
-  - [ ] alternative Game Mode for Listening Comprehension where Audio is played first 
-- [ ] Input Test Mode for Checking Keyboard Layouts
+- [x] Build/Update Wordlists from Anki Decks
+  - [x] Import Audio from Anki or generate with TTS as fallback
+- [x] Audio Playback on Success
+  [ ] Input Test Mode for Checking Keyboard Layouts
 - [ ] Music & Sound effects
 - [ ] Visual effects for typing like shooting the zombie enemies
 
