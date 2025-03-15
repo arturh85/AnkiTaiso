@@ -15,6 +15,7 @@ public partial class Enemy : Node3D {
   private Vector3 _movementTarget;
   public bool Moving;
   public Vocab Vocab = null!;
+  public bool dead = false;
   [Dependency] public GameTypingSystem GameTypingSystem => this.DependOn<GameTypingSystem>();
 
   [Signal]
@@ -51,6 +52,7 @@ public partial class Enemy : Node3D {
 
     if (Vocab.State == VocabState.Completed) {
       GetAnimationTree().Set("parameters/StateMachine/conditions/die", true);
+      dead = true;
     }
 
     var offset = NodeUtils.RandomChild<Node3D>(BulletHitOffsets);

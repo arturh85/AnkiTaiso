@@ -23,7 +23,7 @@ public partial class GameTyping : Node3D {
   public Vector3 SpawnPosition;
 
   private Enemy? activeEnemy;
-  private const int MaxEnemyPanels = 4;
+  private const int MaxEnemyPanels = 50;
   public Stack<string> WordList = new();
 
   [Dependency] public IAppRepo AppRepo => this.DependOn<IAppRepo>();
@@ -60,12 +60,12 @@ public partial class GameTyping : Node3D {
     var idx = 0;
     foreach (var child in GuiControls.GetChildren()) {
       if (child is EnemyPanel panel) {
-        if (nearest.Count <= idx) {
+        if (idx >= nearest.Count || nearest[idx].dead) {
           panel.Hide();
         }
         else {
           var enemy = nearest[idx];
-          panel.UpdateGui(enemy);
+          panel.UpdateGui(enemy, idx);
         }
 
         idx += 1;

@@ -36,7 +36,7 @@ public partial class EnemyPanel : Control {
     _currentEnemy = null;
   }
 
-  public void UpdateGui(Enemy enemy) {
+  public void UpdateGui(Enemy enemy, int order_index) {
     var pos3D = enemy.GlobalPosition + enemy.GetGuiOffset();
     var cam = GetViewport().GetCamera3D();
     var pos2D = cam.UnprojectPosition(pos3D);
@@ -47,7 +47,7 @@ public partial class EnemyPanel : Control {
       ZIndex = -1;
     }
     else {
-      ZIndex = -2;
+      ZIndex = -1 - order_index;
     }
     UpdateVocab(vocab);
     _currentEnemy = enemy;
