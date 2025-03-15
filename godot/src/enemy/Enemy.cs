@@ -1,6 +1,5 @@
 namespace ankitaiso.enemy;
 
-using System;
 using Chickensoft.AutoInject;
 using Chickensoft.Introspection;
 using game_typing;
@@ -107,7 +106,6 @@ public partial class Enemy : Node3D {
   public AnimationTree GetAnimationTree() => (GetNode(nameof(AnimationTree)) as AnimationTree)!;
 
   private void OnAnimationFinished(StringName animname) {
-    Console.WriteLine(animname);
     if (animname == EnemyAnimations.ClimbGrave) {
       Moving = true;
       Vocab.State = VocabState.Visible;
