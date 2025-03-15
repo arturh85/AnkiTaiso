@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlkjjo27rp5ph"]
+
+[ext_resource type="Script" uid="uid://dxgej1vrycknb" path="res://src/map/ZombieSpawner.cs" id="1_bojb6"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_1uoqj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1vnfk"]
+albedo_color = Color(1, 0, 1, 1)
+emission_enabled = true
+emission = Color(1, 0, 1, 1)
+
+[node name="ZombieSpawner" type="Node3D"]
+script = ExtResource("1_bojb6")
+
+[node name="EditorPosition" type="MeshInstance3D" parent="."]
+unique_name_in_owner = true
+mesh = SubResource("SphereMesh_1uoqj")
+surface_material_override/0 = SubResource("StandardMaterial3D_1vnfk")

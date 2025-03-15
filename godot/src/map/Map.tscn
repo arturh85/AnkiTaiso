@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://dqu3oaninqabd"]
+[gd_scene load_steps=14 format=3 uid="uid://dqu3oaninqabd"]
 
 [ext_resource type="Script" uid="uid://tvo52bwkupen" path="res://src/map/Map.cs" id="1_t88o4"]
 [ext_resource type="Sky" uid="uid://jonn5eom7asv" path="res://src/map/sky/blue_sky.tres" id="1_wl8qu"]
 [ext_resource type="PackedScene" uid="uid://bevjicm4mp18p" path="res://assets/cybercity/testmap.gltf" id="3_tpq63"]
 [ext_resource type="PackedScene" uid="uid://2wom3tt1qejt" path="res://src/map/CameraWaypoint.tscn" id="4_0qcd2"]
+[ext_resource type="PackedScene" uid="uid://dlkjjo27rp5ph" path="res://src/map/ZombieSpawner.tscn" id="4_1ny7u"]
 
 [sub_resource type="Environment" id="Environment_k13y0"]
 background_mode = 2
@@ -42,7 +43,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("WorldVisualCenter:rotation")
+tracks/0/path = NodePath("../WorldVisualCenter:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -59,7 +60,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("WorldVisualCenter:rotation")
+tracks/0/path = NodePath("../WorldVisualCenter:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -93,15 +94,108 @@ script = ExtResource("1_t88o4")
 environment = SubResource("Environment_k13y0")
 
 [node name="Sun" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866025, -0.433013, 0.25, 0.47841, -0.572271, 0.666055, -0.145343, 0.696423, 0.702759, 0, 15.0402, 0)
+transform = Transform3D(-0.927588, -0.359255, -0.102546, -0.196088, 0.234519, 0.952129, -0.318008, 0.903292, -0.287982, 0, 15.0402, 0)
 light_color = Color(0.172549, 0.490196, 0.639216, 1)
+shadow_enabled = true
 directional_shadow_mode = 0
 
+[node name="WorldVisualCenter" type="Node3D" parent="."]
+transform = Transform3D(1.35, -4.7086e-16, 6.02961e-06, 4.70862e-16, 1.35, -4.70862e-16, -6.02961e-06, 4.70865e-16, 1.35, 1.0613, 0, -9.14855)
+
+[node name="WorldCamera" type="Camera3D" parent="WorldVisualCenter"]
+unique_name_in_owner = true
+transform = Transform3D(0.740741, -1.92363e-16, 2.4979e-16, 2.49789e-16, 0.716166, -0.189219, -1.92364e-16, 0.189219, 0.716166, 2.08165e-12, 5.24, 27.785)
+current = true
+
+[node name="WayPoints" type="Node3D" parent="."]
+
+[node name="CameraWaypoint" parent="WayPoints" instance=ExtResource("4_0qcd2")]
+transform = Transform3D(0.0308525, 0, -0.999524, 0, 0.999999, 0, 0.999524, 0, 0.0308525, -51.1775, 2.94868, -20.0648)
+CameraPosition = Vector3(-51.1775, 1.78169, -20.0648)
+
+[node name="CameraWaypoint7" parent="WayPoints" instance=ExtResource("4_0qcd2")]
+transform = Transform3D(-0.116712, -0.00117043, -0.993165, -0.00115729, 0.999998, -0.00104246, 0.993165, 0.00102769, -0.116713, -45.7699, 3.27578, -20.0648)
+Speed = 2.0
+CameraPosition = Vector3(-45.7682, 1.7817, -20.0663)
+
+[node name="CameraWaypoint9" parent="WayPoints" instance=ExtResource("4_0qcd2")]
+transform = Transform3D(0.311516, -0.000630102, -0.95024, -0.00115729, 0.999998, -0.00104246, 0.95024, 0.00142444, 0.311515, -44.9014, 3.27578, -20.0648)
+Speed = 2.0
+CameraPosition = Vector3(-44.9005, 1.7817, -20.0669)
+
+[node name="CameraWaypoint10" parent="WayPoints" instance=ExtResource("4_0qcd2")]
+transform = Transform3D(0.69972, 6.49994e-05, -0.714416, -0.00115729, 0.999998, -0.00104246, 0.714416, 0.00155622, 0.69972, -44.1729, 3.27578, -20.4354)
+Speed = 2.0
+CameraPosition = Vector3(-44.173, 1.7817, -20.4377)
+
+[node name="CameraWaypoint11" parent="WayPoints" instance=ExtResource("4_0qcd2")]
+transform = Transform3D(0.963254, 0.000834746, -0.268591, -0.00115729, 0.999998, -0.00104246, 0.26859, 0.00131501, 0.963254, -43.6987, 3.27578, -21.1609)
+Speed = 0.5
+CameraPosition = Vector3(-43.6999, 1.7817, -21.1629)
+
+[node name="ZombieSpawner" parent="WayPoints/CameraWaypoint11" instance=ExtResource("4_1ny7u")]
+transform = Transform3D(0.865894, -0.000676674, -0.500226, 0.000366268, 1, -0.000718707, 0.500226, 0.000439096, 0.865895, -0.884953, -0.00728416, -6.00493)
+GroundPosition = Vector3(-42.9383, 0.0316927, -27.1829)
+
+[node name="ZombieSpawner2" parent="WayPoints/CameraWaypoint11" instance=ExtResource("4_1ny7u")]
+transform = Transform3D(0.865894, -0.000676674, -0.500226, 0.000366268, 1, -0.000718707, 0.500226, 0.000439096, 0.865895, 0.0916481, -0.00914979, -8.87843)
+GroundPosition = Vector3(-41.2258, 0.0316927, -29.6885)
+
+[node name="ZombieSpawner3" parent="WayPoints/CameraWaypoint11" instance=ExtResource("4_1ny7u")]
+transform = Transform3D(0.865894, -0.000676674, -0.500226, 0.000366268, 1, -0.000718707, 0.500226, 0.000439096, 0.865895, -2.61885, -0.0133204, -9.86981)
+GroundPosition = Vector3(-43.5704, 0.031693, -31.3714)
+
+[node name="ZombieSpawner4" parent="WayPoints/CameraWaypoint11" instance=ExtResource("4_1ny7u")]
+transform = Transform3D(0.865894, -0.000676674, -0.500226, 0.000366268, 1, -0.000718707, 0.500226, 0.000439096, 0.865895, 1.5038, -0.010519, -11.7591)
+GroundPosition = Vector3(-39.0918, 0.0316927, -32.084)
+
+[node name="CameraWaypoint12" parent="WayPoints" instance=ExtResource("4_0qcd2")]
+transform = Transform3D(0.293783, -0.000656493, -0.955871, -0.00115729, 0.999998, -0.00104246, 0.955871, 0.00141247, 0.293783, -43.0153, 3.27578, -20.547)
+Speed = 0.5
+CameraPosition = Vector3(-43.0143, 1.7817, -20.5491)
+
+[node name="CameraWaypoint2" parent="WayPoints" instance=ExtResource("4_0qcd2")]
+transform = Transform3D(-0.0401312, 0, -0.999193, 0, 0.999999, 0, 0.999193, 0, -0.0401312, -43.0516, 1.17491, -19.418)
+CameraPosition = Vector3(-43.0516, 1.78169, -19.418)
+
+[node name="ZombieSpawner" parent="WayPoints/CameraWaypoint2" instance=ExtResource("4_1ny7u")]
+transform = Transform3D(1, 0, -3.35276e-08, 0, 1, 0, 3.35276e-08, 0, 1, 1.79198, 0, -5.34758)
+GroundPosition = Vector3(-37.7803, 0.0316931, -17.4129)
+
+[node name="ZombieSpawner2" parent="WayPoints/CameraWaypoint2" instance=ExtResource("4_1ny7u")]
+transform = Transform3D(1, 0, -3.72529e-08, 0, 1, 0, 3.72529e-08, 0, 1, -2.10761, 0, -5.19096)
+GroundPosition = Vector3(-37.7803, 0.0316931, -21.3156)
+
+[node name="CameraWaypoint4" parent="WayPoints" instance=ExtResource("4_0qcd2")]
+transform = Transform3D(0.662123, 0, -0.749394, 0, 0.999999, 0, 0.749394, 0, 0.662123, -43.7055, 1.17491, -14.9312)
+Speed = 3.0
+CameraPosition = Vector3(-43.7055, 1.78169, -14.9312)
+
+[node name="CameraWaypoint8" parent="WayPoints" instance=ExtResource("4_0qcd2")]
+transform = Transform3D(-0.548672, 0, -0.836037, 0, 0.999999, 0, 0.836037, 0, -0.548672, -43.6868, 1.17491, -11.494)
+Speed = 3.0
+CameraPosition = Vector3(-43.6868, 1.78169, -11.494)
+
+[node name="CameraWaypoint3" parent="WayPoints" instance=ExtResource("4_0qcd2")]
+transform = Transform3D(-0.990513, 0, -0.13741, 0, 0.999999, 0, 0.13741, 0, -0.990513, -43.7692, 2.35614, -9.29721)
+CameraPosition = Vector3(-43.7692, 1.78169, -9.29721)
+
+[node name="ZombieSpawner" parent="WayPoints/CameraWaypoint3" instance=ExtResource("4_1ny7u")]
+transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 0.795597, 0, -5.73502)
+GroundPosition = Vector3(-43.7692, 0.0316932, -3.50727)
+
+[node name="ZombieSpawner2" parent="WayPoints/CameraWaypoint3" instance=ExtResource("4_1ny7u")]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -2.25684, 0, -6.15847)
+GroundPosition = Vector3(-40.6875, 0.0316932, -3.50728)
+
+[node name="ZombieSpawner3" parent="WayPoints/CameraWaypoint3" instance=ExtResource("4_1ny7u")]
+transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, 1.40326, 0, -11.1467)
+GroundPosition = Vector3(-43.6275, 0.0316932, 1.93656)
+
 [node name="World" type="Node3D" parent="."]
-transform = Transform3D(1.35, 0, 0, 0, 1.35, 0, 0, 0, 1.35, 0, 0, 0)
 
 [node name="Map" parent="World" instance=ExtResource("3_tpq63")]
-transform = Transform3D(-0.592592, 0, -8.94792e-08, 0, 0.592592, 0, 8.94792e-08, 0, -0.592592, -36.0293, -0.147243, -11.5053)
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -36.0293, -0.299852, -11.5053)
 
 [node name="CameraAnimationPlayer" type="AnimationPlayer" parent="World"]
 deterministic = true
@@ -110,29 +204,10 @@ libraries = {
 }
 autoplay = "world_cam_spin"
 
-[node name="WorldVisualCenter" type="Node3D" parent="World"]
-transform = Transform3D(1, -3.48785e-16, 4.46638e-06, 3.48787e-16, 1, -3.48787e-16, -4.46638e-06, 3.48789e-16, 1, 0.786151, 0, -6.7767)
-
-[node name="WorldCamera" type="Camera3D" parent="World/WorldVisualCenter"]
-unique_name_in_owner = true
-transform = Transform3D(0.740741, -1.92363e-16, 2.4979e-16, 2.49789e-16, 0.716166, -0.189219, -1.92364e-16, 0.189219, 0.716166, 2.08165e-12, 5.24, 27.785)
-current = true
-
 [node name="Ground" type="CSGBox3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.24864, 0)
 size = Vector3(1000, 1, 1000)
 material = SubResource("StandardMaterial3D_0qcd2")
-
-[node name="WayPoints" type="Node3D" parent="World"]
-
-[node name="CameraWaypoint" parent="World/WayPoints" instance=ExtResource("4_0qcd2")]
-transform = Transform3D(-0.181092, -0.00123482, -0.983465, -0.00115729, 0.999998, -0.00104246, 0.983465, 0.000949351, -0.181093, -44.5865, 2.99098, -16.1532)
-
-[node name="CameraWaypoint2" parent="World/WayPoints" instance=ExtResource("4_0qcd2")]
-transform = Transform3D(0.662123, 0, -0.749394, 0, 0.999999, 0, 0.749394, 0, 0.662123, -41.7055, 2.35614, -16.1232)
-
-[node name="CameraWaypoint3" parent="World/WayPoints" instance=ExtResource("4_0qcd2")]
-transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -39.9717, 2.35614, -8.05368)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="World"]
 transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.00107094, -2.34645, -0.0132992)
@@ -143,9 +218,9 @@ transform = Transform3D(0.999991, 0, 0, 0, 0.999991, 0, 0, 0, 0.999991, 0, 1.878
 shape = SubResource("BoxShape3D_3olkd")
 
 [node name="StaticBody3D2" type="StaticBody3D" parent="World"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00107094, -0.299963, -0.0132992)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00107094, -0.581946, -0.0132992)
 physics_material_override = SubResource("PhysicsMaterial_1ny7u")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/StaticBody3D2"]
-transform = Transform3D(0.999941, 0, 0, 0, 0.999941, 0, 0, 0, 0.999941, -45.633, 0.821836, -14.0508)
+transform = Transform3D(0.999941, 0, 0, 0, 0.999941, 0, 0, 0, 0.999941, -56.5733, 0.821836, -18.8931)
 shape = SubResource("BoxShape3D_0qcd2")

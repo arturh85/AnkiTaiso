@@ -2,7 +2,9 @@ namespace ankitaiso.game;
 
 using System;
 using System.IO.Abstractions;
+using System.Linq;
 using System.Text.Json;
+using ankitaiso.player_camera;
 using app.domain;
 using Chickensoft.AutoInject;
 using Chickensoft.Collections;
@@ -81,7 +83,10 @@ public partial class Game : Node3D, IGame {
     GameLogic = new GameLogic();
     GameLogic.Set(GameRepo);
     GameLogic.Set(AppRepo);
-    GameTyping.PlayerPosition = Player.Position;
+    GameTyping.PlayerPosition = ((CameraWaypoint)((Node3D)Map.GetNode("WayPoints").GetChildren()[0])).CameraPosition;
+    GameTyping.Waypoints = Map.GetNode("WayPoints").GetChildren().Cast<CameraWaypoint>().ToList();
+    GameTyping.Camera = PlayerCamera;
+    //PlayerCamera.GlobalPosition = GameTyping.PlayerPosition;
     GameTyping.SpawnPosition = SpawnLocation.Position;
 
     // This is how to create JsonSerializerOptions for use with LogicBlocks
@@ -137,6 +142,10 @@ public partial class Game : Node3D, IGame {
     // all nodes registering save managers will have already registered
     // their relevant save managers by now. This is useful when restoring state
     // while loading an existing save file.
+
+    GetViewport().Msaa3D = Viewport.Msaa.Msaa8X;
+    GetViewport().ScreenSpaceAA = Viewport.ScreenSpaceAAEnum.Fxaa;
+
   }
 
   public void OnExitTree() {

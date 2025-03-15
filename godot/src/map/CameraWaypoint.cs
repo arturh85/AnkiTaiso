@@ -10,15 +10,17 @@ using static Godot.HttpRequest;
 [Tool]
 public partial class CameraWaypoint : Node3D {
 
-  [Export] double Speed = 1.0;
+  [Export] public double Speed = 1.0;
+  [Export] public Vector3 CameraPosition;
 
   public void OnReady() {
 
   }
   public override void _Process(double delta) {
-    //  MeshInstance3D mesh = new MeshInstance3D();
-    //  mesh.Mesh = new SphereMesh() { Radius = 1.0f, Height = 2.0f };//, Material = new StandardMaterial3D() { AlbedoColor = Colors.Green } };
-    //  AddChild(mesh);
+
+    if (!Engine.IsEditorHint())
+      return;
+
     var spaceState = GetWorld3D().DirectSpaceState;
 
     var query = PhysicsRayQueryParameters3D.Create(GlobalPosition, GlobalPosition + new Vector3(0, -999, 0));
@@ -27,7 +29,8 @@ public partial class CameraWaypoint : Node3D {
     if (result.Count > 0) {
       //GD.Print(result);
       ZProjection.GlobalPosition = new Vector3(GlobalPosition.X, (result["position"].AsVector3()).Y  + 0.05f, GlobalPosition.Z);
-      Head.Position = new Vector3(0, ZProjection.Position.Y + 1.3f, 0);
+      Head.Position = new Vector3(0, ZProjection.Position.Y + 1.7f, 0);
+      CameraPosition = Head.GlobalPosition;
     }
 
     CameraWaypoint next = null;
@@ -39,14 +42,13 @@ public partial class CameraWaypoint : Node3D {
         next = waypoint;
         break;
       }
-        
-    }
 
+    }
     if (next != null) {
       PathCenter.LookAt(next.Head.GlobalPosition, new Vector3(0, 1, 0), true);
       //PathCenter.RotateY((float)Math.PI / 2.0f);
       Vector3 diff = next.Head.GlobalPosition - Head.GlobalPosition;
-      PathCenter.Scale = new Vector3(1, 1, diff.Length() * 3.7f);
+      PathCenter.Scale = new Vector3(1, 1, diff.Length() * 5.0f);
       PathCenter.Show();
       //GD.Print(next.Head.GlobalPosition - Head.GlobalPosition);
     }
@@ -61,7 +63,9 @@ public partial class CameraWaypoint : Node3D {
   public override void _EnterTree() {
 
       
-    if (Engine.IsEditorHint()) {
+    if (!Engine.IsEditorHint()) {
+      ZProjection.Hide();
+      Head.Hide();
     }
   }
 

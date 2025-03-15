@@ -17,9 +17,6 @@ script = ExtResource("1_1s8go")
 [node name="EnemiesContainer" type="Node3D" parent="."]
 unique_name_in_owner = true
 
-[node name="SpawnTimer" type="Timer" parent="."]
-unique_name_in_owner = true
-
 [node name="GuiControls" type="Control" parent="."]
 unique_name_in_owner = true
 layout_mode = 3
@@ -111,5 +108,3 @@ override_bbcodeEnabled = true
 override_clipContents = false
 override_fitContent = true
 metadata/_custom_type_script = "uid://2f4fi75scxes"
-
-[connection signal="timeout" from="SpawnTimer" to="." method="_on_timer_timeout"]

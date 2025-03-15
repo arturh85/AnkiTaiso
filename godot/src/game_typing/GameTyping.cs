@@ -21,10 +21,16 @@ public partial class GameTyping : Node3D {
 
   public Vector3 PlayerPosition;
   public Vector3 SpawnPosition;
+  public player_camera.PlayerCamera Camera;
+  public List<CameraWaypoint> Waypoints;
 
   private Enemy? activeEnemy;
   private const int MaxEnemyPanels = 50;
   public Stack<string> WordList = new();
+
+  private double time_last_waypoint = 0.0;
+  private double time_startcamera = 0.0;
+  private int current_waypoint = 0;
 
   [Dependency] public IAppRepo AppRepo => this.DependOn<IAppRepo>();
   [Dependency] public IGameTypingRepo GameTypingRepo => this.DependOn<IGameTypingRepo>();
@@ -54,6 +60,51 @@ public partial class GameTyping : Node3D {
     if (_paused) {
       return;
     }
+
+    var waypoint = Waypoints[current_waypoint];
+    if (time_last_waypoint == 0.0) { // standing at waypoint
+
+      PlayerPosition = waypoint.CameraPosition;
+      Camera.Position = PlayerPosition;
+      Camera.Rotation = new Vector3(Camera.Rotation.X, waypoint.Rotation.Y, Camera.Rotation.Z);
+
+      foreach (ZombieSpawner spawner in waypoint.GetChildren().OfType<ZombieSpawner>()) {
+
+        SpawnEnemy(spawner.GroundPosition);
+      }
+
+      time_last_waypoint += delta;
+    }
+    else if (EnemiesContainer.GetChildCount() == 0 && time_startcamera == 0.0) { // finished waypoint
+      time_startcamera = time_last_waypoint;
+
+      time_last_waypoint += delta;
+    }
+
+    if (time_startcamera > 0.0 && current_waypoint < Waypoints.Count - 1) { // moving to next waypoint
+      double elapsed = time_last_waypoint - time_startcamera;
+      double distance = elapsed * waypoint.Speed;
+      double real_distance = (waypoint.CameraPosition - Waypoints[current_waypoint + 1].CameraPosition).Length();
+      float percent_distance = (float)(distance / real_distance);
+     // GD.Print(percent_distance);
+
+      Camera.GlobalPosition = waypoint.CameraPosition + (Waypoints[current_waypoint + 1].CameraPosition - waypoint.CameraPosition) * percent_distance;
+      float cam_rotation = waypoint.Rotation.Y + (Waypoints[current_waypoint + 1].Rotation.Y - waypoint.Rotation.Y) * percent_distance;
+      Camera.Rotation = new Vector3(Camera.Rotation.X, cam_rotation, Camera.Rotation.Z);
+
+      if (percent_distance >= 1.0 - waypoint.Speed * delta * 2.0) {
+
+        time_startcamera = 0.0;
+        time_last_waypoint = 0.0;
+        current_waypoint++;
+      }
+      else {
+        time_last_waypoint += delta;
+      }
+
+    }
+
+
 
     var nearest = NodeUtils.NearestNodes<Enemy>(PlayerPosition, EnemiesContainer, MaxEnemyPanels, e => e.Moving);
 
@@ -95,10 +146,10 @@ public partial class GameTyping : Node3D {
     }
     _paused = paused;
     if (_paused) {
-      SpawnTimer.Stop();
+
     }
     else {
-      SpawnTimer.Start();
+
     }
   }
 
@@ -138,7 +189,7 @@ public partial class GameTyping : Node3D {
   }
 
 
-  private void SpawnEnemy() {
+  private void SpawnEnemy(Vector3 position) {
     if (EnemiesContainer.GetChildren().Count >= 5) {
       return;
     }
@@ -151,7 +202,7 @@ public partial class GameTyping : Node3D {
     const int maxSpawnAttempts = 10;
     var rng = new RandomNumberGenerator();
     rng.Randomize();
-    var spawnPosition = FindValidSpawnPosition3D(rng, spawnRadius, minDistanceBetweenEnemies, maxSpawnAttempts);
+    var spawnPosition = position; // FindValidSpawnPosition3D(rng, spawnRadius, minDistanceBetweenEnemies, maxSpawnAttempts);
     var enemy = CreateEnemy3D(vocab, spawnPosition);
     EnemiesContainer.AddChild(enemy);
   }
@@ -183,14 +234,12 @@ public partial class GameTyping : Node3D {
   }
 
   private Enemy CreateEnemy3D(Vocab vocab, Vector3 position) {
-    var enemy = Enemy.Instantiate(vocab, PlayerPosition);
+    var enemy = Enemy.Instantiate(vocab, new Vector3(PlayerPosition.X, 0, PlayerPosition.Z));
     enemy.Position = position;
     return enemy;
   }
 
   private string PopRandomWord() => WordList.Count > 0 ? WordList.Pop() : "empty";
-
-  private void _on_timer_timeout() => SpawnEnemy();
 
   private void _on_active_enemy_deleted() => activeEnemy = null;
 
