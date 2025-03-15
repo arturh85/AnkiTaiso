@@ -17,7 +17,7 @@ public class GameTypingSystem {
 
   public int StatisticTotalSuccess { get; set; }
   public int StatisticTotalError { get; set; }
-  public Dictionary<char, CharStatistic> StatisticByChar { get; set; } = new();
+  public Dictionary<string, CharStatistic> StatisticByChar { get; set; } = new();
 
   private DateTimeOffset? _start;
   private DateTimeOffset? _end;
@@ -26,18 +26,23 @@ public class GameTypingSystem {
   public DateTimeOffset? GetEnd() => _end;
 
   public event OnWonEvent? OnWon;
+
   public delegate void OnWonEvent();
 
   public event OnHitEvent? OnHit;
+
   public delegate void OnHitEvent(string key, Vocab? vocab);
+
   public event OnMistakeEvent? OnMistake;
+
   public delegate void OnMistakeEvent(string key, Vocab? vocab);
 
   public event OnLeftCountChangedEvent? OnLeftCountChanged;
+
   public delegate void OnLeftCountChangedEvent(int leftCount, int totalCount);
 
   public GameTypingSystem() {
-    RestartGame((IEnumerable<Vocab>)[]);
+    RestartGame((IEnumerable<Vocab>) []);
   }
 
   public GameTypingSystem(IEnumerable<VocabEntry> vocabs) {
@@ -126,9 +131,25 @@ public class GameTypingSystem {
 
     if (EntryActive != null) {
       if (EntryActive.Entry.Prompt.StartsWith(EntryActive.InputBuffer + input)) {
+        var c = EntryActive.Next;
+        if (!StatisticByChar.TryGetValue(c, out var value)) {
+          value = new CharStatistic(c);
+          StatisticByChar.Add(c, value);
+        }
+        if (success) {
+          value.SuccessCount += 1;
+        }
+        else {
+          value.FailCount += 1;
+        }
         success = EntryActive.OnInput(input);
       }
       else if (EntryActive.NextVariants != null) {
+        var c = EntryActive.Next;
+        if (!StatisticByChar.TryGetValue(c, out var value)) {
+          value = new CharStatistic(c);
+          StatisticByChar.Add(c, value);
+        }
         foreach (var nextPlain in EntryActive.NextVariants) {
           if (!nextPlain.StartsWith(bufferInput)) {
             continue;
@@ -137,6 +158,7 @@ public class GameTypingSystem {
           if (nextPlain == bufferInput) {
             success = EntryActive.OnInput(EntryActive.Next);
             Buffer = "";
+            value.SuccessCount += 1;
           }
           else {
             Buffer = bufferInput;
@@ -145,6 +167,15 @@ public class GameTypingSystem {
 
           break;
         }
+        value.FailCount += 1;
+      }
+      else {
+        var c = EntryActive.Next;
+        if (!StatisticByChar.TryGetValue(c, out var value)) {
+          value = new CharStatistic(c);
+          StatisticByChar.Add(c, value);
+        }
+        value.FailCount += 1;
       }
     }
     else {
@@ -195,21 +226,13 @@ public class GameTypingSystem {
       }
     }
 
-    var c = input[0];
-    if (!StatisticByChar.TryGetValue(c, out var value)) {
-      value = new CharStatistic(c);
-      StatisticByChar.Add(c, value);
-    }
-
     if (success) {
       OnHit?.Invoke(input, EntryActive);
       StatisticTotalSuccess += 1;
-      value.SuccessCount += 1;
     }
     else {
       OnMistake?.Invoke(input, EntryActive);
       StatisticTotalError += 1;
-      value.FailCount += 1;
     }
 
     if (completed) {
@@ -227,6 +250,7 @@ public class GameTypingSystem {
     if (_start == null) {
       return null;
     }
+
     var end = _end ?? DateTimeOffset.Now;
     var diff = end - _start;
     return diff;

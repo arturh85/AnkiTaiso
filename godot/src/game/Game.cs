@@ -21,8 +21,10 @@ using domain;
 using game_typing;
 using game_typing.domain;
 using Godot;
+using map;
 using Microsoft.EntityFrameworkCore.Storage;
 using state;
+using utils;
 using MapData = map.MapData;
 using PlayerCameraData = player_camera.PlayerCameraData;
 using PlayerData = player.PlayerData;
@@ -250,14 +252,14 @@ public partial class Game : Node3D, IGame {
   }
 
   public override void _Input(InputEvent @event) {
-    if (Input.IsActionJustPressed("ui_cancel")) {
+    if (Input.IsActionJustPressed(BuiltinInputActions.UICancel)) {
       GameLogic.Input(new GameLogic.Input.PauseButtonPressed());
     }
   }
 
-  public void OnGameWon() {
+  public async void OnGameWon() {
+    await DatabaseRepo.StoreRun(GameTypingSystem, GameTypingRepo.ActiveScenario!);
     GameLogic.Input(new GameLogic.Input.EndGame(GameOverReason.Won));
-    DatabaseRepo.StoreRun(GameTypingSystem, GameTypingRepo.ActiveScenario!);
   }
 
   public void OnGameLost() =>

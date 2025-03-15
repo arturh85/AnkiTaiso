@@ -12,6 +12,7 @@ using Chickensoft.Introspection;
 using domain;
 using enemy_panel;
 using Godot;
+using map;
 using utils;
 
 [Meta(typeof(IAutoNode))]
@@ -21,16 +22,16 @@ public partial class GameTyping : Node3D {
 
   public Vector3 PlayerPosition;
   public Vector3 SpawnPosition;
-  public player_camera.PlayerCamera Camera;
-  public List<CameraWaypoint> Waypoints;
+  public player_camera.PlayerCamera? Camera;
+  public List<CameraWaypoint>? Waypoints;
 
-  private Enemy? activeEnemy;
-  private const int MaxEnemyPanels = 50;
+  private Enemy? _activeEnemy;
+  private const int MAX_ENEMY_PANELS = 50;
   public Stack<string> WordList = new();
 
-  private double time_last_waypoint = 0.0;
-  private double time_startcamera = 0.0;
-  private int current_waypoint = 0;
+  private double _timeLastWaypoint;
+  private double _timeStartcamera;
+  private int _currentWaypoint;
 
   [Dependency] public IAppRepo AppRepo => this.DependOn<IAppRepo>();
   [Dependency] public IGameTypingRepo GameTypingRepo => this.DependOn<IGameTypingRepo>();
@@ -43,7 +44,7 @@ public partial class GameTyping : Node3D {
 
   public void OnReady() {
     SetPaused(true);
-    for (var i = 0; i < MaxEnemyPanels; i++) {
+    for (var i = 0; i < MAX_ENEMY_PANELS; i++) {
       var panel = EnemyPanel.Instantiate();
       panel.Hide();
       GuiControls.AddChild(panel);
@@ -57,56 +58,57 @@ public partial class GameTyping : Node3D {
 
   // Called every frame. 'delta' is the elapsed time since the previous frame.
   public override void _Process(double delta) {
-    if (_paused) {
+    if (_paused || Waypoints == null || Camera == null) {
       return;
     }
 
-    var waypoint = Waypoints[current_waypoint];
-    if (time_last_waypoint == 0.0) { // standing at waypoint
+    var waypoint = Waypoints[_currentWaypoint];
+    if (_timeLastWaypoint == 0.0) { // standing at waypoint
 
       PlayerPosition = waypoint.CameraPosition;
       Camera.Position = PlayerPosition;
       Camera.Rotation = new Vector3(Camera.Rotation.X, waypoint.Rotation.Y, Camera.Rotation.Z);
 
-      foreach (ZombieSpawner spawner in waypoint.GetChildren().OfType<ZombieSpawner>()) {
+      foreach (var spawner in waypoint.GetChildren().OfType<ZombieSpawner>()) {
 
         SpawnEnemy(spawner.GroundPosition);
       }
 
-      time_last_waypoint += delta;
+      _timeLastWaypoint += delta;
     }
-    else if (EnemiesContainer.GetChildCount() == 0 && time_startcamera == 0.0) { // finished waypoint
-      time_startcamera = time_last_waypoint;
-
-      time_last_waypoint += delta;
+    else if (EnemiesContainer.GetChildCount() == 0 && _timeStartcamera == 0.0) { // finished waypoint
+      _timeStartcamera = _timeLastWaypoint;
+      if (_currentWaypoint == Waypoints.Count - 1) {
+        // TODO game won
+      }
+      _timeLastWaypoint += delta;
     }
 
-    if (time_startcamera > 0.0 && current_waypoint < Waypoints.Count - 1) { // moving to next waypoint
-      double elapsed = time_last_waypoint - time_startcamera;
-      double distance = elapsed * waypoint.Speed;
-      double real_distance = (waypoint.CameraPosition - Waypoints[current_waypoint + 1].CameraPosition).Length();
-      float percent_distance = (float)(distance / real_distance);
-     // GD.Print(percent_distance);
+    if (_timeStartcamera > 0.0 && _currentWaypoint < Waypoints.Count - 1) { // moving to next waypoint
+      var elapsed = _timeLastWaypoint - _timeStartcamera;
+      var distance = elapsed * waypoint.Speed;
+      double realDistance = (waypoint.CameraPosition - Waypoints[_currentWaypoint + 1].CameraPosition).Length();
+      var percentDistance = (float)(distance / realDistance);
 
-      Camera.GlobalPosition = waypoint.CameraPosition + (Waypoints[current_waypoint + 1].CameraPosition - waypoint.CameraPosition) * percent_distance;
-      float cam_rotation = waypoint.Rotation.Y + (Waypoints[current_waypoint + 1].Rotation.Y - waypoint.Rotation.Y) * percent_distance;
-      Camera.Rotation = new Vector3(Camera.Rotation.X, cam_rotation, Camera.Rotation.Z);
+      Camera.GlobalPosition = waypoint.CameraPosition + ((Waypoints[_currentWaypoint + 1].CameraPosition - waypoint.CameraPosition) * percentDistance);
+      var camRotation = waypoint.Rotation.Y + ((Waypoints[_currentWaypoint + 1].Rotation.Y - waypoint.Rotation.Y) * percentDistance);
+      Camera.Rotation = new Vector3(Camera.Rotation.X, camRotation, Camera.Rotation.Z);
 
-      if (percent_distance >= 1.0 - waypoint.Speed * delta * 2.0) {
+      if (percentDistance >= 1.0 - (waypoint.Speed * delta * 2.0)) {
 
-        time_startcamera = 0.0;
-        time_last_waypoint = 0.0;
-        current_waypoint++;
+        _timeStartcamera = 0.0;
+        _timeLastWaypoint = 0.0;
+        _currentWaypoint++;
       }
       else {
-        time_last_waypoint += delta;
+        _timeLastWaypoint += delta;
       }
 
     }
 
 
 
-    var nearest = NodeUtils.NearestNodes<Enemy>(PlayerPosition, EnemiesContainer, MaxEnemyPanels, e => e.Moving);
+    var nearest = NodeUtils.NearestNodes<Enemy>(PlayerPosition, EnemiesContainer, MAX_ENEMY_PANELS, e => e.Moving);
 
     var idx = 0;
     foreach (var child in GuiControls.GetChildren()) {
@@ -197,12 +199,9 @@ public partial class GameTyping : Node3D {
     if (vocab == null) {
       return;
     }
-    const float spawnRadius = MathF.PI / 2;
-    const float minDistanceBetweenEnemies = 2.0f;
-    const int maxSpawnAttempts = 10;
     var rng = new RandomNumberGenerator();
     rng.Randomize();
-    var spawnPosition = position; // FindValidSpawnPosition3D(rng, spawnRadius, minDistanceBetweenEnemies, maxSpawnAttempts);
+    var spawnPosition = position;
     var enemy = CreateEnemy3D(vocab, spawnPosition);
     EnemiesContainer.AddChild(enemy);
   }
@@ -241,7 +240,7 @@ public partial class GameTyping : Node3D {
 
   private string PopRandomWord() => WordList.Count > 0 ? WordList.Pop() : "empty";
 
-  private void _on_active_enemy_deleted() => activeEnemy = null;
+  private void _on_active_enemy_deleted() => _activeEnemy = null;
 
   [GeneratedRegex("\r\n|\r|\n")]
   private static partial Regex LinesRegex();

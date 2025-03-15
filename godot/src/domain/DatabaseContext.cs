@@ -11,6 +11,7 @@ public class DatabaseContext : DbContext {
 
   public DbSet<DatabaseVersion> Version { get; set; }
   public DbSet<TypingGameRun> Runs { get; set; }
+  public DbSet<TypingGameStatistic> Statistics { get; set; }
 
   protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) =>
     optionsBuilder.UseSqlite($"Data Source={ProjectSettings.GlobalizePath("user://database.db")}");

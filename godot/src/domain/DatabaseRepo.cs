@@ -21,18 +21,20 @@ public class DatabaseRepo : IDatabaseRepo {
   private bool _disposedValue;
 
   private ServiceProvider? _serviceProvider;
-  public async Task InitDatabase() {
+  public Task InitDatabase() {
     var services = new ServiceCollection();
     services.AddDbContext<DatabaseContext>();
     _serviceProvider = services.BuildServiceProvider();
-    await using var dbContext = GetContext();
+    var dbContext = GetContext();
     dbContext?.EnsureUp2date();
+    return Task.CompletedTask;
   }
 
 
   public async Task StoreRun(GameTypingSystem system, Scenario scenario) {
     var stats = new List<TypingGameStatistic>();
 
+    var dbContext = GetContext();
     foreach (var (c, charStat) in system.StatisticByChar) {
 
       var stat = new TypingGameStatistic {
@@ -40,6 +42,7 @@ public class DatabaseRepo : IDatabaseRepo {
         HitSuccess = charStat.SuccessCount,
         HitFailures = charStat.FailCount
       };
+      dbContext?.Statistics.Add(stat);
       stats.Add(stat);
     }
 
@@ -53,7 +56,6 @@ public class DatabaseRepo : IDatabaseRepo {
       Statistics = stats
     };
 
-    await using var dbContext = GetContext();
     if (dbContext == null) {
       throw new GameException("missing db context");
     }
