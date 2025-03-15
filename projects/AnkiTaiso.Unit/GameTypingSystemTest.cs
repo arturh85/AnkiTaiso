@@ -36,9 +36,9 @@ public class GameTypingSystemTest {
     words.Count.Should().Be(4);
     game.GetEntriesInUse().Count.Should().Be(4);
     // make sure "acd" is skipped so 2 words don't start with 'a'
-    words[0].Entry.Should().Be("abc");
-    words[1].Entry.Should().Be("bce");
-    words[3].Entry.Should().Be("cde");
+    words[0].Entry.Prompt.Should().Be("abc");
+    words[1].Entry.Prompt.Should().Be("bce");
+    words[3].Entry.Prompt.Should().Be("cde");
     game.GetActiveEntry().ShouldBeNull();
 
     game.StatisticTotalError.ShouldBe(0);
