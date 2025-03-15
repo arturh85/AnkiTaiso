@@ -25,19 +25,6 @@ public interface IMenu : IControl {
 public partial class Menu : Control, IMenu {
   public override void _Notification(int what) => this.Notify(what);
 
-  // [Node] public IVBoxContainer ScenarioContainer { get; set; } = default!;
-  // [Node] public IVBoxContainer ScenarioParentContainer { get; set; } = default!;
-  // [Node] public IHBoxContainer ExampleScenario { get; set; } = default!;
-  // [Node] public IButton NewGameButton { get; set; } = default!;
-  // [Node] public IButton LoadGameButton { get; set; } = default!;
-  // [Node] public IButton OptionsButton { get; set; } = default!;
-  // [Node] public IButton FromAnkiButton { get; set; } = default!;
-  // [Node] public IButton QuitButton { get; set; } = default!;
-  // [Node] public IButton StartGameButton { get; set; } = default!;
-  // [Node] public IHSlider WordsPlayedHSlider { get; set; } = default!;
-  // [Node] public IMenuAnki MenuAnki { get; set; } = default!;
-  // [Node] public ILabel WordsPlayedLabel { get; set; } = default!;
-
   public override void _Ready() {
     ScenarioParentContainer.Hide();
     ExampleScenario.Hide();

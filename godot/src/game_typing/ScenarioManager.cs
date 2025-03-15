@@ -11,7 +11,7 @@ using utils;
 
 public class ScenarioManager {
 
-  private static string DeckDirPath(string deckName) => $"user://scenarios/{deckName}";
+  public static string DeckDirPath(string deckName) => $"user://scenarios/{deckName}";
   private const string DECK_FILENAME = "deck.json";
   private const string MAPPING_FILENAME = "mapping.json";
 
@@ -46,9 +46,7 @@ public class ScenarioManager {
           foreach (var cardInfo in cardInfos) {
               var entry = BuildVocabEntry(cardInfo, mapping);
               entries.Add(entry);
-
               if (entry.AudioFilename != null && !FileAccess.FileExists($"{DeckDirPath(deckName)}/{entry.AudioFilename}")) {
-                  GD.Print(entry.AudioFilename);
                   var contents = await ankiService.RetrieveMediaFile(ankiUri, entry.AudioFilename);
                   using var audioFile = FileAccess.Open($"{dirPath}/{entry.AudioFilename}", FileAccess.ModeFlags.Write);
                   if (audioFile == null) {

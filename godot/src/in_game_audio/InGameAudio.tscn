@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://be3pehf5e67m5"]
+[gd_scene load_steps=10 format=3 uid="uid://be3pehf5e67m5"]
 
 [ext_resource type="AudioStream" uid="uid://c1gemc28v25c0" path="res://src/in_game_audio/sounds/coin.wav" id="1_681yd"]
 [ext_resource type="Script" uid="uid://b8upsfk6iumv3" path="res://src/in_game_audio/InGameAudio.cs" id="1_hobj4"]
@@ -8,6 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://lwli84d115g2" path="res://src/in_game_audio/sounds/game_music.mp3" id="6_cwwy4"]
 [ext_resource type="AudioStream" uid="uid://popc3scqxjfk" path="res://src/in_game_audio/sounds/menu_music.mp3" id="7_o8s4p"]
 [ext_resource type="PackedScene" uid="uid://cac8acl84d1ul" path="res://src/in_game_audio/DimmableAudioStreamPlayer.tscn" id="7_rirec"]
+
+[sub_resource type="AudioStreamMP3" id="AudioStreamMP3_wp06k"]
 
 [node name="InGameAudio" type="Node"]
 process_mode = 3
@@ -46,3 +48,7 @@ volume_db = -30.4
 unique_name_in_owner = true
 stream = ExtResource("7_o8s4p")
 volume_db = -16.267
+
+[node name="ClearedWordPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = SubResource("AudioStreamMP3_wp06k")

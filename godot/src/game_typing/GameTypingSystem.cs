@@ -180,10 +180,11 @@ public class GameTypingSystem {
       }
     }
 
+    var completed = false;
     if (EntryActive != null && EntryActive.Entry.Prompt == EntryActive.InputBuffer) {
       EntryActive.State = VocabState.Completed;
       EntriesInUse.Remove(EntryActive);
-      EntryActive = null;
+      completed = true;
       OnLeftCountChanged?.Invoke(EntriesLeft.Count + EntriesInUse.Count, TotalCount);
       if (EntriesInUse.Count == 0 && EntriesLeft.Count == 0) {
         End = DateTimeOffset.Now;
@@ -206,6 +207,10 @@ public class GameTypingSystem {
       OnMistake?.Invoke(input, EntryActive);
       StatisticTotalError += 1;
       value.FailCount += 1;
+    }
+
+    if (completed) {
+      EntryActive = null;
     }
 
     return success;

@@ -5,31 +5,24 @@ using Chickensoft.AutoInject;
 using Chickensoft.GodotNodeInterfaces;
 using Chickensoft.Introspection;
 using Chickensoft.LogicBlocks;
+using data;
+using game_typing;
 using game.domain;
 using Godot;
 using state;
 using InGameAudioLogic = state.InGameAudioLogic;
 
 [Meta(typeof(IAutoNode))]
+[SceneTree]
 public partial class InGameAudio : Node {
   public override void _Notification(int what) => this.Notify(what);
-
-  #region Nodes
-
-  [Node] public IAudioStreamPlayer CoinCollected { get; set; } = default!;
-  [Node] public IAudioStreamPlayer Bounce { get; set; } = default!;
-  [Node] public IAudioStreamPlayer PlayerDied { get; set; } = default!;
-  [Node] public IAudioStreamPlayer PlayerJumped { get; set; } = default!;
-  [Node] public IDimmableAudioStreamPlayer MainMenuMusic { get; set; } = default!;
-  [Node] public IDimmableAudioStreamPlayer GameMusic { get; set; } = default!;
-
-  #endregion Nodes
 
   #region Dependencies
 
   [Dependency] public IAppRepo AppRepo => DependentExtensions.DependOn<IAppRepo>(this);
 
   [Dependency] public IGameRepo GameRepo => DependentExtensions.DependOn<IGameRepo>(this);
+  [Dependency] public GameTypingSystem GameTypingSystem => this.DependOn<GameTypingSystem>();
 
   #endregion Dependencies
 
@@ -69,7 +62,18 @@ public partial class InGameAudio : Node {
         GameMusic.FadeOut()
       );
 
+    GameTypingSystem.OnHit += OnHit;
+
     InGameAudioLogic.Start();
+  }
+
+  private void OnHit(string key, Vocab? vocab) {
+    if (vocab != null && vocab.State == VocabState.Completed && vocab.Entry.AudioFilename != null) {
+      // ScenarioManager.DeckDirPath()
+      // ClearedWordPlayer.Stream.ResourcePath =
+      // ClearedWordPlayer.Play();
+
+    }
   }
 
   public void OnExitTree() {
