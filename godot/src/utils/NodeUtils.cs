@@ -52,7 +52,7 @@ public static class NodeUtils {
   }
 
   public static void ClearOptions(OptionButton button) {
-    for (int i = 0; i < button.ItemCount; i++) {
+    while (button.ItemCount > 0) {
       button.RemoveItem(0);
     }
   }
