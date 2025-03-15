@@ -59,7 +59,7 @@ public partial class EnemyPanel : Control {
       PromptLabelBbcode = vocab.Entry;
     }
     if (vocab.State == VocabState.Active) {
-      BackgroundContainer.Color = _activeColor;
+      //BackgroundContainer.Color = _activeColor;
       var rest = vocab.Entry[(vocab.InputBuffer.Length + vocab.Next.Length)..];
       var targetInput = string.Concat(vocab.InputBuffer, "[red]", vocab.Next, "[]",
         rest.Length > 0 ? "~" + rest + "~" : "");
@@ -68,7 +68,7 @@ public partial class EnemyPanel : Control {
       }
     }
     else {
-      BackgroundContainer.Color = _inactiveColor;
+      //BackgroundContainer.Color = _inactiveColor;
       if (InputLabelBbcode != "") {
         InputLabelBbcode = "";
       }
