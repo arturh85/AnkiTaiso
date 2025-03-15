@@ -31,7 +31,7 @@ project/assembly_name="AnkiTaiso"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/expand-region/plugin.cfg", "res://addons/find-everywhere/plugin.cfg", "res://addons/imrp/plugin.cfg", "res://addons/previous-tab/plugin.cfg", "res://addons/richtext2/plugin.cfg", "res://addons/script-tabs/plugin.cfg", "res://addons/zylann.hterrain/plugin.cfg")
+enabled=PackedStringArray("res://addons/expand-region/plugin.cfg", "res://addons/find-everywhere/plugin.cfg", "res://addons/imrp/plugin.cfg", "res://addons/previous-tab/plugin.cfg", "res://addons/richtext2/plugin.cfg", "res://addons/script-tabs/plugin.cfg", "res://addons/terrabrush/plugin.cfg")
 
 [file_customization]
 
@@ -141,6 +141,7 @@ textures/canvas_textures/default_texture_filter=0
 textures/vram_compression/import_etc2_astc=true
 anti_aliasing/quality/msaa_3d=3
 anti_aliasing/quality/screen_space_aa=1
+anti_aliasing/quality/use_taa=true
 
 [richer_text_label]
 

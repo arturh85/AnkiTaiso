@@ -76,3 +76,4 @@ Use this section to mention useful resources and libraries that you have used in
 - [ChickenSoft](https://chickensoft.games/) for their C# support libraries
 - [WanaKana-net](https://github.com/MartinZikmund/WanaKana-net) for Japanese language
 - [GodotEnv](https://github.com/chickensoft-games/GodotEnv) for Godot Addon Management
+- [TerraBrush](https://github.com/spimort/TerraBrush) for Heightmaps

@@ -54,6 +54,11 @@ public class AnkiConnectApi : IDisposable {
     var response = await CallAnkiConnect(request, baseUrl);
     return response.Result ?? [];
   }
+  public async Task<string> GetMediaDirPath(Uri baseUrl) {
+    var request = AnkiRequest.GetMediaDirPath();
+    var response = await CallAnkiConnect(request, baseUrl);
+    return response.Result ?? "";
+  }
   public async Task<byte[]> RetrieveMediaFile(Uri baseUrl, string filename) {
     var request = AnkiRequest.RetrieveMediaFile(filename);
     var response = await CallAnkiConnect(request, baseUrl);
@@ -81,6 +86,12 @@ internal sealed class AnkiRequest {
   public static AnkiRequest<string[]> ListDeckNames() {
     return new AnkiRequest<string[]> {
       Action = "deckNames",
+      Version = 6
+    };
+  }
+  public static AnkiRequest<string> GetMediaDirPath() {
+    return new AnkiRequest<string> {
+      Action = "getMediaDirPath",
       Version = 6
     };
   }

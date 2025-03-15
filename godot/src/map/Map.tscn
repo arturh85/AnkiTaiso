@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://tvo52bwkupen" path="res://src/map/Map.cs" id="1_t88o4"]
 [ext_resource type="Sky" uid="uid://jonn5eom7asv" path="res://src/map/sky/blue_sky.tres" id="1_wl8qu"]
 [ext_resource type="PackedScene" uid="uid://bevjicm4mp18p" path="res://assets/cybercity/testmap.gltf" id="3_tpq63"]
-[ext_resource type="PackedScene" uid="uid://2wom3tt1qejt" path="res://src/map/CameraWaypoint.tscn" id="4_0qcd2"]
-[ext_resource type="PackedScene" uid="uid://dlkjjo27rp5ph" path="res://src/map/ZombieSpawner.tscn" id="4_1ny7u"]
+[ext_resource type="PackedScene" path="res://src/map/CameraWaypoint.tscn" id="4_0qcd2"]
+[ext_resource type="PackedScene" path="res://src/map/ZombieSpawner.tscn" id="4_1ny7u"]
 
 [sub_resource type="Environment" id="Environment_k13y0"]
 background_mode = 2

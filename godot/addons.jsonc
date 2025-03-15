@@ -36,10 +36,9 @@
       "url": "https://github.com/chairfull/GodotRichTextLabel2",
       "subfolder": "addons/richtext2"
     },
-    "zylann.hterrain": {
-      "url": "https://github.com/Zylann/godot_heightmap_plugin",
-      "checkout": "master",
-      "subfolder": "addons/zylann.hterrain"
+    "terrabrush": {
+      "url": "https://github.com/spimort/TerraBrush",
+      "subfolder": "addons/terrabrush"
     }
   }
 }
