@@ -1,10 +1,7 @@
 namespace ankitaiso.menu.menu_anki;
 
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text.Json;
-using System.Text.RegularExpressions;
 using app.domain;
 using Chickensoft.AutoInject;
 using Chickensoft.GodotNodeInterfaces;
@@ -31,7 +28,7 @@ public partial class MenuAnki : Control, IMenuAnki {
   private CardInfo? _cardInfo;
   private string? _deckName;
   private string[]? _deckNames;
-  private bool _showAllDecks = true;
+  private bool _showOnlyExistingDecks;
 
   [Signal]
   public delegate void BackEventHandler();
@@ -55,7 +52,6 @@ public partial class MenuAnki : Control, IMenuAnki {
     UpdateAnkiUrlButton.Pressed += UpdateDialog;
     ToggleShowAllDecksButton.Pressed += ToggleShowAllDecks;
     ToggleShowAllDecks();
-    ToggleShowAllDecks();
   }
 
   public void OnExitTree() {
@@ -76,7 +72,7 @@ public partial class MenuAnki : Control, IMenuAnki {
     }
 
     foreach (var deckName in deckNames) {
-      if (!_showAllDecks && !FileAccess.FileExists($"{DeckDirPath(deckName)}/{_deckFilename}")) {
+      if (_showOnlyExistingDecks && !ScenarioManager.ScenarioExists(deckName)) {
         continue;
       }
       var control = (ExampleAnkiDeck.Duplicate() as Control)!;
@@ -142,8 +138,6 @@ public partial class MenuAnki : Control, IMenuAnki {
     OnConfigChanged(0);
   }
 
-  private static string DeckDirPath(string deckName) => $"user://scenarios/{deckName}";
-  private string _deckFilename = "deck.json";
 
   private async void OnImportUpdate() {
     if (_deckName == null) {
@@ -155,69 +149,15 @@ public partial class MenuAnki : Control, IMenuAnki {
       ImportUpdateButton.Disabled = true;
       ImportUpdateProgressBar.Show();
       var ankiUrl = new Uri(AnkiUrlEdit.Text.Trim());
-      var ankiService = AnkiConnectApi.GetInstance();
-      var cardIds = await ankiService.FindCardsByDeck(ankiUrl, _deckName);
-      if (cardIds.Length == 0) {
-        ErrorLabel.Text = "No cards found!";
-        // return;
+      ErrorLabel.Text = "";
+      try {
+        var deck = await ScenarioManager.ImportScenario(ankiUrl, _deckName, BuildMapping(), progress =>
+          ImportUpdateProgressBar.Value = progress);
+        ErrorLabel.Text = $"Successfully imported {deck.Entries.Length} entries!";
       }
-
-      const int batchSize = 10;
-
-      var promptKey = FieldPromptSelect.GetItemText(FieldPromptSelect.Selected);
-      var titleKey = FieldTitleSelect.GetItemText(FieldTitleSelect.Selected);
-      var translationKey = FieldTranslationSelect.GetItemText(FieldTranslationSelect.Selected);
-      var audioKey = FieldAudioSelect.GetItemText(FieldAudioSelect.Selected);
-      var vocabDeck = new VocabDeck {
-        Title = _deckName,
-        Entries = [],
-        PromptKey = promptKey,
-        TitleKey = titleKey,
-        TranslationKey = translationKey,
-        AudioKey = audioKey
-      };
-      List<VocabEntry> entries = [];
-
-      var dirPath = DeckDirPath(_deckName);
-      DirAccess.MakeDirRecursiveAbsolute(dirPath);
-
-      for (var i = 0; i < cardIds.Length; i += batchSize) {
-        var batch = cardIds.Skip(i).Take(batchSize).ToArray();
-        var cardInfos = await ankiService.CardsInfo(ankiUrl, batch);
-        if (cardInfos.Length == 0) {
-          ErrorLabel.Text = "No cardInfo found!";
-          return;
-        }
-
-        foreach (var cardInfo in cardInfos) {
-          var entry = BuildVocabEntry(cardInfo);
-          entries.Add(entry);
-
-          if (entry.AudioFilename != null && !FileAccess.FileExists($"{DeckDirPath(_deckName)}/{entry.AudioFilename}")) {
-            GD.Print(entry.AudioFilename);
-            var contents = await ankiService.RetrieveMediaFile(ankiUrl, entry.AudioFilename);
-            using var audioFile = FileAccess.Open($"{dirPath}/{entry.AudioFilename}", FileAccess.ModeFlags.Write);
-            if (audioFile == null) {
-              throw new GameException($"failed to create {_deckFilename} for '{_deckName}'");
-            }
-            audioFile.StoreBuffer(contents);
-          }
-        }
-
-        var progress = (double)(i + batch.Length) / cardIds.Length * 100;
-        ImportUpdateProgressBar.Value = progress;
+      catch (Exception e) {
+        ErrorLabel.Text = e.Message;
       }
-
-      vocabDeck.Entries = entries.ToArray();
-      var json = JsonSerializer.Serialize(vocabDeck, JsonSerializerOptions.Web);
-
-      using var file = FileAccess.Open($"{dirPath}/{_deckFilename}", FileAccess.ModeFlags.Write);
-      if (file == null) {
-        throw new GameException($"failed to create {_deckFilename} for '{_deckName}'");
-      }
-
-      file.StoreString(json);
-      ErrorLabel.Text = $"Successfully imported {cardIds.Length} cards!";
     }
     catch (Exception e) {
       ErrorLabel.Text = e.Message;
@@ -230,65 +170,34 @@ public partial class MenuAnki : Control, IMenuAnki {
   }
 
   private void ToggleShowAllDecks() {
-    _showAllDecks = !_showAllDecks;
-    if (_showAllDecks) {
-      ToggleShowAllDecksButton.Text = "Hide all decks";
+    _showOnlyExistingDecks = !_showOnlyExistingDecks;
+    if (_showOnlyExistingDecks) {
+      ToggleShowAllDecksButton.Text = "Show all Decks";
     }
     else {
-      ToggleShowAllDecksButton.Text = "Show all decks";
+      ToggleShowAllDecksButton.Text = "Show only existing Decks";
     }
-
     if (_deckNames != null) {
       UpdateDialogDecks(_deckNames);
     }
   }
 
-
-  private VocabEntry BuildVocabEntry(CardInfo card) {
-    var promptKey = FieldPromptSelect.GetItemText(FieldPromptSelect.Selected);
-    var titleKey = FieldTitleSelect.GetItemText(FieldTitleSelect.Selected);
-    var translationKey = FieldTranslationSelect.GetItemText(FieldTranslationSelect.Selected);
-    var audioKey = FieldAudioSelect.GetItemText(FieldAudioSelect.Selected);
-    var audioFilename = card.Fields[audioKey].Value;
-    var pattern = @"\[sound:(.*?)\]";
-    var match = Regex.Match(audioFilename ?? "", pattern);
-    if (match.Success) {
-      audioFilename = match.Groups[1].ToString();
-    } else if (audioFilename == "") {
-      audioFilename = null;
-    }
-    return new VocabEntry {
-      Prompt = card.Fields[promptKey].Value ?? "missing",
-      Translation = card.Fields[translationKey].Value,
-      AudioFilename = audioFilename,
-      Title = card.Fields[titleKey].Value
+  private VocabMapping BuildMapping() =>
+    new() {
+      PromptKey = FieldPromptSelect.GetItemText(FieldPromptSelect.Selected),
+      TranslationKey = FieldTranslationSelect.GetItemText(FieldTranslationSelect.Selected),
+      TitleKey = FieldTitleSelect.GetItemText(FieldTitleSelect.Selected),
+      AudioKey = FieldAudioSelect.GetItemText(FieldAudioSelect.Selected)
     };
-  }
 
   private void OnConfigChanged(long _index) {
     if (_cardInfo == null) {
       return;
     }
 
-    var vocabEntry = BuildVocabEntry(_cardInfo);
+    var vocabEntry = ScenarioManager.BuildVocabEntry(_cardInfo, BuildMapping());
     var vocab = new Vocab(vocabEntry);
     PreviewEnemyPanel.UpdateVocab(vocab);
-  }
-
-  private VocabDeck? LoadDeck(string deckName) {
-    var dirPath = DeckDirPath(deckName);
-    var filePath = $"{dirPath}/{_deckFilename}";
-    if (!FileAccess.FileExists(filePath)) {
-      return null;
-    }
-
-    using var file = FileAccess.Open(filePath, FileAccess.ModeFlags.Read);
-    if (file == null) {
-      throw new GameException($"failed to create {_deckFilename} for '{deckName}'");
-    }
-
-    var obj = JsonSerializer.Deserialize<VocabDeck>(file.GetAsText(), JsonSerializerOptions.Web);
-    return obj;
   }
 
   private async void OnDeckSelected(string deckName) {
@@ -324,12 +233,12 @@ public partial class MenuAnki : Control, IMenuAnki {
         FieldAudioSelect.AddItem(fieldId);
       }
 
-      var deck = LoadDeck(_deckName);
-      if (deck != null) {
-        FieldPromptSelect.Selected = Array.FindIndex(fields, f => f.Key == deck.PromptKey);
-        FieldTitleSelect.Selected = Array.FindIndex(fields, f => f.Key == deck.TitleKey);
-        FieldTranslationSelect.Selected = Array.FindIndex(fields, f => f.Key == deck.TranslationKey);
-        FieldAudioSelect.Selected = Array.FindIndex(fields, f => f.Key == deck.AudioKey);
+      var mapping = ScenarioManager.LoadMapping(_deckName);
+      if (mapping != null) {
+        FieldPromptSelect.Selected = Array.FindIndex(fields, f => f.Key == mapping.PromptKey);
+        FieldTitleSelect.Selected = Array.FindIndex(fields, f => f.Key == mapping.TitleKey);
+        FieldTranslationSelect.Selected = Array.FindIndex(fields, f => f.Key == mapping.TranslationKey);
+        FieldAudioSelect.Selected = Array.FindIndex(fields, f => f.Key == mapping.AudioKey);
       }
       else {
         FieldPromptSelect.Selected = -1;
