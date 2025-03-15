@@ -27,19 +27,29 @@ public partial class Enemy : Node3D {
 	Vocab = vocab;
   }
 
+  public override void _Ready() => Model.Hide();
+
+  private void OnAnimationStarted(StringName animname) => Model.Show();
+
   public void OnReady() {
 	var player = GetAnimationTree();
+	player.AnimationStarted += OnAnimationStarted;
 	player.AnimationFinished += OnAnimationFinished;
-    player.Active = true;
+  player.Active = true;
 
   ImpactSprite.Hide();
 
 	GameTypingSystem.OnHit += OnVocabHit;
 	GameTypingSystem.OnMistake += OnVocabMistake;
   }
+
+
   public void OnExitTree() {
 	GameTypingSystem.OnHit -= OnVocabHit;
 	GameTypingSystem.OnMistake -= OnVocabMistake;
+  var player = GetAnimationTree();
+  player.AnimationStarted -= OnAnimationStarted;
+  player.AnimationFinished -= OnAnimationFinished;
   }
 
   private void OnVocabHit(string key, Vocab? vocab) {
