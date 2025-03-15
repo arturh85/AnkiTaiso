@@ -1,12 +1,16 @@
-namespace ankitaiso.game_typing.domain;
+namespace ankitaiso.domain;
 
 using System;
 using System.Threading.Tasks;
-using ankitaiso.domain;
+using data;
+using data.model;
+using game_typing;
 using Microsoft.Extensions.DependencyInjection;
+using utils;
 
 public interface IDatabaseRepo : IDisposable {
   public Task InitDatabase();
+  public Task StoreRun(GameTypingSystem system, Scenario scenario);
 }
 
 /// <summary>
@@ -22,6 +26,25 @@ public class DatabaseRepo : IDatabaseRepo {
     _serviceProvider = services.BuildServiceProvider();
     await using var dbContext = GetContext();
     dbContext?.EnsureUp2date();
+  }
+
+
+  public Task StoreRun(GameTypingSystem system, Scenario scenario) {
+    var run = new TypingGameRun {
+      Title = scenario.Title,
+      Start = system.GetStart().GetValueOrDefault(),
+      End = system.GetEnd().GetValueOrDefault(),
+      HitSuccess = system.StatisticTotalSuccess,
+      HitFailures = system.StatisticTotalError,
+      IsComplete = system.GetEnd() != null
+    };
+
+    var context = GetContext();
+    if (context == null) {
+      throw new GameException("missing db context");
+    }
+    context.Runs.Add(run);
+    return Task.CompletedTask;
   }
 
   public DatabaseContext? GetContext() => _serviceProvider?.GetService<DatabaseContext>();

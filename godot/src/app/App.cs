@@ -1,5 +1,6 @@
 namespace ankitaiso.app;
 
+using ankitaiso.domain;
 using Chickensoft.AutoInject;
 using Chickensoft.GodotNodeInterfaces;
 using Chickensoft.Introspection;

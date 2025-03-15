@@ -30,6 +30,11 @@ public partial class MenuAnki : Control, IMenuAnki {
   private string[]? _deckNames;
   private bool _showOnlyExistingDecks;
 
+  [Dependency] public IAppRepo AppRepo => DependentExtensions.DependOn<IAppRepo>(this);
+  [Dependency] public IGameTypingRepo GameTypingRepo => DependentExtensions.DependOn<IGameTypingRepo>(this);
+  [Dependency] public IMenuRepo MenuRepo => DependentExtensions.DependOn<IMenuRepo>(this);
+
+
   [Signal]
   public delegate void BackEventHandler();
 
@@ -252,10 +257,6 @@ public partial class MenuAnki : Control, IMenuAnki {
       _log.Err(e.ToString());
     }
   }
-
-  [Dependency] public IAppRepo AppRepo => DependentExtensions.DependOn<IAppRepo>(this);
-  [Dependency] public IGameTypingRepo GameTypingRepo => DependentExtensions.DependOn<IGameTypingRepo>(this);
-  [Dependency] public IMenuRepo MenuRepo => DependentExtensions.DependOn<IMenuRepo>(this);
 
   public override void _Input(InputEvent @event) {
     if (!Visible) {

@@ -263,7 +263,7 @@
     <PackageReference Include="Chickensoft.Log" Version="1.0.0" />
     <PackageReference Include="Chickensoft.Log.Godot" Version="1.0.0" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="9.0.3" />
-    <PackageReference Include="pinyin4net" Version="1.0.0" />
+    <PackageReference Include="PinYin4NetCore" Version="1.0.1" />
     <PackageReference Include="System.IO.Abstractions" Version="22.0.11" />
     <PackageReference Include="EnvironmentAbstractions" Version="5.0.0" />
     <PackageReference Include="GodotSharp.SourceGenerators" Version="2.5.0" />

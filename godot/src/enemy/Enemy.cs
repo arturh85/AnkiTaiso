@@ -23,8 +23,8 @@ public partial class Enemy : Node3D {
 
   [OnInstantiate]
   private void Initialise(Vocab vocab, Vector3 movementTarget) {
-	_movementTarget = movementTarget;
-	Vocab = vocab;
+    _movementTarget = movementTarget;
+    Vocab = vocab;
   }
 
   public override void _Ready() => Model.Hide();
@@ -32,33 +32,32 @@ public partial class Enemy : Node3D {
   private void OnAnimationStarted(StringName animname) => Model.Show();
 
   public void OnReady() {
-	var player = GetAnimationTree();
-	player.AnimationStarted += OnAnimationStarted;
-	player.AnimationFinished += OnAnimationFinished;
-  player.Active = true;
+    var player = GetAnimationTree();
+    player.AnimationStarted += OnAnimationStarted;
+    player.AnimationFinished += OnAnimationFinished;
+    player.Active = true;
 
-  ImpactSprite.Hide();
+    ImpactSprite.Hide();
 
-	GameTypingSystem.OnHit += OnVocabHit;
-	GameTypingSystem.OnMistake += OnVocabMistake;
+    GameTypingSystem.OnHit += OnVocabHit;
+    GameTypingSystem.OnMistake += OnVocabMistake;
   }
 
 
   public void OnExitTree() {
-	GameTypingSystem.OnHit -= OnVocabHit;
-	GameTypingSystem.OnMistake -= OnVocabMistake;
-  var player = GetAnimationTree();
-  player.AnimationStarted -= OnAnimationStarted;
-  player.AnimationFinished -= OnAnimationFinished;
+    GameTypingSystem.OnHit -= OnVocabHit;
+    GameTypingSystem.OnMistake -= OnVocabMistake;
+    var player = GetAnimationTree();
+    player.AnimationStarted -= OnAnimationStarted;
+    player.AnimationFinished -= OnAnimationFinished;
   }
 
   private void OnVocabHit(string key, Vocab? vocab) {
-	if (vocab != Vocab) {
-	  return;
+    if (vocab != Vocab) {
+      return;
     }
-    else {
-      GetAnimationTree().Set("parameters/OneShot/request", true);
-    }
+    GetAnimationTree().Set("parameters/OneShot/request", true);
+
 
     if (Vocab.State == VocabState.Completed) {
       GetAnimationTree().Set("parameters/StateMachine/conditions/die", true);
@@ -66,40 +65,41 @@ public partial class Enemy : Node3D {
     }
 
     var offset = NodeUtils.RandomChild<Node3D>(BulletHitOffsets);
-	if (offset == null) {
-	  GD.Print("failed to find spawn location for impact sprite");
-	  return;
-	}
+    if (offset == null) {
+      GD.Print("failed to find spawn location for impact sprite");
+      return;
+    }
 
-	var sprite = SpawnImpactSprite(offset.Position);
-	sprite.Modulate = Color.Color8(0, 255, 0);
+    var sprite = SpawnImpactSprite(offset.Position);
+    sprite.Modulate = Color.Color8(0, 255, 0);
   }
 
   private void OnVocabMistake(string key, Vocab? vocab) {
-	if (vocab != Vocab) {
-	  return;
-	}
-	var offset = NodeUtils.RandomChild<Node3D>(BulletMissOffsets);
-	if (offset == null) {
-	  GD.Print("failed to find spawn location for impact sprite");
-	  return;
-	}
+    if (vocab != Vocab) {
+      return;
+    }
 
-	var sprite = SpawnImpactSprite(offset.Position);
-	sprite.Modulate = Color.Color8(255, 0, 0);
+    var offset = NodeUtils.RandomChild<Node3D>(BulletMissOffsets);
+    if (offset == null) {
+      GD.Print("failed to find spawn location for impact sprite");
+      return;
+    }
+
+    var sprite = SpawnImpactSprite(offset.Position);
+    sprite.Modulate = Color.Color8(255, 0, 0);
   }
 
   private AnimatedSprite3D SpawnImpactSprite(Vector3 position) {
-	var sprite = new AnimatedSprite3D();
-	sprite.SpriteFrames = ImpactSprite.SpriteFrames;
-	sprite.SpeedScale = ImpactSprite.SpeedScale;
-	sprite.Animation = ImpactSprite.Animation;
-	sprite.Position = position;
-	sprite.Play("default");
-	sprite.Show();
-	sprite.AnimationFinished += () => sprite.QueueFree();
-	AddChild(sprite);
-	return sprite;
+    var sprite = new AnimatedSprite3D();
+    sprite.SpriteFrames = ImpactSprite.SpriteFrames;
+    sprite.SpeedScale = ImpactSprite.SpeedScale;
+    sprite.Animation = ImpactSprite.Animation;
+    sprite.Position = position;
+    sprite.Play("default");
+    sprite.Show();
+    sprite.AnimationFinished += () => sprite.QueueFree();
+    AddChild(sprite);
+    return sprite;
   }
 
   public Vector3 GetGuiOffset() => GuiOffset.Position;
@@ -108,30 +108,28 @@ public partial class Enemy : Node3D {
 
   private void OnAnimationFinished(StringName animname) {
     Console.WriteLine(animname);
-	if (animname == EnemyAnimations.ClimbGrave) {
-	  Moving = true;
-	  Vocab.State = VocabState.Visible;
-
+    if (animname == EnemyAnimations.ClimbGrave) {
+      Moving = true;
+      Vocab.State = VocabState.Visible;
     }
     else if (animname == EnemyAnimations.Die) {
-
       EmitSignal(SignalName.OnDelete);
       QueueFree();
     }
   }
 
   public override void _Process(double delta) {
-	LookAt(_movementTarget, Vector3.Up);
-	if (!Moving) {
-	  return;
+    LookAt(_movementTarget, Vector3.Up);
+    if (!Moving) {
+      return;
     }
 
 
-
     var distance = Position.DistanceTo(_movementTarget);
-	if (distance > 2.1) {
-	  Position = Position.MoveToward(_movementTarget, (float)delta * 1.1f);
-    }else {
+    if (distance > 2.1) {
+      Position = Position.MoveToward(_movementTarget, (float)delta * 1.1f);
+    }
+    else {
       GetAnimationTree().Set("parameters/StateMachine/conditions/arrived", true);
       GetAnimationTree().Set("parameters/StateMachine/conditions/bite", true);
     }
