@@ -1,0 +1,68 @@
+using Chickensoft.GodotNodeInterfaces;
+using Godot;
+using Godot.Collections;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using static Godot.HttpRequest;
+
+[SceneTree]
+[Tool]
+public partial class CameraWaypoint : Node3D {
+
+  [Export] double Speed = 1.0;
+
+  public void OnReady() {
+
+  }
+  public override void _Process(double delta) {
+    //  MeshInstance3D mesh = new MeshInstance3D();
+    //  mesh.Mesh = new SphereMesh() { Radius = 1.0f, Height = 2.0f };//, Material = new StandardMaterial3D() { AlbedoColor = Colors.Green } };
+    //  AddChild(mesh);
+    var spaceState = GetWorld3D().DirectSpaceState;
+
+    var query = PhysicsRayQueryParameters3D.Create(GlobalPosition, GlobalPosition + new Vector3(0, -999, 0));
+    var result = spaceState.IntersectRay(query);
+
+    if (result.Count > 0) {
+      //GD.Print(result);
+      ZProjection.GlobalPosition = new Vector3(GlobalPosition.X, (result["position"].AsVector3()).Y  + 0.05f, GlobalPosition.Z);
+      Head.Position = new Vector3(0, ZProjection.Position.Y + 1.3f, 0);
+    }
+
+    CameraWaypoint next = null;
+    bool last_was_this = false;
+    foreach (CameraWaypoint waypoint in GetParent().GetChildren().OfType<CameraWaypoint>()) {
+      if (waypoint == this)
+        last_was_this = true;
+      else if (last_was_this) {
+        next = waypoint;
+        break;
+      }
+        
+    }
+
+    if (next != null) {
+      PathCenter.LookAt(next.Head.GlobalPosition, new Vector3(0, 1, 0), true);
+      //PathCenter.RotateY((float)Math.PI / 2.0f);
+      Vector3 diff = next.Head.GlobalPosition - Head.GlobalPosition;
+      PathCenter.Scale = new Vector3(1, 1, diff.Length() * 3.7f);
+      PathCenter.Show();
+      //GD.Print(next.Head.GlobalPosition - Head.GlobalPosition);
+    }
+    else {
+      PathCenter.Scale = new Vector3(0.1f, 0.1f, 0.1f);
+      PathCenter.Hide();
+    }
+
+
+
+  }
+  public override void _EnterTree() {
+
+      
+    if (Engine.IsEditorHint()) {
+    }
+  }
+
+}

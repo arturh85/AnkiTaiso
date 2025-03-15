@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dqu3oaninqabd"]
+[gd_scene load_steps=13 format=3 uid="uid://dqu3oaninqabd"]
 
 [ext_resource type="Script" uid="uid://tvo52bwkupen" path="res://src/map/Map.cs" id="1_t88o4"]
 [ext_resource type="Sky" uid="uid://jonn5eom7asv" path="res://src/map/sky/blue_sky.tres" id="1_wl8qu"]
 [ext_resource type="PackedScene" uid="uid://bevjicm4mp18p" path="res://assets/cybercity/testmap.gltf" id="3_tpq63"]
-[ext_resource type="PackedScene" uid="uid://cbccubify2aqk" path="res://src/map/cloud/Cloud.tscn" id="18_c72hh"]
+[ext_resource type="PackedScene" uid="uid://2wom3tt1qejt" path="res://src/map/CameraWaypoint.tscn" id="4_0qcd2"]
 
 [sub_resource type="Environment" id="Environment_k13y0"]
 background_mode = 2
@@ -78,6 +78,14 @@ _data = {
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0qcd2"]
 albedo_color = Color(0.144063, 0.144063, 0.144063, 1)
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_1ny7u"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3olkd"]
+size = Vector3(200, 1, 200)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_0qcd2"]
+size = Vector3(3.93317, 1, 6.15442)
+
 [node name="GameMap" type="Node3D"]
 script = ExtResource("1_t88o4")
 
@@ -110,16 +118,34 @@ unique_name_in_owner = true
 transform = Transform3D(0.740741, -1.92363e-16, 2.4979e-16, 2.49789e-16, 0.716166, -0.189219, -1.92364e-16, 0.189219, 0.716166, 2.08165e-12, 5.24, 27.785)
 current = true
 
-[node name="Cloud" parent="World" instance=ExtResource("18_c72hh")]
-transform = Transform3D(-1.50171, 0, 4.07841, 0, 3.2515, 0, -2.84776, 0, -2.15067, -11.2721, 40.9556, 5.07514)
-
-[node name="Cloud2" parent="World" instance=ExtResource("18_c72hh")]
-transform = Transform3D(2.82225, 0, 0.575271, 0, 2.88029, 0, -0.575271, 0, 2.82225, -6.70531, 33.1793, -17.9733)
-
-[node name="Cloud3" parent="World" instance=ExtResource("18_c72hh")]
-transform = Transform3D(2.19196, 0, 0.446795, 0, 2.23703, 0, -0.446795, 0, 2.19196, -21.1658, 49.8591, -4.08359)
-
 [node name="Ground" type="CSGBox3D" parent="World"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.24864, 0)
 size = Vector3(1000, 1, 1000)
 material = SubResource("StandardMaterial3D_0qcd2")
+
+[node name="WayPoints" type="Node3D" parent="World"]
+
+[node name="CameraWaypoint" parent="World/WayPoints" instance=ExtResource("4_0qcd2")]
+transform = Transform3D(-0.181092, -0.00123482, -0.983465, -0.00115729, 0.999998, -0.00104246, 0.983465, 0.000949351, -0.181093, -44.5865, 2.99098, -16.1532)
+
+[node name="CameraWaypoint2" parent="World/WayPoints" instance=ExtResource("4_0qcd2")]
+transform = Transform3D(0.662123, 0, -0.749394, 0, 0.999999, 0, 0.749394, 0, 0.662123, -41.7055, 2.35614, -16.1232)
+
+[node name="CameraWaypoint3" parent="World/WayPoints" instance=ExtResource("4_0qcd2")]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -39.9717, 2.35614, -8.05368)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World"]
+transform = Transform3D(0.999999, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, 0.00107094, -2.34645, -0.0132992)
+physics_material_override = SubResource("PhysicsMaterial_1ny7u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/StaticBody3D"]
+transform = Transform3D(0.999991, 0, 0, 0, 0.999991, 0, 0, 0, 0.999991, 0, 1.87815, 0)
+shape = SubResource("BoxShape3D_3olkd")
+
+[node name="StaticBody3D2" type="StaticBody3D" parent="World"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00107094, -0.299963, -0.0132992)
+physics_material_override = SubResource("PhysicsMaterial_1ny7u")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/StaticBody3D2"]
+transform = Transform3D(0.999941, 0, 0, 0, 0.999941, 0, 0, 0, 0.999941, -45.633, 0.821836, -14.0508)
+shape = SubResource("BoxShape3D_0qcd2")
