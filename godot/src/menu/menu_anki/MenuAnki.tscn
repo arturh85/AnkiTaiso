@@ -152,7 +152,11 @@ text = "Toggle Show all"
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="AnkiDecksContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OnConnectedContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OnConnectedContainer"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+
+[node name="AnkiDecksContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OnConnectedContainer/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 

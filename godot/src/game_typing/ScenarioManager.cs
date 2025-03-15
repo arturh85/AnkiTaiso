@@ -70,11 +70,6 @@ public class ScenarioManager {
     var contents = "";
     foreach (var entry in vocabDeck.Entries) {
       List<string> parts = [entry.Prompt, entry.Title ?? "", entry.Translation ?? "", entry.AudioFilename ?? ""];
-      foreach (var part in parts) {
-        if (part.Contains('|')) {
-          throw new GameException("found | in anki deck");
-        }
-      }
       if (parts[3] == "") {
         parts.RemoveAt(3);
         if (parts[2] == "") {
@@ -84,7 +79,7 @@ public class ScenarioManager {
           parts.RemoveAt(1);
         }
       }
-      var line = string.Join("|", parts);
+      var line = string.Join("\u2588", parts).Replace("\n", "");
       contents += line + "\n";
     }
     using var file = FileAccess.Open($"{WordListPath(deckName)}", FileAccess.ModeFlags.Write);

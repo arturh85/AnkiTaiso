@@ -9,7 +9,7 @@ public class VocabEntry {
   public VocabEntry() {
   }
   public VocabEntry(string input) {
-    var parts = input.Split("|");
+    var parts = input.Split("\u2588");
     Prompt = parts[0].Trim();
     if (parts.Length > 1) {
       Title = parts[1].Trim();

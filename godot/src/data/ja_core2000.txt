@@ -1,2007 +1,2007 @@
-それ | それ | that, that one
-ひとつ | 一つ | one (thing)
-いち | 一 | one
-に | 二 | two
-ふたつ | 二つ | two (things)
-さん | 三 | three
-みっつ | 三つ | three (things)
-よっつ | 四つ | four (things)
-し | 四 | four
-これ | これ | this, this one
-よん | 四 | four
-いつつ | 五つ | five (things)
-ご | 五 | five
-むっつ | 六つ | six (things)
-ろく | 六 | six
-なな | 七 | seven
-ななつ | 七つ | seven (things)
-はち | 八 | eight
-やっつ | 八つ | eight (things)
-なる | なる | become
-きゅう | 九 | nine
-ここのつ | 九つ | nine (things)
-じゅう | 十 | ten
-ひゃく | 百 | hundred
-せん | 千 | thousand
-まん | 万 | ten thousand
-えん | 円 | circle
-えん | 円 | yen
-とき | 時 | time
-する | する | do, make
-ときどき | 時々 | sometimes
-にち | 日 | day
-むいか | 六日 | six days, 6th of the month
-みっか | 三日 | three days, 3rd of the month
-いつか | 五日 | five days, 5th of the month
-ようか | 八日 | eight days, 8th of the month
-はつか | 二十日 | 20 days, 20th of the month
-ふつか | 二日 | two days, 2nd of the month
-ここのか | 九日 | nine days, 9th of the month
-ところ | ところ | place
-ついたち | 一日 | 1st of the month
-とおか | 十日 | ten days, 10th of the month
-なのか | 七日 | seven days, 7th of the month
-よっか | 四日 | four days, 4th of the month
-つき | 月 | moon
-みず | 水 | water
-かね | 金 | money
-にちようび | 日曜日 | Sunday
-どようび | 土曜日 | Saturday
-やる | やる | do
-きんようび | 金曜日 | Friday
-げつようび | 月曜日 | Monday
-もくようび | 木曜日 | Thursday
-ようび | 曜日 | day of the week
-かようび | 火曜日 | Tuesday
-すいようび | 水曜日 | Wednesday
-しゅう | 週 | week
-とし | 年 | year, age
-わかる | 分かる | understand
-そう | そう | in such manner, that way
-なに | 何 | what, which
-さき | 先 | ahead, first
-ことし | 今年 | this year
-いま | 今 | now
-きょう | 今日 | today
-こんげつ | 今月 | this month
-こんしゅう | 今週 | this week
-くる | 来る | come
-らいねん | 来年 | next year
-もう | もう | already, yet
-いく | 行く | go
-かえる | 帰る | return, go back
-おおきい | 大きい | big
-ちいさい | 小さい | small
-すくない | 少ない | few, little
-すこし | 少し | a little, a little while (polite)
-おおい | 多い | lots of
-たぶん | 多分 | probably, perhaps
-あげる | 上げる | raise, improve
-よく | よく | often
-のぼる | 上る | go up, climb up
-うえ | 上 | up, above
-した | 下 | under, below
-みぎ | 右 | right
-ひだり | 左 | left
-ほう | 方 | direction, side
-おとな | 大人 | adult
-ひと | 人 | person
-ひとり | 一人 | one, one person
-どう | どう | how, what
-いれる | 入れる | put in
-はいる | 入る | enter
-でる | 出る | go out, leave
-できる | できる | can do, be good at
-だす | 出す | take out, turn in
-ほん | 本 | book, volume
-やすむ | 休む | take a day off, take a break
-からだ | 体 | body, health
-め | 目 | eye
-どこ | どこ | where
-くち | 口 | mouth
-みみ | 耳 | ear, hearing
-じょうず | 上手 | skilled, good
-て | 手 | hand
-あし | 足 | leg, foot
-すく | 空く | become empty, become less crowded
-おとこ | 男 | man, male
-おんな | 女 | woman, girl
-こども | 子供 | child, kid
-あげる | あげる | give
-すき | 好き | favorite, liked
-だいすき | 大好き | love
-わたし | 私 | I
-ともだち | 友達 | friend, companion
-うち | 家 | house, home, my family
-き | 気 | spirit, temperament
-げんき | 元気 | healthy, energetic
-てんき | 天気 | weather
-はれる | 晴れる | be sunny, clear up
-こう | こう | like this, this kind of
-きのう | 昨日 | yesterday
-あける | 開ける | open, unlock
-ひらく | 開く | open を/が
-とじる | 閉じる | close (book, eyes, etc.)
-しめる | 閉める | shut, close
-しまる | 閉まる | be shut, be closed
-きく | 聞く | hear, ask
-じかん | 時間 | time, hour
-たかい | 高い | high, tall
-くれる | くれる | give (to me)
-やすい | 安い | inexpensive, cheap
-ひくい | 低い | low, short
-まえ | 前 | front, before
-あと | 後 | after
-うしろ | 後ろ | back, behind
-ごご | 午後 | afternoon, p.m.
-ごぜん | 午前 | morning, a.m.
-あさ | 朝 | morning
-ひる | 昼 | daytime, midday, lunch
-かなり | かなり | fairly, rather
-ばん | 晩 | evening (usually from sunset to bedtime)
-こんばん | 今晩 | this evening, tonight
-よる | 夜 | night (from sunset to sunrise)
-たべる | 食べる | eat
-のむ | 飲む | drink
-ごはん | ご飯 | cooked rice, meal
-かう | 買う | buy
-みる | 見る | see, look at
-みせる | 見せる | show
-もっと | もっと | more
-みつける | 見つける | find (something)
-みえる | 見える | be visible
-みつかる | 見つかる | be found, be caught
-いう | 言う | say, tell
-はなす | 話す | speak, tell
-よむ | 読む | read
-かんじ | 漢字 | Chinese character
-かく | 書く | write
-おぼえる | 覚える | memorize, learn
-そこ | そこ | there
-あう | 会う | meet
-しごと | 仕事 | work, job
-ばあい | 場合 | situation, case
-くるま | 車 | car, automobile
-でんしゃ | 電車 | train
-えき | 駅 | railway station
-みち | 道 | way, road, street
-ほか | 他 | other
-やめる | 止める | stop, give up, abolish
-ここ | ここ | here
-あるく | 歩く | walk, go on foot
-はしる | 走る | run
-ちかく | 近く | near, close to
-ちかい | 近い | near, close
-ちかく | 近く | vicinity, nearby
-とおい | 遠い | far, distant
-ながい | 長い | long
-みじかい | 短い | short, brief
-ひろい | 広い | wide, big
-もらう | もらう | receive
-ぜんぶ | 全部 | all, wholly
-くに | 国 | country
-しろい | 白い | white, blank (for paper)
-あかい | 赤い | red
-へや | 部屋 | room
-こめ | 米 | rice (grain)
-まだ | まだ | (not) yet, still
-ある | ある | exist, possess
-ない | 無い | to not be
-とても | とても | very
-つくる | 作る | make, create
-つかう | 使う | use
-けす | 消す | erase, turn off
-うる | 売る | sell を
-みせ | 店 | shop, store
-はる | 春 | spring
-なつ | 夏 | summer
-あき | 秋 | autumn, fall
-ふゆ | 冬 | winter
-みんな | みんな | all, everybody
-あつい | 暑い | hot (temperature of the air)
-あつい | 熱い | hot (things, touch)
-さむい | 寒い | cold (temperature of the air)
-あたたかい | 暖かい | warm
-あたらしい | 新しい | new
-ふるい | 古い | old
-いい | 良い | good
-わるい | 悪い | bad
-おもう | 思う | think
-いつも | いつも | always
-わすれる | 忘れる | forget, leave behind
-かんがえる | 考える | think, consider
-きめる | 決める | decide, agree upon
-きまる | 決まる | be decided
-しる | 知る |  (get to) know, realize
-いちばん | 一番 | most
-すむ | 住む | live, reside
-なまえ | 名前 | name
-たべもの | 食べ物 | food
-いつ | いつ | when
-のみもの | 飲み物 | beverage, drink
-おもい | 重い | heavy, serious (illness)
-かるい | 軽い | light, light weight
-おくる | 送る | send
-とる | 取る | take, get
-まつ | 待つ | wait, wait for
-もつ | 持つ | have, possess
-きもち | 気持ち | feeling (about something, emotion)
-いきる | 生きる | live (one's life)
-どちら | どちら | which
-せんせい | 先生 | teacher (respectful title)
-だいがく | 大学 | university, college
-がくせい | 学生 | student
-だいがくせい | 大学生 | university student
-がっこう | 学校 | school
-こうこうせい | 高校生 | high school student
-おしえる | 教える | teach, tell
-べんきょう | 勉強 | study
-つよい | 強い | strong
-どれ | どれ | what, which
-よわい | 弱い | weak
-ひく | 引く | pull, draw
-しつもん | 質問 | question
-むずかしい | 難しい | difficult
-かず | 数 | (the) number
-かつ | 勝つ | win
-まける | 負ける | lose, be defeated
-ほんとうに | 本当に | really, truly
-いる | 要る | need, require
-ドア | ドア | door
-とけい | 時計 | clock, watch
-はらう | 払う | pay
-きる | 切る | cut
-かえる | 変える | to change (st)
-のる | 乗る | ride, take
-きる | 着る | wear, put on
-たつ | 立つ | stand, rise
-すわる | 座る | sit, sit down
-つぎ | 次 | next
-しゃべる | 喋る | chat, talk
-うごく | 動く | move (が)
-はたらく | 働く | to work
-はやい | 早い | early
-はやい | 速い | fast
-おそい | 遅い | slow, late
-はじめる | 始める | begin, start を
-はじまる | 始まる | begin が
-おわる | 終わる | finish, end
-おわり | 終わり | end, conclusion
-テーブル | テーブル | table
-きょねん | 去年 | last year
-かみ | 紙 | paper
-たのしむ | 楽しむ | enjoy
-たのしい | 楽しい | fun, enjoyable
-うたう | 歌う | sing
-ほしい | 欲しい | want, desire
-いろ | 色 | color
-ちゃいろ | 茶色 | light brown
-すぐ | すぐ | at once, soon
-ゲーム | ゲーム | game
-かきなおす | 書き直す | rewrite
-なおる | 直る | be repaired, return to normal
-せん | 線 | line, route (trainなど)
-まがる | 曲がる | turn
-おなじ | 同じ | same, identical
-ちがう | 違う | differ, be wrong
-としょかん | 図書館 | library
-とまる | 泊まる | stay overnight
-あそぶ | 遊ぶ | have a good time, play
-どうして | どうして | why
-ふく | 服 | clothes
-おとうさん | お父さん | father
-ちち | 父 | (speaker's)father
-おかあさん | お母さん | mother
-はは | 母 | (speaker's) mother
-おや | 親 | parent
-あね | 姉 | older sister
-おねえさん | お姉さん | older sister
-いもうと | 妹 | younger sister
-おなか | おなか | stomach
-あに | 兄 | older brother
-おにいさん | お兄さん | older brother
-おとうと | 弟 | younger brother
-むすめ | 娘 | daughter, girl
-むすこ | 息子 | son
-わかい | 若い | young
-かのじょ | 彼女 | she, one's girlfriend
-かれ | 彼 | he, one's boyfriend
-けっこん | 結婚 | marriage
-ミーティング | ミーティング | meeting
-じてんしゃ | 自転車 | bicycle
-じぶん | 自分 | self, oneself
-ごしゅじん | ご主人 | (your) husband
-こたえる | 答える | answer, reply
-べつ | 別 | another, different
-びょうき | 病気 | illness
-しぬ | 死ぬ | die
-いたい | 痛い | painful
-さけ | 酒 | alcoholic drink, Japanese rice wine
-つける | つける | switch on
-いっぱい | 一杯 | full
-とぶ | 飛ぶ | fly
-ひこうき | 飛行機 | airplane
-おねがい | お願い | request, wish
-つづく | 続く | continue, follow が
-にっき | 日記 | diary
-くび | 首 | neck
-あたま | 頭 | head
-かお | 顔 | face
-あれ | あれ | that over there
-かんじる | 感じる | feel, sense
-さがす | 探す | search for, look for
-おちる | 落ちる | fall, go down
-おてあらい | お手洗い | bathroom (polite)
-つめたい | 冷たい | cold (things, touch)
-きたない | 汚い | dirty
-ふとい | 太い | thick, fat
-くもる | 曇る | become cloudy
-かみ | 神 | god, spirit
-まずい | まずい | bad-tasting, bad
-たてる | 建てる | build, erect
-おく | 置く | put, leave
-へん | 辺 | vicinity, part
-きいろい | 黄色い | yellow
-いっしょに | 一緒に | together, at the same time
-みどり | 緑 | green, foliage
-やさしい | 易しい | easy, simple
-りゅうがくせい | 留学生 | student studying abroad
-もどる | 戻る | return, turn back
-そば | そば | side, vicinity
-おきる | 起きる | get up, get out of bed
-おこる | 起こる | happen
-おこす | 起こす | wake up (someone)
-おきる | 起きる | occur
-ねる | 寝る | sleep, go to sleep
-ほそい | 細い | thin, slender, narrow
-のせる | 載せる | place, put on
-しめる | 締める | tighten, fasten
-あまい | 甘い | sweet
-こっち | こっち | here
-からい | 辛い | spicy, salty
-やさしい | 優しい | gentle, kind
-おっと | 夫 | husband
-つま | 妻 | wife
-だれ | 誰 | who, whom
-あいする | 愛する | love, care for
-わらう | 笑う | laugh, smile
-すっぱい | 酸っぱい | sour
-ことば | 言葉 | word, language
-よう | よう | way, like, kind [the state of something]
-よぶ | 呼ぶ | call, name
-むね | 胸 | chest
-こし | 腰 | hip, lower back
-せ | 背 | height, stature
-かたかな | 片仮名 | katakana
-ひらがな | 平仮名 | hiragana
-かなしい | 悲しい | sad
-うつくしい | 美しい | beautiful
-じゅぎょう | 授業 | class, lesson
-あそこ | あそこ | over there
-てつだう | 手伝う | help, assist
-せまい | 狭い | narrow, restricted
-さわる | 触る | touch, feel
-きらい | 嫌い | dislike
-あびる | 浴びる | take a shower
-かわく | 渇く | become thirsty
-かみのけ | 髪の毛 | hair
-かた | 肩 | shoulder
-はな | 鼻 | nose
-おいしい | おいしい | tasty
-うで | 腕 | arm
-かける | 掛ける | hang, put on
-ぼく | 僕 | I (young male)
-だめ | だめ | no good
-だいじょうぶ | 大丈夫 | alright, okay
-かぜ | 風邪 | cold (illness)
-きれい | きれい | pretty
-うれしい | 嬉しい | happy, glad
-なる | なる (生る) | produce fruit, grow (on a tree)
-ため | ため | sake, purpose
-より | より | more, further
-しち | 七 | seven
-く | 九 | nine
-おく | 億 | hundred million
-てら | 寺 | buddhist temple
-ドル | ドル | dollar
-ひ | 日 | sun, sunlight, day
-ひ | 火 | fire
-き | 木 | tree, wood
-きん | 金 | gold, sum of money, Friday
-システム | システム | system
-じゅうぶん | 十分 | enough, plenty
-ぶん | 分 | amount, part, share
-わける | 分ける | divide into parts, sort, share
-わかれる | 分かれる | be divided, disperse, branch off
-コンピュータ | コンピュータ | computer
-なにか | 何か | something, some
-なん | 何 | what, which
-まず | まず | first (of all)
-せんげつ | 先月 | last month
-やる | やる | give (to animals, plants, etc.)
-せんしゅう | 先週 | last week
-いままで | 今まで | until now, so far
-らいげつ | 来月 | next month
-らいしゅう | 来週 | next week
-ロボット | ロボット | robot
-おこなう | 行う | do, carry out
-いき | 行き | going
-ゆき | 行き | going
-かえり | 帰り | return trip, going home
-ほとんど | ほとんど | almost, hardly
-おおきさ | 大きさ | size, dimensions
-だいぶ | 大分 | very, greatly
-なか | 中 | in, inside, middle
-しょうねん | 少年 | boy
-パソコン | パソコン | personal computer
-すこしも | 少しも | (not) one bit
-しょうしょう | 少々 | a little, a few (formal)
-おおく | 多く | many, much
-あがる | 上がる | go up, rise
-もう | もう | another, again
-あがる | 上がる | get nervous, get stage fright
-としうえ | 年上 | older, senior
-のぼり | 上り | going up, ascent
-さげる | 下げる | lower, turn down
-プログラム | プログラム | program
-さがる | 下がる | come down, hang (down), fall
-おりる | 下りる | go down, climb down
-おろす | 下ろす | bring down, take down, withdraw (money)
-くだり | 下り | downhill, going down
-よく | よく | well
-としした | 年下 | junior, younger person
-くだる | 下る | go down, go downward
-いっぽう | 一方 | one way
-かた | 方 | person (polite)
-まま | まま | as is, still (in the current state)
-ふたり | 二人 | two persons
-おとなしい | 大人しい | gentle, quiet, subdued
-ひとびと | 人々 | people (polite)
-ひとりで | 一人で | by oneself
-テレビ | テレビ | television
-がいじん | 外人 | foreigner, alien (less polite)
-そと | 外 | outside, open air
-きゅうじつ | 休日 | holiday, day off
-やすみ | 休み | rest, holiday, absence
-ソフト | ソフト | software, programme
-ちから | 力 | strength, power
-きょうりょく | 協力 | cooperation, collaboration
-じんこう | 人口 | population
-でぐち | 出口 | exit, exit ramp
-ただ | ただ | free
-いりぐち | 入り口 | entrance
-みぎて | 右手 | right hand
-ひだりて | 左手 | left hand
-へた | 下手 | not good at
-これら | これら | these
-たりる | 足りる | be enough, be sufficient
-たす | 足す | add, supplement<div>(the same kind of thing)</div>
-やま | 山 | mountain
-かわ | 川 | river, stream
-いずれ | いずれ | eventually, sometime
-あく | 空く | become available or vacant
-からて | 空手 | karate, empty hand
-そら | 空 | sky, weather
-かいがい | 海外 | overseas, abroad
-あまり | あまり | (not) really, (not) very
-うみ | 海 | sea, ocean
-まいにち | 毎日 | every day
-まいとし | 毎年 | every year (less formal)
-まいねん | 毎年 | every year (more formal)
-なお | なお | still, in addition
-まいしゅう | 毎週 | every week
-まいつき | 毎月 | every month
-いし | 石 | stone, small rock
-たんぼ | 田んぼ | rice field
-ほぼ | ほぼ | roughly, nearly
-はな | 花 | flower
-はやし | 林 | woods, grove
-もり | 森 | thick woods, forest
-こ | 子 | child, kid
-サービス | サービス | service, on the house
-おんなのこ | 女の子 | girl, baby girl
-おとこのこ | 男の子 | boy, baby boy
-わたしたち | 私たち | we
-たっする | 達する | attain, reach
-グループ | グループ | group
-いえ | 家 | house, home
-かない | 家内 | my wife
-きゃく | 客 | visitor, customer
-くうき | 空気 | air, atmosphere
-ホテル | ホテル | hotel
-きにいる | 気に入る | like, be pleased with
-にんき | 人気 | popularity
-あめ | 雨 | rain
-ゆき | 雪 | snow, snowfall
-まとめる | まとめる | gather together, summarize
-あおい | 青い | blue
-あお | 青 | blue, green, green light
-はれ | 晴れ | fine weather, clear sky
-あきらか | 明らか | clear, obvious
-やはり | やはり | as expected, also, still
-あかるい | 明るい | bright, cheerful
-あした | 明日 | tomorrow
-くらい | 暗い | dark, dreary, shadowy
-さくねん | 昨年 | last year (polite)
-はっきり | はっきり | clearly, distinctly
-おととし | 一昨年 | the year before last
-おととい | 一昨日 | day before yesterday
-ひがし | 東 | east, eastern
-にし | 西 | west, western
-つまり | つまり | in short, basically
-みなみ | 南 | south
-きた | 北 | north
-ほうこう | 方向 | direction, course
-むかう | 向かう | face, head toward, confront
-ビル | ビル | building (ローマ字)
-むこう | 向こう | the other side, the other party, opponent
-むく | 向く | turn, face, look
-あく | 開く | open が
-きこえる | 聞こえる | be heard, be audible
-もちろん | もちろん | of course, needless to say
-ねんかん | 年間 | period of one year
-このあいだ | この間 | the other day, recently
-あいだ | 間 | interval, space between
-にんげん | 人間 | human being, people
-かつて | かつて | once, formerly
-たかさ | 高さ | height
-さいだい | 最大 | biggest, largest
-はじめて | 初めて | first, for the first time
-さいしょ | 最初 | the beginning, first
-スポーツ | スポーツ | sport
-はじめ | 初め | beginning, start
-こんご | 今後 | after this, in the future (formal)
-のち | 後[のち] | after, afterwards (formal)
-さいご | 最後 | last, final
-なぜ | なぜ | why, for what reason
-あさって | 明後日 | day after tomorrow
-うし | 牛 | cattle, cow
-はんぶん | 半分 | half
-はんとし | 半年 | half a year
-そのまま | そのまま | like that, unchanged
-はんつき | 半月 | half a month
-はんにち | 半日 | half a day
-まいあさ | 毎朝 | every morning
-けさ | 今朝 | this morning
-もし | もし | if, in case of
-ひるやすみ | 昼休み | noon recess, lunch break
-ひるまえ | 昼前 | in the morning, before noon
-ひるま | 昼間 | daytime, day
-まいばん | 毎晩 | every evening
-つもり | つもり | intention, plan
-こんや | 今夜 | tonight, this evening
-ゆうべ | 昨夜 | last night, last evening
-よなか | 夜中 | midnight, dead of night
-ゆうがた | 夕方 | evening
-やっと | やっと | at last, finally (exclamation)
-ちゅうしょく | 昼食 | lunch (formal)
-ちょうしょく | 朝食 | breakfast (formal)
-ゆうしょく | 夕食 | supper (polite)
-ゆうはん | 夕飯 | evening meal, supper (かたい)
-ニュース | ニュース | news
-みかた | 見方 | view, way of looking
-はなみ | 花見 | cherry blossom viewing
-いいかた | 言い方 | way of speaking, expression
-はなし | 話 | talk, story
-ずっと | ずっと | the whole time, from start to finish
-よみ | 読み | reading, judgment, foresight
-よみかた | 読み方 | way to read, reading
-かたる | 語る | tell (a story), talk about
-げんご | 言語 | language, speech
-ビデオ | ビデオ | video
-えいご | 英語 | English
-もじ | 文字 | character, letter
-ろーまじ | ローマ字 | Roman alphabet
-じ | 字 | character, letter, handwriting
-マンション | マンション | (modern) apartment complex
-かきかた | 書き方 | how to write, way of writing
-さめる | 覚める | awake, wake up (目が)
-さます | 覚ます | awaken, wake up 目を
-たいかい | 大会 | mass meeting, tournament
-しばらく | しばらく | a short while, long time, for the time being
-かいわ | 会話 | conversation
-はなしあう | 話し合う | discuss, talk about
-あう | 合う | fit
-まにあう | 間に合う | be in time, serve (my) purpose<br>なくても〜 do without
-ガス | ガス | gas
-かいしゃ | 会社 | company, corporation
-しゃかい | 社会 | society
-しゃいん | 社員 | staff member, employee
-しかた | 仕方 | way, method
-うまい | うまい | good at (informal)
-しょくじ | 食事 | meal, dinner (formal)
-かじ | 火事 | fire (emergency)
-だいじ | 大事 | important (thing)
-じこ | 事故 | accident, incident
-サラリーマン | サラリーマン | office worker, salaried worker, company employee
-こうじ | 工事 | construction work
-こうじょう | 工場 | factory, plant
-でんわ | 電話 | telephone, phone call
-でんき | 電気 | electricity, electric light
-バス | バス | bus
-くるま | 車 | car
-えきいん | 駅員 | station attendant
-とおり | 通り | boulevard, street
-とおる | 通る | pass, take (a road), go through
-クラス | クラス | class (ローマ字)
-かよう | 通う | go (a place) often, go to and from
-こうつうじこ | 交通事故 | traffic accident
-すいどう | 水道 | tap water, water supply
-しゃどう | 車道 | road, roadway (for vehicles)
-トラック | トラック | truck, lorry
-どうろ | 道路 | road, street
-とち | 土地 | land
-ちず | 地図 | map, atlas
-た | 他 | others, other things
-パーティー | パーティー | party
-とめる | 止める | stop (sth), turn off
-とまる | 止まる | come to a stop, cease
-やむ | 止む | <!--anki-->cease, stop, let up
-ほどう | 歩道 | sidewalk, footpath
-うまい | うまい | delicious, tasty (informal)
-わたす | 渡す | <!--anki-->hand over, carry across
-わたる | 渡る | cross, ford, go across
-ねんど | 年度 | fiscal year, school year
-こんど | 今度 | this time, next time
-ガラス | ガラス | glass (the material)
-なんど | 何度 | how many degrees, how many times
-さいきん | 最近 | lately, recent
-とおく | 遠く | great distance
-しゃちょう | 社長 | president (of a company)
-コース | コース | course, class, route
-かいちょう | 会長 | chairman, president
-ながさ | 長さ | length
-ちょうなん | 長男 | eldest son
-ちょうじょ | 長女 | eldest daughter
-アパート | アパート | apartment, flat
-ひろがる | 広がる | spread out, reach が
-ひろさ | 広さ | area, extent
-ぜんたい | 全体 | whole, total
-まったく | 全く | entirely, truly, indeed
-レコード | レコード | record
-あんぜん | 安全 | safety, security
-いちぶ | 一部 | part
-ぶぶん | 部分 | part, section
-こくない | 国内 | domestic, internal
-どんどん | どんどん | knock (sound)
-ぜんこく | 全国 | the whole country
-がいこく | 外国 | foreign country
-こっかい | 国会 | National Diet, parliament
-きこく | 帰国 | return to one's country
-カメラ | カメラ | camera
-がいこくじん | 外国人 | foreigner (polite)
-がいこくご | 外国語 | foreign language
-せかい | 世界 | world
-しろ | 白 | white
-テープ | テープ | tape, cassette
-くろい | 黒い | black<div><br /></div>
-くろ | 黒 | black
-あかちゃん | 赤ちゃん | baby
-あか | 赤 | red
-ビール | ビール | beer, lager
-ぎんこう | 銀行 | bank
-ぎん | 銀 | silver
-ちかてつ | 地下鉄 | subway
-ぎゅうにく | 牛肉 | beef
-ページ | ページ | page
-にく | 肉 | meat, flesh
-さかな | 魚 | fish
-ぶんや | 分野 | field, sphere
-やさい | 野菜 | vegetable
-グラフ | グラフ | graph, chart
-ほんや | 本屋 | bookstore, bookseller
-やおや | 八百屋 | vegetable store, greengrocer
-そばや | そば屋 | soba restaurant
-たばこや | たばこ屋 | cigarette shop, tobacco store
-ポスト | ポスト | mailbox
-ちゃ | 茶 | tea (plain form)
-おちゃ | お茶 | tea (polite)
-ちゃわん | 茶わん | rice bowl, tea cup
-あじ | 味 | taste, flavor
-テスト | テスト | test
-みらい | 未来 | future
-しゅうまつ | 週末 | weekend
-りょうり | 料理 | cooking;<br>handling, management
-むり | 無理 | unreasonable, impossible, forced
-あちこち | あちこち | all over, here and there
-なくす | なくす | lose, get rid of
-なくなる | 無くなる | disappear, run short, get lost
-さくぶん | 作文 | composition, essay
-もちいる | 用いる | use, make use of
-ゴルフ | ゴルフ | golf
-ようじ | 用事 | things to do, errand, business
-こうつうひ | 交通費 | traveling expense, transportation cost
-きえる | 消える | be extinguished, disappear
-けしごむ | 消しゴム | (rubber) eraser
-ラジオ | ラジオ | radio
-うれる | 売れる | be sold, be in demand
-うりば | 売り場 | sales floor, department
-てんいん | 店員 | clerk, salesperson
-ばいてん | 売店 | kiosk, store
-タクシー | タクシー | taxi, cab
-しょうひん | 商品 | goods, commodities
-さくひん | 作品 | work of art, piece
-はんばい | 販売 | sale, selling
-にかい | 二階 | second floor, upstairs
-ゆっくり | ゆっくり | slowly
-だんかい | 段階 | stage, step
-かいだん | 階段 | steps, flight of stairs
-だんだん | 段々 | gradually, one after another
-ねだん | 値段 | price
-レストラン | レストラン | restaurant
-かかく | 価格 | price, cost (formal)
-ごうかく | 合格 | passing an examination, eligibility
-なつやすみ | 夏休み | summer vacation
-ふゆやすみ | 冬休み | winter vacation
-カード | カード | card, credit card
-しき | 四季 | the four seasons
-あつさ | 暑さ | heat, summer heat
-ねつ | 熱 | fever, heat
-さむさ | 寒さ | coldness, cold
-アルバイト | アルバイト | casual job, student job, part-time job
-あたためる | 暖める | warm up (something), heat up を
-あたたまる | 暖まる |  get warm が
-おんど | 温度 | temperature
-きおん | 気温 | atmospheric temperature
-コピー | コピー | copy, photocopy
-だい | 台 | stand, platform
-かぜ | 風 | wind
-たいふう | 台風 | typhoon
-じじょう | 事情 | circumstances, conditions
-ぶつかる | ぶつかる | hit, bump into に
-じょうほう | 情報 | information
-ほうこく | 報告 | report
-しんぶん | 新聞 | newspaper
-しんねん | 新年 | New Year
-フィルム | フィルム | film (外来語)
-よい | 良い | good
-ちゅうしん | 中心 | center, middle, core
-あんしん | 安心 | peace of mind, relief
-おもいだす | 思い出す | recollect, recall
-デパート | デパート | department store, department
-おもいで | 思い出 | recollections, memory
-かんがえ | 考え | thought, view, idea
-かいけつ | 解決 | solution, settlement
-しらせる | 知らせる | let know, inform
-ベッド | ベッド | bed
-のうりょく | 能力 | ability, capacity
-かのう | 可能 | possible, potential
-か | 可 | permitted, OK
-ゆうびん | 郵便 | mail
-コート | コート | coat, jacket
-ふべん | 不便 | inconvenient
-ゆうびんやさん | 郵便屋さん | mailman
-ゆうびんきょく | 郵便局 | post office
-こうばん | 交番 | police box
-ノート | ノート | notebook, laptop
-ばんち | 番地 | house number, address
-ばんごう | 番号 | number
-ばしょ | 場所 | place, space
-きんじょ | 近所 | neighborhood
-ワイン | ワイン | wine
-だいどころ | 台所 | kitchen
-じゅうしょ | 住所 | address, one's dwelling
-べんじょ | 便所 | bathroom, lavatory
-ゆうめい | 有名 | famous
-おかしい | おかしい | strange, peculiar, suspicious
-みょうじ | 名字 | surname, family name
-しめい | 氏名 | full name
-かっこく | 各国 | every country
-まち | 町 | town, city quarter
-トイレ | トイレ | toilet
-とし | 都市 | city, urban community
-つごう | 都合 | circumstances
-あさごはん | 朝ご飯 | breakfast
-かいもの | 買い物 | shopping, purchase
-キャンプ | キャンプ | camping, camp
-にもつ | 荷物 | baggage, package
-しなもの | 品物 | article, thing
-けんぶつ | 見物 | sightseeing, looking around
-もの | 物 | thing, object
-プラスチック | プラスチック | plastic
-わすれもの | 忘れ物 | something left behind, lost item
-おもさ | 重さ | weight
-くばる | 配る | hand out, distribute
-はいたつ | 配達 | delivery
-カラー | カラー | color, collar
-しんぱい | 心配 | anxiety, worry, assistance
-みおくる | 見送る | see (someone) off
-みおくり | 見送り | seeing someone off
-うける | 受ける | receive, accept
-ピアノ | ピアノ | piano
-うけとる | 受け取る | get (st from so), receive<div>take (as in take as an insult)</div>
-とれる | 取れる | come off, be removed
-かきとる | 書き取る | write down, note down
-とどく | 届く | reach, be delivered
-スキー | スキー | ski, skiing
-とどける | 届ける | deliver, notify
-もつ | 持つ | last long, keep well
-かねもち | 金持ち | wealthy person
-もっていく | 持って行く | take (somewhere)
-なかなか | なかなか | not easily, not readily, by no means
-もってくる | 持って来る | bring (something)
-うつ | 打つ | hit, strike
-なげる | 投げる | throw, give up
-うまれる | 生まれる | be born, come into existence
-プール | プール | pool
-うむ | 生む | give birth
-じょせい | 女性 | female, woman (formal)
-せいさん | 生産 | production
-おみやげ | お土産 | souvenir
-ホーム | ホーム | (train) platform
-せいかつ | 生活 | life, living
-せいと | 生徒 | pupil, student
-ちゅうがく | 中学 | middle school (abbrev.)
-にゅうがく | 入学 | admission to a school, starting school
-エレベーター | エレベーター | elevator
-ちゅうがくせい | 中学生 | middle school sudent
-しょうがくせい | 小学生 | elementary school student
-けんがく | 見学 | field trip
-つうがく | 通学 | going to school
-メモ | メモ | memo
-こうこう | 高校 | high school
-しょうがっこう | 小学校 | elementary school
-ちゅうがっこう | 中学校 | middle school
-こうちょう | 校長 | principal
-パン | パン | bread
-きゅうこう | 休校 | temporary school closure
-きょうかい | 教会 | church
-きょういく | 教育 | education
-そだてる | 育てる | raise, bring up
-びっくりする | びっくりする | be surprised
-そだつ | 育つ | grow, be raised
-せいど | 制度 | system, organization
-つよさ | 強さ | strength, power
-とりひき | 取引 | transaction, dealings
-ズボン | ズボン | trousers, pants
-ひきだし | 引き出し | drawer, withdrawal
-おさえる | 押さえる | hold down, hold back
-おしいれ | 押し入れ | closet
-れんしゅう | 練習 | practice, training
-おもちゃ | おもちゃ | toy, plaything
-ならう | 習う | learn, practice
-なれる | 慣れる | grow accustomed to
-しゅうかん | 習慣 | custom, habit
-けんきゅう | 研究 | research, study
-グラム | グラム | gram
-しけん | 試験 | exam, test
-もんだい | 問題 | problem, question
-かんたん | 簡単 | simple, easy
-ふくざつ | 複雑 | complicated, intricate
-コーヒー | コーヒー | coffee
-すうじ | 数字 | figure, numeral
-すうがく | 数学 | mathematics
-かぞえる | 数える | to count
-こんかい | 今回 | this time
-テント | テント | tent
-まわる | 回る | turn round, go round, detour
-まわす | 回す | turn, rotate
-こじん | 個人 | individual, personal
-たんとう | 担当 | in charge (of something)
-ボート | ボート | row boat, boat
-あたる | 当たる | hit, strike
-とうじ | 当時 | at that time
-ほんとう | 本当 | truth, reality, genuine
-とうぜん | 当然 | naturally, of course
-ボール | ボール | ball
-ぜんぜん | 全然 | (not) at all, totally (not)
-ほうほう | 方法 | way, method, procedure
-ほうりつ | 法律 | law
-きそく | 規則 | rule, regulation
-オートバイ | オートバイ | motorbike, motorcycle
-けいけん | 経験 | experience
-たつ | 経つ | pass, elapse
-けいざい | 経済 | economy, economics
-けいえい | 経営 | management, operation
-ひどい | ひどい | terrible, cruel
-かぶ | 株 | stocks, shares
-きぎょう | 企業 | business, corporation
-さぎょう | 作業 | work, operation
-さんぎょう | 産業 | industry
-あなた | あなた | you
-こうぎょう | 工業 | manufacturing industry
-しょうぎょう | 商業 | business, commerce
-りよう | 利用 | utilization, usage
-べんり | 便利 | convenience, handiness
-スイッチ | スイッチ | switch
-ぎじゅつ | 技術 | skill, technology
-しゅじゅつ | 手術 | surgical operation
-せいぞう | 製造 | production, manufacture
-かならず | 必ず | without fail, certainly
-プレゼント | プレゼント | present, gift
-ひつよう | 必要 | need, necessity
-じゅうよう | 重要 | important, essential
-ようきゅう | 要求 | requirement, demand
-めざましどけい | 目覚まし時計 | alarm clock
-いつでも | いつでも | at any time, always
-けいさん | 計算 | calculation
-ひきざん | 引き算 | subtraction
-たしざん | 足し算 | addition
-こうさてん | 交差点 | intersection, crossing
-テニス | テニス | tennis
-わる | 割る | divide (st), crack, split
-われる | 割れる | (st) cracks, splits, breaks (が)
-わりざん | 割り算 | division
-のこる | 残る | remain, be left over
-こちら | こちら | here, this way
-のこす | 残す | leave, reserve, leave undone
-かえす | 返す | return, repay
-へんじ | 返事 | answer, reply
-かりる | 借りる | borrow
-ボタン | ボタン | button
-かす | 貸す | lend, rent
-かしだす | 貸し出す | lend out<br>(used for businesses/banks)
-もうしこむ | 申し込む | apply for, make a proposal
-きたい | 期待 | expectation, anticipation
-おかしい | おかしい | funny, amusing, comical
-きかん | 期間 | period (of time)
-じき | 時期 | time, period, season
-かぎる | 限る | be limited to
-いそぐ | 急ぐ | hurry, hasten
-コート | コート | (tennis) court
-きゅうに | 急に | suddenly, unexpectedly
-きゅう | 急 | urgent, sudden, steep
-きゅうこう | 急行 | express train, going in a hurry
-きれる | 切れる | run out, expire
-ドラマ | ドラマ | drama, theater, soap opera
-きって | 切手 | postage stamp
-うりきれる | 売り切れる | be sold out, go out of stock
-うりきれ | 売り切れ | sold out
-たいせつ | 大切 | important, valuable
-ビザ | ビザ | visa
-きっぷ | 切符 | ticket
-にゅうじょうけん | 入場券 | entrance ticket
-やちん | 家賃 | rent (money)
-じだい | 時代 | age, era, antiquity
-ポケット | ポケット | pocket
-かわる | 代わる | take (st/sb's) place, substitute for
-かえる | 代える | replace (O1を) with (O2に), substitute
-ゆび | 指 | finger, toe
-けってい | 決定 | decision
-そろそろ | そろそろ | soon, slowly, gingerly
-いってい | 一定 | constant, fixed
-ていきけん | 定期券 | commuter pass
-よてい | 予定 | schedule, plan
-てんきよほう | 天気予報 | weather forecast
-ぶどう | ぶどう | grapes
-よしゅう | 予習 | preparation for class
-よやく | 予約 | reservation, subscription, appointment
-やくそく | 約束 | promise, vow
-かわる | 変わる | change が
-めったに | めったに | rarely
-たいへん | 大変 | awful, serious
-へん | 変 | strange, weird, funny
-へんか | 変化 | change
-きょうか | 強化 | strengthening
-クリスマス | クリスマス | Christmas
-ぶんか | 文化 | culture
-ふえる | 増える | increase, accrue が
-ふやす | 増やす | increase (something), add を
-へる | 減る | decrease, diminish が
-ネクタイ | ネクタイ | tie, necktie
-へらす | 減らす | decrease (something), reduce を
-のりもの | 乗り物 | vehicle, means of transportation
-おりる | 降りる | get off, land
-おろす | 降ろす | unload, lower
-バイオリン | バイオリン | violin
-ふる | 降る | fall, come down, rain
-つく | 着く | arrive, touch, take one's place
-きもの | 着物 | kimono, clothes
-したぎ | 下着 | underwear
-パスポート | パスポート | passport
-うわぎ | 上着 | outerwear
-きせる | 着せる | dress (sb), put clothes on (sb)
-ぬぐ | 脱ぐ | remove clothes, take off
-たちば | 立場 | standpoint, position
-バッグ | バッグ | bag
-めだつ | 目立つ | stand out, be conspicuous
-たてる | 立てる | stand (sth) up, set (sth) up, establish
-やくにたつ | 役に立つ | be useful, be helpful
-しゅっせき | 出席 | attendance, presence
-ゴム | ゴム | rubber, elastic
-せき | 席 | seat, one's place
-けっせき | 欠席 | absence, non-attendance
-じなん | 次男 | second son
-じじょ | 次女 | second daughter
-ギター | ギター | guitar
-はこぶ | 運ぶ | carry, transport
-うんてん | 運転 | drive
-うんてんしゅ | 運転手 | driver
-ころぶ | 転ぶ | tumble down, fall over
-セーター | セーター | sweater, pullover
-うつる | 移る | move, shift が
-うつす | 移す | move (something), shift, transfer
-うごき | 動き | movement, motion
-うんどう | 運動 | exercise, movement
-やっぱり | やっぱり | just as I thought, after all
-かつどう | 活動 | activity
-どうぶつ | 動物 | animal
-うごかす | 動かす | move (something), operate
-ふどうさんや | 不動産屋 | real estate agent, realtor
-カーテン | カーテン | curtain
-はやく | 早く | early, soon
-はやくち | 早口 | fast talking
-はやさ | 速さ | speed
-そくたつ | 速達 | express mail
-シャツ | シャツ | shirt
-おくれる | 遅れる | be late
-かいし | 開始 | beginning
-はじめに | 始めに | in the beginning
-げんざい | 現在 | the present, present time
-ナイフ | ナイフ | knife
-じつげん | 実現 | realization, fulfillment
-じっし | 実施 | being in effect, implementation
-じじつ | 事実 | fact, truth
-じっこう | 実行 | (putting into) practice, execution
-バイク | バイク | motorcycle
-じっけん | 実験 | experiment
-つうか | 通過 | passing, passage
-すぎる | 過ぎる | pass by, exceed
-ひるすぎ | 昼過ぎ | just past noon
-いつか | いつか | some time, some day
-かこ | 過去 | the past
-かいはつ | 開発 | development
-はっせい | 発生 | occurrence, happening
-はつげん | 発言 | statement, remark
-オレンジ | オレンジ | orange
-はっけん | 発見 | discovery, revelation
-しゅっぱつ | 出発 | departure, starting
-はっしゃ | 発車 | depart, leave (for vehicles)
-はっぴょう | 発表 | announcement
-きつい | きつい | tight, difficult
-ひょうげん | 表現 | expression (of views, feelings, etc.)
-だいひょう | 代表 | representative
-おもて | 表 | front side, face, outside
-ひょう | 表 | list, table
-さっき | さっき | some time ago, only a moment ago
-てがみ | 手紙 | letter
-え | 絵 | picture, painting, drawing
-ざっし | 雑誌 | magazine, journal
-おと | 音 | sound, noise
-テキスト | テキスト | textbook, text file
-おと | 音 | sound
-おんがく | 音楽 | music
-くすり | 薬 | drug, remedy, chemical
-うた | 歌 | song
-ビニールぶくろ | ビニール袋 | plastic bag
-かしゅ | 歌手 | singer
-ほしがる | 欲しがる | want (describing sb else)
-けいかく | 計画 | plan, project
-えいが | 映画 | movie
-りんご | りんご | apple
-おもしろい | 面白い | interesting, amusing
-うつる | 写る | <div>to appear in a photo, (picture) to come out well</div>
-うつす | 写す | copy, photograph
-しゃしん | 写真 | photograph
-アルバム | アルバム | album
-まっか | 真っ赤 | deep red
-まじめ | 真面目 | serious, sober, earnest
-まんなか | 真ん中 | center, middle
-まっしろ | 真っ白 | pure-white
-スカート | スカート | skirt
-まっくら | 真っ暗 | pitch-dark
-まっくろ | 真っ黒 | deep-black, jet-black
-まっさお | 真っ青 | deep-blue, pale (skin)
-いろいろ | 色々 | various
-ペン | ペン | pen
-にんぎょう | 人形 | doll
-かたち | 形 | shape, form
-おおがた | 大型 | large, large scale
-しゅるい | 種類 | kind, variety, species
-おしゃべり | おしゃべり | chatter, talkative
-なおす | 直す | repair, cure, alter
-まっすぐ | 真っ直ぐ | dead straight, honestly
-ちょくせつ | 直接 | directly
-かど | 角 | corner, edge, angle
-きっと | きっと | surely, certainly
-さんかく | 三角 | triangle
-しかく | 四角 | square, quadrilateral
-しかくい | 四角い | square, four-sided
-よつかど | 四つ角 | street corner, intersection
-メニュー | メニュー | menu, bill of fare
-きょく | 曲 | song, melody, tune
-まげる | 曲げる | bend, curve
-まがりかど | 曲がり角 | street corner
-どうよう | 同様 | similar, same
-アイスクリーム | アイスクリーム | ice cream
-まちがい | 間違い | mistake, error
-まちがえる | 間違える | make a mistake (in something), confuse (を)
-まちがう | 間違う | be mistaken, be incorrect
-にている | 似ている | look like, resemble
-おしゃれ | おしゃれ | dressing up, trendy
-いじょう | 以上 | more than, not less than
-りょこう | 旅行 | travel, trip
-たいしかん | 大使館 | embassy
-りょかん | 旅館 | Japanese inn
-ジュース | ジュース | juice, soft drink
-えいがかん | 映画館 | movie theater
-しゅくだい | 宿題 | homework
-とめる | 泊める | lodge, give shelter
-あそび | 遊び | play, amusement
-ゼロ | ゼロ | zero
-ようふく | 洋服 | clothes
-きょうしつ | 教室 | classroom, class
-としょしつ | 図書室 | library room
-まど | 窓 | window, windowpane
-ピンク | ピンク | pink
-したしい | 親しい | intimate, close
-しんせつ | 親切 | kind, friendly
-ふしんせつ | 不親切 | unkind, inattentive
-かぞく | 家族 | family, household
-グラス | グラス | glass
-ばんざい | 万歳 | Banzai! Hurrah! Long live...!
-はたち | 二十歳 | 20 years old
-ねえさん | 姉さん | older sister, girl, miss
-にいさん | 兄さん | older brother
-ダンス | ダンス | dance, dancing
-きょうだい | 兄弟 | siblings
-ぎょうしゃ | 業者 | business man
-わかもの | 若者 | young person, youth
-かれら | 彼ら | they
-おじ | おじ | uncle
-けつごう | 結合 | combination, joining
-けっか | 結果 | result, outcome
-くだもの | 果物 | fruit
-かだい | 課題 | task, problem
-サッカー | サッカー | soccer, football
-か | 課 | section, division, lesson
-こうか | 効果 | effect, result
-じどうしゃ | 自動車 | automobile
-しぜん | 自然 | nature
-スープ | スープ | soup, broth
-しぜん | 自然 | natural, naturally
-じしゅう | 自習 | self-study, self-teaching
-りゆう | 理由 | reason, cause
-じゆう | 自由 | freedom, free
-バナナ | バナナ | banana
-しんじる | 信じる | believe, trust, have faith in
-しんごう | 信号 | signal, traffic light
-たのむ | 頼む | ask, request
-しみん | 市民 | citizens, townsmen
-うるさい | うるさい | noisy, annoying, pesky
-じゅうみん | 住民 | residents, inhabitants
-しゅじん | 主人 | husband, the head of the house
-ぎいん | 議員 | legislator
-かいぎ | 会議 | conference, meeting
-パトカー | パトカー | police car, patrol car
-たいする | 対する | in response to, face
-たいりつ | 対立 | opposition, antagonism
-はんたい | 反対 | oppose, the opposite
-こたえ | 答え | answer, solution
-ハンバーガー | ハンバーガー | hamburger
-とくに | 特に | specially, particularly
-とっきゅう | 特急 | limited express (train)
-とくべつ | 特別 | special, extraordinary
-べつべつ | 別々 | separately
-エスカレーター | エスカレーター | escalator
-わかれる | 別れる | separate, part from
-いっぱん | 一般 | general, common
-もくてき | 目的 | objective, purpose
-ふつう | 普通 | normal, regular
-タオル | タオル | towel
-ならぶ | 並ぶ | line up, be parallel
-ならべる | 並べる | line (st) up, display, set up
-へいわ | 平和 | peace, harmony
-こうとうがっこう | 高等学校 | senior high school
-パチンコ | パチンコ | pachinko (vertical pinball)
-びょういん | 病院 | hospital
-にゅういん | 入院 | be hospitalized
-だいがくいん | 大学院 | graduate school
-いしゃ | 医者 | doctor
-みかん | みかん | tangerine, mandarin orange
-おいしゃさん | お医者さん | doctor
-はいしゃ | 歯医者 | dentist
-は | 歯 | tooth, cog
-はぶらし | 歯ブラシ | toothbrush
-ケーキ | ケーキ | cake
-かがく | 科学 | science
-きょうかしょ | 教科書 | textbook, schoolbook
-りか | 理科 | science
-なくなる | 亡くなる | die, pass away
-コップ | コップ | cup, glass
-いそがしい | 忙しい | busy, occupied
-つかれる | 疲れる | get tired, become fatigued
-きんえん | 禁煙 | no smoking, giving up smoking
-よっぱらい | 酔っ払い | drunk person
-ナイロン | ナイロン | nylon
-よっぱらう | 酔っ払う | get drunk
-あぶない | 危ない | dangerous, uncertain
-きけん | 危険 | danger, dangerous
-そんざい | 存在 | existence, being
-スーツ | スーツ | suit
-ちゅうもく | 注目 | attention, notice
-ちゅうもん | 注文 | order, request
-いみ | 意味 | meaning, significance
-いけん | 意見 | opinion
-チケット | チケット | ticket
-ちゅうい | 注意 | attention, care, watch out
-ようい | 用意 | prepare, ready oneself
-たしか | 確か | for sure, for certain
-かくにん | 確認 | confirmation
-チョコレート | チョコレート | chocolate
-きのう | 機能 | function, feature
-ジェットき | ジェット機 | jet (plane)
-きかい | 機械 | machine
-ざいりょう | 材料 | ingredients, material
-チャンネル | チャンネル | channel
-ぐたいてき | 具体的 | specific, concrete
-もとづく | 基づく | be based on
-きほん | 基本 | basis, foundation
-きじゅん | 基準 | standard, criteria
-つまらない | つまらない | boring, dull
-そなえる | 備える | prepare for (disaster), equip (st) with
-じゅんび | 準備 | prepare for, ready for
-せっけい | 設計 | design, plan
-しせつ | 施設 | facilities, institution
-マッチ | マッチ | match, matchbox
-もうける | 設ける | set up, establish, prepare
-せつめい | 説明 | explanation, description
-しょうせつ | 小説 | novel, story
-こうかい | 公開 | opening (to the public)
-いとこ | いとこ | cousin
-こうえん | 公園 | park, public garden
-どうぶつえん | 動物園 | zoo
-まつり | 祭り | festival
-こくさい | 国際 | international
-ストーブ | ストーブ | paraffin heater, stove
-じっさい | 実際 | reality, truth, the actual situation
-ひこうじょう | 飛行場 | airport, airfield
-こうくうびん | 航空便 | airmail
-ふなびん | 船便 | surface mail (ship)
-ガソリンスタンド | ガソリンスタンド | gas station
-ふね | 船 | ship, boat, vessel
-くうこう | 空港 | airport
-みなと | 港 | port, harbor
-しま | 島 | island, isle
-デート | デート | date
-かんせい | 完成 | completion, finish
-へいせい | 平成 | Heisei era
-せいこう | 成功 | success
-げんいん | 原因 | cause, origin
-ふすま | ふすま | sliding door, fusuma
-しきん | 資金 | funds, a fund
-とうし | 投資 | investment
-ねがう | 願う | wish, ask a favor, apply for
-せいかく | 正確 | accurate, precise
-レモン | レモン | lemon
-ただしい | 正しい | correct, righteous, lawful
-しょうがつ | 正月 | New Year
-しょうじき | 正直 | honest, upright
-ことなる | 異なる | differ
-チーズ | チーズ | cheese
-つうじょう | 通常 | common, ordinary
-ひじょうに | 非常に | very, extremely
-しらべる | 調べる | search (for), examine
-きょうちょう | 強調 | emphasis, stress
-ドライブ | ドライブ | drive
-きせつ | 季節 | season
-ちょうさ | 調査 | investigation, examination
-ていきょう | 提供 | offer, provide
-ていあん | 提案 | proposition, proposal
-ラケット | ラケット | racket
-あんない | 案内 | guide, inform
-しめす | 示す | show, indicate
-つれていく | 連れて行く | take (a person) along
-つれてくる | 連れて来る | bring (a person)
-スチュワーデス | スチュワーデス | flight attendant
-つづける | 続ける | continue (sth), keep up を
-あいて | 相手 | opponent, partner
-かいだん | 会談 | conference, talk
-そうだん | 相談 | consultation, advice
-テープレコーダー | テープレコーダー | tape recorder, cassette recorder
-きしゃ | 記者 | journalist, reporter
-きろく | 記録 | record, documentation
-ろくおん | 録音 | audio recording
-のぼる | 登る | climb, mount, go up
-ひげ | ひげ | moustache, beard
-かんする | 関する | concern, relate to
-かんれん | 関連 | connection, relation
-かんけい | 関係 | relation, relationship
-じょうきょう | 状況 | situation, conditions 
-ぐっすり | ぐっすり | soundly (asleep)
-じょうたい | 状態 | state, appearance (of a thing)
-なおる | 治る | get better, be cured
-せいじ | 政治 | politics
-なおす | 治す | cure, heal
-ソース | ソース | sauce, Worcestershire sauce
-せいふ | 政府 | government, administration
-とう | 党 | political party
-たいさく | 対策 | measure, countermeasure
-せいさく | 政策 | policy, political measures
-タイプライター | タイプライター | typewriter
-えらぶ | 選ぶ | choose, elect
-せんしゅ | 選手 | player (in a game); team member
-せんきょ | 選挙 | election
-こうほ | 候補 | candidate, candidacy
-トマト | トマト | tomato
-しゅしょう | 首相 | prime minister
-しゅと | 首都 | capital
-かいかく | 改革 | reform
-かわ | 革 | leather
-バター | バター | butter
-めいれい | 命令 | command, order
-ばんぐみ | 番組 | program (TV, radio)
-くみたてる | 組み立てる | put together, assemble, construct
-そしき | 組織 | organization, structure, tissue
-バレーボール | バレーボール | volleyball
-すすめる | 進める | advance, promote, speed (st) up
-すすむ | 進む | advance, move forward
-しんがく | 進学 | entering the next level of school
-かくだい | 拡大 | magnification, enlargement
-おかず | おかず | side dish
-せきにん | 責任 | responsibility, liability
-やめる | 辞める | resign, retire
-じしょ | 辞書 | dictionary
-つうきん | 通勤 | commute
-カレンダー | カレンダー | calendar
-つとめる | 勤める | to work for (~に)
-じむしょ | 事務所 | office, one's place of business
-じむしつ | 事務室 | office
-じゅうらい | 従来 | former, old
-ハンドバッグ | ハンドバッグ | handbag
-せいせき | 成績 | grade (school), results, record
-あつめる | 集める | collect, gather
-あつまる | 集まる | gather, be collected
-さいよう | 採用 | employment
-ベル | ベル | bell
-きゅうりょう | 給料 | salary, pay
-そつぎょう | 卒業 | graduation
-しゅうしょく | 就職 | finding employment
-たいいん | 退院 | discharge from a hospital
-インク | インク | ink
-けいやく | 契約 | contract, agreement
-こうしょう | 交渉 | negotiation, bargaining
-じけん | 事件 | event, incident, case
-じょうけん | 条件 | condition, terms
-クーラー | クーラー | air conditioning, cooler
-さんか | 参加 | participation, taking part in
-ぞうか | 増加 | increase, gain
-くわえる | 加える | add (one thing to another)<div>(can be the same or a different kind of thing)</div>
-かこう | 加工 | processing, manufacturing<div>(turning st into st else)</div>
-ミルク | ミルク | milk, baby milk
-くらべる | 比べる | compare, contrast
-ひはん | 批判 | criticism, comment
-ひょうか | 評価 | evaluation, rating
-たいしょう | 対象 | target, subject
-サラダ | サラダ | salad
-こしょう | 故障 | malfunction, fault, breakdown
-しゅうり | 修理 | repair, mending
-のりかえる | 乗り換える | change, transfer (trainなど)
-のりかえ | 乗り換え | change (trainなど), transfer
-おじさん | おじさん | uncle
-かえる | 換える | swap, convert
-きがえる | 着替える | change clothes
-かぶる | 被る | put on (a hat)
-やぶる | 破る | tear (st), break (through) （~を）
-ベルト | ベルト | belt
-やぶれる | 破れる | (st) rips, gets torn
-こわす | 壊す | break, destroy, smash
-こわれる | 壊れる | break, break down, get out of order
-きゅうきゅうしゃ | 救急車 | ambulance
-ラーメン | ラーメン | ramen (Chinese noodles)
-たすける | 助ける | help, save
-りっぱ | 立派 | fine, excellent
-けいさつ | 警察 | police
-かんり | 管理 | management, administration
-ライター | ライター | lighter
-ぬすむ | 盗む | steal, rob
-ころす | 殺す | kill, smother
-たいほ | 逮捕 | arrest, capture
-にげる | 逃げる | escape, run away
-ワイシャツ | ワイシャツ | (business) shirt, (white) shirt
-せんそう | 戦争 | war, battle
-きょうそう | 競争 | competition
-こむ | 混む | be crowded, be congested
-だいとうりょう | 大統領 | president (of a country)
-シャワー | シャワー | shower
-すてる | 捨てる | throw away, abandon
-ひろう | 拾う | pick up, find
-いけ | 池 | pond
-でんち | 電池 | electric cell, battery
-うどん | うどん | noodles, Japanese wheat noodles
-ふかい | 深い | deep, profound, intimate
-ふかさ | 深さ | depth, profundity
-あさい | 浅い | shallow, superficial
-おとす | 落とす | drop, omit
-ごみ | ごみ | rubbish, trash
-およぐ | 泳ぐ | swim
-すいえい | 水泳 | swimming
-ながれる | 流れる | flow, drift away
-はやる | 流行る | be in fashion, be popular
-スーパーマーケット | スーパーマーケット | supermarket
-あらう | 洗う | wash
-せんめんじょ | 洗面所 | washroom, bathroom
-あぶら | 油 | oil
-しずむ | 沈む | sink, set
-ハンカチ | ハンカチ | handkerchief
-ひさしぶり | 久しぶり | after a long time
-こおり | 氷 | ice
-ひえる | 冷える | get cold, get chilly
-ひやす | 冷やす | cool (sth), chill (を)
-ビデオテープ | ビデオテープ | videotape
-さめる | 冷める | cool down (from hot to room temp), subside
-こおる | 凍る | freeze
-れいぞうこ | 冷蔵庫 | refrigerator
-すずしい | 涼しい | cool, refreshing
-ぶらぶら | ぶらぶら | wander aimlessly, hang about
-よごす | 汚す | make dirty, soil
-よごれ | 汚れ | dirt, filth
-よごれる | 汚れる | become dirty, become defiled
-けしき | 景色 | scene, landscape
-アナウンサー | アナウンサー | news reader, announcer
-えいきょう | 影響 | influence, effect
-ひかる | 光る | shine, emit light
-ふとる | 太る | grow fat, fatten
-たいよう | 太陽 | sun
-スプーン | スプーン | spoon
-ほし | 星 | star, planet, spot
-ちきゅう | 地球 | the Earth
-やきゅう | 野球 | baseball
-くも | 雲 | cloud
-ブラウス | ブラウス | blouse
-くもり | 曇り | cloudiness, cloudy weather
-じしん | 地震 | earthquake
-ふるえる | 震える | tremble, quiver, shake
-ふる | 振る | wave, shake, swing
-リボン | リボン | ribbon
-ゆれる | 揺れる | shake, sway, rock
-じんじゃ | 神社 | Shinto shrine
-ひみつ | 秘密 | secret, privacy
-きびしい | 厳しい | strict, severe, intense
-いかが | いかが | how, what (polite)
-としより | 年寄り | old person, a senior
-れきし | 歴史 | history
-せいき | 世紀 | century
-けんせつ | 建設 | construction, establishment
-ステレオ | ステレオ | stereo
-たてもの | 建物 | building, structure
-たつ | 建つ | be built, be erected
-こうせい | 構成 | organization, makeup
-こうぞう | 構造 | structure, the construction
-フォーク | フォーク | fork
-はし | 橋 | bridge
-はしら | 柱 | pillar, column
-いち | 位置 | position, location
-りこん | 離婚 | divorce
-おば | おば | aunt
-ていしゃ | 停車 | a stop (train), stopping
-ばすてい | バス停 | bus stop
-しゅうへん | 周辺 | surrounding area, outskirts
-となり | 隣 | neighboring house, next seat
-きらきら | きらきら | shining, sparkling
-きいろ | 黄色 | yellow
-よこ | 横 | side, width across
-よこがき | 横書き | horizontal writing
-はんだん | 判断 | judgment, decision
-どうぞ | どうぞ | please, by all means, here you are
-ことわる | 断る | refuse, turn down
-おうだんほどう | 横断歩道 | crosswalk
-おおはば | 大幅 | drastically, substantially
-おとずれる | 訪れる | visit, go to see
-ネックレス | ネックレス | necklace
-たずねる | 訪ねる | visit (place or person), drop in
-れいぼう | 冷房 | air conditioning
-だんぼう | 暖房 | heating
-ぶんぼうぐ | 文房具 | stationery, writing materials
-パジャマ | パジャマ | pajamas
-しょこく | 諸国 | various countries
-みどりいろ | 緑色 | green
-ぼうえき | 貿易 | (foreign) trade, import/export business
-ゆにゅう | 輸入 | import
-ボールペン | ボールペン | ballpoint pen
-ゆしゅつ | 輸出 | export
-ゆびわ | 指輪 | ring
-おうふく | 往復 |  round trip, going and returning
-ふくしゅう | 復習 | review
-すいか | すいか | watermelon
-くりかえす | 繰り返す | repeat を
-りゅうがく | 留学 | studying abroad
-ていりゅうじょ | 停留所 | stop, station
-かきとめ | 書留 | registered mail
-そちら | そちら | there, that way (polite)
-まもる | 守る | protect, observe
-るす | 留守 | not at home
-じゅうたく | 住宅 | housing, residence
-じたく | 自宅 | one's house, one's home
-そば | そば | buckwheat noodles, soba
-おたく | お宅 | your home (敬語)
-はやおき | 早起き | early rising
-ひるね | 昼寝 | nap
-しずか | 静か | quiet, tranquil
-どっち | どっち | which one (casual)
-ひま | 暇 | free time, spare time
-しゅみ | 趣味 | hobby, interest
-りょうほう | 両方 | both
-りょうがえ | 両替 | exchanging currency, break (a 1万 note)
-バスケットボール | バスケットボール | basketball
-りょうしん | 両親 | parents
-かたみち | 片道 | one-way
-うちがわ | 内側 | inside, interior
-むこうがわ | 向こう側 | other side
-サンドイッチ | サンドイッチ | sandwich
-そとがわ | 外側 | exterior, outside
-ひだりがわ | 左側 | left side
-みぎがわ | 右側 | right side
-うら | 裏 | rear, reverse (side), inside
-にこにこ | にこにこ | smile
-うらがえす | 裏返す | turn over, turn inside out
-しゅうかんし | 週刊誌 | weekly magazine
-ちょうかん | 朝刊 | morning edition
-ゆうかん | 夕刊 | evening edition
-ウール | ウール | wool
-くわしい | 詳しい | detailed, complete
-こまかい | 細かい | minute, elaborate
-こまか | 細か | minute, elaborate
-つもる | 積もる | accumulate (snow, dustなど)
-コーラ | コーラ | cola, coke
-やく | 訳 | translation
-やくす | 訳す | translate
-けんとう | 検討 | consideration, examination
-ぬる | 塗る | spread on, paint
-トイレットペーパー | トイレットペーパー | toilet paper
-つく | 付く | stick to, be attached to, accompany
-つける | 付ける | attach, apply (st to st), add
-うけつける | 受け付ける | accept, receive
-かたづける | 片付ける | put in order, clear (st) away, put (st) back
-どなた | どなた | who (polite)
-うけつけ | 受付 | receptionist, front desk
-ちかづく | 近付く | approach, get acquainted
-かたづく | 片付く | be in order, be settled
-きをつける | 気を付ける | take care of, pay attention to
-ハイキング | ハイキング | hiking
-はる | 貼る | stick, paste
-きねんび | 記念日 | memorial day, anniversary
-ざんねん | 残念 | regretful, disappointing
-たとえば | 例えば | for example
-ハム | ハム | ham
-れいぶん | 例文 | example sentence
-れい | 例 | example, precedent
-あまる | 余る | remain over, be too much<div>(remain because of excess)</div>
-のぞく | 除く | exclude, get rid of
-ボーイフレンド | ボーイフレンド | boyfriend
-けずる | 削る | grind down, trim, scale back
-ちこく | 遅刻 | tardiness, lateness
-ゆるい | 緩い | slack, loose
-くるしい | 苦しい | painful, difficult
-アイロン | アイロン | iron
-にがい | 苦い | bitter, sour
-にがて | 苦手 | weak point, (sb) hard to deal with
-こまる | 困る | be in trouble, have difficulty
-びんぼう | 貧乏 | poor, poverty
-カレーライス | カレーライス | curry rice
-ふこう | 不幸 | unhappiness, misfortune, a death
-しあわせ | 幸せ | happiness, good fortune
-しお | 塩 | salt
-しおからい | 塩辛い | salty
-キャッシュカード | キャッシュカード | ATM card
-さとう | 砂糖 | sugar
-きぼ | 規模 | scale (big, smallなど), scope
-のうぎょう | 農業 | agriculture
-こい | 濃い | thick, concentrated, dark-colored
-イヤリング | イヤリング | earrings
-うすい | 薄い | thin, weak, pale
-あつい | 厚い | thick, bulky
-あつさ | 厚さ | thickness
-せまる | 迫る | <!--anki-->approach, draw near, press (sb for st)
-ガールフレンド | ガールフレンド | girlfriend
-のびる | 伸びる | get longer, grow, stretch
-ひっこす | 引っ越す | move (houses)
-こえる | 越える | go over, go across, go beyond
-ひっこし | 引っ越し | moving (houses)
-カセットテープ | カセットテープ | cassette tape
-おいこす | 追い越す | pass, outdo
-じょうしょう | 上昇 | a rise, an increase
-かいさつぐち | 改札口 | ticket barrier
-しつれい | 失礼 | impoliteness, bad manners, I beg your parden/Goodbye
-かゆい | かゆい | itchy
-おれい | お礼 | thanks, reward, return present
-あやまる | 謝る | apologize
-ちゅうしゃ | 注射 | shot, injection
-ていど | 程度 | degree, extent
-ぐらぐら | ぐらぐら | wobble
-さそう | 誘う | invite, ask out
-どうにゅう | 導入 | introduction, bringing in
-どりょく | 努力 | <!--anki-->effort, endeavor
-おこる | 怒る | get angry, scold
-ジャム | ジャム | jam
-どくしん | 独身 | single, unmarried
-しめる | 占める | occupy, hold
-しょり | 処理 | processing, management<div>(unlike 加工, a new thing is not created)</div>
-しょうかい | 紹介 | introduction, presentation
-スリッパ | スリッパ | slippers
-まねく | 招く | invite, beckon
-しょうたい | 招待 | invitation
-ふうふ | 夫婦 | husband and wife, married couple
-おく | 奥 | inner part, the back, inner chamber
-トランプ | トランプ | (a pack of) cards, (playing) cards
-おくさん | 奥さん | (sb's) wife, married lady
-みなさん | 皆さん | everybody (丁寧語)
-みなさま | 皆様 | everyone (敬語)
-だれか | 誰か | someone
-よろしい | よろしい | all right (いいの改まった言い方)
-こくせき | 国籍 | citizenship, nationality
-あい | 愛 | love
-かわいい | 可愛い | cute, charming, sweet
-こいびと | 恋人 | boyfriend/girlfriend, lover
-ラッシュアワー | ラッシュアワー | rush hour
-たんじょうび | 誕生日 | birthday
-しゅくじつ | 祝日 | holiday, festival day
-おいわい | お祝い | celebrate
-ゆめ | 夢 | dream
-カップ | カップ | cup, cup (measurement)
-なく | 泣く | cry, weep
-なみだ | 涙 | tear
-よろこぶ | 喜ぶ | be happy, be delighted
-はずかしい | 恥ずかしい | embarrassed, ashamed, embarrassing
-スケート | スケート | skate, skates
-べんとう | 弁当 | box lunch, picnic lunch
-かんごし | 看護師 | nurse
-かんじゃ | 患者 | patient
-のべる | 述べる | express (opinion), state, mention
-たくさん | たくさん | in large quantity, plenty
-うったえる | 訴える | sue
-まよう | 迷う | hesitate, get lost, be unable to decide
-めいわく | 迷惑 | trouble, annoyance
-ちいき | 地域 | region, area
-ピクニック | ピクニック | picnic
-せいけん | 政権 | political power, government, administration
-おくる | 贈る | offer, give (presentとか)
-おくりもの | 贈り物 | present, gift (和語)
-あたえる | 与える |  present (st), give (damage/shock), give (to lower status) (かたい)
-あちら | あちら | way over there
-ちょきん | 貯金 | savings, deposit
-あずける | 預ける | deposit, entrust
-あずかる | 預かる | keep (st) for (sb); take care of (st)
-とくい | 得意 | one's forte, pride, frequent customer
-どきどき | どきどき | feel excited, feel nervous
-もえる | 燃える | burn が
-やける | 焼ける | burn, be grilled, be baked が
-すきやき | すき焼き | sukiyaki
-やく | 焼く | burn (st), grill, bake を
-まあまあ | まあまあ | OK, not bad, average
-かわく | 乾く | (st) drys, gets dry (が)
-かんぱい | 乾杯 | a toast
-かわかす | 乾かす | dry (st) を
-しんかんせん | 新幹線 | Shinkansen, Bullet Train
-マフラー | マフラー | scarf, muffler
-すばらしい | 素晴らしい | splendid, excellent
-かいがん | 海岸 | coast, seashore
-かてい | 家庭 | home, family
-にわ | 庭 | garden, court
-アクセサリー | アクセサリー | accessories, jewelry
-さくら | 桜 | cherry tree, cherry blossom
-さく | 咲く | bloom, blossom
-ふく | 吹く | blow, play on a wind instrument
-さんぽ | 散歩 | walk, stroll
-あくび | あくび | yawn
-うえる | 植える | plant (a plant), embed
-やね | 屋根 | roof
-こくばん | 黒板 | blackboard
-けいじばん | 掲示板 | notice board, bulletin board
-からから | からから | thirsty, dry
-くさ | 草 | grass, weed
-は | 葉 | leaf
-えはがき | 絵葉書 | picture postcard
-はがき | はがき | postcard
-ふらふら | ふらふら | dizzy, weak
-すう | 吸う | inhale, suck
-ふきゅう | 普及 | spreading, becoming popular
-い | 胃 | stomach
-さら | 皿 | plate, counter for plates or servings
-こぼす | こぼす | spill (st)
-ち | 血 | blood
-ないよう | 内容 | contents
-はいけい | 背景 | background, scenery, setting
-ほね | 骨 | bone, frame
-ランチ | ランチ | lunch
-すべる | 滑る | slide, slip, flunk an examination
-おれる | 折れる | snap/break, be folded, give in (to)
-おる | 折る | break off, fold, bend
-けんこう | 健康 | healthy
-レシート | レシート | receipt
-めずらしい | 珍しい | unusual, rare, strange
-とる | 撮る | take (a picture), film (a video)
-ふたたび | 再び | again, a second time (somewhat formal)
-さらいねん | 再来年 | the year after next
-チョーク | チョーク | chalk
-さらいげつ | 再来月 | the month after next
-さらいしゅう | 再来週 | the week after next
-ほうそう | 放送 | broadcasting
-そうち | 装置 | equipment, device
-ティッシュ | ティッシュ | tissue
-かな | 仮名 | kana, Japanese syllabary
-おくりがな | 送り仮名 | kana suffix
-かがみ | 鏡 | mirror
-かなしむ | 悲しむ | feel sad, lament
-ノック | ノック | knock
-かたい | 固い | firm, unchanging, unbreakable
-びじゅつかん | 美術館 | art museum
-びじん | 美人 | beautiful woman
-びよういん | 美容院 | hair salon
-よろしく | よろしく | properly, one's regards
-はくぶつかん | 博物館 | museum
-かいさい | 開催 | holding (of an event), opening
-とくちょう | 特徴 | distinguishing characteristic
-ゆるす | 許す | forgive, permit
-がらがら | がらがら | empty
-めんきょしょう | 免許証 | license
-きょうし | 教師 | teacher, instructor
-きょうじゅ | 教授 | professor
-つたえる | 伝える | convey, tell (sb) that, let (sb) know
-ぎらぎら | ぎらぎら | dazzling, glaring, blinding
-とり | 鳥 | bird, poultry
-なる | 鳴る | sound, ring, thunder
-なく | 鳴く | make sound (animal); chirp, meow, etc.
-こえ | 声 | voice, sound
-そっち | そっち | there, that way (causal)
-たまご | 卵 | egg
-いぬ | 犬 | dog
-うま | 馬 | horse
-ちゅうしゃじょう | 駐車場 | parking area
-ピンポン | ピンポン | table tennis, ping pong
-さわぐ | 騒ぐ | make a racket, mess around, make a fuss
-さす | 刺す | stab, prick, sting
-さしみ | 刺身 | sashimi, sliced raw meat
-はげしい | 激しい | violent, intense
-ぺこぺこ | ぺこぺこ | very hungry, starving
-おどろく | 驚く | be surprised, be startled
-たおれる | 倒れる | fall down, succumb (to)
-たおす | 倒す | knock down, overthrow, defeat
-けいこう | 傾向 | tendency, inclination
-ぺらぺら | ぺらぺら | fluently
-じゅうどう | 柔道 | judo
-やわらかい | 柔らかい | soft
-やわらか | 柔らか | soft, tender, gentle
-しゅちょう | 主張 | argument, case, one's point
-レインコート | レインコート | raincoat
-ひっぱる | 引っ張る | pull, drag
-つきあたる | 突き当たる | come to the end of (street), run into (st)
-つきあたり | 突き当たり | end of a street
-かべ | 壁 | wall, partition
-アイス | アイス | popsicle, ice lolly
-ひく | 弾く | play (a stringed instrument)
-まるい | 丸い | round
-まる | 丸 | circle, wholeness
-こうげき | 攻撃 | attack, criticism
-いつごろ | いつごろ | about when, about what time
-ぜったいに | 絶対に | absolutely, unconditionally
-しょうぼうしゃ | 消防車 | fire truck
-いや | 嫌 | dislike, have a dislike for
-だいきらい | 大嫌い | hate
-ウィスキー | ウィスキー | whisky
-たいてい | 大抵 | generally, mostly
-おおぜい | 大勢 | many (people), a crowd
-すがた | 姿 | figure, appearance
-しせい | 姿勢 | posture, attitude
-エアメール | エアメール | airmail
-おそろしい | 恐ろしい | terrible, frightening
-こわい | 怖い | scary
-いと | 糸 | thread, yarn
-まご | 孫 | grandchild
-シャープペンシル | シャープペンシル | mechanical pencil
-もめん | 木綿 | cotton
-えらい | 偉い | great, famous, eminent
-つめ | 爪 | nail, claw
-つくえ | 机 | desk
-セロテープ | セロテープ | Scotch tape
-たな | 棚 | shelf, rack
-ほんだな | 本棚 | bookshelf
-ほうしん | 方針 | course, policy
-つる | 釣る | to fish, to catch (a fish)
-やけど | やけど | burn
-おつり | お釣り | change
-かぎ | 鍵 | key, lock
-なべ | 鍋 | pan, pot
-すし | 寿司 | sushi
-アイスコーヒー | アイスコーヒー | iced coffee
-どろぼう | 泥棒 | thief, crook
-ゆ | 湯 | hot water, hot bath, bathhouse
-わく | 沸く | boil, be excited
-わかす | 沸かす | boil, excite
-あっち | あっち | other side, over there (informal)
-せんたくき | 洗濯機 | washing machine
-せんたく | 洗濯 | laundering, washing
-ぬれる | 濡れる | get wet
-きっさてん | 喫茶店 | coffee shop, tea house, café
-あんなに | あんなに | like that
-なまける | 怠ける | be lazy (が), neglect (st) (を)
-いっしょうけんめい | 一生懸命 | as hard as one can, with all one's might
-きゅうけい | 休憩 | <div>break (from work, study, etc.)</div>
-てんじょう | 天井 | ceiling
-いたずら | いたずら | mischief, prank
-なっとう | 納豆 | natto (fermented soybeans)
-けしょう | 化粧 | makeup, put on makeup
-はたけ | 畑 | field, farm, garden
-たく | 炊く | cook (by boiling)
-ウェートレス | ウェートレス | waitress
-じすい | 自炊 | cooking for oneself
-はいざら | 灰皿 | ashtray
-はい | 灰 | ashes
-はいいろ | 灰色 | ash color, gray
-おばさん | おばさん | aunt
-せいれき | 西暦 | CE, AD (year)
-け | 毛 | hair, wool
-かみ | 髪 | hair, hairstyle
-した | 舌 | tongue
-くし | くし | comb
-くさい | 臭い | ill-smelling, stinking
-におい | 匂い | smell, odor
-いる | 居る | be present
-はく | 履く | put on (footwear, lower body clothing)
-クリーニング | クリーニング | cleaning, laundry
-と | 戸 | door (esp. Japanese style), shutter
-せんぷうき | 扇風機 | electric fan
-ぶた | 豚 | pig, pork
-ぶたにく | 豚肉 | pork, hog meat
-ごちそう | ごちそう | feast, treat
-にわとり | 鶏 | chicken, hen
-うでどけい | 腕時計 | wrist watch
-おかし | お菓子 | sweets, snacks
-おじぎ | お辞儀 | bow, bowing
-ごちそうする | ごちそうする | treat
-ねぼう | 寝坊 | oversleeping, late riser
-はた | 旗 | flag, banner
-えんぴつ | 鉛筆 | pencil
-まんねんひつ | 万年筆 | fountain pen
-こぼれる | こぼれる | (st) spills, overflows
-はこ | 箱 | box, case
-ほんばこ | 本箱 | bookcase
-てぶくろ | 手袋 | gloves
-ふくろ | 袋 | bag, sack
-こんなに | こんなに | as this, so, such
-さいふ | 財布 | purse, wallet
-もうふ | 毛布 | blanket
-ふとん | 布団 | futon, bedquilt
-こづつみ | 小包 | parcel, package
-ざあざあ | ざあざあ | (sound of pouring rain) heavily, pouring
-つつむ | 包む | wrap, pack
-かざる | 飾る | decorate, exhibit
-てちょう | 手帳 | pocketbook, memo
-でんわちょう | 電話帳 | telephone book
-ジャガイモ | ジャガイモ | potato
-ぎゅうにゅう | 牛乳 | milk
-げんかん | 玄関 | entrance, doorway
-めがね | 眼鏡 | glasses, judgment
-ねむい | 眠い | sleepy
-ソファ | ソファ | sofa, sofa bed
-ねむる | 眠る | sleep
-ふうとう | 封筒 | envelope
-でかける | 出かける | go out, be about to go out
-かかる | かかる | hang, splash, take (timeなど) が
-たばこ | 煙草 | tobacco, cigarette
-かけざん | 掛け算 | multiplication
-はくしゅ | 拍手 | applause, clapping
-そうじ | 掃除 | cleaning
-はく | 掃く | sweep, brush
-ちょうど | ちょうど | exactly, as if
-そうじき | 掃除機 | vacuum cleaner
-にぎる | 握る | grasp, to press into shape (onigiri, sushi)
-あくしゅ | 握手 | handshake, handshaking
-むかえる | 迎える | welcome, go to meet
-ちょっと | ちょっと | just a moment, just a little, easily
-おまわりさん | お巡りさん | policeman
-いくつ | いくつ | how many, how old
-いくら | 幾ら | how much
-じょうだん | 冗談 | joke
-つく | つく | be on, switched on
-あな | 穴 | hole, cavity
-さびしい | 寂しい | lonely, desolate, sad
-ていねい | 丁寧 | polite, courteous, careful
-かわいそう | かわいそう | poor, pitiable
-てんぷら | てんぷら | tempura, Japanese deep-fried breaded food
-けが | 怪我 | injury
-がまん | 我慢 | patience, self-restraint
-ようちえん | 幼稚園 | kindergarten
-かくれる | 隠れる | hide, disappear
-とんとん | とんとん | tapping
-ひかげ | 日陰 | the shade
-ずいぶん | 随分 | extremely, considerably
-がんばる | 頑張る | persist, be tenacious
-ころ | 頃 | when~, about~, time
-にんじん | 人参 | carrot
-このごろ | この頃 | these days, recently
-しょうぼうしょ | 消防署 | fire station
-たずねる | 尋ねる | inquire, search for
-かんづめ | 缶詰 | canned goods
-ぬるい | ぬるい | lukewarm
-かん | 缶 | can, tin
-くさる | 腐る | rot, corrode
-とうふ | 豆腐 | tofu
-ゆか | 床 | floor
-パーセント | パーセント | percent
-とこや | 床屋 | barber, barbershop
-たたみ | 畳 | tatami, mat
-たたむ | 畳む | fold up, shut (umbrella)
-ほす | 干す | dry (by airing out), air out
-ひざ | ひざ | knee
-ぼうし | 帽子 | hat
-ぜひ | ぜひ | by all means, at any cost
-けいご | 敬語 | honorific language, polite speech
-そんけい | 尊敬 | respect, honor
-ひじ | ひじ | elbow
-しく | 敷く | lay out, spread
-かみなり | 雷 | thunder, lightning
-れい | 零 | zero, naught
-しまう | 仕舞う | put away
-ひも | ひも | laces, string, rope
-おどる | 踊る | dance
-おどり | 踊り | dance, dancing
-ふむ | 踏む | step on, tread on
-ふみきり | 踏切 | railroad crossing
-まく | まく | scatter (st), sow seeds
-ける | 蹴る | kick
-しょくどう | 食堂 | dining hall, restaurant
-ねこ | 猫 | cat, feline
-ぶんしょう | 文章 | writing, prose
-やかん | やかん | kettle
-じょうぶ | 丈夫 | healthy, stout
-また | また | again, also, or
-おじいさん | お祖父さん | grandfather
-おばあさん | お祖母さん | grandmother
-ようこそ | ようこそ | welcome
-そふ | 祖父 | grandfather
-そぼ | 祖母 | grandmother
-じゃま | 邪魔 | obstacle, interruption
-かぜぐすり | 風邪薬 | remedy for a cold
-ウェーター | ウェーター | waiter
-ふろや | 風呂屋 | bathhouse, public bath
-ふろ | 風呂 | bath
-しょうわ | 昭和 | Showa era
-むらさき | 紫 | purple
-そんなに | そんなに | like that, so
-こうちゃ | 紅茶 | black tea
-つゆ | 梅雨 | rainy season
-もも | 桃 | peach, peach tree
-あう | 遭う | encounter something (unexpected)
-まくら | 枕 | pillow
-うそ | 嘘 | lie
-えんりょ | 遠慮 | reserve, hesitation, forethought
-しかる | 叱る | scold, tell off, reprimand
-かさ | 傘 | umbrella, parasol
-おじょうさん | おじょうさん | young lady, your daughter
-ねんがじょう | 年賀状 | New Year's card
-にぎやか | 賑やか | lively, exciting
-か | 蚊 | mosquito
-ふく | 拭く | wipe, dry
-あいさつ | 挨拶 | greet, greeting
-ともなう | 伴う | accompany, go with
-まく | 巻く | roll (st) up, wind, wrap
-くつ | 靴 | shoes, boots
-くつした | 靴下 | socks, stockings
-みがく | 磨く | polish, grind
-はみがき | 歯磨き | toothpaste, brushing one's teeth
-ろうか | 廊下 | hallway, corridor
-びん | 瓶 | bottle, flask
-ほめる | 褒める | praise, commend
-がんたん | 元旦 | New Year's Day
-そで | 袖 | sleeve
-ながそで | 長袖 | clothes with long sleeves
-はんそで | 半袖 | short-sleeved shirt
-ばか | 馬鹿 | fool, nonsense
-すごい | 凄い | wonderful, terrible
-そる | 剃る | shave
-けんか | 喧嘩 | fight, quarrel, argument
-たたく | 叩く | tap, hit, play (drums)
-かむ | 噛む | bite, chew
-みそしる | 味噌汁 | miso soup
-めい | 姪 | niece
-いちご | 苺 | strawberry
-なす | 茄子 | eggplant
-あう | 逢う | meet (esp. sb of the opposite sex)
-いす | 椅子 | chair
-やせる | 痩せる | lose weight, become thin
-はし | 箸 | chopsticks
-のり | 糊 | glue, (clothing) starch
-しょうゆ | 醤油 | soy sauce
-はさみ | 鋏 | scissors
-かばん | 鞄 | bag, handbag, briefcase
-あご | 顎 | jaw, chin
-あめ | 飴 | candy, sweets
-せっけん | 石鹸 | soap
-さ | 差 | difference
-うしなう | 失う | lose, miss
-はずれる | 外れる | come off
-はかる | 測る | measure, gauge
-ふくめる | 含める | include
-ふくむ | 含む | contain, include
-ちょうだい | 頂戴 | getting, receiving
+それ█それ█that, that one
+ひとつ█一つ█one (thing)
+いち█一█one
+に█二█two
+ふたつ█二つ█two (things)
+さん█三█three
+みっつ█三つ█three (things)
+よっつ█四つ█four (things)
+し█四█four
+これ█これ█this, this one
+よん█四█four
+いつつ█五つ█five (things)
+ご█五█five
+むっつ█六つ█six (things)
+ろく█六█six
+なな█七█seven
+ななつ█七つ█seven (things)
+はち█八█eight
+やっつ█八つ█eight (things)
+なる█なる█become
+きゅう█九█nine
+ここのつ█九つ█nine (things)
+じゅう█十█ten
+ひゃく█百█hundred
+せん█千█thousand
+まん█万█ten thousand
+えん█円█circle
+えん█円█yen
+とき█時█time
+する█する█do, make
+ときどき█時々█sometimes
+にち█日█day
+むいか█六日█six days, 6th of the month
+みっか█三日█three days, 3rd of the month
+いつか█五日█five days, 5th of the month
+ようか█八日█eight days, 8th of the month
+はつか█二十日█20 days, 20th of the month
+ふつか█二日█two days, 2nd of the month
+ここのか█九日█nine days, 9th of the month
+ところ█ところ█place
+ついたち█一日█1st of the month
+とおか█十日█ten days, 10th of the month
+なのか█七日█seven days, 7th of the month
+よっか█四日█four days, 4th of the month
+つき█月█moon
+みず█水█water
+かね█金█money
+にちようび█日曜日█Sunday
+どようび█土曜日█Saturday
+やる█やる█do
+きんようび█金曜日█Friday
+げつようび█月曜日█Monday
+もくようび█木曜日█Thursday
+ようび█曜日█day of the week
+かようび█火曜日█Tuesday
+すいようび█水曜日█Wednesday
+しゅう█週█week
+とし█年█year, age
+わかる█分かる█understand
+そう█そう█in such manner, that way
+なに█何█what, which
+さき█先█ahead, first
+ことし█今年█this year
+いま█今█now
+きょう█今日█today
+こんげつ█今月█this month
+こんしゅう█今週█this week
+くる█来る█come
+らいねん█来年█next year
+もう█もう█already, yet
+いく█行く█go
+かえる█帰る█return, go back
+おおきい█大きい█big
+ちいさい█小さい█small
+すくない█少ない█few, little
+すこし█少し█a little, a little while (polite)
+おおい█多い█lots of
+たぶん█多分█probably, perhaps
+あげる█上げる█raise, improve
+よく█よく█often
+のぼる█上る█go up, climb up
+うえ█上█up, above
+した█下█under, below
+みぎ█右█right
+ひだり█左█left
+ほう█方█direction, side
+おとな█大人█adult
+ひと█人█person
+ひとり█一人█one, one person
+どう█どう█how, what
+いれる█入れる█put in
+はいる█入る█enter
+でる█出る█go out, leave
+できる█できる█can do, be good at
+だす█出す█take out, turn in
+ほん█本█book, volume
+やすむ█休む█take a day off, take a break
+からだ█体█body, health
+め█目█eye
+どこ█どこ█where
+くち█口█mouth
+みみ█耳█ear, hearing
+じょうず█上手█skilled, good
+て█手█hand
+あし█足█leg, foot
+すく█空く█become empty, become less crowded
+おとこ█男█man, male
+おんな█女█woman, girl
+こども█子供█child, kid
+あげる█あげる█give
+すき█好き█favorite, liked
+だいすき█大好き█love
+わたし█私█I
+ともだち█友達█friend, companion
+うち█家█house, home, my family
+き█気█spirit, temperament
+げんき█元気█healthy, energetic
+てんき█天気█weather
+はれる█晴れる█be sunny, clear up
+こう█こう█like this, this kind of
+きのう█昨日█yesterday
+あける█開ける█open, unlock
+ひらく█開く█open を/が
+とじる█閉じる█close (book, eyes, etc.)
+しめる█閉める█shut, close
+しまる█閉まる█be shut, be closed
+きく█聞く█hear, ask
+じかん█時間█time, hour
+たかい█高い█high, tall
+くれる█くれる█give (to me)
+やすい█安い█inexpensive, cheap
+ひくい█低い█low, short
+まえ█前█front, before
+あと█後█after
+うしろ█後ろ█back, behind
+ごご█午後█afternoon, p.m.
+ごぜん█午前█morning, a.m.
+あさ█朝█morning
+ひる█昼█daytime, midday, lunch
+かなり█かなり█fairly, rather
+ばん█晩█evening (usually from sunset to bedtime)
+こんばん█今晩█this evening, tonight
+よる█夜█night (from sunset to sunrise)
+たべる█食べる█eat
+のむ█飲む█drink
+ごはん█ご飯█cooked rice, meal
+かう█買う█buy
+みる█見る█see, look at
+みせる█見せる█show
+もっと█もっと█more
+みつける█見つける█find (something)
+みえる█見える█be visible
+みつかる█見つかる█be found, be caught
+いう█言う█say, tell
+はなす█話す█speak, tell
+よむ█読む█read
+かんじ█漢字█Chinese character
+かく█書く█write
+おぼえる█覚える█memorize, learn
+そこ█そこ█there
+あう█会う█meet
+しごと█仕事█work, job
+ばあい█場合█situation, case
+くるま█車█car, automobile
+でんしゃ█電車█train
+えき█駅█railway station
+みち█道█way, road, street
+ほか█他█other
+やめる█止める█stop, give up, abolish
+ここ█ここ█here
+あるく█歩く█walk, go on foot
+はしる█走る█run
+ちかく█近く█near, close to
+ちかい█近い█near, close
+ちかく█近く█vicinity, nearby
+とおい█遠い█far, distant
+ながい█長い█long
+みじかい█短い█short, brief
+ひろい█広い█wide, big
+もらう█もらう█receive
+ぜんぶ█全部█all, wholly
+くに█国█country
+しろい█白い█white, blank (for paper)
+あかい█赤い█red
+へや█部屋█room
+こめ█米█rice (grain)
+まだ█まだ█(not) yet, still
+ある█ある█exist, possess
+ない█無い█to not be
+とても█とても█very
+つくる█作る█make, create
+つかう█使う█use
+けす█消す█erase, turn off
+うる█売る█sell を
+みせ█店█shop, store
+はる█春█spring
+なつ█夏█summer
+あき█秋█autumn, fall
+ふゆ█冬█winter
+みんな█みんな█all, everybody
+あつい█暑い█hot (temperature of the air)
+あつい█熱い█hot (things, touch)
+さむい█寒い█cold (temperature of the air)
+あたたかい█暖かい█warm
+あたらしい█新しい█new
+ふるい█古い█old
+いい█良い█good
+わるい█悪い█bad
+おもう█思う█think
+いつも█いつも█always
+わすれる█忘れる█forget, leave behind
+かんがえる█考える█think, consider
+きめる█決める█decide, agree upon
+きまる█決まる█be decided
+しる█知る█ (get to) know, realize
+いちばん█一番█most
+すむ█住む█live, reside
+なまえ█名前█name
+たべもの█食べ物█food
+いつ█いつ█when
+のみもの█飲み物█beverage, drink
+おもい█重い█heavy, serious (illness)
+かるい█軽い█light, light weight
+おくる█送る█send
+とる█取る█take, get
+まつ█待つ█wait, wait for
+もつ█持つ█have, possess
+きもち█気持ち█feeling (about something, emotion)
+いきる█生きる█live (one's life)
+どちら█どちら█which
+せんせい█先生█teacher (respectful title)
+だいがく█大学█university, college
+がくせい█学生█student
+だいがくせい█大学生█university student
+がっこう█学校█school
+こうこうせい█高校生█high school student
+おしえる█教える█teach, tell
+べんきょう█勉強█study
+つよい█強い█strong
+どれ█どれ█what, which
+よわい█弱い█weak
+ひく█引く█pull, draw
+しつもん█質問█question
+むずかしい█難しい█difficult
+かず█数█(the) number
+かつ█勝つ█win
+まける█負ける█lose, be defeated
+ほんとうに█本当に█really, truly
+いる█要る█need, require
+ドア█ドア█door
+とけい█時計█clock, watch
+はらう█払う█pay
+きる█切る█cut
+かえる█変える█to change (st)
+のる█乗る█ride, take
+きる█着る█wear, put on
+たつ█立つ█stand, rise
+すわる█座る█sit, sit down
+つぎ█次█next
+しゃべる█喋る█chat, talk
+うごく█動く█move (が)
+はたらく█働く█to work
+はやい█早い█early
+はやい█速い█fast
+おそい█遅い█slow, late
+はじめる█始める█begin, start を
+はじまる█始まる█begin が
+おわる█終わる█finish, end
+おわり█終わり█end, conclusion
+テーブル█テーブル█table
+きょねん█去年█last year
+かみ█紙█paper
+たのしむ█楽しむ█enjoy
+たのしい█楽しい█fun, enjoyable
+うたう█歌う█sing
+ほしい█欲しい█want, desire
+いろ█色█color
+ちゃいろ█茶色█light brown
+すぐ█すぐ█at once, soon
+ゲーム█ゲーム█game
+かきなおす█書き直す█rewrite
+なおる█直る█be repaired, return to normal
+せん█線█line, route (trainなど)
+まがる█曲がる█turn
+おなじ█同じ█same, identical
+ちがう█違う█differ, be wrong
+としょかん█図書館█library
+とまる█泊まる█stay overnight
+あそぶ█遊ぶ█have a good time, play
+どうして█どうして█why
+ふく█服█clothes
+おとうさん█お父さん█father
+ちち█父█(speaker's)father
+おかあさん█お母さん█mother
+はは█母█(speaker's) mother
+おや█親█parent
+あね█姉█older sister
+おねえさん█お姉さん█older sister
+いもうと█妹█younger sister
+おなか█おなか█stomach
+あに█兄█older brother
+おにいさん█お兄さん█older brother
+おとうと█弟█younger brother
+むすめ█娘█daughter, girl
+むすこ█息子█son
+わかい█若い█young
+かのじょ█彼女█she, one's girlfriend
+かれ█彼█he, one's boyfriend
+けっこん█結婚█marriage
+ミーティング█ミーティング█meeting
+じてんしゃ█自転車█bicycle
+じぶん█自分█self, oneself
+ごしゅじん█ご主人█(your) husband
+こたえる█答える█answer, reply
+べつ█別█another, different
+びょうき█病気█illness
+しぬ█死ぬ█die
+いたい█痛い█painful
+さけ█酒█alcoholic drink, Japanese rice wine
+つける█つける█switch on
+いっぱい█一杯█full
+とぶ█飛ぶ█fly
+ひこうき█飛行機█airplane
+おねがい█お願い█request, wish
+つづく█続く█continue, follow が
+にっき█日記█diary
+くび█首█neck
+あたま█頭█head
+かお█顔█face
+あれ█あれ█that over there
+かんじる█感じる█feel, sense
+さがす█探す█search for, look for
+おちる█落ちる█fall, go down
+おてあらい█お手洗い█bathroom (polite)
+つめたい█冷たい█cold (things, touch)
+きたない█汚い█dirty
+ふとい█太い█thick, fat
+くもる█曇る█become cloudy
+かみ█神█god, spirit
+まずい█まずい█bad-tasting, bad
+たてる█建てる█build, erect
+おく█置く█put, leave
+へん█辺█vicinity, part
+きいろい█黄色い█yellow
+いっしょに█一緒に█together, at the same time
+みどり█緑█green, foliage
+やさしい█易しい█easy, simple
+りゅうがくせい█留学生█student studying abroad
+もどる█戻る█return, turn back
+そば█そば█side, vicinity
+おきる█起きる█get up, get out of bed
+おこる█起こる█happen
+おこす█起こす█wake up (someone)
+おきる█起きる█occur
+ねる█寝る█sleep, go to sleep
+ほそい█細い█thin, slender, narrow
+のせる█載せる█place, put on
+しめる█締める█tighten, fasten
+あまい█甘い█sweet
+こっち█こっち█here
+からい█辛い█spicy, salty
+やさしい█優しい█gentle, kind
+おっと█夫█husband
+つま█妻█wife
+だれ█誰█who, whom
+あいする█愛する█love, care for
+わらう█笑う█laugh, smile
+すっぱい█酸っぱい█sour
+ことば█言葉█word, language
+よう█よう█way, like, kind [the state of something]
+よぶ█呼ぶ█call, name
+むね█胸█chest
+こし█腰█hip, lower back
+せ█背█height, stature
+かたかな█片仮名█katakana
+ひらがな█平仮名█hiragana
+かなしい█悲しい█sad
+うつくしい█美しい█beautiful
+じゅぎょう█授業█class, lesson
+あそこ█あそこ█over there
+てつだう█手伝う█help, assist
+せまい█狭い█narrow, restricted
+さわる█触る█touch, feel
+きらい█嫌い█dislike
+あびる█浴びる█take a shower
+かわく█渇く█become thirsty
+かみのけ█髪の毛█hair
+かた█肩█shoulder
+はな█鼻█nose
+おいしい█おいしい█tasty
+うで█腕█arm
+かける█掛ける█hang, put on
+ぼく█僕█I (young male)
+だめ█だめ█no good
+だいじょうぶ█大丈夫█alright, okay
+かぜ█風邪█cold (illness)
+きれい█きれい█pretty
+うれしい█嬉しい█happy, glad
+なる█なる (生る)█produce fruit, grow (on a tree)
+ため█ため█sake, purpose
+より█より█more, further
+しち█七█seven
+く█九█nine
+おく█億█hundred million
+てら█寺█buddhist temple
+ドル█ドル█dollar
+ひ█日█sun, sunlight, day
+ひ█火█fire
+き█木█tree, wood
+きん█金█gold, sum of money, Friday
+システム█システム█system
+じゅうぶん█十分█enough, plenty
+ぶん█分█amount, part, share
+わける█分ける█divide into parts, sort, share
+わかれる█分かれる█be divided, disperse, branch off
+コンピュータ█コンピュータ█computer
+なにか█何か█something, some
+なん█何█what, which
+まず█まず█first (of all)
+せんげつ█先月█last month
+やる█やる█give (to animals, plants, etc.)
+せんしゅう█先週█last week
+いままで█今まで█until now, so far
+らいげつ█来月█next month
+らいしゅう█来週█next week
+ロボット█ロボット█robot
+おこなう█行う█do, carry out
+いき█行き█going
+ゆき█行き█going
+かえり█帰り█return trip, going home
+ほとんど█ほとんど█almost, hardly
+おおきさ█大きさ█size, dimensions
+だいぶ█大分█very, greatly
+なか█中█in, inside, middle
+しょうねん█少年█boy
+パソコン█パソコン█personal computer
+すこしも█少しも█(not) one bit
+しょうしょう█少々█a little, a few (formal)
+おおく█多く█many, much
+あがる█上がる█go up, rise
+もう█もう█another, again
+あがる█上がる█get nervous, get stage fright
+としうえ█年上█older, senior
+のぼり█上り█going up, ascent
+さげる█下げる█lower, turn down
+プログラム█プログラム█program
+さがる█下がる█come down, hang (down), fall
+おりる█下りる█go down, climb down
+おろす█下ろす█bring down, take down, withdraw (money)
+くだり█下り█downhill, going down
+よく█よく█well
+としした█年下█junior, younger person
+くだる█下る█go down, go downward
+いっぽう█一方█one way
+かた█方█person (polite)
+まま█まま█as is, still (in the current state)
+ふたり█二人█two persons
+おとなしい█大人しい█gentle, quiet, subdued
+ひとびと█人々█people (polite)
+ひとりで█一人で█by oneself
+テレビ█テレビ█television
+がいじん█外人█foreigner, alien (less polite)
+そと█外█outside, open air
+きゅうじつ█休日█holiday, day off
+やすみ█休み█rest, holiday, absence
+ソフト█ソフト█software, programme
+ちから█力█strength, power
+きょうりょく█協力█cooperation, collaboration
+じんこう█人口█population
+でぐち█出口█exit, exit ramp
+ただ█ただ█free
+いりぐち█入り口█entrance
+みぎて█右手█right hand
+ひだりて█左手█left hand
+へた█下手█not good at
+これら█これら█these
+たりる█足りる█be enough, be sufficient
+たす█足す█add, supplement<div>(the same kind of thing)</div>
+やま█山█mountain
+かわ█川█river, stream
+いずれ█いずれ█eventually, sometime
+あく█空く█become available or vacant
+からて█空手█karate, empty hand
+そら█空█sky, weather
+かいがい█海外█overseas, abroad
+あまり█あまり█(not) really, (not) very
+うみ█海█sea, ocean
+まいにち█毎日█every day
+まいとし█毎年█every year (less formal)
+まいねん█毎年█every year (more formal)
+なお█なお█still, in addition
+まいしゅう█毎週█every week
+まいつき█毎月█every month
+いし█石█stone, small rock
+たんぼ█田んぼ█rice field
+ほぼ█ほぼ█roughly, nearly
+はな█花█flower
+はやし█林█woods, grove
+もり█森█thick woods, forest
+こ█子█child, kid
+サービス█サービス█service, on the house
+おんなのこ█女の子█girl, baby girl
+おとこのこ█男の子█boy, baby boy
+わたしたち█私たち█we
+たっする█達する█attain, reach
+グループ█グループ█group
+いえ█家█house, home
+かない█家内█my wife
+きゃく█客█visitor, customer
+くうき█空気█air, atmosphere
+ホテル█ホテル█hotel
+きにいる█気に入る█like, be pleased with
+にんき█人気█popularity
+あめ█雨█rain
+ゆき█雪█snow, snowfall
+まとめる█まとめる█gather together, summarize
+あおい█青い█blue
+あお█青█blue, green, green light
+はれ█晴れ█fine weather, clear sky
+あきらか█明らか█clear, obvious
+やはり█やはり█as expected, also, still
+あかるい█明るい█bright, cheerful
+あした█明日█tomorrow
+くらい█暗い█dark, dreary, shadowy
+さくねん█昨年█last year (polite)
+はっきり█はっきり█clearly, distinctly
+おととし█一昨年█the year before last
+おととい█一昨日█day before yesterday
+ひがし█東█east, eastern
+にし█西█west, western
+つまり█つまり█in short, basically
+みなみ█南█south
+きた█北█north
+ほうこう█方向█direction, course
+むかう█向かう█face, head toward, confront
+ビル█ビル█building (ローマ字)
+むこう█向こう█the other side, the other party, opponent
+むく█向く█turn, face, look
+あく█開く█open が
+きこえる█聞こえる█be heard, be audible
+もちろん█もちろん█of course, needless to say
+ねんかん█年間█period of one year
+このあいだ█この間█the other day, recently
+あいだ█間█interval, space between
+にんげん█人間█human being, people
+かつて█かつて█once, formerly
+たかさ█高さ█height
+さいだい█最大█biggest, largest
+はじめて█初めて█first, for the first time
+さいしょ█最初█the beginning, first
+スポーツ█スポーツ█sport
+はじめ█初め█beginning, start
+こんご█今後█after this, in the future (formal)
+のち█後[のち]█after, afterwards (formal)
+さいご█最後█last, final
+なぜ█なぜ█why, for what reason
+あさって█明後日█day after tomorrow
+うし█牛█cattle, cow
+はんぶん█半分█half
+はんとし█半年█half a year
+そのまま█そのまま█like that, unchanged
+はんつき█半月█half a month
+はんにち█半日█half a day
+まいあさ█毎朝█every morning
+けさ█今朝█this morning
+もし█もし█if, in case of
+ひるやすみ█昼休み█noon recess, lunch break
+ひるまえ█昼前█in the morning, before noon
+ひるま█昼間█daytime, day
+まいばん█毎晩█every evening
+つもり█つもり█intention, plan
+こんや█今夜█tonight, this evening
+ゆうべ█昨夜█last night, last evening
+よなか█夜中█midnight, dead of night
+ゆうがた█夕方█evening
+やっと█やっと█at last, finally (exclamation)
+ちゅうしょく█昼食█lunch (formal)
+ちょうしょく█朝食█breakfast (formal)
+ゆうしょく█夕食█supper (polite)
+ゆうはん█夕飯█evening meal, supper (かたい)
+ニュース█ニュース█news
+みかた█見方█view, way of looking
+はなみ█花見█cherry blossom viewing
+いいかた█言い方█way of speaking, expression
+はなし█話█talk, story
+ずっと█ずっと█the whole time, from start to finish
+よみ█読み█reading, judgment, foresight
+よみかた█読み方█way to read, reading
+かたる█語る█tell (a story), talk about
+げんご█言語█language, speech
+ビデオ█ビデオ█video
+えいご█英語█English
+もじ█文字█character, letter
+ろーまじ█ローマ字█Roman alphabet
+じ█字█character, letter, handwriting
+マンション█マンション█(modern) apartment complex
+かきかた█書き方█how to write, way of writing
+さめる█覚める█awake, wake up (目が)
+さます█覚ます█awaken, wake up 目を
+たいかい█大会█mass meeting, tournament
+しばらく█しばらく█a short while, long time, for the time being
+かいわ█会話█conversation
+はなしあう█話し合う█discuss, talk about
+あう█合う█fit
+まにあう█間に合う█be in time, serve (my) purpose<br>なくても〜 do without
+ガス█ガス█gas
+かいしゃ█会社█company, corporation
+しゃかい█社会█society
+しゃいん█社員█staff member, employee
+しかた█仕方█way, method
+うまい█うまい█good at (informal)
+しょくじ█食事█meal, dinner (formal)
+かじ█火事█fire (emergency)
+だいじ█大事█important (thing)
+じこ█事故█accident, incident
+サラリーマン█サラリーマン█office worker, salaried worker, company employee
+こうじ█工事█construction work
+こうじょう█工場█factory, plant
+でんわ█電話█telephone, phone call
+でんき█電気█electricity, electric light
+バス█バス█bus
+くるま█車█car
+えきいん█駅員█station attendant
+とおり█通り█boulevard, street
+とおる█通る█pass, take (a road), go through
+クラス█クラス█class (ローマ字)
+かよう█通う█go (a place) often, go to and from
+こうつうじこ█交通事故█traffic accident
+すいどう█水道█tap water, water supply
+しゃどう█車道█road, roadway (for vehicles)
+トラック█トラック█truck, lorry
+どうろ█道路█road, street
+とち█土地█land
+ちず█地図█map, atlas
+た█他█others, other things
+パーティー█パーティー█party
+とめる█止める█stop (sth), turn off
+とまる█止まる█come to a stop, cease
+やむ█止む█<!--anki-->cease, stop, let up
+ほどう█歩道█sidewalk, footpath
+うまい█うまい█delicious, tasty (informal)
+わたす█渡す█<!--anki-->hand over, carry across
+わたる█渡る█cross, ford, go across
+ねんど█年度█fiscal year, school year
+こんど█今度█this time, next time
+ガラス█ガラス█glass (the material)
+なんど█何度█how many degrees, how many times
+さいきん█最近█lately, recent
+とおく█遠く█great distance
+しゃちょう█社長█president (of a company)
+コース█コース█course, class, route
+かいちょう█会長█chairman, president
+ながさ█長さ█length
+ちょうなん█長男█eldest son
+ちょうじょ█長女█eldest daughter
+アパート█アパート█apartment, flat
+ひろがる█広がる█spread out, reach が
+ひろさ█広さ█area, extent
+ぜんたい█全体█whole, total
+まったく█全く█entirely, truly, indeed
+レコード█レコード█record
+あんぜん█安全█safety, security
+いちぶ█一部█part
+ぶぶん█部分█part, section
+こくない█国内█domestic, internal
+どんどん█どんどん█knock (sound)
+ぜんこく█全国█the whole country
+がいこく█外国█foreign country
+こっかい█国会█National Diet, parliament
+きこく█帰国█return to one's country
+カメラ█カメラ█camera
+がいこくじん█外国人█foreigner (polite)
+がいこくご█外国語█foreign language
+せかい█世界█world
+しろ█白█white
+テープ█テープ█tape, cassette
+くろい█黒い█black<div><br /></div>
+くろ█黒█black
+あかちゃん█赤ちゃん█baby
+あか█赤█red
+ビール█ビール█beer, lager
+ぎんこう█銀行█bank
+ぎん█銀█silver
+ちかてつ█地下鉄█subway
+ぎゅうにく█牛肉█beef
+ページ█ページ█page
+にく█肉█meat, flesh
+さかな█魚█fish
+ぶんや█分野█field, sphere
+やさい█野菜█vegetable
+グラフ█グラフ█graph, chart
+ほんや█本屋█bookstore, bookseller
+やおや█八百屋█vegetable store, greengrocer
+そばや█そば屋█soba restaurant
+たばこや█たばこ屋█cigarette shop, tobacco store
+ポスト█ポスト█mailbox
+ちゃ█茶█tea (plain form)
+おちゃ█お茶█tea (polite)
+ちゃわん█茶わん█rice bowl, tea cup
+あじ█味█taste, flavor
+テスト█テスト█test
+みらい█未来█future
+しゅうまつ█週末█weekend
+りょうり█料理█cooking;<br>handling, management
+むり█無理█unreasonable, impossible, forced
+あちこち█あちこち█all over, here and there
+なくす█なくす█lose, get rid of
+なくなる█無くなる█disappear, run short, get lost
+さくぶん█作文█composition, essay
+もちいる█用いる█use, make use of
+ゴルフ█ゴルフ█golf
+ようじ█用事█things to do, errand, business
+こうつうひ█交通費█traveling expense, transportation cost
+きえる█消える█be extinguished, disappear
+けしごむ█消しゴム█(rubber) eraser
+ラジオ█ラジオ█radio
+うれる█売れる█be sold, be in demand
+うりば█売り場█sales floor, department
+てんいん█店員█clerk, salesperson
+ばいてん█売店█kiosk, store
+タクシー█タクシー█taxi, cab
+しょうひん█商品█goods, commodities
+さくひん█作品█work of art, piece
+はんばい█販売█sale, selling
+にかい█二階█second floor, upstairs
+ゆっくり█ゆっくり█slowly
+だんかい█段階█stage, step
+かいだん█階段█steps, flight of stairs
+だんだん█段々█gradually, one after another
+ねだん█値段█price
+レストラン█レストラン█restaurant
+かかく█価格█price, cost (formal)
+ごうかく█合格█passing an examination, eligibility
+なつやすみ█夏休み█summer vacation
+ふゆやすみ█冬休み█winter vacation
+カード█カード█card, credit card
+しき█四季█the four seasons
+あつさ█暑さ█heat, summer heat
+ねつ█熱█fever, heat
+さむさ█寒さ█coldness, cold
+アルバイト█アルバイト█casual job, student job, part-time job
+あたためる█暖める█warm up (something), heat up を
+あたたまる█暖まる█ get warm が
+おんど█温度█temperature
+きおん█気温█atmospheric temperature
+コピー█コピー█copy, photocopy
+だい█台█stand, platform
+かぜ█風█wind
+たいふう█台風█typhoon
+じじょう█事情█circumstances, conditions
+ぶつかる█ぶつかる█hit, bump into に
+じょうほう█情報█information
+ほうこく█報告█report
+しんぶん█新聞█newspaper
+しんねん█新年█New Year
+フィルム█フィルム█film (外来語)
+よい█良い█good
+ちゅうしん█中心█center, middle, core
+あんしん█安心█peace of mind, relief
+おもいだす█思い出す█recollect, recall
+デパート█デパート█department store, department
+おもいで█思い出█recollections, memory
+かんがえ█考え█thought, view, idea
+かいけつ█解決█solution, settlement
+しらせる█知らせる█let know, inform
+ベッド█ベッド█bed
+のうりょく█能力█ability, capacity
+かのう█可能█possible, potential
+か█可█permitted, OK
+ゆうびん█郵便█mail
+コート█コート█coat, jacket
+ふべん█不便█inconvenient
+ゆうびんやさん█郵便屋さん█mailman
+ゆうびんきょく█郵便局█post office
+こうばん█交番█police box
+ノート█ノート█notebook, laptop
+ばんち█番地█house number, address
+ばんごう█番号█number
+ばしょ█場所█place, space
+きんじょ█近所█neighborhood
+ワイン█ワイン█wine
+だいどころ█台所█kitchen
+じゅうしょ█住所█address, one's dwelling
+べんじょ█便所█bathroom, lavatory
+ゆうめい█有名█famous
+おかしい█おかしい█strange, peculiar, suspicious
+みょうじ█名字█surname, family name
+しめい█氏名█full name
+かっこく█各国█every country
+まち█町█town, city quarter
+トイレ█トイレ█toilet
+とし█都市█city, urban community
+つごう█都合█circumstances
+あさごはん█朝ご飯█breakfast
+かいもの█買い物█shopping, purchase
+キャンプ█キャンプ█camping, camp
+にもつ█荷物█baggage, package
+しなもの█品物█article, thing
+けんぶつ█見物█sightseeing, looking around
+もの█物█thing, object
+プラスチック█プラスチック█plastic
+わすれもの█忘れ物█something left behind, lost item
+おもさ█重さ█weight
+くばる█配る█hand out, distribute
+はいたつ█配達█delivery
+カラー█カラー█color, collar
+しんぱい█心配█anxiety, worry, assistance
+みおくる█見送る█see (someone) off
+みおくり█見送り█seeing someone off
+うける█受ける█receive, accept
+ピアノ█ピアノ█piano
+うけとる█受け取る█get (st from so), receive<div>take (as in take as an insult)</div>
+とれる█取れる█come off, be removed
+かきとる█書き取る█write down, note down
+とどく█届く█reach, be delivered
+スキー█スキー█ski, skiing
+とどける█届ける█deliver, notify
+もつ█持つ█last long, keep well
+かねもち█金持ち█wealthy person
+もっていく█持って行く█take (somewhere)
+なかなか█なかなか█not easily, not readily, by no means
+もってくる█持って来る█bring (something)
+うつ█打つ█hit, strike
+なげる█投げる█throw, give up
+うまれる█生まれる█be born, come into existence
+プール█プール█pool
+うむ█生む█give birth
+じょせい█女性█female, woman (formal)
+せいさん█生産█production
+おみやげ█お土産█souvenir
+ホーム█ホーム█(train) platform
+せいかつ█生活█life, living
+せいと█生徒█pupil, student
+ちゅうがく█中学█middle school (abbrev.)
+にゅうがく█入学█admission to a school, starting school
+エレベーター█エレベーター█elevator
+ちゅうがくせい█中学生█middle school sudent
+しょうがくせい█小学生█elementary school student
+けんがく█見学█field trip
+つうがく█通学█going to school
+メモ█メモ█memo
+こうこう█高校█high school
+しょうがっこう█小学校█elementary school
+ちゅうがっこう█中学校█middle school
+こうちょう█校長█principal
+パン█パン█bread
+きゅうこう█休校█temporary school closure
+きょうかい█教会█church
+きょういく█教育█education
+そだてる█育てる█raise, bring up
+びっくりする█びっくりする█be surprised
+そだつ█育つ█grow, be raised
+せいど█制度█system, organization
+つよさ█強さ█strength, power
+とりひき█取引█transaction, dealings
+ズボン█ズボン█trousers, pants
+ひきだし█引き出し█drawer, withdrawal
+おさえる█押さえる█hold down, hold back
+おしいれ█押し入れ█closet
+れんしゅう█練習█practice, training
+おもちゃ█おもちゃ█toy, plaything
+ならう█習う█learn, practice
+なれる█慣れる█grow accustomed to
+しゅうかん█習慣█custom, habit
+けんきゅう█研究█research, study
+グラム█グラム█gram
+しけん█試験█exam, test
+もんだい█問題█problem, question
+かんたん█簡単█simple, easy
+ふくざつ█複雑█complicated, intricate
+コーヒー█コーヒー█coffee
+すうじ█数字█figure, numeral
+すうがく█数学█mathematics
+かぞえる█数える█to count
+こんかい█今回█this time
+テント█テント█tent
+まわる█回る█turn round, go round, detour
+まわす█回す█turn, rotate
+こじん█個人█individual, personal
+たんとう█担当█in charge (of something)
+ボート█ボート█row boat, boat
+あたる█当たる█hit, strike
+とうじ█当時█at that time
+ほんとう█本当█truth, reality, genuine
+とうぜん█当然█naturally, of course
+ボール█ボール█ball
+ぜんぜん█全然█(not) at all, totally (not)
+ほうほう█方法█way, method, procedure
+ほうりつ█法律█law
+きそく█規則█rule, regulation
+オートバイ█オートバイ█motorbike, motorcycle
+けいけん█経験█experience
+たつ█経つ█pass, elapse
+けいざい█経済█economy, economics
+けいえい█経営█management, operation
+ひどい█ひどい█terrible, cruel
+かぶ█株█stocks, shares
+きぎょう█企業█business, corporation
+さぎょう█作業█work, operation
+さんぎょう█産業█industry
+あなた█あなた█you
+こうぎょう█工業█manufacturing industry
+しょうぎょう█商業█business, commerce
+りよう█利用█utilization, usage
+べんり█便利█convenience, handiness
+スイッチ█スイッチ█switch
+ぎじゅつ█技術█skill, technology
+しゅじゅつ█手術█surgical operation
+せいぞう█製造█production, manufacture
+かならず█必ず█without fail, certainly
+プレゼント█プレゼント█present, gift
+ひつよう█必要█need, necessity
+じゅうよう█重要█important, essential
+ようきゅう█要求█requirement, demand
+めざましどけい█目覚まし時計█alarm clock
+いつでも█いつでも█at any time, always
+けいさん█計算█calculation
+ひきざん█引き算█subtraction
+たしざん█足し算█addition
+こうさてん█交差点█intersection, crossing
+テニス█テニス█tennis
+わる█割る█divide (st), crack, split
+われる█割れる█(st) cracks, splits, breaks (が)
+わりざん█割り算█division
+のこる█残る█remain, be left over
+こちら█こちら█here, this way
+のこす█残す█leave, reserve, leave undone
+かえす█返す█return, repay
+へんじ█返事█answer, reply
+かりる█借りる█borrow
+ボタン█ボタン█button
+かす█貸す█lend, rent
+かしだす█貸し出す█lend out<br>(used for businesses/banks)
+もうしこむ█申し込む█apply for, make a proposal
+きたい█期待█expectation, anticipation
+おかしい█おかしい█funny, amusing, comical
+きかん█期間█period (of time)
+じき█時期█time, period, season
+かぎる█限る█be limited to
+いそぐ█急ぐ█hurry, hasten
+コート█コート█(tennis) court
+きゅうに█急に█suddenly, unexpectedly
+きゅう█急█urgent, sudden, steep
+きゅうこう█急行█express train, going in a hurry
+きれる█切れる█run out, expire
+ドラマ█ドラマ█drama, theater, soap opera
+きって█切手█postage stamp
+うりきれる█売り切れる█be sold out, go out of stock
+うりきれ█売り切れ█sold out
+たいせつ█大切█important, valuable
+ビザ█ビザ█visa
+きっぷ█切符█ticket
+にゅうじょうけん█入場券█entrance ticket
+やちん█家賃█rent (money)
+じだい█時代█age, era, antiquity
+ポケット█ポケット█pocket
+かわる█代わる█take (st/sb's) place, substitute for
+かえる█代える█replace (O1を) with (O2に), substitute
+ゆび█指█finger, toe
+けってい█決定█decision
+そろそろ█そろそろ█soon, slowly, gingerly
+いってい█一定█constant, fixed
+ていきけん█定期券█commuter pass
+よてい█予定█schedule, plan
+てんきよほう█天気予報█weather forecast
+ぶどう█ぶどう█grapes
+よしゅう█予習█preparation for class
+よやく█予約█reservation, subscription, appointment
+やくそく█約束█promise, vow
+かわる█変わる█change が
+めったに█めったに█rarely
+たいへん█大変█awful, serious
+へん█変█strange, weird, funny
+へんか█変化█change
+きょうか█強化█strengthening
+クリスマス█クリスマス█Christmas
+ぶんか█文化█culture
+ふえる█増える█increase, accrue が
+ふやす█増やす█increase (something), add を
+へる█減る█decrease, diminish が
+ネクタイ█ネクタイ█tie, necktie
+へらす█減らす█decrease (something), reduce を
+のりもの█乗り物█vehicle, means of transportation
+おりる█降りる█get off, land
+おろす█降ろす█unload, lower
+バイオリン█バイオリン█violin
+ふる█降る█fall, come down, rain
+つく█着く█arrive, touch, take one's place
+きもの█着物█kimono, clothes
+したぎ█下着█underwear
+パスポート█パスポート█passport
+うわぎ█上着█outerwear
+きせる█着せる█dress (sb), put clothes on (sb)
+ぬぐ█脱ぐ█remove clothes, take off
+たちば█立場█standpoint, position
+バッグ█バッグ█bag
+めだつ█目立つ█stand out, be conspicuous
+たてる█立てる█stand (sth) up, set (sth) up, establish
+やくにたつ█役に立つ█be useful, be helpful
+しゅっせき█出席█attendance, presence
+ゴム█ゴム█rubber, elastic
+せき█席█seat, one's place
+けっせき█欠席█absence, non-attendance
+じなん█次男█second son
+じじょ█次女█second daughter
+ギター█ギター█guitar
+はこぶ█運ぶ█carry, transport
+うんてん█運転█drive
+うんてんしゅ█運転手█driver
+ころぶ█転ぶ█tumble down, fall over
+セーター█セーター█sweater, pullover
+うつる█移る█move, shift が
+うつす█移す█move (something), shift, transfer
+うごき█動き█movement, motion
+うんどう█運動█exercise, movement
+やっぱり█やっぱり█just as I thought, after all
+かつどう█活動█activity
+どうぶつ█動物█animal
+うごかす█動かす█move (something), operate
+ふどうさんや█不動産屋█real estate agent, realtor
+カーテン█カーテン█curtain
+はやく█早く█early, soon
+はやくち█早口█fast talking
+はやさ█速さ█speed
+そくたつ█速達█express mail
+シャツ█シャツ█shirt
+おくれる█遅れる█be late
+かいし█開始█beginning
+はじめに█始めに█in the beginning
+げんざい█現在█the present, present time
+ナイフ█ナイフ█knife
+じつげん█実現█realization, fulfillment
+じっし█実施█being in effect, implementation
+じじつ█事実█fact, truth
+じっこう█実行█(putting into) practice, execution
+バイク█バイク█motorcycle
+じっけん█実験█experiment
+つうか█通過█passing, passage
+すぎる█過ぎる█pass by, exceed
+ひるすぎ█昼過ぎ█just past noon
+いつか█いつか█some time, some day
+かこ█過去█the past
+かいはつ█開発█development
+はっせい█発生█occurrence, happening
+はつげん█発言█statement, remark
+オレンジ█オレンジ█orange
+はっけん█発見█discovery, revelation
+しゅっぱつ█出発█departure, starting
+はっしゃ█発車█depart, leave (for vehicles)
+はっぴょう█発表█announcement
+きつい█きつい█tight, difficult
+ひょうげん█表現█expression (of views, feelings, etc.)
+だいひょう█代表█representative
+おもて█表█front side, face, outside
+ひょう█表█list, table
+さっき█さっき█some time ago, only a moment ago
+てがみ█手紙█letter
+え█絵█picture, painting, drawing
+ざっし█雑誌█magazine, journal
+おと█音█sound, noise
+テキスト█テキスト█textbook, text file
+おと█音█sound
+おんがく█音楽█music
+くすり█薬█drug, remedy, chemical
+うた█歌█song
+ビニールぶくろ█ビニール袋█plastic bag
+かしゅ█歌手█singer
+ほしがる█欲しがる█want (describing sb else)
+けいかく█計画█plan, project
+えいが█映画█movie
+りんご█りんご█apple
+おもしろい█面白い█interesting, amusing
+うつる█写る█<div>to appear in a photo, (picture) to come out well</div>
+うつす█写す█copy, photograph
+しゃしん█写真█photograph
+アルバム█アルバム█album
+まっか█真っ赤█deep red
+まじめ█真面目█serious, sober, earnest
+まんなか█真ん中█center, middle
+まっしろ█真っ白█pure-white
+スカート█スカート█skirt
+まっくら█真っ暗█pitch-dark
+まっくろ█真っ黒█deep-black, jet-black
+まっさお█真っ青█deep-blue, pale (skin)
+いろいろ█色々█various
+ペン█ペン█pen
+にんぎょう█人形█doll
+かたち█形█shape, form
+おおがた█大型█large, large scale
+しゅるい█種類█kind, variety, species
+おしゃべり█おしゃべり█chatter, talkative
+なおす█直す█repair, cure, alter
+まっすぐ█真っ直ぐ█dead straight, honestly
+ちょくせつ█直接█directly
+かど█角█corner, edge, angle
+きっと█きっと█surely, certainly
+さんかく█三角█triangle
+しかく█四角█square, quadrilateral
+しかくい█四角い█square, four-sided
+よつかど█四つ角█street corner, intersection
+メニュー█メニュー█menu, bill of fare
+きょく█曲█song, melody, tune
+まげる█曲げる█bend, curve
+まがりかど█曲がり角█street corner
+どうよう█同様█similar, same
+アイスクリーム█アイスクリーム█ice cream
+まちがい█間違い█mistake, error
+まちがえる█間違える█make a mistake (in something), confuse (を)
+まちがう█間違う█be mistaken, be incorrect
+にている█似ている█look like, resemble
+おしゃれ█おしゃれ█dressing up, trendy
+いじょう█以上█more than, not less than
+りょこう█旅行█travel, trip
+たいしかん█大使館█embassy
+りょかん█旅館█Japanese inn
+ジュース█ジュース█juice, soft drink
+えいがかん█映画館█movie theater
+しゅくだい█宿題█homework
+とめる█泊める█lodge, give shelter
+あそび█遊び█play, amusement
+ゼロ█ゼロ█zero
+ようふく█洋服█clothes
+きょうしつ█教室█classroom, class
+としょしつ█図書室█library room
+まど█窓█window, windowpane
+ピンク█ピンク█pink
+したしい█親しい█intimate, close
+しんせつ█親切█kind, friendly
+ふしんせつ█不親切█unkind, inattentive
+かぞく█家族█family, household
+グラス█グラス█glass
+ばんざい█万歳█Banzai! Hurrah! Long live...!
+はたち█二十歳█20 years old
+ねえさん█姉さん█older sister, girl, miss
+にいさん█兄さん█older brother
+ダンス█ダンス█dance, dancing
+きょうだい█兄弟█siblings
+ぎょうしゃ█業者█business man
+わかもの█若者█young person, youth
+かれら█彼ら█they
+おじ█おじ█uncle
+けつごう█結合█combination, joining
+けっか█結果█result, outcome
+くだもの█果物█fruit
+かだい█課題█task, problem
+サッカー█サッカー█soccer, football
+か█課█section, division, lesson
+こうか█効果█effect, result
+じどうしゃ█自動車█automobile
+しぜん█自然█nature
+スープ█スープ█soup, broth
+しぜん█自然█natural, naturally
+じしゅう█自習█self-study, self-teaching
+りゆう█理由█reason, cause
+じゆう█自由█freedom, free
+バナナ█バナナ█banana
+しんじる█信じる█believe, trust, have faith in
+しんごう█信号█signal, traffic light
+たのむ█頼む█ask, request
+しみん█市民█citizens, townsmen
+うるさい█うるさい█noisy, annoying, pesky
+じゅうみん█住民█residents, inhabitants
+しゅじん█主人█husband, the head of the house
+ぎいん█議員█legislator
+かいぎ█会議█conference, meeting
+パトカー█パトカー█police car, patrol car
+たいする█対する█in response to, face
+たいりつ█対立█opposition, antagonism
+はんたい█反対█oppose, the opposite
+こたえ█答え█answer, solution
+ハンバーガー█ハンバーガー█hamburger
+とくに█特に█specially, particularly
+とっきゅう█特急█limited express (train)
+とくべつ█特別█special, extraordinary
+べつべつ█別々█separately
+エスカレーター█エスカレーター█escalator
+わかれる█別れる█separate, part from
+いっぱん█一般█general, common
+もくてき█目的█objective, purpose
+ふつう█普通█normal, regular
+タオル█タオル█towel
+ならぶ█並ぶ█line up, be parallel
+ならべる█並べる█line (st) up, display, set up
+へいわ█平和█peace, harmony
+こうとうがっこう█高等学校█senior high school
+パチンコ█パチンコ█pachinko (vertical pinball)
+びょういん█病院█hospital
+にゅういん█入院█be hospitalized
+だいがくいん█大学院█graduate school
+いしゃ█医者█doctor
+みかん█みかん█tangerine, mandarin orange
+おいしゃさん█お医者さん█doctor
+はいしゃ█歯医者█dentist
+は█歯█tooth, cog
+はぶらし█歯ブラシ█toothbrush
+ケーキ█ケーキ█cake
+かがく█科学█science
+きょうかしょ█教科書█textbook, schoolbook
+りか█理科█science
+なくなる█亡くなる█die, pass away
+コップ█コップ█cup, glass
+いそがしい█忙しい█busy, occupied
+つかれる█疲れる█get tired, become fatigued
+きんえん█禁煙█no smoking, giving up smoking
+よっぱらい█酔っ払い█drunk person
+ナイロン█ナイロン█nylon
+よっぱらう█酔っ払う█get drunk
+あぶない█危ない█dangerous, uncertain
+きけん█危険█danger, dangerous
+そんざい█存在█existence, being
+スーツ█スーツ█suit
+ちゅうもく█注目█attention, notice
+ちゅうもん█注文█order, request
+いみ█意味█meaning, significance
+いけん█意見█opinion
+チケット█チケット█ticket
+ちゅうい█注意█attention, care, watch out
+ようい█用意█prepare, ready oneself
+たしか█確か█for sure, for certain
+かくにん█確認█confirmation
+チョコレート█チョコレート█chocolate
+きのう█機能█function, feature
+ジェットき█ジェット機█jet (plane)
+きかい█機械█machine
+ざいりょう█材料█ingredients, material
+チャンネル█チャンネル█channel
+ぐたいてき█具体的█specific, concrete
+もとづく█基づく█be based on
+きほん█基本█basis, foundation
+きじゅん█基準█standard, criteria
+つまらない█つまらない█boring, dull
+そなえる█備える█prepare for (disaster), equip (st) with
+じゅんび█準備█prepare for, ready for
+せっけい█設計█design, plan
+しせつ█施設█facilities, institution
+マッチ█マッチ█match, matchbox
+もうける█設ける█set up, establish, prepare
+せつめい█説明█explanation, description
+しょうせつ█小説█novel, story
+こうかい█公開█opening (to the public)
+いとこ█いとこ█cousin
+こうえん█公園█park, public garden
+どうぶつえん█動物園█zoo
+まつり█祭り█festival
+こくさい█国際█international
+ストーブ█ストーブ█paraffin heater, stove
+じっさい█実際█reality, truth, the actual situation
+ひこうじょう█飛行場█airport, airfield
+こうくうびん█航空便█airmail
+ふなびん█船便█surface mail (ship)
+ガソリンスタンド█ガソリンスタンド█gas station
+ふね█船█ship, boat, vessel
+くうこう█空港█airport
+みなと█港█port, harbor
+しま█島█island, isle
+デート█デート█date
+かんせい█完成█completion, finish
+へいせい█平成█Heisei era
+せいこう█成功█success
+げんいん█原因█cause, origin
+ふすま█ふすま█sliding door, fusuma
+しきん█資金█funds, a fund
+とうし█投資█investment
+ねがう█願う█wish, ask a favor, apply for
+せいかく█正確█accurate, precise
+レモン█レモン█lemon
+ただしい█正しい█correct, righteous, lawful
+しょうがつ█正月█New Year
+しょうじき█正直█honest, upright
+ことなる█異なる█differ
+チーズ█チーズ█cheese
+つうじょう█通常█common, ordinary
+ひじょうに█非常に█very, extremely
+しらべる█調べる█search (for), examine
+きょうちょう█強調█emphasis, stress
+ドライブ█ドライブ█drive
+きせつ█季節█season
+ちょうさ█調査█investigation, examination
+ていきょう█提供█offer, provide
+ていあん█提案█proposition, proposal
+ラケット█ラケット█racket
+あんない█案内█guide, inform
+しめす█示す█show, indicate
+つれていく█連れて行く█take (a person) along
+つれてくる█連れて来る█bring (a person)
+スチュワーデス█スチュワーデス█flight attendant
+つづける█続ける█continue (sth), keep up を
+あいて█相手█opponent, partner
+かいだん█会談█conference, talk
+そうだん█相談█consultation, advice
+テープレコーダー█テープレコーダー█tape recorder, cassette recorder
+きしゃ█記者█journalist, reporter
+きろく█記録█record, documentation
+ろくおん█録音█audio recording
+のぼる█登る█climb, mount, go up
+ひげ█ひげ█moustache, beard
+かんする█関する█concern, relate to
+かんれん█関連█connection, relation
+かんけい█関係█relation, relationship
+じょうきょう█状況█situation, conditions
+ぐっすり█ぐっすり█soundly (asleep)
+じょうたい█状態█state, appearance (of a thing)
+なおる█治る█get better, be cured
+せいじ█政治█politics
+なおす█治す█cure, heal
+ソース█ソース█sauce, Worcestershire sauce
+せいふ█政府█government, administration
+とう█党█political party
+たいさく█対策█measure, countermeasure
+せいさく█政策█policy, political measures
+タイプライター█タイプライター█typewriter
+えらぶ█選ぶ█choose, elect
+せんしゅ█選手█player (in a game); team member
+せんきょ█選挙█election
+こうほ█候補█candidate, candidacy
+トマト█トマト█tomato
+しゅしょう█首相█prime minister
+しゅと█首都█capital
+かいかく█改革█reform
+かわ█革█leather
+バター█バター█butter
+めいれい█命令█command, order
+ばんぐみ█番組█program (TV, radio)
+くみたてる█組み立てる█put together, assemble, construct
+そしき█組織█organization, structure, tissue
+バレーボール█バレーボール█volleyball
+すすめる█進める█advance, promote, speed (st) up
+すすむ█進む█advance, move forward
+しんがく█進学█entering the next level of school
+かくだい█拡大█magnification, enlargement
+おかず█おかず█side dish
+せきにん█責任█responsibility, liability
+やめる█辞める█resign, retire
+じしょ█辞書█dictionary
+つうきん█通勤█commute
+カレンダー█カレンダー█calendar
+つとめる█勤める█to work for (~に)
+じむしょ█事務所█office, one's place of business
+じむしつ█事務室█office
+じゅうらい█従来█former, old
+ハンドバッグ█ハンドバッグ█handbag
+せいせき█成績█grade (school), results, record
+あつめる█集める█collect, gather
+あつまる█集まる█gather, be collected
+さいよう█採用█employment
+ベル█ベル█bell
+きゅうりょう█給料█salary, pay
+そつぎょう█卒業█graduation
+しゅうしょく█就職█finding employment
+たいいん█退院█discharge from a hospital
+インク█インク█ink
+けいやく█契約█contract, agreement
+こうしょう█交渉█negotiation, bargaining
+じけん█事件█event, incident, case
+じょうけん█条件█condition, terms
+クーラー█クーラー█air conditioning, cooler
+さんか█参加█participation, taking part in
+ぞうか█増加█increase, gain
+くわえる█加える█add (one thing to another)<div>(can be the same or a different kind of thing)</div>
+かこう█加工█processing, manufacturing<div>(turning st into st else)</div>
+ミルク█ミルク█milk, baby milk
+くらべる█比べる█compare, contrast
+ひはん█批判█criticism, comment
+ひょうか█評価█evaluation, rating
+たいしょう█対象█target, subject
+サラダ█サラダ█salad
+こしょう█故障█malfunction, fault, breakdown
+しゅうり█修理█repair, mending
+のりかえる█乗り換える█change, transfer (trainなど)
+のりかえ█乗り換え█change (trainなど), transfer
+おじさん█おじさん█uncle
+かえる█換える█swap, convert
+きがえる█着替える█change clothes
+かぶる█被る█put on (a hat)
+やぶる█破る█tear (st), break (through) （~を）
+ベルト█ベルト█belt
+やぶれる█破れる█(st) rips, gets torn
+こわす█壊す█break, destroy, smash
+こわれる█壊れる█break, break down, get out of order
+きゅうきゅうしゃ█救急車█ambulance
+ラーメン█ラーメン█ramen (Chinese noodles)
+たすける█助ける█help, save
+りっぱ█立派█fine, excellent
+けいさつ█警察█police
+かんり█管理█management, administration
+ライター█ライター█lighter
+ぬすむ█盗む█steal, rob
+ころす█殺す█kill, smother
+たいほ█逮捕█arrest, capture
+にげる█逃げる█escape, run away
+ワイシャツ█ワイシャツ█(business) shirt, (white) shirt
+せんそう█戦争█war, battle
+きょうそう█競争█competition
+こむ█混む█be crowded, be congested
+だいとうりょう█大統領█president (of a country)
+シャワー█シャワー█shower
+すてる█捨てる█throw away, abandon
+ひろう█拾う█pick up, find
+いけ█池█pond
+でんち█電池█electric cell, battery
+うどん█うどん█noodles, Japanese wheat noodles
+ふかい█深い█deep, profound, intimate
+ふかさ█深さ█depth, profundity
+あさい█浅い█shallow, superficial
+おとす█落とす█drop, omit
+ごみ█ごみ█rubbish, trash
+およぐ█泳ぐ█swim
+すいえい█水泳█swimming
+ながれる█流れる█flow, drift away
+はやる█流行る█be in fashion, be popular
+スーパーマーケット█スーパーマーケット█supermarket
+あらう█洗う█wash
+せんめんじょ█洗面所█washroom, bathroom
+あぶら█油█oil
+しずむ█沈む█sink, set
+ハンカチ█ハンカチ█handkerchief
+ひさしぶり█久しぶり█after a long time
+こおり█氷█ice
+ひえる█冷える█get cold, get chilly
+ひやす█冷やす█cool (sth), chill (を)
+ビデオテープ█ビデオテープ█videotape
+さめる█冷める█cool down (from hot to room temp), subside
+こおる█凍る█freeze
+れいぞうこ█冷蔵庫█refrigerator
+すずしい█涼しい█cool, refreshing
+ぶらぶら█ぶらぶら█wander aimlessly, hang about
+よごす█汚す█make dirty, soil
+よごれ█汚れ█dirt, filth
+よごれる█汚れる█become dirty, become defiled
+けしき█景色█scene, landscape
+アナウンサー█アナウンサー█news reader, announcer
+えいきょう█影響█influence, effect
+ひかる█光る█shine, emit light
+ふとる█太る█grow fat, fatten
+たいよう█太陽█sun
+スプーン█スプーン█spoon
+ほし█星█star, planet, spot
+ちきゅう█地球█the Earth
+やきゅう█野球█baseball
+くも█雲█cloud
+ブラウス█ブラウス█blouse
+くもり█曇り█cloudiness, cloudy weather
+じしん█地震█earthquake
+ふるえる█震える█tremble, quiver, shake
+ふる█振る█wave, shake, swing
+リボン█リボン█ribbon
+ゆれる█揺れる█shake, sway, rock
+じんじゃ█神社█Shinto shrine
+ひみつ█秘密█secret, privacy
+きびしい█厳しい█strict, severe, intense
+いかが█いかが█how, what (polite)
+としより█年寄り█old person, a senior
+れきし█歴史█history
+せいき█世紀█century
+けんせつ█建設█construction, establishment
+ステレオ█ステレオ█stereo
+たてもの█建物█building, structure
+たつ█建つ█be built, be erected
+こうせい█構成█organization, makeup
+こうぞう█構造█structure, the construction
+フォーク█フォーク█fork
+はし█橋█bridge
+はしら█柱█pillar, column
+いち█位置█position, location
+りこん█離婚█divorce
+おば█おば█aunt
+ていしゃ█停車█a stop (train), stopping
+ばすてい█バス停█bus stop
+しゅうへん█周辺█surrounding area, outskirts
+となり█隣█neighboring house, next seat
+きらきら█きらきら█shining, sparkling
+きいろ█黄色█yellow
+よこ█横█side, width across
+よこがき█横書き█horizontal writing
+はんだん█判断█judgment, decision
+どうぞ█どうぞ█please, by all means, here you are
+ことわる█断る█refuse, turn down
+おうだんほどう█横断歩道█crosswalk
+おおはば█大幅█drastically, substantially
+おとずれる█訪れる█visit, go to see
+ネックレス█ネックレス█necklace
+たずねる█訪ねる█visit (place or person), drop in
+れいぼう█冷房█air conditioning
+だんぼう█暖房█heating
+ぶんぼうぐ█文房具█stationery, writing materials
+パジャマ█パジャマ█pajamas
+しょこく█諸国█various countries
+みどりいろ█緑色█green
+ぼうえき█貿易█(foreign) trade, import/export business
+ゆにゅう█輸入█import
+ボールペン█ボールペン█ballpoint pen
+ゆしゅつ█輸出█export
+ゆびわ█指輪█ring
+おうふく█往復█ round trip, going and returning
+ふくしゅう█復習█review
+すいか█すいか█watermelon
+くりかえす█繰り返す█repeat を
+りゅうがく█留学█studying abroad
+ていりゅうじょ█停留所█stop, station
+かきとめ█書留█registered mail
+そちら█そちら█there, that way (polite)
+まもる█守る█protect, observe
+るす█留守█not at home
+じゅうたく█住宅█housing, residence
+じたく█自宅█one's house, one's home
+そば█そば█buckwheat noodles, soba
+おたく█お宅█your home (敬語)
+はやおき█早起き█early rising
+ひるね█昼寝█nap
+しずか█静か█quiet, tranquil
+どっち█どっち█which one (casual)
+ひま█暇█free time, spare time
+しゅみ█趣味█hobby, interest
+りょうほう█両方█both
+りょうがえ█両替█exchanging currency, break (a 1万 note)
+バスケットボール█バスケットボール█basketball
+りょうしん█両親█parents
+かたみち█片道█one-way
+うちがわ█内側█inside, interior
+むこうがわ█向こう側█other side
+サンドイッチ█サンドイッチ█sandwich
+そとがわ█外側█exterior, outside
+ひだりがわ█左側█left side
+みぎがわ█右側█right side
+うら█裏█rear, reverse (side), inside
+にこにこ█にこにこ█smile
+うらがえす█裏返す█turn over, turn inside out
+しゅうかんし█週刊誌█weekly magazine
+ちょうかん█朝刊█morning edition
+ゆうかん█夕刊█evening edition
+ウール█ウール█wool
+くわしい█詳しい█detailed, complete
+こまかい█細かい█minute, elaborate
+こまか█細か█minute, elaborate
+つもる█積もる█accumulate (snow, dustなど)
+コーラ█コーラ█cola, coke
+やく█訳█translation
+やくす█訳す█translate
+けんとう█検討█consideration, examination
+ぬる█塗る█spread on, paint
+トイレットペーパー█トイレットペーパー█toilet paper
+つく█付く█stick to, be attached to, accompany
+つける█付ける█attach, apply (st to st), add
+うけつける█受け付ける█accept, receive
+かたづける█片付ける█put in order, clear (st) away, put (st) back
+どなた█どなた█who (polite)
+うけつけ█受付█receptionist, front desk
+ちかづく█近付く█approach, get acquainted
+かたづく█片付く█be in order, be settled
+きをつける█気を付ける█take care of, pay attention to
+ハイキング█ハイキング█hiking
+はる█貼る█stick, paste
+きねんび█記念日█memorial day, anniversary
+ざんねん█残念█regretful, disappointing
+たとえば█例えば█for example
+ハム█ハム█ham
+れいぶん█例文█example sentence
+れい█例█example, precedent
+あまる█余る█remain over, be too much<div>(remain because of excess)</div>
+のぞく█除く█exclude, get rid of
+ボーイフレンド█ボーイフレンド█boyfriend
+けずる█削る█grind down, trim, scale back
+ちこく█遅刻█tardiness, lateness
+ゆるい█緩い█slack, loose
+くるしい█苦しい█painful, difficult
+アイロン█アイロン█iron
+にがい█苦い█bitter, sour
+にがて█苦手█weak point, (sb) hard to deal with
+こまる█困る█be in trouble, have difficulty
+びんぼう█貧乏█poor, poverty
+カレーライス█カレーライス█curry rice
+ふこう█不幸█unhappiness, misfortune, a death
+しあわせ█幸せ█happiness, good fortune
+しお█塩█salt
+しおからい█塩辛い█salty
+キャッシュカード█キャッシュカード█ATM card
+さとう█砂糖█sugar
+きぼ█規模█scale (big, smallなど), scope
+のうぎょう█農業█agriculture
+こい█濃い█thick, concentrated, dark-colored
+イヤリング█イヤリング█earrings
+うすい█薄い█thin, weak, pale
+あつい█厚い█thick, bulky
+あつさ█厚さ█thickness
+せまる█迫る█<!--anki-->approach, draw near, press (sb for st)
+ガールフレンド█ガールフレンド█girlfriend
+のびる█伸びる█get longer, grow, stretch
+ひっこす█引っ越す█move (houses)
+こえる█越える█go over, go across, go beyond
+ひっこし█引っ越し█moving (houses)
+カセットテープ█カセットテープ█cassette tape
+おいこす█追い越す█pass, outdo
+じょうしょう█上昇█a rise, an increase
+かいさつぐち█改札口█ticket barrier
+しつれい█失礼█impoliteness, bad manners, I beg your parden/Goodbye
+かゆい█かゆい█itchy
+おれい█お礼█thanks, reward, return present
+あやまる█謝る█apologize
+ちゅうしゃ█注射█shot, injection
+ていど█程度█degree, extent
+ぐらぐら█ぐらぐら█wobble
+さそう█誘う█invite, ask out
+どうにゅう█導入█introduction, bringing in
+どりょく█努力█<!--anki-->effort, endeavor
+おこる█怒る█get angry, scold
+ジャム█ジャム█jam
+どくしん█独身█single, unmarried
+しめる█占める█occupy, hold
+しょり█処理█processing, management<div>(unlike 加工, a new thing is not created)</div>
+しょうかい█紹介█introduction, presentation
+スリッパ█スリッパ█slippers
+まねく█招く█invite, beckon
+しょうたい█招待█invitation
+ふうふ█夫婦█husband and wife, married couple
+おく█奥█inner part, the back, inner chamber
+トランプ█トランプ█(a pack of) cards, (playing) cards
+おくさん█奥さん█(sb's) wife, married lady
+みなさん█皆さん█everybody (丁寧語)
+みなさま█皆様█everyone (敬語)
+だれか█誰か█someone
+よろしい█よろしい█all right (いいの改まった言い方)
+こくせき█国籍█citizenship, nationality
+あい█愛█love
+かわいい█可愛い█cute, charming, sweet
+こいびと█恋人█boyfriend/girlfriend, lover
+ラッシュアワー█ラッシュアワー█rush hour
+たんじょうび█誕生日█birthday
+しゅくじつ█祝日█holiday, festival day
+おいわい█お祝い█celebrate
+ゆめ█夢█dream
+カップ█カップ█cup, cup (measurement)
+なく█泣く█cry, weep
+なみだ█涙█tear
+よろこぶ█喜ぶ█be happy, be delighted
+はずかしい█恥ずかしい█embarrassed, ashamed, embarrassing
+スケート█スケート█skate, skates
+べんとう█弁当█box lunch, picnic lunch
+かんごし█看護師█nurse
+かんじゃ█患者█patient
+のべる█述べる█express (opinion), state, mention
+たくさん█たくさん█in large quantity, plenty
+うったえる█訴える█sue
+まよう█迷う█hesitate, get lost, be unable to decide
+めいわく█迷惑█trouble, annoyance
+ちいき█地域█region, area
+ピクニック█ピクニック█picnic
+せいけん█政権█political power, government, administration
+おくる█贈る█offer, give (presentとか)
+おくりもの█贈り物█present, gift (和語)
+あたえる█与える█ present (st), give (damage/shock), give (to lower status) (かたい)
+あちら█あちら█way over there
+ちょきん█貯金█savings, deposit
+あずける█預ける█deposit, entrust
+あずかる█預かる█keep (st) for (sb); take care of (st)
+とくい█得意█one's forte, pride, frequent customer
+どきどき█どきどき█feel excited, feel nervous
+もえる█燃える█burn が
+やける█焼ける█burn, be grilled, be baked が
+すきやき█すき焼き█sukiyaki
+やく█焼く█burn (st), grill, bake を
+まあまあ█まあまあ█OK, not bad, average
+かわく█乾く█(st) drys, gets dry (が)
+かんぱい█乾杯█a toast
+かわかす█乾かす█dry (st) を
+しんかんせん█新幹線█Shinkansen, Bullet Train
+マフラー█マフラー█scarf, muffler
+すばらしい█素晴らしい█splendid, excellent
+かいがん█海岸█coast, seashore
+かてい█家庭█home, family
+にわ█庭█garden, court
+アクセサリー█アクセサリー█accessories, jewelry
+さくら█桜█cherry tree, cherry blossom
+さく█咲く█bloom, blossom
+ふく█吹く█blow, play on a wind instrument
+さんぽ█散歩█walk, stroll
+あくび█あくび█yawn
+うえる█植える█plant (a plant), embed
+やね█屋根█roof
+こくばん█黒板█blackboard
+けいじばん█掲示板█notice board, bulletin board
+からから█からから█thirsty, dry
+くさ█草█grass, weed
+は█葉█leaf
+えはがき█絵葉書█picture postcard
+はがき█はがき█postcard
+ふらふら█ふらふら█dizzy, weak
+すう█吸う█inhale, suck
+ふきゅう█普及█spreading, becoming popular
+い█胃█stomach
+さら█皿█plate, counter for plates or servings
+こぼす█こぼす█spill (st)
+ち█血█blood
+ないよう█内容█contents
+はいけい█背景█background, scenery, setting
+ほね█骨█bone, frame
+ランチ█ランチ█lunch
+すべる█滑る█slide, slip, flunk an examination
+おれる█折れる█snap/break, be folded, give in (to)
+おる█折る█break off, fold, bend
+けんこう█健康█healthy
+レシート█レシート█receipt
+めずらしい█珍しい█unusual, rare, strange
+とる█撮る█take (a picture), film (a video)
+ふたたび█再び█again, a second time (somewhat formal)
+さらいねん█再来年█the year after next
+チョーク█チョーク█chalk
+さらいげつ█再来月█the month after next
+さらいしゅう█再来週█the week after next
+ほうそう█放送█broadcasting
+そうち█装置█equipment, device
+ティッシュ█ティッシュ█tissue
+かな█仮名█kana, Japanese syllabary
+おくりがな█送り仮名█kana suffix
+かがみ█鏡█mirror
+かなしむ█悲しむ█feel sad, lament
+ノック█ノック█knock
+かたい█固い█firm, unchanging, unbreakable
+びじゅつかん█美術館█art museum
+びじん█美人█beautiful woman
+びよういん█美容院█hair salon
+よろしく█よろしく█properly, one's regards
+はくぶつかん█博物館█museum
+かいさい█開催█holding (of an event), opening
+とくちょう█特徴█distinguishing characteristic
+ゆるす█許す█forgive, permit
+がらがら█がらがら█empty
+めんきょしょう█免許証█license
+きょうし█教師█teacher, instructor
+きょうじゅ█教授█professor
+つたえる█伝える█convey, tell (sb) that, let (sb) know
+ぎらぎら█ぎらぎら█dazzling, glaring, blinding
+とり█鳥█bird, poultry
+なる█鳴る█sound, ring, thunder
+なく█鳴く█make sound (animal); chirp, meow, etc.
+こえ█声█voice, sound
+そっち█そっち█there, that way (causal)
+たまご█卵█egg
+いぬ█犬█dog
+うま█馬█horse
+ちゅうしゃじょう█駐車場█parking area
+ピンポン█ピンポン█table tennis, ping pong
+さわぐ█騒ぐ█make a racket, mess around, make a fuss
+さす█刺す█stab, prick, sting
+さしみ█刺身█sashimi, sliced raw meat
+はげしい█激しい█violent, intense
+ぺこぺこ█ぺこぺこ█very hungry, starving
+おどろく█驚く█be surprised, be startled
+たおれる█倒れる█fall down, succumb (to)
+たおす█倒す█knock down, overthrow, defeat
+けいこう█傾向█tendency, inclination
+ぺらぺら█ぺらぺら█fluently
+じゅうどう█柔道█judo
+やわらかい█柔らかい█soft
+やわらか█柔らか█soft, tender, gentle
+しゅちょう█主張█argument, case, one's point
+レインコート█レインコート█raincoat
+ひっぱる█引っ張る█pull, drag
+つきあたる█突き当たる█come to the end of (street), run into (st)
+つきあたり█突き当たり█end of a street
+かべ█壁█wall, partition
+アイス█アイス█popsicle, ice lolly
+ひく█弾く█play (a stringed instrument)
+まるい█丸い█round
+まる█丸█circle, wholeness
+こうげき█攻撃█attack, criticism
+いつごろ█いつごろ█about when, about what time
+ぜったいに█絶対に█absolutely, unconditionally
+しょうぼうしゃ█消防車█fire truck
+いや█嫌█dislike, have a dislike for
+だいきらい█大嫌い█hate
+ウィスキー█ウィスキー█whisky
+たいてい█大抵█generally, mostly
+おおぜい█大勢█many (people), a crowd
+すがた█姿█figure, appearance
+しせい█姿勢█posture, attitude
+エアメール█エアメール█airmail
+おそろしい█恐ろしい█terrible, frightening
+こわい█怖い█scary
+いと█糸█thread, yarn
+まご█孫█grandchild
+シャープペンシル█シャープペンシル█mechanical pencil
+もめん█木綿█cotton
+えらい█偉い█great, famous, eminent
+つめ█爪█nail, claw
+つくえ█机█desk
+セロテープ█セロテープ█Scotch tape
+たな█棚█shelf, rack
+ほんだな█本棚█bookshelf
+ほうしん█方針█course, policy
+つる█釣る█to fish, to catch (a fish)
+やけど█やけど█burn
+おつり█お釣り█change
+かぎ█鍵█key, lock
+なべ█鍋█pan, pot
+すし█寿司█sushi
+アイスコーヒー█アイスコーヒー█iced coffee
+どろぼう█泥棒█thief, crook
+ゆ█湯█hot water, hot bath, bathhouse
+わく█沸く█boil, be excited
+わかす█沸かす█boil, excite
+あっち█あっち█other side, over there (informal)
+せんたくき█洗濯機█washing machine
+せんたく█洗濯█laundering, washing
+ぬれる█濡れる█get wet
+きっさてん█喫茶店█coffee shop, tea house, café
+あんなに█あんなに█like that
+なまける█怠ける█be lazy (が), neglect (st) (を)
+いっしょうけんめい█一生懸命█as hard as one can, with all one's might
+きゅうけい█休憩█<div>break (from work, study, etc.)</div>
+てんじょう█天井█ceiling
+いたずら█いたずら█mischief, prank
+なっとう█納豆█natto (fermented soybeans)
+けしょう█化粧█makeup, put on makeup
+はたけ█畑█field, farm, garden
+たく█炊く█cook (by boiling)
+ウェートレス█ウェートレス█waitress
+じすい█自炊█cooking for oneself
+はいざら█灰皿█ashtray
+はい█灰█ashes
+はいいろ█灰色█ash color, gray
+おばさん█おばさん█aunt
+せいれき█西暦█CE, AD (year)
+け█毛█hair, wool
+かみ█髪█hair, hairstyle
+した█舌█tongue
+くし█くし█comb
+くさい█臭い█ill-smelling, stinking
+におい█匂い█smell, odor
+いる█居る█be present
+はく█履く█put on (footwear, lower body clothing)
+クリーニング█クリーニング█cleaning, laundry
+と█戸█door (esp. Japanese style), shutter
+せんぷうき█扇風機█electric fan
+ぶた█豚█pig, pork
+ぶたにく█豚肉█pork, hog meat
+ごちそう█ごちそう█feast, treat
+にわとり█鶏█chicken, hen
+うでどけい█腕時計█wrist watch
+おかし█お菓子█sweets, snacks
+おじぎ█お辞儀█bow, bowing
+ごちそうする█ごちそうする█treat
+ねぼう█寝坊█oversleeping, late riser
+はた█旗█flag, banner
+えんぴつ█鉛筆█pencil
+まんねんひつ█万年筆█fountain pen
+こぼれる█こぼれる█(st) spills, overflows
+はこ█箱█box, case
+ほんばこ█本箱█bookcase
+てぶくろ█手袋█gloves
+ふくろ█袋█bag, sack
+こんなに█こんなに█as this, so, such
+さいふ█財布█purse, wallet
+もうふ█毛布█blanket
+ふとん█布団█futon, bedquilt
+こづつみ█小包█parcel, package
+ざあざあ█ざあざあ█(sound of pouring rain) heavily, pouring
+つつむ█包む█wrap, pack
+かざる█飾る█decorate, exhibit
+てちょう█手帳█pocketbook, memo
+でんわちょう█電話帳█telephone book
+ジャガイモ█ジャガイモ█potato
+ぎゅうにゅう█牛乳█milk
+げんかん█玄関█entrance, doorway
+めがね█眼鏡█glasses, judgment
+ねむい█眠い█sleepy
+ソファ█ソファ█sofa, sofa bed
+ねむる█眠る█sleep
+ふうとう█封筒█envelope
+でかける█出かける█go out, be about to go out
+かかる█かかる█hang, splash, take (timeなど) が
+たばこ█煙草█tobacco, cigarette
+かけざん█掛け算█multiplication
+はくしゅ█拍手█applause, clapping
+そうじ█掃除█cleaning
+はく█掃く█sweep, brush
+ちょうど█ちょうど█exactly, as if
+そうじき█掃除機█vacuum cleaner
+にぎる█握る█grasp, to press into shape (onigiri, sushi)
+あくしゅ█握手█handshake, handshaking
+むかえる█迎える█welcome, go to meet
+ちょっと█ちょっと█just a moment, just a little, easily
+おまわりさん█お巡りさん█policeman
+いくつ█いくつ█how many, how old
+いくら█幾ら█how much
+じょうだん█冗談█joke
+つく█つく█be on, switched on
+あな█穴█hole, cavity
+さびしい█寂しい█lonely, desolate, sad
+ていねい█丁寧█polite, courteous, careful
+かわいそう█かわいそう█poor, pitiable
+てんぷら█てんぷら█tempura, Japanese deep-fried breaded food
+けが█怪我█injury
+がまん█我慢█patience, self-restraint
+ようちえん█幼稚園█kindergarten
+かくれる█隠れる█hide, disappear
+とんとん█とんとん█tapping
+ひかげ█日陰█the shade
+ずいぶん█随分█extremely, considerably
+がんばる█頑張る█persist, be tenacious
+ころ█頃█when~, about~, time
+にんじん█人参█carrot
+このごろ█この頃█these days, recently
+しょうぼうしょ█消防署█fire station
+たずねる█尋ねる█inquire, search for
+かんづめ█缶詰█canned goods
+ぬるい█ぬるい█lukewarm
+かん█缶█can, tin
+くさる█腐る█rot, corrode
+とうふ█豆腐█tofu
+ゆか█床█floor
+パーセント█パーセント█percent
+とこや█床屋█barber, barbershop
+たたみ█畳█tatami, mat
+たたむ█畳む█fold up, shut (umbrella)
+ほす█干す█dry (by airing out), air out
+ひざ█ひざ█knee
+ぼうし█帽子█hat
+ぜひ█ぜひ█by all means, at any cost
+けいご█敬語█honorific language, polite speech
+そんけい█尊敬█respect, honor
+ひじ█ひじ█elbow
+しく█敷く█lay out, spread
+かみなり█雷█thunder, lightning
+れい█零█zero, naught
+しまう█仕舞う█put away
+ひも█ひも█laces, string, rope
+おどる█踊る█dance
+おどり█踊り█dance, dancing
+ふむ█踏む█step on, tread on
+ふみきり█踏切█railroad crossing
+まく█まく█scatter (st), sow seeds
+ける█蹴る█kick
+しょくどう█食堂█dining hall, restaurant
+ねこ█猫█cat, feline
+ぶんしょう█文章█writing, prose
+やかん█やかん█kettle
+じょうぶ█丈夫█healthy, stout
+また█また█again, also, or
+おじいさん█お祖父さん█grandfather
+おばあさん█お祖母さん█grandmother
+ようこそ█ようこそ█welcome
+そふ█祖父█grandfather
+そぼ█祖母█grandmother
+じゃま█邪魔█obstacle, interruption
+かぜぐすり█風邪薬█remedy for a cold
+ウェーター█ウェーター█waiter
+ふろや█風呂屋█bathhouse, public bath
+ふろ█風呂█bath
+しょうわ█昭和█Showa era
+むらさき█紫█purple
+そんなに█そんなに█like that, so
+こうちゃ█紅茶█black tea
+つゆ█梅雨█rainy season
+もも█桃█peach, peach tree
+あう█遭う█encounter something (unexpected)
+まくら█枕█pillow
+うそ█嘘█lie
+えんりょ█遠慮█reserve, hesitation, forethought
+しかる█叱る█scold, tell off, reprimand
+かさ█傘█umbrella, parasol
+おじょうさん█おじょうさん█young lady, your daughter
+ねんがじょう█年賀状█New Year's card
+にぎやか█賑やか█lively, exciting
+か█蚊█mosquito
+ふく█拭く█wipe, dry
+あいさつ█挨拶█greet, greeting
+ともなう█伴う█accompany, go with
+まく█巻く█roll (st) up, wind, wrap
+くつ█靴█shoes, boots
+くつした█靴下█socks, stockings
+みがく█磨く█polish, grind
+はみがき█歯磨き█toothpaste, brushing one's teeth
+ろうか█廊下█hallway, corridor
+びん█瓶█bottle, flask
+ほめる█褒める█praise, commend
+がんたん█元旦█New Year's Day
+そで█袖█sleeve
+ながそで█長袖█clothes with long sleeves
+はんそで█半袖█short-sleeved shirt
+ばか█馬鹿█fool, nonsense
+すごい█凄い█wonderful, terrible
+そる█剃る█shave
+けんか█喧嘩█fight, quarrel, argument
+たたく█叩く█tap, hit, play (drums)
+かむ█噛む█bite, chew
+みそしる█味噌汁█miso soup
+めい█姪█niece
+いちご█苺█strawberry
+なす█茄子█eggplant
+あう█逢う█meet (esp. sb of the opposite sex)
+いす█椅子█chair
+やせる█痩せる█lose weight, become thin
+はし█箸█chopsticks
+のり█糊█glue, (clothing) starch
+しょうゆ█醤油█soy sauce
+はさみ█鋏█scissors
+かばん█鞄█bag, handbag, briefcase
+あご█顎█jaw, chin
+あめ█飴█candy, sweets
+せっけん█石鹸█soap
+さ█差█difference
+うしなう█失う█lose, miss
+はずれる█外れる█come off
+はかる█測る█measure, gauge
+ふくめる█含める█include
+ふくむ█含む█contain, include
+ちょうだい█頂戴█getting, receiving
