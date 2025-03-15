@@ -7,6 +7,8 @@ using System.Text;
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using Godot;
+using HttpClient = System.Net.Http.HttpClient;
 
 public class AnkiConnectApi : IDisposable {
   private static AnkiConnectApi? _instance;
@@ -52,6 +54,11 @@ public class AnkiConnectApi : IDisposable {
     var response = await CallAnkiConnect(request, baseUrl);
     return response.Result ?? [];
   }
+  public async Task<byte[]> RetrieveMediaFile(Uri baseUrl, string filename) {
+    var request = AnkiRequest.RetrieveMediaFile(filename);
+    var response = await CallAnkiConnect(request, baseUrl);
+    return Convert.FromBase64String(response.Result!);
+  }
 
   public void Dispose() {
     GC.SuppressFinalize(this);
@@ -75,6 +82,15 @@ internal sealed class AnkiRequest {
     return new AnkiRequest<string[]> {
       Action = "deckNames",
       Version = 6
+    };
+  }
+  public static AnkiRequest<string> RetrieveMediaFile(string filename) {
+    return new AnkiRequest<string> {
+      Action = "retrieveMediaFile",
+      Version = 6,
+      Params = new AnkiRequestParams() {
+        Filename = filename
+      }
     };
   }
   public static AnkiRequest<CardInfo[]> CardsInfo(long[] cards) {
@@ -136,11 +152,20 @@ internal sealed class AnkiRequest<T> {
   public AnkiRequestParams? Params { get; set; } = default!;
 
   public async Task<AnkiResponse<T>> DeserializeResponse(HttpResponseMessage response) {
-    var obj = await JsonSerializer.DeserializeAsync<AnkiResponse<T>>(response.Content.ReadAsStream(), JsonSerializerOptions.Web);
-    if (obj == null) {
-      throw new GameException("failed to deserialize response");
+    try {
+      var obj = await JsonSerializer.DeserializeAsync<AnkiResponse<T>>(response.Content.ReadAsStream(),
+        JsonSerializerOptions.Web);
+
+      if (obj == null) {
+        throw new GameException("failed to deserialize response");
+      }
+      return obj;
     }
-    return obj;
+    catch (Exception) {
+      var s = await response.Content.ReadAsStringAsync();
+      GD.Print(s);
+      throw;
+    }
   }
 
   // todo:
@@ -156,4 +181,7 @@ internal sealed class AnkiRequestParams {
   public long[]? Cards { get; set; }
   [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
   public long[]? Notes { get; set; }
+
+  [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+  public string? Filename { get; set; }
 }

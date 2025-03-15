@@ -5,15 +5,15 @@ using System.Linq;
 using WanaKanaNet;
 
 public class Vocab {
-  public readonly string Entry;
+  public readonly VocabEntry Entry;
   public string Next;
   public string InputBuffer;
   public List<string>? NextVariants;
 
   public VocabState State;
 
-  public Vocab(string entry) {
-    Entry = entry.Trim();
+  public Vocab(VocabEntry entry) {
+    Entry = entry;
     Next = "";
     SetNext(0);
     State = VocabState.Hidden;
@@ -22,18 +22,19 @@ public class Vocab {
 
   private void SetNext(int idx) {
     var oldNext = Next;
-    var next = Entry[idx];
-    Next = Entry.Substring(idx, 1);
+    var entry = Entry.Prompt;
+    var next = entry[idx];
+    Next = entry.Substring(idx, 1);
     var nextIsHiragana = WanaKana.IsHiragana(next);
     var nextIsKatakana = !nextIsHiragana && WanaKana.IsKatakana(next);
     if (nextIsHiragana || nextIsKatakana) {
       if (GameTypingUtils.IsSmallTsu(next)) {
-        Next = Entry.Substring(idx, 2);
+        Next = entry.Substring(idx, 2);
         NextVariants = [WanaKana.ToRomaji(Next).Trim()];
       }
-      else if (Entry.Length > idx + 1 && GameTypingUtils.IsSmallKana(Entry[idx + 1])) {
-        Next = Entry.Substring(idx, 2);
-        NextVariants = [WanaKana.ToRomaji(Entry.Substring(idx, 2)).Trim()];
+      else if (entry.Length > idx + 1 && GameTypingUtils.IsSmallKana(entry[idx + 1])) {
+        Next = entry.Substring(idx, 2);
+        NextVariants = [WanaKana.ToRomaji(entry.Substring(idx, 2)).Trim()];
       }
       else {
         NextVariants = [WanaKana.ToRomaji(next.ToString()).Trim()];
@@ -51,9 +52,9 @@ public class Vocab {
   }
 
   public bool OnInput(string input) {
-    if (Entry.StartsWith(InputBuffer + input)) {
+    if (Entry.Prompt.StartsWith(InputBuffer + input)) {
       InputBuffer += input;
-      if (InputBuffer.Length < Entry.Length) {
+      if (InputBuffer.Length < Entry.Prompt.Length) {
         SetNext(InputBuffer.Length);
       }
 

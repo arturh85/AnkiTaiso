@@ -49,6 +49,10 @@ public partial class Enemy : Node3D {
       GetAnimationTree().Set("parameters/OneShot/request", true);
     }
 
+    if (Vocab.State == VocabState.Completed) {
+      GetAnimationTree().Set("parameters/StateMachine/conditions/die", true);
+    }
+
     var offset = NodeUtils.RandomChild<Node3D>(BulletHitOffsets);
 	if (offset == null) {
 	  GD.Print("failed to find spawn location for impact sprite");
@@ -110,9 +114,6 @@ public partial class Enemy : Node3D {
 	  return;
     }
 
-    if (Vocab.State == VocabState.Completed) {
-      GetAnimationTree().Set("parameters/StateMachine/conditions/die", true);
-    }
 
 
     var distance = Position.DistanceTo(_movementTarget);

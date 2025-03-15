@@ -55,12 +55,16 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -66.0
+offset_top = -99.0
+offset_right = 66.0
+offset_bottom = 99.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 80
-theme_override_constants/margin_top = 80
-theme_override_constants/margin_right = 80
-theme_override_constants/margin_bottom = 80
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 120
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 120
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
@@ -139,92 +143,136 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Update"
 
-[node name="AnkiDecksContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer"]
+[node name="ToggleShowAllDecksButton" type="Button" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/HBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Toggle Show all"
+
+[node name="OnConnectedContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ExampleAnkiDeck" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer"]
+[node name="AnkiDecksContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OnConnectedContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/ExampleAnkiDeck"]
+[node name="ExampleAnkiDeck" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OnConnectedContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OnConnectedContainer/ExampleAnkiDeck"]
 custom_minimum_size = Vector2(200, 50)
 layout_mode = 2
 toggle_mode = true
 button_group = SubResource("ButtonGroup_ps8b8")
 text = "SCENARIO"
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/ExampleAnkiDeck"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OnConnectedContainer/ExampleAnkiDeck"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/ExampleAnkiDeck"]
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OnConnectedContainer/ExampleAnkiDeck"]
 layout_mode = 2
 text = "LABEL"
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer"]
+[node name="OnSelectedContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OnConnectedContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OnConnectedContainer/OnSelectedContainer"]
 layout_mode = 2
 size_flags_vertical = 8
 
-[node name="Title" type="Label" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/VBoxContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OnConnectedContainer/OnSelectedContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="Title" type="Label" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OnConnectedContainer/OnSelectedContainer/VBoxContainer2/HBoxContainer"]
 layout_mode = 2
 text = "Field Mapping:"
 label_settings = SubResource("LabelSettings_5fc0a")
 
-[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/VBoxContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OnConnectedContainer/OnSelectedContainer/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_top = 24
 
-[node name="ErrorLabel" type="Label" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/VBoxContainer2/MarginContainer"]
+[node name="ErrorLabel" type="Label" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OnConnectedContainer/OnSelectedContainer/VBoxContainer2/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OnConnectedContainer/OnSelectedContainer"]
 layout_mode = 2
 
-[node name="FieldPromptSelect" type="OptionButton" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(250, 50)
-layout_mode = 2
-
-[node name="FieldPromptLabel" type="Label" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/HBoxContainer"]
-layout_mode = 2
-text = "Field for what to Type"
-
-[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer"]
-layout_mode = 2
-
-[node name="FieldKanjiSelect" type="OptionButton" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/HBoxContainer4"]
+[node name="FieldPromptSelect" type="OptionButton" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OnConnectedContainer/OnSelectedContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(250, 50)
 layout_mode = 2
 
-[node name="FieldKanjiLabel" type="Label" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/HBoxContainer4"]
+[node name="FieldPromptLabel" type="Label" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OnConnectedContainer/OnSelectedContainer/HBoxContainer"]
 layout_mode = 2
-text = "Field for Kanji"
+text = "Field for Prompt"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer"]
-layout_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/HBoxContainer2"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OnConnectedContainer/OnSelectedContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/HBoxContainer2/VBoxContainer"]
+[node name="FieldTitleSelect" type="OptionButton" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OnConnectedContainer/OnSelectedContainer/HBoxContainer4"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+
+[node name="FieldTitleLabel" type="Label" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OnConnectedContainer/OnSelectedContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Field for Title"
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OnConnectedContainer/OnSelectedContainer"]
+layout_mode = 2
+
+[node name="FieldTranslationSelect" type="OptionButton" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OnConnectedContainer/OnSelectedContainer/HBoxContainer5"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+
+[node name="FieldTranslationLabel" type="Label" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OnConnectedContainer/OnSelectedContainer/HBoxContainer5"]
+layout_mode = 2
+text = "Field for Translation"
+
+[node name="HBoxContainer6" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OnConnectedContainer/OnSelectedContainer"]
+layout_mode = 2
+
+[node name="FieldAudioSelect" type="OptionButton" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OnConnectedContainer/OnSelectedContainer/HBoxContainer6"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 2
+
+[node name="FieldAudioLabel" type="Label" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OnConnectedContainer/OnSelectedContainer/HBoxContainer6"]
+layout_mode = 2
+text = "Field for Audio"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OnConnectedContainer/OnSelectedContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OnConnectedContainer/OnSelectedContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OnConnectedContainer/OnSelectedContainer/HBoxContainer2/VBoxContainer"]
 layout_mode = 2
 text = "Random Item Preview: "
 
-[node name="RandomizeEnemyPanelButton" type="Button" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/HBoxContainer2/VBoxContainer"]
+[node name="RandomizeEnemyPanelButton" type="Button" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OnConnectedContainer/OnSelectedContainer/HBoxContainer2/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Randomize"
 
-[node name="PreviewEnemyPanel" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/HBoxContainer2" instance=ExtResource("2_gulas")]
+[node name="PreviewEnemyPanel" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OnConnectedContainer/OnSelectedContainer/HBoxContainer2" instance=ExtResource("2_gulas")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 
-[node name="ImportUpdateButton" type="Button" parent="MarginContainer/HBoxContainer/ScenarioParentContainer"]
+[node name="ImportUpdateButton" type="Button" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OnConnectedContainer/OnSelectedContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "Import/Update"
+
+[node name="ImportUpdateProgressBar" type="ProgressBar" parent="MarginContainer/HBoxContainer/ScenarioParentContainer/OnConnectedContainer/OnSelectedContainer"]
+unique_name_in_owner = true
+layout_mode = 2

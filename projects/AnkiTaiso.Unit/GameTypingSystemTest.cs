@@ -1,6 +1,5 @@
 ﻿namespace anki_taiso.unit;
 
-using System.Drawing.Printing;
 using ankitaiso.game_typing;
 using FluentAssertions;
 using Godot;
@@ -32,14 +31,14 @@ public class GameTypingSystemTest {
 
   [Fact]
   public void EnglishClearOneEntryTest() {
-    var game = new GameTypingSystem(_englishWords);
+    var game = new GameTypingSystem(_englishWords.Select(w => new VocabEntry(w)));
     var words = game.NextEntries(4);
     words.Count.Should().Be(4);
     game.GetEntriesInUse().Count.Should().Be(4);
     // make sure "acd" is skipped so 2 words don't start with 'a'
-    words[0].Entry.Should().Be("abc");
-    words[1].Entry.Should().Be("bce");
-    words[3].Entry.Should().Be("cde");
+    words[0].Entry.Prompt.Should().Be("abc");
+    words[1].Entry.Prompt.Should().Be("bce");
+    words[3].Entry.Prompt.Should().Be("cde");
     game.GetActiveEntry().ShouldBeNull();
 
     game.StatisticTotalError.ShouldBe(0);
@@ -48,7 +47,7 @@ public class GameTypingSystemTest {
 
     game.OnInput(Key.A).ShouldBeTrue();
     game.GetActiveEntry().ShouldNotBeNull();
-    game.GetActiveEntry()!.Entry.ShouldBe("abc");
+    game.GetActiveEntry()!.Entry.Prompt.ShouldBe("abc");
     game.StatisticTotalError.ShouldBe(1);
     game.OnInput(Key.Y).ShouldBeFalse();
     game.StatisticByChar['y'].FailCount.ShouldBe(1);
@@ -63,12 +62,12 @@ public class GameTypingSystemTest {
 
   [Fact]
   public void EnglishSpecialCharsTest() {
-    var game = new GameTypingSystem(_englishWords);
+    var game = new GameTypingSystem(_englishWords.Select(w => new VocabEntry(w)));
     var words = game.NextEntries(_englishWords.Count());
     words.Count.ShouldBe(_englishWords.Count());
     game.OnInput(Key.S).ShouldBeTrue();
     game.GetActiveEntry().ShouldNotBeNull();
-    game.GetActiveEntry()!.Entry.ShouldBe("s ./,_-+()[]{}");
+    game.GetActiveEntry()!.Entry.Prompt.ShouldBe("s ./,_-+()[]{}");
     game.OnInput(Key.Space).ShouldBeTrue();
     game.OnInput(Key.Period).ShouldBeTrue();
     game.OnInput(Key.Slash).ShouldBeTrue();
@@ -88,7 +87,7 @@ public class GameTypingSystemTest {
 
   [Fact]
   public void JapaneseKatakanaTest() {
-    var game = new GameTypingSystem(_japaneseWords);
+    var game = new GameTypingSystem(_japaneseWords.Select(w => new VocabEntry(w)));
     var words = game.NextEntries(2);
     words.Count.Should().Be(2);
     game.OnInput(Key.K).ShouldBeTrue();
@@ -97,7 +96,7 @@ public class GameTypingSystemTest {
     game.OnInput(Key.A).ShouldBeTrue();
     game.Buffer.Should().Be("");
     game.GetActiveEntry().ShouldNotBeNull();
-    game.GetActiveEntry()!.Entry.ShouldBe("カタカナ");
+    game.GetActiveEntry()!.Entry.Prompt.ShouldBe("カタカナ");
     game.GetActiveEntry()!.InputBuffer.ShouldBe("カ");
     game.OnInput(Key.T).ShouldBeTrue();
     game.Buffer.Should().Be("t");
@@ -119,7 +118,7 @@ public class GameTypingSystemTest {
 
   [Fact]
   public void HiraganaTest() {
-    var game = new GameTypingSystem(_japaneseWords);
+    var game = new GameTypingSystem(_japaneseWords.Select(w => new VocabEntry(w)));
     var words = game.NextEntries(2);
     words.Count.Should().Be(2);
     game.OnInput(Key.H).ShouldBeTrue();
@@ -128,7 +127,7 @@ public class GameTypingSystemTest {
     game.OnInput(Key.I).ShouldBeTrue();
     game.Buffer.Should().Be("");
     game.GetActiveEntry().ShouldNotBeNull();
-    game.GetActiveEntry()!.Entry.ShouldBe("ひらがな");
+    game.GetActiveEntry()!.Entry.Prompt.ShouldBe("ひらがな");
     game.GetActiveEntry()!.InputBuffer.ShouldBe("ひ");
     game.OnInput(Key.R).ShouldBeTrue();
     game.Buffer.Should().Be("r");
@@ -150,7 +149,7 @@ public class GameTypingSystemTest {
 
   [Fact]
   public void HiraganaTsuTest() {
-    var game = new GameTypingSystem(_japaneseWords);
+    var game = new GameTypingSystem(_japaneseWords.Select(w => new VocabEntry(w)));
     var words = game.NextEntries(4);
     words.Count.Should().Be(4);
     game.OnInput(Key.M).ShouldBeTrue();
@@ -159,7 +158,7 @@ public class GameTypingSystemTest {
     game.OnInput(Key.I).ShouldBeTrue();
     game.Buffer.Should().Be("");
     game.GetActiveEntry().ShouldNotBeNull();
-    game.GetActiveEntry()!.Entry.ShouldBe("みっつ");
+    game.GetActiveEntry()!.Entry.Prompt.ShouldBe("みっつ");
     game.GetActiveEntry()!.InputBuffer.ShouldBe("み");
     game.OnInput(Key.T).ShouldBeTrue();
     game.Buffer.Should().Be("t");
@@ -175,7 +174,7 @@ public class GameTypingSystemTest {
 
   [Fact]
   public void KatakanaTsuTest() {
-    var game = new GameTypingSystem(_japaneseWords);
+    var game = new GameTypingSystem(_japaneseWords.Select(w => new VocabEntry(w)));
     var words = game.NextEntries(4);
     words.Count.Should().Be(4);
     game.OnInput(Key.R).ShouldBeTrue();
@@ -184,7 +183,7 @@ public class GameTypingSystemTest {
     game.OnInput(Key.O).ShouldBeTrue();
     game.Buffer.Should().Be("");
     game.GetActiveEntry().ShouldNotBeNull();
-    game.GetActiveEntry()!.Entry.ShouldBe("ロボット");
+    game.GetActiveEntry()!.Entry.Prompt.ShouldBe("ロボット");
     game.GetActiveEntry()!.InputBuffer.ShouldBe("ロ");
     game.OnInput(Key.B).ShouldBeTrue();
     game.Buffer.Should().Be("b");
@@ -201,7 +200,7 @@ public class GameTypingSystemTest {
   }
   [Fact]
   public void JapanesePyuAndDashTest() {
-    var game = new GameTypingSystem(_japaneseWords);
+    var game = new GameTypingSystem(_japaneseWords.Select(w => new VocabEntry(w)));
     var words = game.NextEntries(5);
     words.Count.Should().Be(5);
     game.OnInput(Key.K).ShouldBeTrue();
@@ -210,7 +209,7 @@ public class GameTypingSystemTest {
     game.OnInput(Key.O).ShouldBeTrue();
     game.Buffer.Should().Be("");
     game.GetActiveEntry().ShouldNotBeNull();
-    game.GetActiveEntry()!.Entry.ShouldBe("コンピュータ");
+    game.GetActiveEntry()!.Entry.Prompt.ShouldBe("コンピュータ");
     game.GetActiveEntry()!.InputBuffer.ShouldBe("コ");
     game.OnInput(Key.N).ShouldBeTrue();
     game.Buffer.Should().Be("");

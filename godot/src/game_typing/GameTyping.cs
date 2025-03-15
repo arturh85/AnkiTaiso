@@ -84,7 +84,7 @@ public partial class GameTyping : Node3D {
 
   public void StartGame() {
     LoadWordlist();
-    GameTypingSystem.RestartGame(WordList);
+    GameTypingSystem.RestartGame(WordList.Select(w => new VocabEntry(w)));
     _gameStarted = true;
     SetPaused(false);
   }

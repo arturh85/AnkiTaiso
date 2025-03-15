@@ -2611,11 +2611,9 @@ bones/53/rotation = Quaternion(-0.0334809, -0.0695437, 0.432489, 0.898329)
 bones/54/position = Vector3(-0.174585, 0.00406308, 0.113821)
 bones/54/rotation = Quaternion(0, 0, 0.147009, 0.989135)
 bones/55/position = Vector3(0, -1.49012e-08, 0)
-bones/56/rotation = Quaternion(0, 0, 1, 0)
 bones/58/position = Vector3(0.171403, -0.051028, 0.113821)
 bones/58/rotation = Quaternion(0, 0, -0.15168, 0.98843)
 bones/59/position = Vector3(-2.69044e-06, 1.66108e-06, 1.27822e-05)
-bones/60/rotation = Quaternion(0, 0, 1, 0)
 
 [node name="gdbot_mesh" parent="Armature/Skeleton3D" index="0"]
 surface_material_override/1 = ExtResource("2_u73wx")
@@ -2625,18 +2623,14 @@ surface_material_override/3 = ExtResource("4_vcysr")
 [node name="AnimationPlayer" parent="." index="1"]
 callback_mode_process = 0
 libraries = {
-"": SubResource("AnimationLibrary_tj4x4"),
-"custom_animations": SubResource("AnimationLibrary_iuqlc")
+&"": SubResource("AnimationLibrary_tj4x4"),
+&"custom_animations": SubResource("AnimationLibrary_iuqlc")
 }
 playback_default_blend_time = 0.1
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="2"]
 unique_name_in_owner = true
 root_node = NodePath("%AnimationTree/..")
-libraries = {
-"": SubResource("AnimationLibrary_tj4x4"),
-"custom_animations": SubResource("AnimationLibrary_iuqlc")
-}
 tree_root = ExtResource("4_a7nj7")
 anim_player = NodePath("../AnimationPlayer")
 parameters/add_all_animations/add_amount = 1.0

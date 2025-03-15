@@ -1,7 +1,6 @@
 namespace ankitaiso.enemy_panel;
 
 using Chickensoft.AutoInject;
-using Chickensoft.GodotNodeInterfaces;
 using Chickensoft.Introspection;
 using enemy;
 using game_typing;
@@ -55,12 +54,12 @@ public partial class EnemyPanel : Control {
   }
 
   public void UpdateVocab(Vocab vocab) {
-    if (PromptLabelBbcode != vocab.Entry) {
-      PromptLabelBbcode = vocab.Entry;
+    if (PromptLabelBbcode != vocab.Entry.Prompt) {
+      PromptLabelBbcode = vocab.Entry.Prompt;
     }
     if (vocab.State == VocabState.Active) {
       //BackgroundContainer.Color = _activeColor;
-      var rest = vocab.Entry[(vocab.InputBuffer.Length + vocab.Next.Length)..];
+      var rest = vocab.Entry.Prompt[(vocab.InputBuffer.Length + vocab.Next.Length)..];
       var targetInput = string.Concat(vocab.InputBuffer, "[red]", vocab.Next, "[]",
         rest.Length > 0 ? "~" + rest + "~" : "");
       if (InputLabelBbcode != targetInput) {
