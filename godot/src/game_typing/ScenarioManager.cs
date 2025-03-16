@@ -120,7 +120,7 @@ public class ScenarioManager {
     return deck;
   }
 
-  public static VocabConfig? LoadMapping(string deckName) {
+  public static VocabConfig? LoadConfig(string deckName) {
     var dirPath = DeckDirPath(deckName);
     var filePath = $"{dirPath}/{CONFIG_FILENAME}";
     if (!FileAccess.FileExists(filePath)) {
@@ -148,7 +148,7 @@ public class ScenarioManager {
     }
 
     return new VocabEntry {
-      Prompt = card.Fields[config.PromptKey].Value ?? "missing",
+      Prompt = config.PromptKey == null ? null : card.Fields[config.PromptKey].Value,
       Translation = config.TranslationKey == null ? null : card.Fields[config.TranslationKey].Value,
       AudioFilename = audioFilename,
       Title = config.TitleKey == null ? null : card.Fields[config.TitleKey].Value

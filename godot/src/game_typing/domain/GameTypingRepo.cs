@@ -39,7 +39,8 @@ public class GameTypingRepo : IGameTypingRepo {
           Title = deckName,
           Source = "",
           WordList = ScenarioManager.WordListPath(deckName),
-          Locale = ""
+          Locale = "",
+          Config = ScenarioManager.LoadConfig(deckName)
         };
         dict.Add(deckName, scenario);
       }
