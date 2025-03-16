@@ -1,5 +1,6 @@
 namespace ankitaiso.game_typing;
 
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Pinyin4net;
@@ -66,8 +67,13 @@ public class Vocab {
       }
       else {
         // chinese alphabet
-        NextVariants = PinyinHelper.ToHanyuPinyinStringArray(next, _format).Distinct().ToList();
-        if (NextVariants.Count == 0) {
+        try {
+          NextVariants = PinyinHelper.ToHanyuPinyinStringArray(next, _format).Distinct().ToList();
+          if (NextVariants.Count == 0) {
+            NextVariants = null;
+          }
+        }
+        catch (Exception) {
           NextVariants = null;
         }
       }
