@@ -68,8 +68,11 @@ public partial class InGameAudio : Node {
   }
 
   private void OnHit(string key, Vocab? vocab) {
-    if (vocab != null && vocab.State == VocabState.Completed && vocab.Entry.AudioFilename != null && GameTypingRepo.ActiveScenario != null) {
-      var audioPath = $"{ScenarioManager.DeckDirPath(GameTypingRepo.ActiveScenario.Id)}/{vocab.Entry.AudioFilename}";
+    if (vocab is { State: VocabState.Completed, Entry.AudioFilename: not null } && GameTypingRepo.ActiveScenario is
+        {
+          Config: not null
+        }) {
+      var audioPath = $"{GameTypingRepo.ActiveScenario.Config.AudioDirectoryPath}/{vocab.Entry.AudioFilename}";
       ClearedWordPlayer.Stream = AudioStreamMP3.LoadFromFile(audioPath);
       ClearedWordPlayer.Play();
     }

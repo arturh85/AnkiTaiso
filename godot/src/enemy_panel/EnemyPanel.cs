@@ -12,13 +12,18 @@ public partial class EnemyPanel : Control {
   public override void _Notification(int what) => this.Notify(what);
   private Enemy? _currentEnemy;
 
-  private Color _activeColor = Color.FromHtml("604540");
-  private Color _inactiveColor = Color.FromHtml("000000");
+  private Color _activeColor = Color.FromHtml("604540b3");
+  private Color _inactiveColor = Color.FromHtml("00000064");
 
 
   public string PromptLabelBbcode {
     get => PromptLabel.Get("bbcode").ToString();
     set => PromptLabel.Set("bbcode", value);
+  }
+
+  public string TitleLabelBbcode {
+    get => TitleLabel.Get("bbcode").ToString();
+    set => TitleLabel.Set("bbcode", value);
   }
 
   public string InputLabelBbcode {
@@ -57,8 +62,18 @@ public partial class EnemyPanel : Control {
     if (PromptLabelBbcode != vocab.Entry.Prompt) {
       PromptLabelBbcode = vocab.Entry.Prompt;
     }
+
+    if (vocab.Entry.Title == null) {
+      TitleLabel.Hide();
+    }
+    else {
+      TitleLabel.Show();
+    }
+    if (TitleLabelBbcode != (vocab.Entry.Title ?? "") ) {
+      TitleLabelBbcode = vocab.Entry.Title ?? "";
+    }
     if (vocab.State == VocabState.Active) {
-      //BackgroundContainer.Color = _activeColor;
+      BackgroundContainer.Color = _activeColor;
       var rest = vocab.Entry.Prompt[(vocab.InputBuffer.Length + vocab.Next.Length)..];
       var targetInput = string.Concat(vocab.InputBuffer, "[red]", vocab.Next, "[]",
         rest.Length > 0 ? "~" + rest + "~" : "");
@@ -67,7 +82,7 @@ public partial class EnemyPanel : Control {
       }
     }
     else {
-      //BackgroundContainer.Color = _inactiveColor;
+      BackgroundContainer.Color = _inactiveColor;
       if (InputLabelBbcode != "") {
         InputLabelBbcode = "";
       }

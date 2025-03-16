@@ -39,7 +39,9 @@ public partial class CameraWaypoint : Node3D {
 
     }
     if (next != null) {
-      PathCenter.LookAt(next.Head.GlobalPosition, new Vector3(0, 1, 0), true);
+      if (PathCenter.Position != next.Head.GlobalPosition) {
+        PathCenter.LookAt(next.Head.GlobalPosition, new Vector3(0, 1, 0), true);
+      }
       //PathCenter.RotateY((float)Math.PI / 2.0f);
       var diff = next.Head.GlobalPosition - Head.GlobalPosition;
       PathCenter.Scale = new Vector3(1, 1, diff.Length() * 5.0f);

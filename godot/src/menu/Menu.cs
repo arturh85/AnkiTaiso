@@ -82,7 +82,12 @@ public partial class Menu : Control, IMenu {
     }
 
     if (Input.IsActionJustPressed(BuiltinInputActions.UIAccept)) {
-      OnNewGamePressed();
+      if (ScenarioParentContainer.Visible) {
+        OnStartGamePressed();
+      }
+      else {
+        OnNewGamePressed();
+      }
     }
     else if (Input.IsActionJustPressed(BuiltinInputActions.UICancel)) {
       OnQuitPressed();

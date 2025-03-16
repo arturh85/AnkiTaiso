@@ -1,5 +1,6 @@
 namespace ankitaiso.data;
 
+using game_typing;
 using Godot;
 using utils;
 
@@ -9,6 +10,8 @@ public record Scenario {
   public required string Source { get; set; }
   public required string WordList { get; set; }
   public required string Locale { get; set; }
+
+  public VocabConfig? Config { get; set; }
 
   public string ReadWordList() {
     using var file = FileAccess.Open(WordList, FileAccess.ModeFlags.Read);

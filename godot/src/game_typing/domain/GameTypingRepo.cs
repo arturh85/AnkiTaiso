@@ -3,6 +3,7 @@ namespace ankitaiso.game_typing.domain;
 using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
+using System.Linq;
 using data;
 using Godot;
 
@@ -39,7 +40,8 @@ public class GameTypingRepo : IGameTypingRepo {
           Title = deckName,
           Source = "",
           WordList = ScenarioManager.WordListPath(deckName),
-          Locale = ""
+          Locale = "",
+          Config = ScenarioManager.LoadConfig(deckName)
         };
         dict.Add(deckName, scenario);
       }
@@ -50,7 +52,7 @@ public class GameTypingRepo : IGameTypingRepo {
 
   public Scenario? GetScenario(StringName name) => _scenarios.GetValueOrDefault(name);
 
-  public IEnumerable<string> GetScenarioIds() => _scenarios.Keys;
+  public IEnumerable<string> GetScenarioIds() => _scenarios.Keys.Order();
 
   #region Internals
 

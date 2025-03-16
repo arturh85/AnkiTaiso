@@ -195,7 +195,7 @@ public partial class MenuAnki : Control, IMenuAnki {
       AudioKey = FieldAudioSelect.Selected == -1 ? null : FieldAudioSelect.GetItemText(FieldAudioSelect.Selected)
     };
 
-  private void OnConfigChanged(long _index) {
+  private void OnConfigChanged(long index) {
     if (_cardInfo == null) {
       return;
     }
@@ -237,7 +237,7 @@ public partial class MenuAnki : Control, IMenuAnki {
         FieldAudioSelect.AddItem(fieldId);
       }
 
-      var mapping = ScenarioManager.LoadMapping(_deckName);
+      var mapping = ScenarioManager.LoadConfig(_deckName);
       if (mapping != null) {
         FieldPromptSelect.Selected = Array.FindIndex(fields, f => f.Key == mapping.PromptKey);
         FieldTitleSelect.Selected = Array.FindIndex(fields, f => f.Key == mapping.TitleKey);
