@@ -186,7 +186,10 @@ public partial class GameTyping : Node3D {
       return;
     }
     for (var i = 0; i < Math.Min(words.Count, words.Count); i++) {
-      WordList.Push(words[i]);
+      var word = words[i].Trim();
+      if (word.Length > 0) {
+        WordList.Push(word);
+      }
     }
   }
 

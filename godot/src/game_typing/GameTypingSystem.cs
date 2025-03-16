@@ -78,13 +78,9 @@ public class GameTypingSystem {
       if (validNexts.Contains(vocab.Entry.Prompt[0])) {
         continue;
       }
-      GD.Print(vocab.Entry.Prompt);
-      GD.Print(maxLength);
       if (vocab.Entry.Prompt.Length < minLength || vocab.Entry.Prompt.Length > maxLength) {
-        GD.Print("invalid");
         continue;
       }
-
       vocab.State = startVisible ? VocabState.Visible : VocabState.Hidden;
       EntriesLeft.Remove(vocab);
       found = true;
