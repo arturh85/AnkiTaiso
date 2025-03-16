@@ -76,15 +76,30 @@ jobs:
           echo "SHORT_SHA=$("${{ github.sha }}".SubString(0, 8))" >> $env:GITHUB_ENV
         shell: pwsh
 
+      - name: 🔬 Setup pnpm package manager
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
       - name: 🔬 Unzip releases
         run: |
           mkdir -p /tmp/release/windows
           mkdir -p /tmp/release/linux
           mkdir -p /tmp/release/mac
+          mkdir -p /tmp/release/pckexplorer
+          mkdir -p /tmp/release/treemaps/
+
+          pnpm install -g webtreemap-cli
+          wget https://github.com/DmitriySalnikov/GodotPCKExplorer/releases/download/1.5.3/GodotPCKExplorer_1.5.3_dotnet-ui-console-win-linux-mac.zip
+          unzip GodotPCKExplorer_1.5.3_dotnet-ui-console-win-linux-mac.zip -d /tmp/release/pckexplorer
 
           unzip ${{ steps.export.outputs.build_directory }}/windows/AnkiTaiso.zip -d /tmp/release/windows/
           unzip ${{ steps.export.outputs.build_directory }}/linux/AnkiTaiso.zip -d /tmp/release/linux/
           unzip ${{ steps.export.outputs.build_directory }}/mac/AnkiTaiso.zip -d /tmp/release/mac/
+
+      - name: 🧾 Generate Treemaps
+        run: ./scripts/generate-treemaps.ps1
+        shell: pwsh
 
       - name: 🦺 Upload Artifact Windows
         uses: actions/upload-artifact@v4
@@ -103,3 +118,9 @@ jobs:
         with:
           name: AnkiTaiso-mac-${{ env.SHORT_SHA }}
           path: /tmp/release/mac/
+
+      - name: 🦺 Upload Artifact Treemaps
+        uses: actions/upload-artifact@v4
+        with:
+          name: AnkiTaiso-BundleSize-TreeMap-${{ env.SHORT_SHA }}
+          path: /tmp/release/treemaps/

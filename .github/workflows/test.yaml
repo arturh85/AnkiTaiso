@@ -113,7 +113,7 @@ jobs:
               - 'docs/**'
               - 'site/**'
 
-      - name: 🔬 Setup astro
+      - name: 🔬 Setup pnpm package manager
         if: steps.changes.outputs.public == 'true'
         uses: pnpm/action-setup@v4
         with:
