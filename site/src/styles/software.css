@@ -1,0 +1,149 @@
+/* Variables globales para modo claro y oscuro */
+:root {
+  --background-color: #f9fafb; /* Fondo suave para mejorar la legibilidad */
+  --text-color: #333333; /* Texto oscuro para alto contraste */
+  --text-muted: #6B7280;
+  --border-color: #e0e7ff; /* Bordes más suaves */
+  --tag-color: #4b5563;
+  --link-color: #3b82f6; /* Azul vibrante */
+  --link-hover-bg: #2563eb;
+  --link-hover-color: #ffffff;
+  --card-bg: #ffffff;
+  --gradient-from: #4b6cb7; /* Colores modernos y agradables */
+  --gradient-to: #182848;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+      --background-color: #1F2937; /* Fondo oscuro para modo oscuro */
+      --text-color: #F3F4F6; /* Texto claro en modo oscuro */
+      --text-muted: #9CA3AF;
+      --border-color: #374151;
+      --tag-color: #9CA3AF;
+      --link-color: #60A5FA;
+      --link-hover-bg: #3B82F6;
+      --link-hover-color: #ffffff;
+      --card-bg: #1F2937;
+      --gradient-from: #4b6cb7;
+      --gradient-to: #182848;
+  }
+
+  /* Definimos los colores de fondo personalizados por cada categoría */
+  .category-1 {
+      background: linear-gradient(135deg, #6B5B95, #8B7CB0); /* Fondo personalizado para categoría 1 */
+  }
+
+  .category-2 {
+      background: linear-gradient(135deg, #4CAF50, #81C784); /* Fondo personalizado para categoría 2 */
+  }
+
+  .category-3 {
+      background: linear-gradient(135deg, #FF6F61, #6B5B95); /* Fondo personalizado para categoría 3 */
+  }
+}
+
+/* Fondo general y color de texto */
+body, .bg-page {
+  background-color: var(--background-color);
+  color: var(--text-color);
+  font-family: 'Arial', sans-serif; /* Fuente más limpia */
+  line-height: 1.6; /* Mejor legibilidad */
+}
+
+/* Sección hero */
+.animate-fade-in {
+  animation: fadeIn 1s ease-in-out;
+}
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
+/* Contenedor de categorías */
+.category-section {
+  background: linear-gradient(135deg, var(--gradient-from), var(--gradient-to));
+  color: var(--text-color);
+  padding: 30px;
+  border-radius: 15px;
+  position: relative;
+  overflow: hidden;
+}
+
+.tool-card {
+  background: rgba(29, 38, 43, 0.85); /* Fondo con mayor opacidad para resaltar más */
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 20px;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(129, 120, 120, 0.1); /* Sombra sutil para darle más profundidad */
+}
+
+.tool-card:hover {
+  background: rgb(30, 42, 61); /* Fondo más fuerte al pasar el cursor */
+  transform: translateY(-5px);
+  box-shadow: 0 10px 15px rgba(44, 17, 117, 0.808); /* Más sombra en hover para destacarlas */
+}
+
+.tool-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  color: var(--text-color); /* Contraste alto para el título */
+}
+
+.tool-description {
+  margin-bottom: 1rem;
+  color: var(--text-muted);
+}
+
+.tool-link {
+  font-size: 1rem;
+  font-weight: bold;
+  text-decoration: none;
+  background-color: rgba(255, 255, 255, 0.3); /* Un fondo más visible para los enlaces */
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  display: inline-block;
+  transition: background-color 0.3s ease;
+}
+
+.tool-link:hover {
+  background-color: rgba(255, 255, 255, 0.5); /* Fondo más opaco para el hover */
+}
+
+/* Efectos de hover en títulos */
+.group:hover h2 span {
+  background-position: 100% 50%;
+  transition: background-position 0.5s ease-out;
+}
+
+h2 span {
+  background-size: 200% auto;
+  background-position: 0% 50%;
+  transition: background-position 0.3s ease-in;
+}
+
+/* Colores específicos para etiquetas */
+.tool-tag.stable {
+  background-color: #2196f3;
+}
+
+.tool-tag.opensource {
+  background-color: #2196f3;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .tool-card {
+      border-left: none;
+      padding-left: 0;
+  }
+
+  .tool-card:hover {
+      transform: translateY(-5px);
+  }
+}

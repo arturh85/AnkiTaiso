@@ -1,0 +1,22 @@
+---
+import ToolCard from '@/components/TarjetaTools.astro';
+
+const { title, tools, borderColor } = Astro.props;
+---
+
+<div class="group bg-white dark:bg-[#2A2A2A] p-8 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2">
+  <div class={`border-l-4 border-${borderColor} pl-6`}>
+    <h2 class="text-2xl font-bold mb-4">
+      <span class={borderColor}>
+        {title}
+      </span>
+    </h2>
+    <div class="space-y-6">
+      {tools.map((tool: { id: string; name: string; description: string; }) => (
+        <div class={borderColor}>
+          <ToolCard {...tool} />
+        </div>
+      ))}
+    </div>
+  </div>
+</div>

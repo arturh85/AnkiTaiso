@@ -1,0 +1,64 @@
+.tool-card {
+    border-left: 3px solid;
+    padding-left: 1rem;
+    transition: all 0.3s ease;
+  }
+  
+  .tool-card:hover {
+    transform: translateX(8px);
+  }
+  
+  .group:hover h2 span {
+    background-position: 100% 50%;
+    transition: background-position 0.5s ease-out;
+  }
+  
+  h2 span {
+    background-size: 200% auto;
+    background-position: 0% 50%;
+    transition: background-position 0.3s ease-in;
+  }
+  
+  .bg-blue-100 {
+    background-color: #ebf8ff;
+  }
+  
+  .text-blue-800 {
+    color: #2c5282;
+  }
+  
+  .bg-yellow-100 {
+    background-color: #fefcbf;
+  }
+  
+  .text-yellow-800 {
+    color: #975a16;
+  }
+  
+  .bg-green-100 {
+    background-color: #f0fff4;
+  }
+  
+  .text-green-800 {
+    color: #22543d;
+  }
+  
+  .text-purple-500 {
+    color: #9c27b0;
+  }
+  
+  .text-green-500 {
+    color: #4caf50;
+  }
+  
+  .text-red-500 {
+    color: #f44336;
+  }
+  
+  .bg-red-100 {
+    background-color: #ffe5e5;
+  }
+  
+  .bg-purple-100 {
+    background-color: #f3e5f5;
+  }

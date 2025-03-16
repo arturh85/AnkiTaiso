@@ -39,6 +39,10 @@
     "terrabrush": {
       "url": "https://github.com/spimort/TerraBrush",
       "subfolder": "addons/terrabrush"
+    },
+    "anthonyec.camera_preview": {
+      "url": "https://github.com/anthonyec/godot_little_camera_preview",
+      "subfolder": "addons/anthonyec.camera_preview"
     }
   }
 }

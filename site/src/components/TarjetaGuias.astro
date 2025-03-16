@@ -1,0 +1,82 @@
+---
+const {
+  title,
+  description,
+  link,
+  linkText,
+  borderColor,
+  textColor,
+  hoverTextColor,
+  gradientFrom,
+  gradientTo,
+  icon,
+  tags,
+} = Astro.props;
+
+import { useTranslations } from "@/i18n/utils";
+const currentLang: "es" | "en" = (Astro.currentLocale as "es" | "en") || "es";
+const translateLabels = useTranslations(currentLang);
+---
+
+<div
+  class="group relative bg-white dark:bg-[#2A2A2A] p-8 rounded-xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700"
+>
+  <!-- Overlay de efecto al hacer hover -->
+  <div
+    class="absolute inset-0 bg-gradient-to-r from-current/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl -z-10"
+  >
+  </div>
+
+  <div class={`border-l-4 ${borderColor} pl-6`}>
+    <h2 class="text-2xl font-bold mb-4">
+      <span
+        class={`bg-clip-text text-transparent bg-gradient-to-r ${gradientFrom} ${gradientTo}`}
+      >
+        {icon && <span class="mr-2">{icon}</span>}
+        {translateLabels(title)}
+      </span>
+    </h2>
+    <p class="text-sm text-gray-600 dark:text-gray-300 mb-6">
+      {translateLabels(description)}
+    </p>
+
+    {
+      tags && tags.length > 0 && (
+        <div class="flex flex-wrap gap-2 mb-5">
+          {tags.map((tag: { color: string; label: string }) => (
+            <span
+              class={`px-3 py-1 rounded-full text-xs font-medium bg-${tag.color}/10 text-${tag.color}-600 dark:text-${tag.color}-300 border border-${tag.color}/20 transition-colors`}
+            >
+              {tag.label}
+            </span>
+          ))}
+        </div>
+      )
+    }
+
+    <a
+      href={link}
+      target="_blank"
+      rel="noopener noreferrer"
+      class={`inline-flex items-center ${textColor} ${hoverTextColor} font-medium text-sm`}
+    >
+      {
+        linkText
+          ? translateLabels(linkText)
+          : translateLabels("guides.view_more")
+      }
+      <svg
+        class="w-5 h-5 ml-2"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+      </svg>
+    </a>
+  </div>
+</div>

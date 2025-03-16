@@ -1,0 +1,313 @@
+---
+import { getRelativeLocaleUrl } from "astro:i18n";
+import { languageList } from "@/i18n/ui";
+import { useTranslations } from "@/i18n/utils";
+
+const getPathWithoutLocale = (path: string): string => {
+  const segments = path.split("/").filter(Boolean);
+  return segments.slice(1).join("/") || "/";
+};
+
+const currentPathWithoutLocale = getPathWithoutLocale(Astro.url.pathname);
+const currentLang = Astro.currentLocale || "en";
+const translateLabels = useTranslations(
+  currentLang as keyof typeof languageList
+);
+
+const linkClasses =
+  "flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-300 hover:bg-white/5 group";
+
+const navLinks = [
+  {
+    href: getRelativeLocaleUrl(currentLang, "/"),
+    label: translateLabels("nav.home"),
+    icon: `<svg class="w-5 h-5 mr-2 text-[#FF6F61] opacity-70 group-hover:opacity-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+          </svg>`,
+    hoverText: "hover:text-[#FF6F61]",
+  },
+  //
+  {
+    href: getRelativeLocaleUrl(currentLang, "docs"),
+    label: "Documentation",
+    icon: `<svg class="w-5 h-5 mr-2 text-[#6B5B95] opacity-70 group-hover:opacity-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 003-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path>
+          </svg>`,
+    hoverText: "hover:text-[#6B5B95]",
+  },
+  // {
+  //   href: getRelativeLocaleUrl(currentLang, "tools"),
+  //   label: translateLabels("nav.tools"),
+  //   icon: `<svg class="w-5 h-5 mr-2 text-[#4CAF50] opacity-70 group-hover:opacity-100" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+  //          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l.637 1.958a1.724 1.724 0 001.616 1.196h2.045c.969 0 1.371 1.24.588 1.81l-1.657 1.2a1.724 1.724 0 000 2.936l1.657 1.2c.783.57.38 1.81-.588 1.81h-2.045a1.724 1.724 0 00-1.616 1.196l-.637 1.958c-.3.921-1.603.921-1.902 0l-.637-1.958a1.724 1.724 0 00-1.616-1.196H6.807c-.969 0-1.371-1.24-.588-1.81l1.657-1.2a1.724 1.724 0 000-2.936l-1.657-1.2c-.783-.57-.38-1.81.588-1.81h2.045a1.724 1.724 0 001.616-1.196l.637-1.958z" />
+  //        </svg>`,
+  //   hoverText: "hover:text-[#4CAF50]",
+  // },
+  // {
+  //   href: getRelativeLocaleUrl(currentLang, "software"),
+  //   label: translateLabels("nav.software"),
+  //   icon: `<svg class="w-5 h-5 mr-2 text-[#1b357e] opacity-70 group-hover:opacity-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  //          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4a4 4 0 014 4v8a4 4 0 01-4 4H8a4 4 0 01-4-4V8a4 4 0 014-4h8m0 12h4m-4 0l-4-4m4 4l4-4"></path>
+  //        </svg>`,
+  //   hoverText: "hover:text-[#1b357e]",
+  // },
+  {
+    href: getRelativeLocaleUrl(currentLang, "download"),
+    label: translateLabels("nav.download"),
+    icon: `<svg class="w-5 h-5 mr-2 text-[#FFD700] opacity-70 group-hover:opacity-100" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+         </svg>`,
+    hoverText: "hover:text-[#FFD700]",
+  },
+  {
+    href: "https://github.com/arturh85/AnkiTaiso",
+    label: "GitHub",
+    icon: `<svg class="w-5 h-5 mr-2 text-[#333] dark:text-[#fff] opacity-70 group-hover:opacity-100" fill="currentColor" viewBox="0 0 24 24">
+            <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"/>
+          </svg>`,
+    hoverText: "hover:text-[#333] dark:hover:text-[#fff]",
+  },
+];
+---
+
+<header
+  class="bg-gradient-to-br from-white to-gray-100 dark:from-gray-900 dark:to-gray-800 border-b border-gray-200 dark:border-gray-700 backdrop-blur-sm fixed w-full top-0 z-50 animate-slideInRight"
+>
+  <div class="container mx-auto flex justify-between items-center px-4 py-3">
+    <a
+      href={getRelativeLocaleUrl(currentLang, "/")}
+      class="flex items-center space-x-2 group"
+    >
+      <span
+        class="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-[#FF6F61] to-[#6B5B95] group-hover:bg-gradient-to-r group-hover:from-[#FF8C78] group-hover:to-[#8B7CB0] transition-all duration-300 animate-shake"
+      >
+        AnkiTaiso
+      </span>
+    </a>
+
+    <nav class="flex items-center space-x-6">
+      <ul class="hidden md:flex space-x-6">
+        {
+          navLinks.map((link) => (
+            <li>
+              <a
+                href={link.href}
+                class={`${linkClasses} ${link.hoverText} animate-linkElectric`}
+              >
+                <span set:html={link.icon} />
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+
+      <button
+        id="mobile-menu-button"
+        class="md:hidden p-2 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors duration-300"
+        aria-label="Abrir menú"
+      >
+        <svg
+          class="w-6 h-6 text-gray-600 dark:text-gray-300"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+
+      <!--<div class="relative group">-->
+      <!--  <button-->
+      <!--    class="p-2 rounded-lg bg-gradient-to-br from-[#FF6F61] to-[#6B5B95] hover:from-[#FF8C78] hover:to-[#8B7CB0] transition-all duration-300 flex items-center shadow-md hover:shadow-lg"-->
+      <!--    aria-label="Cambiar idioma"-->
+      <!--  >-->
+      <!--    <span class="text-sm font-medium uppercase text-white"-->
+      <!--      >{currentLang}</span-->
+      <!--    >-->
+      <!--  </button>-->
+
+      <!--  <div-->
+      <!--    class="absolute right-0 top-full mt-2 w-32 bg-white dark:bg-gray-900 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 border border-gray-200 dark:border-gray-700"-->
+      <!--  >-->
+      <!--    <ul class="py-2">-->
+      <!--      {-->
+      <!--        Object.entries(languageList).map(-->
+      <!--          ([langCode, langName]) =>-->
+      <!--            currentLang !== langCode && (-->
+      <!--              <li>-->
+      <!--                <a-->
+      <!--                  href={getRelativeLocaleUrl(-->
+      <!--                    langCode as any,-->
+      <!--                    currentPathWithoutLocale-->
+      <!--                  )}-->
+      <!--                  class="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors dark:text-white"-->
+      <!--                >-->
+      <!--                  {langName}-->
+      <!--                </a>-->
+      <!--              </li>-->
+      <!--            )-->
+      <!--        )-->
+      <!--      }-->
+      <!--    </ul>-->
+      <!--  </div>-->
+      <!--</div>-->
+
+      <button
+        id="theme-toggle"
+        class="p-2 rounded-lg bg-gradient-to-br from-[#FF6F61] to-[#6B5B95] hover:from-[#FF8C78] hover:to-[#8B7CB0] transition-all duration-300 relative group shadow-md hover:shadow-lg"
+        aria-label="Switch theme"
+      >
+        <div class="flex items-center justify-center w-6 h-6">
+          <span
+            id="theme-icon"
+            class="text-lg transition-transform duration-300">🌙</span
+          >
+        </div>
+        <span
+          class="absolute -top-8 left-1/2 -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded-md opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-md"
+        >
+          {translateLabels("theme.toggle")}
+        </span>
+      </button>
+    </nav>
+  </div>
+
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden fixed top-16 left-0 w-full bg-inherit border-b border-gray-200 dark:border-gray-700 backdrop-blur-sm shadow-lg animate-slideInRight"
+  >
+    <div class="container mx-auto px-4 py-4">
+      <ul class="flex flex-row flex-wrap gap-4 justify-center">
+        {
+          navLinks.map((link) => (
+            <li>
+              <a href={link.href} class={`${linkClasses} ${link.hoverText}`}>
+                <span set:html={link.icon} />
+                {link.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </div>
+</header>
+
+<script is:inline>
+  const themeToggle = document.getElementById("theme-toggle");
+  const themeIcon = document.getElementById("theme-icon");
+  const htmlElement = document.documentElement;
+
+  const toggleTheme = () => {
+    htmlElement.classList.toggle("dark");
+    const isDarkMode = htmlElement.classList.contains("dark");
+    themeIcon.textContent = isDarkMode ? "☀️" : "🌙";
+    themeIcon.classList.add("rotate-[360deg]");
+    setTimeout(() => themeIcon.classList.remove("rotate-[360deg]"), 500);
+    localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+  };
+
+  const savedTheme = localStorage.getItem("theme");
+  if (savedTheme === "light") {
+    htmlElement.classList.remove("dark");
+    themeIcon.textContent = "🌙";
+  } else {
+    htmlElement.classList.add("dark");
+    themeIcon.textContent = "☀️";
+  }
+
+  themeToggle.addEventListener("click", toggleTheme);
+
+  const mobileMenuButton = document.getElementById("mobile-menu-button");
+  const mobileMenu = document.getElementById("mobile-menu");
+
+  const toggleMenu = () => {
+    mobileMenu.classList.toggle("hidden");
+    mobileMenu.classList.toggle("animate-slideInRight");
+  };
+
+  mobileMenuButton.addEventListener("click", (e) => {
+    e.stopPropagation();
+    toggleMenu();
+  });
+
+  document.addEventListener("click", (e) => {
+    if (
+      !mobileMenu.contains(e.target) &&
+      !mobileMenuButton.contains(e.target)
+    ) {
+      mobileMenu.classList.add("hidden");
+      mobileMenu.classList.remove("animate-slideInRight");
+    }
+  });
+
+  window.addEventListener("resize", () => {
+    if (window.innerWidth >= 768) {
+      mobileMenu.classList.add("hidden");
+    }
+  });
+
+  mobileMenu.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      mobileMenu.classList.add("hidden");
+      mobileMenu.classList.remove("animate-slideInRight");
+    });
+  });
+</script>
+
+<style>
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(0);
+      opacity: 1;
+    }
+  }
+  .animate-slideInRight {
+    animation: slideInRight 0.5s ease-out;
+  }
+
+  @keyframes shake {
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+    25% {
+      transform: translateX(-2px);
+    }
+    50% {
+      transform: translateX(2px);
+    }
+    75% {
+      transform: translateX(-2px);
+    }
+  }
+  .animate-shake {
+    animation: shake 0.5s ease-in-out infinite;
+  }
+
+  @keyframes linkElectric {
+    0%,
+    100% {
+      text-shadow:
+        0 0 2px #ff6f61,
+        0 0 4px #ff6f61;
+    }
+    50% {
+      text-shadow:
+        0 0 4px #6b5b95,
+        0 0 8px #6b5b95;
+    }
+  }
+  .animate-linkElectric {
+    animation: linkElectric 2s infinite;
+  }
+</style>

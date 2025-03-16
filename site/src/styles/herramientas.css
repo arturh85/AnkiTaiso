@@ -1,0 +1,46 @@
+/* Efecto de barra lateral para todas las tarjetas */
+.tool-card, .software-card {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tool-card::before, .software-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 0;
+  width: 4px;
+  background: currentColor;
+  transition: height 0.3s ease;
+  z-index: 1;
+}
+
+.tool-card:hover::before, .software-card:hover::before {
+  height: 100%;
+}
+
+/* Estilos base comunes */
+.tool-card, .software-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  margin: 1rem;
+}
+
+.dark .tool-card, .dark .software-card {
+  background: #2d2d2d;
+  border-color: #404040;
+}
+
+/* Efecto hover unificado */
+.tool-card:hover, .software-card:hover {
+  transform: translateX(8px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+}
+
+.dark .tool-card:hover, .dark .software-card:hover {
+  box-shadow: 0 8px 32px rgba(255, 255, 255, 0.05);
+}
