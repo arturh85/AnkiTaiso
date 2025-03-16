@@ -14,14 +14,16 @@ public class ScenarioManager {
   public static string DeckDirPath(string deckName) => $"{UserScenarioPath}/{deckName}";
   public static string WordListPath(string deckName) => $"{DeckDirPath(deckName)}/{WORDLIST_FILENAME}";
   private const string WORDLIST_FILENAME = "wordlist.txt";
-  private const string MAPPING_FILENAME = "mapping.json";
+  private const string CONFIG_FILENAME = "config.json";
 
   public static bool ScenarioExists(string deckName) =>
-    FileAccess.FileExists($"{DeckDirPath(deckName)}/{MAPPING_FILENAME}");
+    FileAccess.FileExists($"{DeckDirPath(deckName)}/{CONFIG_FILENAME}");
 
-  public static async Task<VocabDeck> ImportScenario(Uri ankiUri, string deckName, VocabMapping mapping,
+  public static async Task<VocabDeck> ImportScenario(Uri ankiUri, string deckName, VocabConfig config,
     Action<double>? onUpdateProgress) {
     var ankiService = AnkiConnectApi.GetInstance();
+    var mediaDir = await ankiService.GetMediaDirPath(ankiUri);
+    config.AudioDirectoryPath = mediaDir;
     var cardIds = await ankiService.FindCardsByDeck(ankiUri, deckName);
     if (cardIds.Length == 0) {
       throw new GameException("No cards found!");
@@ -33,8 +35,6 @@ public class ScenarioManager {
     List<VocabEntry> entries = [];
     var dirPath = DeckDirPath(deckName);
     DirAccess.MakeDirRecursiveAbsolute(dirPath);
-
-
     for (var i = 0; i < cardIds.Length; i += batchSize) {
       var batch = cardIds.Skip(i).Take(batchSize).ToArray();
       var cardInfos = await ankiService.CardsInfo(ankiUri, batch);
@@ -43,17 +43,16 @@ public class ScenarioManager {
       }
 
       foreach (var cardInfo in cardInfos) {
-        var entry = BuildVocabEntry(cardInfo, mapping);
+        var entry = BuildVocabEntry(cardInfo, config);
         entries.Add(entry);
-        if (entry.AudioFilename != null && !FileAccess.FileExists($"{DeckDirPath(deckName)}/{entry.AudioFilename}")) {
-          var contents = await ankiService.RetrieveMediaFile(ankiUri, entry.AudioFilename);
-          using var audioFile = FileAccess.Open($"{dirPath}/{entry.AudioFilename}", FileAccess.ModeFlags.Write);
-          if (audioFile == null) {
-            throw new GameException($"failed to create {entry.AudioFilename} for '{deckName}'");
-          }
-
-          audioFile.StoreBuffer(contents);
-        }
+        // if (entry.AudioFilename != null && !FileAccess.FileExists($"{DeckDirPath(deckName)}/{entry.AudioFilename}")) {
+        //   var contents = await ankiService.RetrieveMediaFile(ankiUri, entry.AudioFilename);
+        //   using var audioFile = FileAccess.Open($"{dirPath}/{entry.AudioFilename}", FileAccess.ModeFlags.Write);
+        //   if (audioFile == null) {
+        //     throw new GameException($"failed to create {entry.AudioFilename} for '{deckName}'");
+        //   }
+        //   audioFile.StoreBuffer(contents);
+        // }
       }
 
       var progress = (double)(i + batch.Length) / cardIds.Length * 100;
@@ -61,7 +60,7 @@ public class ScenarioManager {
     }
     vocabDeck.Entries = entries.ToArray();
     StoreDeck(vocabDeck);
-    StoreMapping(mapping, deckName);
+    StoreConfig(config, deckName);
     return vocabDeck;
   }
 
@@ -89,13 +88,13 @@ public class ScenarioManager {
     file.StoreString(contents);
   }
 
-  private static void StoreMapping(VocabMapping mapping, string deckName) {
+  private static void StoreConfig(VocabConfig config, string deckName) {
     var dirPath = DeckDirPath(deckName);
     DirAccess.MakeDirRecursiveAbsolute(dirPath);
-    var json = JsonSerializer.Serialize(mapping, JsonSerializerOptions.Web);
-    using var file = FileAccess.Open($"{dirPath}/{MAPPING_FILENAME}", FileAccess.ModeFlags.Write);
+    var json = JsonSerializer.Serialize(config, JsonSerializerOptions.Web);
+    using var file = FileAccess.Open($"{dirPath}/{CONFIG_FILENAME}", FileAccess.ModeFlags.Write);
     if (file == null) {
-      throw new GameException($"failed to create {MAPPING_FILENAME} for '{deckName}'");
+      throw new GameException($"failed to create {CONFIG_FILENAME} for '{deckName}'");
     }
 
     file.StoreString(json);
@@ -121,24 +120,24 @@ public class ScenarioManager {
     return deck;
   }
 
-  public static VocabMapping? LoadMapping(string deckName) {
+  public static VocabConfig? LoadMapping(string deckName) {
     var dirPath = DeckDirPath(deckName);
-    var filePath = $"{dirPath}/{MAPPING_FILENAME}";
+    var filePath = $"{dirPath}/{CONFIG_FILENAME}";
     if (!FileAccess.FileExists(filePath)) {
       return null;
     }
 
     using var file = FileAccess.Open(filePath, FileAccess.ModeFlags.Read);
     if (file == null) {
-      throw new GameException($"failed to read {MAPPING_FILENAME} for '{deckName}'");
+      throw new GameException($"failed to read {CONFIG_FILENAME} for '{deckName}'");
     }
 
-    var obj = JsonSerializer.Deserialize<VocabMapping>(file.GetAsText(), JsonSerializerOptions.Web);
+    var obj = JsonSerializer.Deserialize<VocabConfig>(file.GetAsText(), JsonSerializerOptions.Web);
     return obj;
   }
 
-  public static VocabEntry BuildVocabEntry(CardInfo card, VocabMapping mapping) {
-    var audioFilename = mapping.AudioKey == null ? null : card.Fields[mapping.AudioKey].Value;
+  public static VocabEntry BuildVocabEntry(CardInfo card, VocabConfig config) {
+    var audioFilename = config.AudioKey == null ? null : card.Fields[config.AudioKey].Value;
     var pattern = @"\[sound:(.*?)\]";
     var match = Regex.Match(audioFilename ?? "", pattern);
     if (match.Success) {
@@ -149,10 +148,10 @@ public class ScenarioManager {
     }
 
     return new VocabEntry {
-      Prompt = card.Fields[mapping.PromptKey].Value ?? "missing",
-      Translation = mapping.TranslationKey == null ? null : card.Fields[mapping.TranslationKey].Value,
+      Prompt = card.Fields[config.PromptKey].Value ?? "missing",
+      Translation = config.TranslationKey == null ? null : card.Fields[config.TranslationKey].Value,
       AudioFilename = audioFilename,
-      Title = mapping.TitleKey == null ? null : card.Fields[mapping.TitleKey].Value
+      Title = config.TitleKey == null ? null : card.Fields[config.TitleKey].Value
     };
   }
 }

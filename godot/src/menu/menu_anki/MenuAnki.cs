@@ -187,7 +187,7 @@ public partial class MenuAnki : Control, IMenuAnki {
     }
   }
 
-  private VocabMapping BuildMapping() =>
+  private VocabConfig BuildMapping() =>
     new() {
       PromptKey = FieldPromptSelect.Selected == -1 ? null! : FieldPromptSelect.GetItemText(FieldPromptSelect.Selected),
       TranslationKey = FieldTranslationSelect.Selected == -1 ? null : FieldTranslationSelect.GetItemText(FieldTranslationSelect.Selected),
