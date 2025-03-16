@@ -69,13 +69,19 @@ public class GameTypingSystem {
   public void RestartGame(IEnumerable<VocabEntry> vocabs) => RestartGame(vocabs.Select(entry => new Vocab(entry)));
 
 
-  public Vocab? NextEntry(bool startVisible = true) {
+  public Vocab? NextEntry(bool startVisible = true, int minLength = 0, int maxLength = int.MaxValue) {
     var validNexts = EntriesInUse.Select(e => e.Entry.Prompt[0]).ToArray();
     var found = false;
     Vocab? vocab = null;
     for (var idx = EntriesLeft.Count - 1; idx >= 0; idx--) {
       vocab = EntriesLeft[idx];
       if (validNexts.Contains(vocab.Entry.Prompt[0])) {
+        continue;
+      }
+      GD.Print(vocab.Entry.Prompt);
+      GD.Print(maxLength);
+      if (vocab.Entry.Prompt.Length < minLength || vocab.Entry.Prompt.Length > maxLength) {
+        GD.Print("invalid");
         continue;
       }
 

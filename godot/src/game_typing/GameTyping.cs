@@ -71,7 +71,7 @@ public partial class GameTyping : Node3D {
 
       foreach (var spawner in waypoint.GetChildren().OfType<ZombieSpawner>()) {
 
-        SpawnEnemy(spawner.GroundPosition);
+        SpawnEnemy(spawner);
       }
 
       _timeLastWaypoint += delta;
@@ -185,23 +185,18 @@ public partial class GameTyping : Node3D {
     if (options == null) {
       return;
     }
-    for (var i = 0; i < Math.Min(options.WordsPlayed, words.Count); i++) {
+    for (var i = 0; i < Math.Min(words.Count, words.Count); i++) {
       WordList.Push(words[i]);
     }
   }
 
 
-  private void SpawnEnemy(Vector3 position) {
-    if (EnemiesContainer.GetChildren().Count >= 5) {
-      return;
-    }
-    var vocab = GameTypingSystem.NextEntry(false);
-    if (vocab == null) {
-      return;
-    }
-    var rng = new RandomNumberGenerator();
-    rng.Randomize();
-    var spawnPosition = position;
+  private void SpawnEnemy(ZombieSpawner spawner) {
+
+    Vocab? vocab = GameTypingSystem.NextEntry(false, spawner.MinWordLength, spawner.MaxWordLength);
+
+    //Random.Shared.NextSingle()
+    var spawnPosition = spawner.GroundPosition;
     var enemy = CreateEnemy3D(vocab, spawnPosition);
     EnemiesContainer.AddChild(enemy);
   }

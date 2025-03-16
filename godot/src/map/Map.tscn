@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://tvo52bwkupen" path="res://src/map/Map.cs" id="1_t88o4"]
 [ext_resource type="Sky" uid="uid://jonn5eom7asv" path="res://src/map/sky/blue_sky.tres" id="1_wl8qu"]
 [ext_resource type="PackedScene" uid="uid://bevjicm4mp18p" path="res://assets/cybercity/testmap.gltf" id="3_tpq63"]
-[ext_resource type="PackedScene" path="res://src/map/CameraWaypoint.tscn" id="4_0qcd2"]
-[ext_resource type="PackedScene" path="res://src/map/ZombieSpawner.tscn" id="4_1ny7u"]
+[ext_resource type="PackedScene" uid="uid://2wom3tt1qejt" path="res://src/map/CameraWaypoint.tscn" id="4_0qcd2"]
+[ext_resource type="PackedScene" uid="uid://dlkjjo27rp5ph" path="res://src/map/ZombieSpawner.tscn" id="4_1ny7u"]
 
 [sub_resource type="Environment" id="Environment_k13y0"]
 background_mode = 2
@@ -136,18 +136,22 @@ CameraPosition = Vector3(-43.6999, 1.7817, -21.1629)
 [node name="ZombieSpawner" parent="WayPoints/CameraWaypoint11" instance=ExtResource("4_1ny7u")]
 transform = Transform3D(0.865894, -0.000676674, -0.500226, 0.000366268, 1, -0.000718707, 0.500226, 0.000439096, 0.865895, -0.884953, -0.00728416, -6.00493)
 GroundPosition = Vector3(-42.9383, 0.0316927, -27.1829)
+MaxWordLength = 4
 
 [node name="ZombieSpawner2" parent="WayPoints/CameraWaypoint11" instance=ExtResource("4_1ny7u")]
 transform = Transform3D(0.865894, -0.000676674, -0.500226, 0.000366268, 1, -0.000718707, 0.500226, 0.000439096, 0.865895, 0.0916481, -0.00914979, -8.87843)
 GroundPosition = Vector3(-41.2258, 0.0316927, -29.6885)
+MaxWordLength = 4
 
 [node name="ZombieSpawner3" parent="WayPoints/CameraWaypoint11" instance=ExtResource("4_1ny7u")]
 transform = Transform3D(0.865894, -0.000676674, -0.500226, 0.000366268, 1, -0.000718707, 0.500226, 0.000439096, 0.865895, -2.61885, -0.0133204, -9.86981)
 GroundPosition = Vector3(-43.5704, 0.031693, -31.3714)
+MaxWordLength = 4
 
 [node name="ZombieSpawner4" parent="WayPoints/CameraWaypoint11" instance=ExtResource("4_1ny7u")]
 transform = Transform3D(0.865894, -0.000676674, -0.500226, 0.000366268, 1, -0.000718707, 0.500226, 0.000439096, 0.865895, 1.5038, -0.010519, -11.7591)
 GroundPosition = Vector3(-39.0918, 0.0316927, -32.084)
+MaxWordLength = 4
 
 [node name="CameraWaypoint12" parent="WayPoints" instance=ExtResource("4_0qcd2")]
 transform = Transform3D(0.293783, -0.000656493, -0.955871, -0.00115729, 0.999998, -0.00104246, 0.955871, 0.00141247, 0.293783, -43.0153, 3.27578, -20.547)
@@ -161,10 +165,12 @@ CameraPosition = Vector3(-43.0516, 1.78169, -19.418)
 [node name="ZombieSpawner" parent="WayPoints/CameraWaypoint2" instance=ExtResource("4_1ny7u")]
 transform = Transform3D(1, 0, -3.35276e-08, 0, 1, 0, 3.35276e-08, 0, 1, 1.79198, 0, -5.34758)
 GroundPosition = Vector3(-37.7803, 0.0316931, -17.4129)
+MinWordLength = 12
 
 [node name="ZombieSpawner2" parent="WayPoints/CameraWaypoint2" instance=ExtResource("4_1ny7u")]
 transform = Transform3D(1, 0, -3.72529e-08, 0, 1, 0, 3.72529e-08, 0, 1, -2.10761, 0, -5.19096)
 GroundPosition = Vector3(-37.7803, 0.0316931, -21.3156)
+MinWordLength = 12
 
 [node name="CameraWaypoint4" parent="WayPoints" instance=ExtResource("4_0qcd2")]
 transform = Transform3D(0.662123, 0, -0.749394, 0, 0.999999, 0, 0.749394, 0, 0.662123, -43.7055, 1.17491, -14.9312)

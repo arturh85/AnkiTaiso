@@ -7,6 +7,10 @@ using Godot;
 public partial class ZombieSpawner : Node3D {
 
   [Export] public Vector3 GroundPosition;
+  [Export] public double MinSpawnTime = 0.0;
+  [Export] public double MaxSpawnTime = 1.0;
+  [Export] public int MinWordLength = 0;
+  [Export] public int MaxWordLength = 99;
 
   public void OnReady() => SetGroundPosition();
 
