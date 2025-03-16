@@ -30,9 +30,9 @@ public partial class MenuAnki : Control, IMenuAnki {
   private string[]? _deckNames;
   private bool _showOnlyExistingDecks;
 
-  [Dependency] public IAppRepo AppRepo => DependentExtensions.DependOn<IAppRepo>(this);
-  [Dependency] public IGameTypingRepo GameTypingRepo => DependentExtensions.DependOn<IGameTypingRepo>(this);
-  [Dependency] public IMenuRepo MenuRepo => DependentExtensions.DependOn<IMenuRepo>(this);
+  [Dependency] private IAppRepo AppRepo => DependentExtensions.DependOn<IAppRepo>(this);
+  [Dependency] private IGameTypingRepo GameTypingRepo => DependentExtensions.DependOn<IGameTypingRepo>(this);
+  [Dependency] private IMenuRepo MenuRepo => DependentExtensions.DependOn<IMenuRepo>(this);
 
 
   [Signal]
@@ -199,7 +199,6 @@ public partial class MenuAnki : Control, IMenuAnki {
     if (_cardInfo == null) {
       return;
     }
-
     var vocabEntry = ScenarioManager.BuildVocabEntry(_cardInfo, BuildMapping());
     var vocab = new Vocab(vocabEntry);
     PreviewEnemyPanel.UpdateVocab(vocab);
@@ -251,6 +250,8 @@ public partial class MenuAnki : Control, IMenuAnki {
         FieldTranslationSelect.Selected = -1;
         FieldAudioSelect.Selected = -1;
       }
+
+      OnConfigChanged(0);
     }
     catch (Exception e) {
       ErrorLabel.Text = e.Message;
