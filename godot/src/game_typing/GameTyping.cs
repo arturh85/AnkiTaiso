@@ -195,10 +195,13 @@ public partial class GameTyping : Node3D {
 
     Vocab? vocab = GameTypingSystem.NextEntry(false, spawner.MinWordLength, spawner.MaxWordLength);
 
-    //Random.Shared.NextSingle()
+    var startTime = spawner.MinSpawnTime + Random.Shared.NextSingle() * (spawner.MaxSpawnTime - spawner.MinSpawnTime);
+
     var spawnPosition = spawner.GroundPosition;
-    var enemy = CreateEnemy3D(vocab, spawnPosition);
+    var enemy = CreateEnemy3D(vocab, spawnPosition, startTime);
     EnemiesContainer.AddChild(enemy);
+
+    spawner.Spawned = true;
   }
 
   private Vector3 FindValidSpawnPosition3D(RandomNumberGenerator rng, float radius, float minDistance,
@@ -227,8 +230,8 @@ public partial class GameTyping : Node3D {
     return false;
   }
 
-  private Enemy CreateEnemy3D(Vocab vocab, Vector3 position) {
-    var enemy = Enemy.Instantiate(vocab, new Vector3(PlayerPosition.X, 0, PlayerPosition.Z));
+  private Enemy CreateEnemy3D(Vocab vocab, Vector3 position, double startTime) {
+    var enemy = Enemy.Instantiate(vocab, new Vector3(PlayerPosition.X, 0, PlayerPosition.Z), startTime);
     enemy.Position = position;
     return enemy;
   }

@@ -12,6 +12,7 @@ public partial class Enemy : Node3D {
   public override void _Notification(int what) => this.Notify(what);
 
   private Vector3 _movementTarget;
+  private double _startTime;
   public bool Moving;
   public Vocab Vocab = null!;
   public bool dead;
@@ -21,9 +22,11 @@ public partial class Enemy : Node3D {
   public delegate void OnDeleteEventHandler();
 
   [OnInstantiate]
-  private void Initialise(Vocab vocab, Vector3 movementTarget) {
+  private void Initialise(Vocab vocab, Vector3 movementTarget, double startTime) {
     _movementTarget = movementTarget;
+    _startTime = startTime;
     Vocab = vocab;
+    StartDelay.WaitTime = _startTime;
   }
 
   public override void _Ready() => Model.Hide();
@@ -31,15 +34,22 @@ public partial class Enemy : Node3D {
   private void OnAnimationStarted(StringName animname) => Model.Show();
 
   public void OnReady() {
+
+    ImpactSprite.Hide();
+
+    StartDelay.Timeout += StartDelayTimeout;
+    StartDelay.Start();
+  }
+
+  void StartDelayTimeout() { 
     var player = GetAnimationTree();
     player.AnimationStarted += OnAnimationStarted;
     player.AnimationFinished += OnAnimationFinished;
     player.Active = true;
 
-    ImpactSprite.Hide();
-
     GameTypingSystem.OnHit += OnVocabHit;
     GameTypingSystem.OnMistake += OnVocabMistake;
+
   }
 
 

@@ -11,6 +11,7 @@ public partial class ZombieSpawner : Node3D {
   [Export] public double MaxSpawnTime = 1.0;
   [Export] public int MinWordLength = 0;
   [Export] public int MaxWordLength = 99;
+  public bool Spawned = false;
 
   public void OnReady() => SetGroundPosition();
 
