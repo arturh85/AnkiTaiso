@@ -19,8 +19,10 @@ script = ExtResource("1_rojy2")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 0
-offset_right = 202.0
-offset_bottom = 144.0
+offset_left = -101.0
+offset_top = -72.0
+offset_right = 101.0
+offset_bottom = 72.0
 theme = SubResource("Theme_rojy2")
 
 [node name="BackgroundContainer" type="ColorRect" parent="PanelContainer"]

@@ -113,6 +113,12 @@ current = true
 transform = Transform3D(0.0308525, 0, -0.999524, 0, 0.999999, 0, 0.999524, 0, 0.0308525, -51.1775, 2.94868, -20.0648)
 CameraPosition = Vector3(-51.1775, 1.78169, -20.0648)
 
+[node name="ZombieSpawner10" parent="WayPoints/CameraWaypoint" instance=ExtResource("4_1ny7u")]
+transform = Transform3D(1, 0, 9.31323e-09, 0, 1, 0, -9.31323e-09, 0, 1, 0.322927, 0, -6.8482)
+GroundPosition = Vector3(-44.3226, 0.0316927, -19.9533)
+MaxSpawnTime = 0.0
+MinWordLength = 16
+
 [node name="CameraWaypoint7" parent="WayPoints" instance=ExtResource("4_0qcd2")]
 transform = Transform3D(-0.116712, -0.00117043, -0.993165, -0.00115729, 0.999998, -0.00104246, 0.993165, 0.00102769, -0.116713, -45.7699, 3.27578, -20.0648)
 Speed = 2.0
@@ -136,21 +142,31 @@ CameraPosition = Vector3(-43.6999, 1.7817, -21.1629)
 [node name="ZombieSpawner" parent="WayPoints/CameraWaypoint11" instance=ExtResource("4_1ny7u")]
 transform = Transform3D(0.865894, -0.000676674, -0.500226, 0.000366268, 1, -0.000718707, 0.500226, 0.000439096, 0.865895, -0.884953, -0.00728416, -6.00493)
 GroundPosition = Vector3(-42.9383, 0.0316927, -27.1829)
+MinWordLength = 4
 MaxWordLength = 4
 
 [node name="ZombieSpawner2" parent="WayPoints/CameraWaypoint11" instance=ExtResource("4_1ny7u")]
 transform = Transform3D(0.865894, -0.000676674, -0.500226, 0.000366268, 1, -0.000718707, 0.500226, 0.000439096, 0.865895, 0.0916481, -0.00914979, -8.87843)
 GroundPosition = Vector3(-41.2258, 0.0316927, -29.6885)
+MinSpawnTime = 1.0
+MaxSpawnTime = 3.0
+MinWordLength = 4
 MaxWordLength = 4
 
 [node name="ZombieSpawner3" parent="WayPoints/CameraWaypoint11" instance=ExtResource("4_1ny7u")]
 transform = Transform3D(0.865894, -0.000676674, -0.500226, 0.000366268, 1, -0.000718707, 0.500226, 0.000439096, 0.865895, -2.61885, -0.0133204, -9.86981)
 GroundPosition = Vector3(-43.5704, 0.031693, -31.3714)
+MinSpawnTime = 1.0
+MaxSpawnTime = 4.0
+MinWordLength = 4
 MaxWordLength = 4
 
 [node name="ZombieSpawner4" parent="WayPoints/CameraWaypoint11" instance=ExtResource("4_1ny7u")]
 transform = Transform3D(0.865894, -0.000676674, -0.500226, 0.000366268, 1, -0.000718707, 0.500226, 0.000439096, 0.865895, 1.5038, -0.010519, -11.7591)
 GroundPosition = Vector3(-39.0918, 0.0316927, -32.084)
+MinSpawnTime = 6.0
+MaxSpawnTime = 7.0
+MinWordLength = 4
 MaxWordLength = 4
 
 [node name="CameraWaypoint12" parent="WayPoints" instance=ExtResource("4_0qcd2")]
@@ -165,12 +181,16 @@ CameraPosition = Vector3(-43.0516, 1.78169, -19.418)
 [node name="ZombieSpawner" parent="WayPoints/CameraWaypoint2" instance=ExtResource("4_1ny7u")]
 transform = Transform3D(1, 0, -3.35276e-08, 0, 1, 0, 3.35276e-08, 0, 1, 1.79198, 0, -5.34758)
 GroundPosition = Vector3(-37.7803, 0.0316931, -17.4129)
-MinWordLength = 12
+MinWordLength = 6
+MaxWordLength = 10
 
 [node name="ZombieSpawner2" parent="WayPoints/CameraWaypoint2" instance=ExtResource("4_1ny7u")]
 transform = Transform3D(1, 0, -3.72529e-08, 0, 1, 0, 3.72529e-08, 0, 1, -2.10761, 0, -5.19096)
 GroundPosition = Vector3(-37.7803, 0.0316931, -21.3156)
-MinWordLength = 12
+MinSpawnTime = 1.0
+MaxSpawnTime = 3.0
+MinWordLength = 6
+MaxWordLength = 10
 
 [node name="CameraWaypoint4" parent="WayPoints" instance=ExtResource("4_0qcd2")]
 transform = Transform3D(0.662123, 0, -0.749394, 0, 0.999999, 0, 0.749394, 0, 0.662123, -43.7055, 1.17491, -14.9312)
@@ -187,16 +207,206 @@ transform = Transform3D(-0.990513, 0, -0.13741, 0, 0.999999, 0, 0.13741, 0, -0.9
 CameraPosition = Vector3(-43.7692, 1.78169, -9.29721)
 
 [node name="ZombieSpawner" parent="WayPoints/CameraWaypoint3" instance=ExtResource("4_1ny7u")]
-transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 0.795597, 0, -5.73502)
-GroundPosition = Vector3(-43.7692, 0.0316932, -3.50727)
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0.795601, -2.38419e-07, -5.73501)
+GroundPosition = Vector3(-43.7692, 0.031693, -3.50728)
+MaxSpawnTime = 2.0
+MinWordLength = 10
 
 [node name="ZombieSpawner2" parent="WayPoints/CameraWaypoint3" instance=ExtResource("4_1ny7u")]
-transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -2.25684, 0, -6.15847)
-GroundPosition = Vector3(-40.6875, 0.0316932, -3.50728)
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, -2.25684, -2.38419e-07, -6.15847)
+GroundPosition = Vector3(-40.6875, 0.031693, -3.50728)
+MaxSpawnTime = 2.0
+MinWordLength = 10
 
 [node name="ZombieSpawner3" parent="WayPoints/CameraWaypoint3" instance=ExtResource("4_1ny7u")]
-transform = Transform3D(1, 0, -4.47035e-08, 0, 1, 0, 4.47035e-08, 0, 1, 1.40326, 0, -11.1467)
-GroundPosition = Vector3(-43.6275, 0.0316932, 1.93656)
+transform = Transform3D(1, 0, -1.49012e-08, 0, 1, 0, 1.49012e-08, 0, 1, 1.40327, -2.38419e-07, -11.1467)
+GroundPosition = Vector3(-43.6275, 0.031693, 1.93656)
+MinSpawnTime = 2.0
+MaxSpawnTime = 5.0
+MinWordLength = 14
+
+[node name="CameraWaypoint13" parent="WayPoints" instance=ExtResource("4_0qcd2")]
+transform = Transform3D(-0.798099, 0, -0.602526, 0, 0.999999, 0, 0.602526, 0, -0.798099, -43.086, 1.17491, -2.12732)
+CameraPosition = Vector3(-43.086, 1.78169, -2.12732)
+
+[node name="CameraWaypoint14" parent="WayPoints" instance=ExtResource("4_0qcd2")]
+transform = Transform3D(-0.507778, 0, -0.861487, 0, 0.999999, 0, 0.861487, 0, -0.507778, -42.02, 1.17491, -1.60756)
+CameraPosition = Vector3(-42.02, 1.78169, -1.60756)
+
+[node name="CameraWaypoint15" parent="WayPoints" instance=ExtResource("4_0qcd2")]
+transform = Transform3D(-0.08326, 0, -0.996527, 0, 0.999999, 0, 0.996527, 0, -0.08326, -41.3103, 1.17491, -1.48526)
+CameraPosition = Vector3(-41.3103, 1.78169, -1.48526)
+
+[node name="CameraWaypoint16" parent="WayPoints" instance=ExtResource("4_0qcd2")]
+transform = Transform3D(-0.08326, 0, -0.996527, 0, 0.999999, 0, 0.996527, 0, -0.08326, -36.7411, 1.17491, -1.48526)
+CameraPosition = Vector3(-36.7411, 1.78169, -1.48526)
+
+[node name="CameraWaypoint17" parent="WayPoints" instance=ExtResource("4_0qcd2")]
+transform = Transform3D(0.999939, 0, -0.0109602, 0, 0.999999, 0, 0.0109602, 0, 0.999939, -35.5359, 1.17491, -1.48526)
+CameraPosition = Vector3(-35.5359, 1.78169, -1.48526)
+
+[node name="ZombieSpawner" parent="WayPoints/CameraWaypoint17" instance=ExtResource("4_1ny7u")]
+transform = Transform3D(1, 0, 9.31323e-10, 0, 1, 0, -9.31323e-10, 0, 1, -2.5364, 0, -10.6365)
+GroundPosition = Vector3(-37.9555, 0.031693, -12.1489)
+MaxSpawnTime = 20.0
+MinWordLength = 5
+MaxWordLength = 10
+
+[node name="ZombieSpawner2" parent="WayPoints/CameraWaypoint17" instance=ExtResource("4_1ny7u")]
+transform = Transform3D(1, 0, 9.31323e-10, 0, 1, 0, -9.31323e-10, 0, 1, 4.65883, 0, -9.98327)
+GroundPosition = Vector3(-30.7679, 0.031693, -11.4169)
+MaxSpawnTime = 20.0
+MinWordLength = 5
+MaxWordLength = 10
+
+[node name="ZombieSpawner3" parent="WayPoints/CameraWaypoint17" instance=ExtResource("4_1ny7u")]
+transform = Transform3D(1, 0, 1.86265e-09, 0, 1, 0, -1.86265e-09, 0, 1, 1.00179, 0, -7.16085)
+GroundPosition = Vector3(-34.4556, 0.031693, -8.6347)
+MaxSpawnTime = 20.0
+MinWordLength = 5
+MaxWordLength = 10
+
+[node name="ZombieSpawner4" parent="WayPoints/CameraWaypoint17" instance=ExtResource("4_1ny7u")]
+transform = Transform3D(1, 0, 1.86265e-09, 0, 1, 0, -1.86265e-09, 0, 1, -2.48952, 0, -5.3821)
+GroundPosition = Vector3(-37.9662, 0.0316927, -6.89432)
+MaxSpawnTime = 20.0
+MinWordLength = 5
+MaxWordLength = 10
+
+[node name="ZombieSpawner5" parent="WayPoints/CameraWaypoint17" instance=ExtResource("4_1ny7u")]
+transform = Transform3D(1, 0, 1.86265e-09, 0, 1, 0, -1.86265e-09, 0, 1, -0.498619, 0, -9.6308)
+GroundPosition = Vector3(-35.9289, 0.0316927, -11.1209)
+MaxSpawnTime = 20.0
+MinWordLength = 5
+MaxWordLength = 10
+
+[node name="ZombieSpawner6" parent="WayPoints/CameraWaypoint17" instance=ExtResource("4_1ny7u")]
+transform = Transform3D(1, 0, 2.79397e-09, 0, 1, 0, -2.79397e-09, 0, 1, 3.19676, 0, -5.48656)
+GroundPosition = Vector3(-32.2792, 0.0316927, -6.93645)
+MaxSpawnTime = 20.0
+MinWordLength = 5
+MaxWordLength = 10
+
+[node name="ZombieSpawner7" parent="WayPoints/CameraWaypoint17" instance=ExtResource("4_1ny7u")]
+transform = Transform3D(1, 0, 3.72529e-09, 0, 1, 0, -3.72529e-09, 0, 1, 2.14518, 0, -11.0567)
+GroundPosition = Vector3(-33.2696, 0.031693, -12.5177)
+MaxSpawnTime = 20.0
+MinWordLength = 5
+MaxWordLength = 10
+
+[node name="ZombieSpawner8" parent="WayPoints/CameraWaypoint17" instance=ExtResource("4_1ny7u")]
+transform = Transform3D(1, 0, 4.65661e-09, 0, 1, 0, -4.65661e-09, 0, 1, -0.870457, 0, -6.02948)
+GroundPosition = Vector3(-36.3402, 0.031693, -7.52391)
+MaxSpawnTime = 20.0
+MinWordLength = 5
+MaxWordLength = 10
+
+[node name="ZombieSpawner9" parent="WayPoints/CameraWaypoint17" instance=ExtResource("4_1ny7u")]
+transform = Transform3D(1, 0, 5.58794e-09, 0, 1, 0, -5.58794e-09, 0, 1, 5.95241, 0, -7.0339)
+GroundPosition = Vector3(-29.5067, 0.031693, -8.45349)
+MinSpawnTime = 15.0
+MaxSpawnTime = 20.0
+MinWordLength = 15
+
+[node name="ZombieSpawner10" parent="WayPoints/CameraWaypoint17" instance=ExtResource("4_1ny7u")]
+transform = Transform3D(1, 0, 5.58794e-09, 0, 1, 0, -5.58794e-09, 0, 1, -3.21007, 0, -8.17555)
+GroundPosition = Vector3(-38.6561, 0.031693, -9.6955)
+MinSpawnTime = 15.0
+MaxSpawnTime = 20.0
+MinWordLength = 15
+
+[node name="CameraWaypoint18" parent="WayPoints" instance=ExtResource("4_0qcd2")]
+transform = Transform3D(-0.08326, 0, -0.996527, 0, 0.999999, 0, 0.996527, 0, -0.08326, -34.1609, 1.17491, -1.48526)
+CameraPosition = Vector3(-34.1609, 1.78169, -1.48526)
+
+[node name="ZombieSpawner10" parent="WayPoints/CameraWaypoint18" instance=ExtResource("4_1ny7u")]
+transform = Transform3D(1, 0, 7.45058e-09, 0, 1, 0, -7.45058e-09, 0, 1, -0.482613, 0, -3.70637)
+GroundPosition = Vector3(-30.4272, 0.031693, -1.6576)
+MaxSpawnTime = 0.0
+MinWordLength = 16
+MaxWordLength = 20
+
+[node name="CameraWaypoint19" parent="WayPoints" instance=ExtResource("4_0qcd2")]
+transform = Transform3D(-0.08326, 0, -0.996527, 0, 0.999999, 0, 0.996527, 0, -0.08326, -27.6831, 1.17491, -1.48526)
+Speed = 3.0
+CameraPosition = Vector3(-27.6831, 1.78169, -1.48526)
+
+[node name="CameraWaypoint20" parent="WayPoints" instance=ExtResource("4_0qcd2")]
+transform = Transform3D(0.0303295, 0, -0.999539, 0, 0.999999, 0, 0.999539, 0, 0.0303295, -17.4737, 1.17491, -0.61963)
+Speed = 0.01
+CameraPosition = Vector3(-17.4737, 1.78169, -0.61963)
+
+[node name="CameraWaypoint21" parent="WayPoints" instance=ExtResource("4_0qcd2")]
+transform = Transform3D(0.0303295, 0, -0.999539, 0, 0.999999, 0, 0.999539, 0, 0.0303295, -17.2562, 1.17491, -0.61963)
+CameraPosition = Vector3(-17.2562, 1.78169, -0.61963)
+
+[node name="CameraWaypoint22" parent="WayPoints" instance=ExtResource("4_0qcd2")]
+transform = Transform3D(0.977168, 0, -0.212467, 0, 0.999999, 0, 0.212467, 0, 0.977168, -16.8758, 1.17491, -0.61963)
+Speed = 0.1
+CameraPosition = Vector3(-16.8758, 1.78169, -0.61963)
+
+[node name="ZombieSpawner" parent="WayPoints/CameraWaypoint22" instance=ExtResource("4_1ny7u")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, -1.04936, 0, -11.3815)
+GroundPosition = Vector3(-15.483, 0.031693, -11.9642)
+MaxSpawnTime = 10.0
+MinWordLength = 2
+MaxWordLength = 2
+
+[node name="ZombieSpawner2" parent="WayPoints/CameraWaypoint22" instance=ExtResource("4_1ny7u")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 0.257683, 0, -10.7188)
+GroundPosition = Vector3(-14.3466, 0.0316929, -11.0389)
+MaxSpawnTime = 10.0
+MinWordLength = 2
+MaxWordLength = 2
+
+[node name="ZombieSpawner3" parent="WayPoints/CameraWaypoint22" instance=ExtResource("4_1ny7u")]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, -0.489174, 0, -9.53926)
+GroundPosition = Vector3(-15.327, 0.0316927, -10.045)
+MaxSpawnTime = 10.0
+MinWordLength = 2
+MaxWordLength = 2
+
+[node name="ZombieSpawner4" parent="WayPoints/CameraWaypoint22" instance=ExtResource("4_1ny7u")]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, -0.0891762, 0, -12.6742)
+GroundPosition = Vector3(-14.2701, 0.0316931, -13.0234)
+MaxSpawnTime = 10.0
+MinWordLength = 2
+MaxWordLength = 2
+
+[node name="ZombieSpawner5" parent="WayPoints/CameraWaypoint22" instance=ExtResource("4_1ny7u")]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0.705166, 0, -8.94412)
+GroundPosition = Vector3(-14.2864, 0.031693, -9.20971)
+MaxSpawnTime = 10.0
+MinWordLength = 2
+MaxWordLength = 2
+
+[node name="ZombieSpawner6" parent="WayPoints/CameraWaypoint22" instance=ExtResource("4_1ny7u")]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, -0.274273, 0, -7.94202)
+GroundPosition = Vector3(-15.4564, 0.031693, -8.43859)
+MaxSpawnTime = 10.0
+MinWordLength = 2
+MaxWordLength = 2
+
+[node name="ZombieSpawner7" parent="WayPoints/CameraWaypoint22" instance=ExtResource("4_1ny7u")]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 1.013, 0, -7.58044)
+GroundPosition = Vector3(-14.2753, 0.031693, -7.81176)
+MaxSpawnTime = 10.0
+MinWordLength = 2
+MaxWordLength = 2
+
+[node name="ZombieSpawner8" parent="WayPoints/CameraWaypoint22" instance=ExtResource("4_1ny7u")]
+transform = Transform3D(1, 0, 2.98023e-08, 0, 1, 0, -2.98023e-08, 0, 1, 0.0827694, 0, -6.81006)
+GroundPosition = Vector3(-15.348, 0.0316932, -7.25662)
+MaxSpawnTime = 10.0
+MinWordLength = 2
+MaxWordLength = 2
+
+[node name="ZombieSpawner9" parent="WayPoints/CameraWaypoint22" instance=ExtResource("4_1ny7u")]
+transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 1.30659, 0, -6.31882)
+GroundPosition = Vector3(-14.2565, 0.031693, -6.51657)
+MaxSpawnTime = 10.0
+MinWordLength = 2
+MaxWordLength = 2
 
 [node name="World" type="Node3D" parent="."]
 

@@ -41,11 +41,13 @@ public partial class Enemy : Node3D {
     StartDelay.Start();
   }
 
-  void StartDelayTimeout() { 
+  void StartDelayTimeout() {
+
     var player = GetAnimationTree();
     player.AnimationStarted += OnAnimationStarted;
     player.AnimationFinished += OnAnimationFinished;
     player.Active = true;
+
 
     GameTypingSystem.OnHit += OnVocabHit;
     GameTypingSystem.OnMistake += OnVocabMistake;

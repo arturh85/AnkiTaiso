@@ -76,12 +76,22 @@ public partial class GameTyping : Node3D {
 
       _timeLastWaypoint += delta;
     }
-    else if (EnemiesContainer.GetChildCount() == 0 && _timeStartcamera == 0.0) { // finished waypoint
-      _timeStartcamera = _timeLastWaypoint;
-      if (_currentWaypoint == Waypoints.Count - 1) {
-        _currentWaypoint = 0;
+    else if (EnemiesContainer.GetChildCount() == 0 && _timeStartcamera == 0.0) { // finished waypoint?
+      bool finished = true;
+      foreach (var spawner in waypoint.GetChildren().OfType<ZombieSpawner>()) {
+        if (!spawner.Spawned) {
+          finished = false;
+          break;
+        }
       }
-      _timeLastWaypoint += delta;
+
+      if (finished) {
+        _timeStartcamera = _timeLastWaypoint;
+        if (_currentWaypoint == Waypoints.Count - 1) {
+          _currentWaypoint = 0;
+        }
+        _timeLastWaypoint += delta;
+      }
     }
 
     if (_timeStartcamera > 0.0 && _currentWaypoint < Waypoints.Count - 1) { // moving to next waypoint

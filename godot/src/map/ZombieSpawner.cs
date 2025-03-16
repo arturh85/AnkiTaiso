@@ -1,5 +1,7 @@
 namespace ankitaiso.map;
 
+using System;
+using System.Drawing;
 using Godot;
 
 [SceneTree]
@@ -30,6 +32,16 @@ public partial class ZombieSpawner : Node3D {
     if (!Engine.IsEditorHint()) {
       return;
     }
+    var material = EditorPosition.GetSurfaceOverrideMaterial(0);
+    Godot.Color color = Godot.Colors.White;
+
+    color.R = Math.Min((float)((Math.Max(MinWordLength, 2) - 2)) / 14.0f, 1.0f);
+
+    color.B = 1.0f - color.R;
+    color.G = 0.0f;
+    material.Set("albedo_color", color);
+    material.Set("emission", color);
+    EditorPosition.SetSurfaceOverrideMaterial(0, material);
 
     SetGroundPosition();
 
