@@ -138,13 +138,13 @@ public class GameTypingSystem {
           value = new CharStatistic(c);
           StatisticByChar.Add(c, value);
         }
+        success = EntryActive.OnInput(input);
         if (success) {
           value.SuccessCount += 1;
         }
         else {
           value.FailCount += 1;
         }
-        success = EntryActive.OnInput(input);
       }
       else if (EntryActive.NextVariants != null) {
         var c = EntryActive.Next;
@@ -161,6 +161,7 @@ public class GameTypingSystem {
             success = EntryActive.OnInput(EntryActive.Next);
             Buffer = "";
             value.SuccessCount += 1;
+            EntryActive.ShowHint = false;
           }
           else {
             Buffer = bufferInput;
@@ -169,7 +170,11 @@ public class GameTypingSystem {
 
           break;
         }
-        value.FailCount += 1;
+
+        if (!success) {
+          EntryActive.ShowHint = true;
+          value.FailCount += 1;
+        }
       }
       else {
         var c = EntryActive.Next;

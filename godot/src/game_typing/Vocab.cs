@@ -13,6 +13,7 @@ public class Vocab {
   public readonly VocabEntry Entry;
   public string Next;
   public string InputBuffer;
+  public bool ShowHint;
   public List<string>? NextVariants;
 
   private static readonly HangeulRomaniser _hangeulRomaniser = new ();
@@ -28,6 +29,7 @@ public class Vocab {
     SetNext(0);
     State = VocabState.Hidden;
     InputBuffer = "";
+    ShowHint = false;
   }
 
   private void SetNext(int idx) {

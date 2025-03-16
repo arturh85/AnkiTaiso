@@ -65,7 +65,9 @@ public class GameTypingSystemTest {
     game.GetActiveEntry().ShouldNotBeNull();
     game.GetActiveEntry()!.Entry.Prompt.ShouldBe("abc");
     game.StatisticTotalError.ShouldBe(1);
+    game.GetActiveEntry()!.ShowHint.ShouldBeFalse();
     game.OnInput(Key.Y).ShouldBeFalse();
+    game.GetActiveEntry()!.ShowHint.ShouldBeFalse();
     game.StatisticByChar["b"].FailCount.ShouldBe(1);
     game.StatisticTotalError.ShouldBe(2);
     game.OnInput(Key.B).ShouldBeTrue();
@@ -114,12 +116,16 @@ public class GameTypingSystemTest {
     game.GetActiveEntry().ShouldNotBeNull();
     game.GetActiveEntry()!.Entry.Prompt.ShouldBe("カタカナ");
     game.GetActiveEntry()!.InputBuffer.ShouldBe("カ");
+    game.GetActiveEntry()!.ShowHint.ShouldBeFalse();
     game.OnInput(Key.X).ShouldBeFalse();
+    game.GetActiveEntry()!.ShowHint.ShouldBeTrue();
     game.Buffer.Should().Be("");
     game.OnInput(Key.T).ShouldBeTrue();
     game.Buffer.Should().Be("t");
+    game.GetActiveEntry()!.ShowHint.ShouldBeTrue();
     game.OnInput(Key.A).ShouldBeTrue();
     game.Buffer.Should().Be("");
+    game.GetActiveEntry()!.ShowHint.ShouldBeFalse();
     game.GetActiveEntry()!.InputBuffer.ShouldBe("カタ");
     game.OnInput(Key.K).ShouldBeTrue();
     game.Buffer.Should().Be("k");

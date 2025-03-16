@@ -31,9 +31,9 @@ public partial class EnemyPanel : Control {
     set => InputLabel.Set("bbcode", value);
   }
 
-  public string DebugLabelBbcode {
-    get => DebugLabel.Get("bbcode").ToString();
-    set => DebugLabel.Set("bbcode", value);
+  public string HintLabelBbcode {
+    get => HintLabel.Get("bbcode").ToString();
+    set => HintLabel.Set("bbcode", value);
   }
 
   [OnInstantiate]
@@ -62,7 +62,6 @@ public partial class EnemyPanel : Control {
     if (PromptLabelBbcode != vocab.Entry.Prompt) {
       PromptLabelBbcode = vocab.Entry.Prompt;
     }
-
     if (vocab.Entry.Title == null) {
       TitleLabel.Hide();
     }
@@ -87,10 +86,15 @@ public partial class EnemyPanel : Control {
         InputLabelBbcode = "";
       }
     }
-
-    var targetDebugOutput = vocab.NextVariants != null ? string.Join(", ", vocab.NextVariants) : vocab.Next;
-    if (DebugLabelBbcode != targetDebugOutput) {
-      DebugLabelBbcode = targetDebugOutput;
+    if (vocab.ShowHint) {
+      var targetDebugOutput = vocab.NextVariants != null ? string.Join(", ", vocab.NextVariants) : vocab.Next;
+      if (HintLabelBbcode != targetDebugOutput) {
+        HintLabelBbcode = targetDebugOutput;
+      }
+      HintLabel.Show();
+    }
+    else {
+      HintLabel.Hide();
     }
   }
 }
