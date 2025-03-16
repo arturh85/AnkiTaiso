@@ -73,6 +73,7 @@ public partial class Enemy : Node3D {
     if (Vocab.State == VocabState.Completed) {
       GetAnimationTree().Set("parameters/StateMachine/conditions/die", true);
       dead = true;
+      Moving = false;
     }
 
     var offset = NodeUtils.RandomChild<Node3D>(BulletHitOffsets);
@@ -129,15 +130,37 @@ public partial class Enemy : Node3D {
   }
 
   public override void _Process(double delta) {
-    LookAt(_movementTarget, Vector3.Up);
+
+    var PosXZ = GlobalPosition;
+    PosXZ.Y = 0;
+    var targetXZ = _movementTarget;
+    targetXZ.Y = GlobalPosition.Y;
+
+    LookAt(targetXZ, Vector3.Up);
+
+    targetXZ.Y = 0;
+
     if (!Moving) {
       return;
     }
 
-
-    var distance = Position.DistanceTo(_movementTarget);
+    var distance = PosXZ.DistanceTo(targetXZ);
     if (distance > 2.1) {
-      Position = Position.MoveToward(_movementTarget, (float)delta * 1.1f);
+      var newPos = PosXZ.MoveToward(targetXZ, (float)delta * 1.1f);
+
+      var spaceState = GetWorld3D().DirectSpaceState;
+
+      var query = PhysicsRayQueryParameters3D.Create(GlobalPosition + new Vector3(0, 999, 0), GlobalPosition + new Vector3(0, -999, 0));
+      var result = spaceState.IntersectRay(query);
+
+      if (result.Count > 0) {
+        newPos.Y = result["position"].AsVector3().Y;
+      }
+      GlobalPosition = newPos;
+
+      //var direction = (Position - _movementTarget).Normalized();
+      //GD.Print(direction);
+      //Set("constant_linear_velocity", direction * 2.0f);
     }
     else {
       GetAnimationTree().Set("parameters/StateMachine/conditions/arrived", true);
