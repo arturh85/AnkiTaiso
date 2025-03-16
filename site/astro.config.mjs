@@ -11,7 +11,7 @@ export default defineConfig({
       prefixDefaultLocale: false,
     }
   },
-  site: 'https://arturh85.github.io/AnkiTaiso',
+  site: 'https://arturh85.github.io/',
   base: '/AnkiTaiso',
   output: 'static',
   integrations: [tailwind(), react()],
