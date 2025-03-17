@@ -46,7 +46,6 @@ public partial class GameTyping : Node3D {
 
   public void OnReady() {
     SetPaused(true);
-    var startAll = Stopwatch.GetTimestamp();
     var thread = new Thread(delegate() {
       for (var i = 0; i < MAX_ENEMY_PANELS; i++) {
         var panel = EnemyPanel.Instantiate();

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cywpu6lxdjhuu"]
+[gd_scene load_steps=11 format=3 uid="uid://cywpu6lxdjhuu"]
 
 [ext_resource type="Script" uid="uid://cn53pono1ndde" path="res://src/game/Game.cs" id="1_17mmo"]
 [ext_resource type="PackedScene" uid="uid://pjmfnaiwwwed" path="res://src/player_camera/PlayerCamera.tscn" id="2_g21k4"]

@@ -219,6 +219,10 @@ public class GameTypingSystem {
 
           break;
         }
+
+        if (!success) {
+          Buffer = "";
+        }
       }
     }
 

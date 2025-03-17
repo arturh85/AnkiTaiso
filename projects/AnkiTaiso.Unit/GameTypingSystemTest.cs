@@ -142,6 +142,17 @@ public class GameTypingSystemTest {
   }
 
   [Fact]
+  public void ClearBufferWithoutActiveEntryOnMistakeTest() {
+    var game = new GameTypingSystem([new VocabEntry("カタカナ")]);
+    game.NextEntries(1);
+    game.OnInput(Key.K).ShouldBeTrue();
+    game.Buffer.Should().Be("k");
+    game.GetActiveEntry().ShouldBeNull();
+    game.OnInput(Key.X).ShouldBeFalse();
+    game.Buffer.Should().Be("");
+  }
+
+  [Fact]
   public void HiraganaTest() {
     var game = new GameTypingSystem(_japaneseWords.Select(w => new VocabEntry(w)));
     var words = game.NextEntries(2);
