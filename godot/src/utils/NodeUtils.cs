@@ -12,6 +12,18 @@ public static class NodeUtils {
     var child = children[idx];
     return child as T;
   }
+  public static T? RandomChildWhere<T>(Node node, Func<T, bool>? filter) where T : Node {
+    var children = node.GetChildren();
+    for (var i = 0; i < 10; i++) {
+      var idx = Random.Shared.Next(0, children.Count);
+      var child = children[idx];
+      if (filter != null && child != null && !filter((child as T)!)) {
+        continue;
+      }
+      return child as T;
+    }
+    return null;
+  }
 
   public static List<T> NearestNodes<T>(Vector3 position, Node3D parent, int count, Func<T, bool>? filter) where T : Node3D {
     var enemiesWithDistance = parent

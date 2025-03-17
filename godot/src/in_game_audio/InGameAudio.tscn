@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://be3pehf5e67m5"]
+[gd_scene load_steps=15 format=3 uid="uid://be3pehf5e67m5"]
 
 [ext_resource type="AudioStream" uid="uid://c1gemc28v25c0" path="res://src/in_game_audio/sounds/coin.wav" id="1_681yd"]
 [ext_resource type="Script" uid="uid://b8upsfk6iumv3" path="res://src/in_game_audio/InGameAudio.cs" id="1_hobj4"]
@@ -8,6 +8,11 @@
 [ext_resource type="AudioStream" uid="uid://lwli84d115g2" path="res://src/in_game_audio/sounds/game_music.mp3" id="6_cwwy4"]
 [ext_resource type="AudioStream" uid="uid://popc3scqxjfk" path="res://src/in_game_audio/sounds/menu_music.mp3" id="7_o8s4p"]
 [ext_resource type="PackedScene" uid="uid://cac8acl84d1ul" path="res://src/in_game_audio/DimmableAudioStreamPlayer.tscn" id="7_rirec"]
+[ext_resource type="AudioStream" uid="uid://c4mqqt77hjprv" path="res://assets/sfx/bullet_met1_16.mp3" id="9_vadkg"]
+[ext_resource type="AudioStream" uid="uid://vjv30f3fcoue" path="res://assets/sfx/bullet_met2_16.mp3" id="10_xdyov"]
+[ext_resource type="AudioStream" uid="uid://bwwei7q8osqea" path="res://assets/sfx/bullet_met3_22.mp3" id="11_ocbox"]
+[ext_resource type="AudioStream" uid="uid://n02j03e072lt" path="res://assets/sfx/bullet_snd1_16.mp3" id="12_x4f6m"]
+[ext_resource type="AudioStream" uid="uid://buvdvy12wyyj" path="res://assets/sfx/gun1_22.mp3" id="13_wuj6c"]
 
 [sub_resource type="AudioStreamMP3" id="AudioStreamMP3_wp06k"]
 
@@ -52,3 +57,33 @@ volume_db = -16.267
 [node name="ClearedWordPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = SubResource("AudioStreamMP3_wp06k")
+
+[node name="OnMistakePlayers" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="OnMistakePlayers"]
+stream = ExtResource("11_ocbox")
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="OnMistakePlayers"]
+stream = ExtResource("12_x4f6m")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="OnMistakePlayers"]
+stream = ExtResource("9_vadkg")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="OnMistakePlayers"]
+stream = ExtResource("10_xdyov")
+
+[node name="OnHitPlayers" type="Node" parent="."]
+unique_name_in_owner = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="OnHitPlayers"]
+stream = ExtResource("13_wuj6c")
+
+[node name="AudioStreamPlayer2" type="AudioStreamPlayer" parent="OnHitPlayers"]
+stream = ExtResource("13_wuj6c")
+
+[node name="AudioStreamPlayer3" type="AudioStreamPlayer" parent="OnHitPlayers"]
+stream = ExtResource("13_wuj6c")
+
+[node name="AudioStreamPlayer4" type="AudioStreamPlayer" parent="OnHitPlayers"]
+stream = ExtResource("13_wuj6c")
