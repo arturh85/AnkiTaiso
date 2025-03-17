@@ -122,6 +122,9 @@ public class GameTypingSystem {
     var success = false;
     var input = KeyboardUtils.KeyToString(key);
     if (input.Length == 0) {
+      if (key == Key.Backspace && Buffer.Length > 0) {
+        Buffer = Buffer[..^1];
+      }
       return true;
     }
 

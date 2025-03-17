@@ -68,6 +68,12 @@ public partial class InGameAudio : Node {
 
     InGameAudioLogic.Start();
   }
+  public void OnExitTree() {
+    GameTypingSystem.OnHit -= OnHit;
+    GameTypingSystem.OnMistake -= OnMistake;
+    InGameAudioLogic.Stop();
+    InGameAudioBinding.Dispose();
+  }
 
   private void OnHit(string key, Vocab? vocab) {
     if (vocab is { State: VocabState.Completed, Entry.AudioFilename: not null } && GameTypingRepo.ActiveScenario is {
@@ -88,10 +94,6 @@ public partial class InGameAudio : Node {
     player?.Play();
   }
 
-  public void OnExitTree() {
-    InGameAudioLogic.Stop();
-    InGameAudioBinding.Dispose();
-  }
 
   public void StartMainMenuMusic() {
     GameMusic.FadeOut();
