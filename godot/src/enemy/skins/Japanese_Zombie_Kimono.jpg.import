@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfolubccpcjf"
-path="res://.godot/imported/albedo.jpg-8e1fd164172d87b888a37dc66637e2a5.ctex"
+uid="uid://cffkng64q8l0g"
+path="res://.godot/imported/Japanese_Zombie_Kimono.jpg-26a29a702e77ed6b155f7fe2e891c093.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/enemy/Japanese Police Officer Zombie/albedo.jpg"
-dest_files=["res://.godot/imported/albedo.jpg-8e1fd164172d87b888a37dc66637e2a5.ctex"]
+source_file="res://src/enemy/skins/Japanese_Zombie_Kimono.jpg"
+dest_files=["res://.godot/imported/Japanese_Zombie_Kimono.jpg-26a29a702e77ed6b155f7fe2e891c093.ctex"]
 
 [params]
 

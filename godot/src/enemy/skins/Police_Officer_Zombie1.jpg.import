@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmftoxfxkvfl1"
-path="res://.godot/imported/roughness.jpg-60474536408e45e385a1c20987b58bc0.ctex"
+uid="uid://co4cq3i14ac3v"
+path="res://.godot/imported/Police_Officer_Zombie1.jpg-dc8e085a2a43437fcbcab5fd69baef47.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/enemy/Japanese Zombie Kimono/roughness.jpg"
-dest_files=["res://.godot/imported/roughness.jpg-60474536408e45e385a1c20987b58bc0.ctex"]
+source_file="res://src/enemy/skins/Police_Officer_Zombie1.jpg"
+dest_files=["res://.godot/imported/Police_Officer_Zombie1.jpg-dc8e085a2a43437fcbcab5fd69baef47.ctex"]
 
 [params]
 
