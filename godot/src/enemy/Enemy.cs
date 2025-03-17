@@ -35,14 +35,18 @@ public partial class Enemy : Node3D {
   private void OnAnimationStarted(StringName animname) => Model.Show();
 
   public void OnReady() {
-
     ImpactSprite.Hide();
 
     StartDelay.Timeout += StartDelayTimeout;
     StartDelay.Start();
 
-    if (Random.Shared.Next(0, 2) == 1) {
+    var textureIdx = Random.Shared.Next(0, 3);
+    GD.Print(textureIdx);
+    if (textureIdx == 1) {
       LoadTextures("res://src/enemy/Japanese Zombie Kimono");
+    }
+    else if (textureIdx == 2) {
+      LoadTextures("res://src/enemy/Japanese Police Officer Zombie");
     }
   }
 
@@ -51,13 +55,13 @@ public partial class Enemy : Node3D {
     if (material is not StandardMaterial3D material3D) {
       return;
     }
+
     material3D.AlbedoTexture = ResourceLoader.Load<Texture2D>($"{resourceBasePath}/albedo.jpg");
     material3D.NormalTexture = ResourceLoader.Load<Texture2D>($"{resourceBasePath}/normal.jpg");
     material3D.RoughnessTexture = ResourceLoader.Load<Texture2D>($"{resourceBasePath}/roughness.jpg");
   }
 
   void StartDelayTimeout() {
-
     var player = GetAnimationTree();
     player.AnimationStarted += OnAnimationStarted;
     player.AnimationFinished += OnAnimationFinished;
@@ -66,7 +70,6 @@ public partial class Enemy : Node3D {
 
     GameTypingSystem.OnHit += OnVocabHit;
     GameTypingSystem.OnMistake += OnVocabMistake;
-
   }
 
 
@@ -82,6 +85,7 @@ public partial class Enemy : Node3D {
     if (vocab != Vocab) {
       return;
     }
+
     GetAnimationTree().Set("parameters/OneShot/request", true);
 
 

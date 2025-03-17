@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0h4n74qd50pp"
-path="res://.godot/imported/displacement.jpg-d65a9771a8218c306d7422b337a618a1.ctex"
+uid="uid://dfolubccpcjf"
+path="res://.godot/imported/albedo.jpg-8e1fd164172d87b888a37dc66637e2a5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://src/enemy/Japanese Zombie Kimono/displacement.jpg"
-dest_files=["res://.godot/imported/displacement.jpg-d65a9771a8218c306d7422b337a618a1.ctex"]
+source_file="res://src/enemy/Japanese Police Officer Zombie/albedo.jpg"
+dest_files=["res://.godot/imported/albedo.jpg-8e1fd164172d87b888a37dc66637e2a5.ctex"]
 
 [params]
 
