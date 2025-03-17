@@ -1,5 +1,6 @@
 namespace ankitaiso.enemy;
 
+using System;
 using Chickensoft.AutoInject;
 using Chickensoft.Introspection;
 using game_typing;
@@ -39,6 +40,20 @@ public partial class Enemy : Node3D {
 
     StartDelay.Timeout += StartDelayTimeout;
     StartDelay.Start();
+
+    if (Random.Shared.Next(0, 2) == 1) {
+      LoadTextures("res://src/enemy/Japanese Zombie Kimono");
+    }
+  }
+
+  private void LoadTextures(string resourceBasePath) {
+    var material = Zombie1.Mesh.SurfaceGetMaterial(0);
+    if (material is not StandardMaterial3D material3D) {
+      return;
+    }
+    material3D.AlbedoTexture = ResourceLoader.Load<Texture2D>($"{resourceBasePath}/albedo.jpg");
+    material3D.NormalTexture = ResourceLoader.Load<Texture2D>($"{resourceBasePath}/normal.jpg");
+    material3D.RoughnessTexture = ResourceLoader.Load<Texture2D>($"{resourceBasePath}/roughness.jpg");
   }
 
   void StartDelayTimeout() {
