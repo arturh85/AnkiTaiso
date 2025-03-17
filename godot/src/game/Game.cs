@@ -1,39 +1,23 @@
 namespace ankitaiso.game;
 
-using System;
-using System.IO.Abstractions;
 using System.Linq;
-using System.Text.Json;
 using ankitaiso.domain;
-using ankitaiso.player_camera;
 using app.domain;
 using Chickensoft.AutoInject;
-using Chickensoft.Collections;
 using Chickensoft.GodotNodeInterfaces;
 using Chickensoft.Introspection;
 using Chickensoft.Log;
 using Chickensoft.Log.Godot;
 using Chickensoft.LogicBlocks;
-using Chickensoft.SaveFileBuilder;
-using Chickensoft.Serialization;
-using Chickensoft.Serialization.Godot;
 using domain;
 using game_typing;
 using game_typing.domain;
 using Godot;
 using map;
-using Microsoft.EntityFrameworkCore.Storage;
 using state;
 using utils;
-using MapData = map.MapData;
-using PlayerCameraData = player_camera.PlayerCameraData;
-using PlayerData = player.PlayerData;
 
-public interface IGame : INode3D,
-IProvide<IGameRepo>, IProvide<ISaveChunk<GameData>>, IProvide<EntityTable> {
-  void LoadExistingGame();
-
-  event Game.SaveFileLoadedEventHandler? SaveFileLoaded;
+public interface IGame : INode3D, IProvide<IGameRepo> {
 }
 
 [Meta(typeof(IAutoNode))]
@@ -41,21 +25,6 @@ IProvide<IGameRepo>, IProvide<ISaveChunk<GameData>>, IProvide<EntityTable> {
 public partial class Game : Node3D, IGame {
   public override void _Notification(int what) => this.Notify(what);
   private readonly Log _log = new (nameof(Game), new GDWriter());
-
-  #region Save
-  [Signal]
-  public delegate void SaveFileLoadedEventHandler();
-  public JsonSerializerOptions JsonOptions { get; set; } = default!;
-  public const string SAVE_FILE_NAME = "game.json";
-  public IFileSystem FileSystem { get; set; } = default!;
-  public IEnvironmentProvider Environment { get; set; } = default!;
-  public string SaveFilePath { get; set; } = default!;
-  public EntityTable EntityTable { get; set; } = new();
-  EntityTable IProvide<EntityTable>.Value() => EntityTable;
-  public ISaveFile<GameData> SaveFile { get; set; } = default!;
-  public ISaveChunk<GameData> GameChunk { get; set; } = default!;
-  ISaveChunk<GameData> IProvide<ISaveChunk<GameData>>.Value() => GameChunk;
-  #endregion Save
 
   #region State
 
@@ -82,10 +51,6 @@ public partial class Game : Node3D, IGame {
   #endregion Dependencies
 
   public void Setup() {
-    FileSystem = new FileSystem();
-
-    SaveFilePath = FileSystem.Path.Join(OS.GetUserDataDir(), SAVE_FILE_NAME);
-
     GameRepo = new GameRepo();
     GameLogic = new GameLogic();
     GameLogic.Set(GameRepo);
@@ -95,25 +60,6 @@ public partial class Game : Node3D, IGame {
     GameTyping.Camera = PlayerCamera;
     //PlayerCamera.GlobalPosition = GameTyping.PlayerPosition;
     GameTyping.SpawnPosition = SpawnLocation.Position;
-
-    // This is how to create JsonSerializerOptions for use with LogicBlocks
-    // and the Chickensoft serialization utilities.
-    var resolver = new SerializableTypeResolver();
-    // Tell our type type resolver about the Godot-specific converters.
-    GodotSerialization.Setup();
-
-    var upgradeDependencies = new Blackboard();
-
-    // Create a standard JsonSerializerOptions with our introspective type
-    // resolver and the logic blocks converter.
-    JsonOptions = new JsonSerializerOptions {
-      Converters = {
-        new SerializableTypeConverter(upgradeDependencies)
-      },
-      TypeInfoResolver = resolver,
-      WriteIndented = true
-    };
-
     DeathMenu.TryAgain += OnStart;
     DeathMenu.MainMenu += OnMainMenu;
     DeathMenu.TransitionCompleted += OnDeathMenuTransitioned;
@@ -127,23 +73,6 @@ public partial class Game : Node3D, IGame {
     PauseMenu.Save += OnPauseMenuSaveRequested;
     GameTypingSystem.OnWon += OnGameWon;
 
-    GameChunk = new SaveChunk<GameData>(
-      (chunk) => {
-        var gameData = new GameData() {
-          MapData = chunk.GetChunkSaveData<MapData>(),
-          PlayerData = chunk.GetChunkSaveData<PlayerData>(),
-          PlayerCameraData = chunk.GetChunkSaveData<PlayerCameraData>()
-        };
-
-        return gameData;
-      },
-        onLoad: (chunk, data) => {
-          // chunk.LoadChunkSaveData(data.MapData);
-          // chunk.LoadChunkSaveData(data.PlayerData);
-          // chunk.LoadChunkSaveData(data.PlayerCameraData);
-        }
-      );
-
     // Calling Provide() triggers the Setup/OnResolved on dependent
     // nodes who depend on the values we provide. This means that
     // all nodes registering save managers will have already registered
@@ -152,7 +81,6 @@ public partial class Game : Node3D, IGame {
 
     GetViewport().Msaa3D = Viewport.Msaa.Msaa8X;
     GetViewport().ScreenSpaceAA = Viewport.ScreenSpaceAAEnum.Fxaa;
-
   }
 
   public void OnExitTree() {
@@ -170,25 +98,6 @@ public partial class Game : Node3D, IGame {
     GameRepo.Dispose();
   }
   public void OnResolved() {
-    SaveFile = new SaveFile<GameData>(
-      root: GameChunk,
-      onSave: async (GameData data) => {
-        // Save the game data to disk.
-        var json = JsonSerializer.Serialize(data, JsonOptions);
-        await FileSystem.File.WriteAllTextAsync(SaveFilePath, json);
-      },
-      onLoad: async () => {
-        // Load the game data from disk.
-        if (!FileSystem.File.Exists(SaveFilePath)) {
-          _log.Err("No save file to load");
-          return null;
-        }
-
-        var json = await FileSystem.File.ReadAllTextAsync(SaveFilePath);
-        return JsonSerializer.Deserialize<GameData>(json, JsonOptions);
-      }
-    );
-
     GameBinding = GameLogic.Bind();
     GameBinding
       .Handle(
@@ -233,19 +142,14 @@ public partial class Game : Node3D, IGame {
         PauseMenu.OnSaveCompleted()
       )
       .Handle((in GameLogic.Output.StartSaving _) =>
-        SaveFile.Save().ContinueWith(
-          // Saving is async. The game node is always around, so kicking off
-          // an async process is safe. Plus, we block input while saving, so
-          // no interruptions.
-          (task) => GameLogic.Input(new GameLogic.Input.SaveCompleted())
-        )
+        GameLogic.Input(new GameLogic.Input.SaveCompleted())
       );
 
     // Trigger the first state's OnEnter callbacks so our bindings run.
     // Keeps everything in sync from the moment we start!
     GameLogic.Start();
     GameLogic.Input(
-      new GameLogic.Input.Initialize(NumCoinsInWorld: Map.GetCoinCount())
+      new GameLogic.Input.Initialize(NumCoinsInWorld: 0)
     );
 
     this.Provide();
@@ -285,16 +189,6 @@ public partial class Game : Node3D, IGame {
 
   public void OnDeathMenuTransitioned() =>
     GameLogic.Input(new GameLogic.Input.DeathMenuTransitioned());
-
-
-  public void LoadExistingGame() {
-    SaveFile.Load()
-      .ContinueWith((_) => CallDeferred(nameof(FinishedLoadingSaveFile)));
-  }
-
-  private void FinishedLoadingSaveFile() {
-    EmitSignal(SignalName.SaveFileLoaded);
-  }
 
   private void SetPauseMode(bool isPaused) => GetTree().Paused = isPaused;
 }

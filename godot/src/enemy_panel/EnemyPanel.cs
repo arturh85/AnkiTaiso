@@ -86,15 +86,9 @@ public partial class EnemyPanel : Control {
         InputLabelBbcode = "";
       }
     }
-    if (vocab.ShowHint) {
-      var targetDebugOutput = vocab.NextVariants != null ? string.Join(", ", vocab.NextVariants) : vocab.Next;
-      if (HintLabelBbcode != targetDebugOutput) {
-        HintLabelBbcode = targetDebugOutput;
-      }
-      HintLabel.Show();
-    }
-    else {
-      HintLabel.Hide();
+    var targetHint = vocab.ShowHint ? (vocab.NextVariants != null ? string.Join(", ", vocab.NextVariants) : vocab.Next) : "";
+    if (HintLabelBbcode != targetHint) {
+      HintLabelBbcode = targetHint;
     }
   }
 }

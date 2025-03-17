@@ -1,7 +1,6 @@
 namespace ankitaiso.map;
 
 using System;
-using System.Drawing;
 using Godot;
 
 [SceneTree]
@@ -9,11 +8,11 @@ using Godot;
 public partial class ZombieSpawner : Node3D {
 
   [Export] public Vector3 GroundPosition;
-  [Export] public double MinSpawnTime = 0.0;
+  [Export] public double MinSpawnTime = 0.1;
   [Export] public double MaxSpawnTime = 1.0;
   [Export] public int MinWordLength = 0;
   [Export] public int MaxWordLength = 99;
-  public bool Spawned = false;
+  public bool Spawned;
 
   public void OnReady() => SetGroundPosition();
 
@@ -33,7 +32,7 @@ public partial class ZombieSpawner : Node3D {
       return;
     }
     var material = EditorPosition.GetSurfaceOverrideMaterial(0);
-    Godot.Color color = Godot.Colors.White;
+    Color color = Colors.White;
 
     color.R = Math.Min((float)((Math.Max(MinWordLength, 2) - 2)) / 14.0f, 1.0f);
 

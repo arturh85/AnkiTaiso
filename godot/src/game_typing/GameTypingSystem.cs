@@ -173,6 +173,7 @@ public class GameTypingSystem {
 
         if (!success) {
           EntryActive.ShowHint = true;
+          Buffer = "";
           value.FailCount += 1;
         }
       }

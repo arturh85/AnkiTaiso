@@ -4,8 +4,10 @@ namespace ankitaiso.game_typing;
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading;
 using app.domain;
 using Chickensoft.AutoInject;
 using Chickensoft.Introspection;
@@ -44,11 +46,15 @@ public partial class GameTyping : Node3D {
 
   public void OnReady() {
     SetPaused(true);
-    for (var i = 0; i < MAX_ENEMY_PANELS; i++) {
-      var panel = EnemyPanel.Instantiate();
-      panel.Hide();
-      GuiControls.AddChild(panel);
-    }
+    var startAll = Stopwatch.GetTimestamp();
+    var thread = new Thread(delegate() {
+      for (var i = 0; i < MAX_ENEMY_PANELS; i++) {
+        var panel = EnemyPanel.Instantiate();
+        panel.Hide();
+        GuiControls.CallDeferred(Node.MethodName.AddChild, [panel]);
+      }
+    });
+    thread.Start();
     BufferLabelBbcode = "";
   }
 
@@ -205,15 +211,14 @@ public partial class GameTyping : Node3D {
 
 
   private void SpawnEnemy(ZombieSpawner spawner) {
-
-    Vocab? vocab = GameTypingSystem.NextEntry(false, spawner.MinWordLength, spawner.MaxWordLength);
-
+    var vocab = GameTypingSystem.NextEntry(false, spawner.MinWordLength, spawner.MaxWordLength);
+    if (vocab == null) {
+      return;
+    }
     var startTime = spawner.MinSpawnTime + Random.Shared.NextSingle() * (spawner.MaxSpawnTime - spawner.MinSpawnTime);
-
     var spawnPosition = spawner.GroundPosition;
     var enemy = CreateEnemy3D(vocab, spawnPosition, startTime);
     EnemiesContainer.AddChild(enemy);
-
     spawner.Spawned = true;
   }
 

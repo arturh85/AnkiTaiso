@@ -1,5 +1,7 @@
 namespace ankitaiso.app;
 
+using System.Diagnostics;
+using System.Threading;
 using ankitaiso.domain;
 using Chickensoft.AutoInject;
 using Chickensoft.GodotNodeInterfaces;
@@ -114,16 +116,23 @@ public partial class App : CanvasLayer, IApp {
         Game = default!;
       })
       .Handle((in AppLogic.Output.SetupGameScene _) => {
-        Game = Instantiator.LoadAndInstantiate<Game>(GAME_SCENE_PATH);
-        GamePreview.AddChildEx(Game);
-
-        Instantiator.SceneTree.Paused = false;
+        Thread thread = new Thread(delegate() {
+          var start = Stopwatch.GetTimestamp();
+          var game = Instantiator.LoadAndInstantiate<Game>(GAME_SCENE_PATH);
+          GD.Print($"Loading Game Took {Stopwatch.GetElapsedTime(start).TotalSeconds} seconds");
+          //
+          CallDeferred(nameof(AddChildTimed), [game]);
+          Game = game;
+          Instantiator.SceneTree.SetDeferred("paused", false);
+          Game.CallDeferred(CanvasLayer.MethodName.Show, []);
+        });
+        thread.Start();
       })
       .Handle((in AppLogic.Output.ShowMainMenu _) => {
         // Load everything while we're showing a black screen, then fade in.
         HideMenus();
         Menu.Show();
-        Game.Show();
+        // Game.Show();
 
         FadeInFromBlack();
       })
@@ -135,8 +144,8 @@ public partial class App : CanvasLayer, IApp {
       .Handle((in AppLogic.Output.HideGame _) => FadeToBlack())
       .Handle(
         (in AppLogic.Output.StartLoadingSaveFile _) => {
-          Game.SaveFileLoaded += OnSaveFileLoaded;
-          Game.LoadExistingGame();
+          // Game.SaveFileLoaded += OnSaveFileLoaded;
+          // Game.LoadExistingGame();
         }
       );
 
@@ -148,6 +157,12 @@ public partial class App : CanvasLayer, IApp {
     AppLogic.Input(new AppLogic.Input.NewGame());
   }
 
+  public void AddChildTimed(Game game) {
+    var start = Stopwatch.GetTimestamp();
+    GamePreview.AddChildEx(game);
+    GD.Print($"AddChild for Game Took {Stopwatch.GetElapsedTime(start).TotalSeconds} seconds");
+    game.Show();
+  }
   public void OnLoadGame() => AppLogic.Input(new AppLogic.Input.LoadGame());
   public void OnQuitGame() => GetTree().Quit();
   public void OnOptions() {
@@ -196,7 +211,7 @@ public partial class App : CanvasLayer, IApp {
   }
 
   public void OnSaveFileLoaded() {
-    Game.SaveFileLoaded -= OnSaveFileLoaded;
+    // Game.SaveFileLoaded -= OnSaveFileLoaded;
     AppLogic.Input(new AppLogic.Input.SaveFileLoaded());
   }
 

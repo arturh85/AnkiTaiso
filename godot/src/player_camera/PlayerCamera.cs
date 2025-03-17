@@ -4,8 +4,6 @@ using Chickensoft.AutoInject;
 using Chickensoft.GodotNodeInterfaces;
 using Chickensoft.Introspection;
 using Chickensoft.LogicBlocks;
-using Chickensoft.SaveFileBuilder;
-using game;
 using game.domain;
 using Godot;
 using state;
@@ -62,13 +60,6 @@ public interface IPlayerCamera : INode3D {
 [Meta(typeof(IAutoNode))]
 public partial class PlayerCamera : Node3D, IPlayerCamera {
   public override void _Notification(int what) => this.Notify(what);
-
-  #region Save
-
-  [Dependency]
-  public ISaveChunk<GameData> GameChunk => this.DependOn<ISaveChunk<GameData>>();
-  public ISaveChunk<PlayerCameraData> PlayerCameraChunk { get; set; } = default!;
-  #endregion Save
 
   #region State
   [Dependency] public IGameRepo GameRepo => DependentExtensions.DependOn<IGameRepo>(this);
@@ -135,29 +126,10 @@ public partial class PlayerCamera : Node3D, IPlayerCamera {
       }
     );
 
-    PlayerCameraChunk = new SaveChunk<PlayerCameraData>(
-      onSave: (chunk) => new PlayerCameraData() {
-        StateMachine = CameraLogic,
-        GlobalTransform = GlobalTransform,
-        LocalPosition = CameraNode.Position,
-        OffsetPosition = OffsetNode.Position,
-      },
-      onLoad: (chunk, data) => {
-        CameraLogic.RestoreFrom(data.StateMachine);
-        GlobalTransform = data.GlobalTransform;
-        CameraNode.Position = data.LocalPosition;
-        OffsetNode.Position = data.OffsetPosition;
-
-        CameraLogic.Input(new PlayerCameraLogic.Input.PhysicsTicked(0d));
-      }
-    );
-
     SetPhysicsProcess(true);
   }
 
   public void OnResolved() {
-    GameChunk.AddChunk(PlayerCameraChunk);
-
     CameraBinding = CameraLogic.Bind();
     CameraBinding
       .Handle((in PlayerCameraLogic.Output.GimbalRotationChanged output) => {

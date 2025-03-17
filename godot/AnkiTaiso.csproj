@@ -13,6 +13,7 @@
     <!--
       <CompilerGeneratedFilesOutputPath>.generated</CompilerGeneratedFilesOutputPath>
     -->
+
     <DebugType>portable</DebugType>
     <DebugSymbols>true</DebugSymbols>
     <Title>anki-taiso</Title>
@@ -27,6 +28,7 @@
     </DefaultItemExcludes>
     <!-- Catch compiler-mismatch issues with the Introspection generator -->
     <WarningsAsErrors>CS9057</WarningsAsErrors>
+    <NoWarn>8669</NoWarn>
   </PropertyGroup>
   <ItemGroup Condition=" '$(Configuration)' == 'Debug' or '$(Configuration)' == 'ExportDebug' ">
     <!-- Test dependencies go here! -->
