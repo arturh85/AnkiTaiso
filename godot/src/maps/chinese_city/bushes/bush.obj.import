@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dbvyvmrfv7b41"
+path="res://.godot/imported/bush.obj-8c3025d48ed96b39500b6b004e940501.mesh"
+
+[deps]
+
+files=["res://.godot/imported/bush.obj-8c3025d48ed96b39500b6b004e940501.mesh"]
+
+source_file="res://src/maps/chinese_city/bushes/bush.obj"
+dest_files=["res://.godot/imported/bush.obj-8c3025d48ed96b39500b6b004e940501.mesh", "res://.godot/imported/bush.obj-8c3025d48ed96b39500b6b004e940501.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

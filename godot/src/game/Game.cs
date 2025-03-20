@@ -56,6 +56,8 @@ public partial class Game : Node3D, IGame {
     GameLogic.Set(GameRepo);
     GameLogic.Set(AppRepo);
     Player.GlobalPosition = ((CameraWaypoint)((Node3D)Map.GetNode("WayPoints").GetChildren()[0])).CameraPosition;
+    //GameTyping.Player = (CameraWaypoint)((Node3D)Map.GetNode("WayPoints").GetChildren()[0]);
+    //GameTyping.Waypoints = Map.GetNode("WayPoints").GetChildren().Cast<CameraWaypoint>().ToList();
     GameTyping.Camera = PlayerCamera;
     GameTyping.Levels = Map.GetNode("Levels") as Node3D;
     GameTyping.Player = Player;
@@ -73,12 +75,6 @@ public partial class Game : Node3D, IGame {
     PauseMenu.TransitionCompleted += OnPauseMenuTransitioned;
     PauseMenu.Save += OnPauseMenuSaveRequested;
     GameTypingSystem.OnWon += OnGameWon;
-
-    // Calling Provide() triggers the Setup/OnResolved on dependent
-    // nodes who depend on the values we provide. This means that
-    // all nodes registering save managers will have already registered
-    // their relevant save managers by now. This is useful when restoring state
-    // while loading an existing save file.
 
     GetViewport().Msaa3D = Viewport.Msaa.Msaa8X;
     GetViewport().ScreenSpaceAA = Viewport.ScreenSpaceAAEnum.Fxaa;

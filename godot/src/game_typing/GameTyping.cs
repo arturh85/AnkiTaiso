@@ -22,6 +22,7 @@ using utils;
 public partial class GameTyping : Node3D {
   public override void _Notification(int what) => this.Notify(what);
 
+  public CameraWaypoint CurrentWaypoint;
   public Vector3 SpawnPosition;
   public Node3D Levels;
   public Area3D Player;
@@ -85,8 +86,9 @@ public partial class GameTyping : Node3D {
       Player.GlobalPosition = _follower.GlobalPosition;
       Camera.Rotation = _follower.Rotation;
 
-      foreach (Enemy enemy in EnemiesContainer.GetChildren().Cast<Enemy>())
-        enemy.UpdateMovementTarget(_follower.Rotation);
+      foreach (Enemy enemy in EnemiesContainer.GetChildren().OfType<Enemy>()) {
+        enemy.UpdateMovementTarget(_follower);
+      }
 
       _follower.SetProgress((float)delta * _speed + _follower.Progress);
     }
@@ -97,7 +99,7 @@ public partial class GameTyping : Node3D {
     var idx = 0;
     foreach (var child in GuiControls.GetChildren()) {
       if (child is EnemyPanel panel) {
-        if (idx >= nearest.Count || nearest[idx].dead) {
+        if (idx >= nearest.Count || nearest[idx].Dead) {
           panel.Hide();
         }
         else {
@@ -187,8 +189,9 @@ public partial class GameTyping : Node3D {
     }
     var startTime = spawner.MinSpawnTime + Random.Shared.NextSingle() * (spawner.MaxSpawnTime - spawner.MinSpawnTime);
     var spawnPosition = spawner.GroundPosition;
-    var enemy = CreateEnemy3D(vocab, spawnPosition, startTime);
+    var enemy = Enemy.Instantiate(vocab, CurrentWaypoint, startTime);
     EnemiesContainer.AddChild(enemy);
+    enemy.GlobalPosition = spawnPosition;
     spawner.Spawned = true;
   }
 
@@ -216,12 +219,6 @@ public partial class GameTyping : Node3D {
       }
     }
     return false;
-  }
-
-  private Enemy CreateEnemy3D(Vocab vocab, Vector3 position, double startTime) {
-    var enemy = Enemy.Instantiate(vocab, Player.GlobalPosition, startTime);
-    enemy.Position = position;
-    return enemy;
   }
 
   private string PopRandomWord() => WordList.Count > 0 ? WordList.Pop() : "empty";

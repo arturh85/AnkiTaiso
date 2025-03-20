@@ -74,6 +74,7 @@ public partial class App : CanvasLayer, IApp {
   #endregion Nodes
 
   public void Initialize() {
+    GetWindow().MinSize = new Vector2I(1024, 768);
     Instantiator = new Instantiator(GetTree());
     GameTypingRepo = new GameTypingRepo();
     DatabaseRepo = new DatabaseRepo();

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cpwyslt3vy1jw"]
+
+[ext_resource type="Script" uid="uid://cni5cpo6aaw47" path="res://src/components/movement/MoveTo3DComponent.cs" id="1_fgog1"]
+
+[node name="MoveTo3DComponent" type="Node"]
+script = ExtResource("1_fgog1")

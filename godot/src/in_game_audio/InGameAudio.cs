@@ -96,14 +96,14 @@ public partial class InGameAudio : Node {
 
 
   public void StartMainMenuMusic() {
-    GameMusic.FadeOut();
-    MainMenuMusic.Stop();
-    MainMenuMusic.FadeIn();
+    // GameMusic.FadeOut();
+    // MainMenuMusic.Stop();
+    // MainMenuMusic.FadeIn();
   }
 
   public void StartGameMusic() {
-    MainMenuMusic.FadeOut();
-    GameMusic.Stop();
-    GameMusic.FadeIn();
+    // MainMenuMusic.FadeOut();
+    // GameMusic.Stop();
+    // GameMusic.FadeIn();
   }
 }

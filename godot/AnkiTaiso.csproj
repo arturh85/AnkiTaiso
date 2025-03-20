@@ -53,6 +53,14 @@
     <Content Include="src\data\en_top_english_nouns_lower_10000.txt" />
     <Content Include="src\death_menu\DeathMenu.gdshader" />
     <Content Include="src\death_menu\DeathMenu.tscn" />
+    <Content Include="src\enemies\zombie2\PS1_Zombie2.gltf" />
+    <Content Include="src\enemies\zombie2\PS1_Zombie2.gltf.import" />
+    <Content Include="src\enemies\zombie2\PS1_Zombie2_D_Zombie_2.png" />
+    <Content Include="src\enemies\zombie2\PS1_Zombie2_D_Zombie_2.png.import" />
+    <Content Include="src\enemies\zombie2\PS1_Zombie2_N_Zombie_2.png" />
+    <Content Include="src\enemies\zombie2\PS1_Zombie2_N_Zombie_2.png.import" />
+    <Content Include="src\enemies\zombie2\PS1_Zombie2_S_Zombie_2.png" />
+    <Content Include="src\enemies\zombie2\PS1_Zombie2_S_Zombie_2.png.import" />
     <Content Include="src\game\.DS_Store" />
     <Content Include="src\game\Game.tscn" />
     <Content Include="src\game\state\GameLogic.g.puml" />
@@ -283,6 +291,9 @@
     <PackageReference Include="WanaKana-net" Version="1.0.0" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="src\components\movement\" />
     <Folder Include="src\domain\service\" />
+    <Folder Include="src\enemies\zombie3\" />
+    <Folder Include="src\testscenes\" />
   </ItemGroup>
 </Project>

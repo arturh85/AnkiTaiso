@@ -1,0 +1,63 @@
+[gd_scene load_steps=9 format=3 uid="uid://blgipmt3aw5hi"]
+
+[ext_resource type="PackedScene" uid="uid://b01mb7gnfkpto" path="res://src/testscenes/TestContainer.tscn" id="1_6wspe"]
+[ext_resource type="Script" uid="uid://c385kr08teox7" path="res://src/testscenes/TestEnemies.cs" id="1_t26lv"]
+[ext_resource type="PackedScene" uid="uid://d04amsl0japsx" path="res://src/enemies/zombie1/Enemy.tscn" id="1_yntlt"]
+[ext_resource type="PackedScene" uid="uid://t6drkrnpo534" path="res://src/testscenes/TestFpsPlayerCamera.tscn" id="4_t26lv"]
+[ext_resource type="Script" uid="uid://gv85mjad62gv" path="res://src/testscenes/TestFpsPlayerCamera.cs" id="5_6i4ce"]
+
+[sub_resource type="Environment" id="Environment_6wspe"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_t26lv"]
+data = PackedVector3Array(150, 0, 150, -150, 0, 150, 150, 0, -150, -150, 0, 150, -150, 0, -150, 150, 0, -150)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_6wspe"]
+size = Vector2(300, 300)
+
+[node name="TestEnemies" type="Node3D"]
+script = ExtResource("1_t26lv")
+
+[node name="TestContainer" parent="." instance=ExtResource("1_6wspe")]
+offset_left = 37.0
+offset_top = 143.0
+offset_right = 37.0
+offset_bottom = 143.0
+
+[node name="Enemy" parent="TestContainer" instance=ExtResource("1_yntlt")]
+TestMode = true
+
+[node name="Enemy2" parent="TestContainer" instance=ExtResource("1_yntlt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.01339, 0, 0)
+TestMode = true
+
+[node name="Enemy3" parent="TestContainer" instance=ExtResource("1_yntlt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.71147, 0, 0)
+TestMode = true
+
+[node name="FpsPlayerCamera" parent="TestContainer" instance=ExtResource("4_t26lv")]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 0, 1.81121, -2.96539)
+script = ExtResource("5_6i4ce")
+Gravity = 10.0
+Speed = 5.0
+JumpSpeed = 5.0
+MouseSensitivity = 0.002
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="TestContainer"]
+environment = SubResource("Environment_6wspe")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="TestContainer"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestContainer/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_t26lv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="TestContainer/StaticBody3D"]
+mesh = SubResource("PlaneMesh_6wspe")
+skeleton = NodePath("../..")
+
+[node name="OptionButton" type="OptionButton" parent="TestContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 0
+offset_right = 100.0
+offset_bottom = 20.0
