@@ -2500,6 +2500,7 @@ bones/32/rotation = Quaternion(0, 0.707107, 0.707107, 0)
 bones/32/scale = Vector3(1, 1, 1)
 
 [node name="Zombie1" type="MeshInstance3D" parent="Model/Armature/Skeleton3D"]
+unique_name_in_owner = true
 mesh = SubResource("ArrayMesh_frkyg")
 skin = SubResource("Skin_nsali")
 

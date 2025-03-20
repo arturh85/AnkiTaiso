@@ -4,8 +4,10 @@ namespace ankitaiso.game_typing;
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading;
 using app.domain;
 using Chickensoft.AutoInject;
 using Chickensoft.Introspection;
@@ -25,7 +27,6 @@ public partial class GameTyping : Node3D {
   public Node3D Levels;
   public Area3D Player;
   public player_camera.PlayerCamera? Camera;
-  public List<CameraWaypoint>? Waypoints;
 
   private Enemy? _activeEnemy;
   private const int MAX_ENEMY_PANELS = 50;
@@ -34,6 +35,8 @@ public partial class GameTyping : Node3D {
   private double _timeLastWaypoint;
   private double _timeStartcamera;
   private int _currentWaypoint;
+  private double _pauseTrigger = 0.0;
+  private float _speed = 1.5f;
 
   private Follower _follower;
   [Dependency] public IAppRepo AppRepo => this.DependOn<IAppRepo>();
@@ -47,11 +50,14 @@ public partial class GameTyping : Node3D {
 
   public void OnReady() {
     SetPaused(true);
-    for (var i = 0; i < MAX_ENEMY_PANELS; i++) {
-      var panel = EnemyPanel.Instantiate();
-      panel.Hide();
-      GuiControls.AddChild(panel);
-    }
+    var thread = new Thread(delegate() {
+      for (var i = 0; i < MAX_ENEMY_PANELS; i++) {
+        var panel = EnemyPanel.Instantiate();
+        panel.Hide();
+        GuiControls.CallDeferred(Node.MethodName.AddChild, [panel]);
+      }
+    });
+    thread.Start();
     BufferLabelBbcode = "";
 
     _follower = new Follower() { RotationMode = PathFollow3D.RotationModeEnum.Y };
@@ -62,75 +68,29 @@ public partial class GameTyping : Node3D {
   }
 
   public void StopCamera(float waitTime) {
-
+    _pauseTrigger = waitTime;
   }
 
   // Called every frame. 'delta' is the elapsed time since the previous frame.
   public override void _Process(double delta) {
-    if (_paused || Waypoints == null || Camera == null) {
+    if (_paused || Camera == null) {
       return;
     }
 
-
-    Camera.GlobalPosition = _follower.GlobalPosition;
-    Player.GlobalPosition = _follower.GlobalPosition;
-    Camera.Rotation = _follower.Rotation;
-    _follower.SetProgress((float)delta * 0.5f + _follower.Progress);
-    /*
-    var waypoint = Waypoints[_currentWaypoint];
-    if (_timeLastWaypoint == 0.0) { // standing at waypoint
-
-      PlayerPosition = waypoint.CameraPosition;
-      Camera.Position = PlayerPosition;
-      Camera.Rotation = new Vector3(Camera.Rotation.X, waypoint.Rotation.Y, Camera.Rotation.Z);
-
-      foreach (var spawner in waypoint.GetChildren().OfType<ZombieSpawner>()) {
-
-        SpawnEnemy(spawner);
-      }
-
-      _timeLastWaypoint += delta;
+    if (_pauseTrigger > 0.0) {
+      _pauseTrigger = Math.Max(_pauseTrigger - delta, 0.0);
     }
-    else if (EnemiesContainer.GetChildCount() == 0 && _timeStartcamera == 0.0) { // finished waypoint?
-      bool finished = true;
-      foreach (var spawner in waypoint.GetChildren().OfType<ZombieSpawner>()) {
-        if (!spawner.Spawned) {
-          finished = false;
-          break;
-        }
-      }
+    else {
 
-      if (finished) {
-        _timeStartcamera = _timeLastWaypoint;
-        if (_currentWaypoint == Waypoints.Count - 1) {
-          _currentWaypoint = 0;
-        }
-        _timeLastWaypoint += delta;
-      }
+      Camera.GlobalPosition = _follower.GlobalPosition;
+      Player.GlobalPosition = _follower.GlobalPosition;
+      Camera.Rotation = _follower.Rotation;
+
+      foreach (Enemy enemy in EnemiesContainer.GetChildren().Cast<Enemy>())
+        enemy.UpdateMovementTarget(_follower.Rotation);
+
+      _follower.SetProgress((float)delta * _speed + _follower.Progress);
     }
-
-    if (_timeStartcamera > 0.0 && _currentWaypoint < Waypoints.Count - 1) { // moving to next waypoint
-      var elapsed = _timeLastWaypoint - _timeStartcamera;
-      var distance = elapsed * waypoint.Speed;
-      double realDistance = (waypoint.CameraPosition - Waypoints[_currentWaypoint + 1].CameraPosition).Length();
-      var percentDistance = (float)(distance / realDistance);
-
-      Camera.GlobalPosition = waypoint.CameraPosition + ((Waypoints[_currentWaypoint + 1].CameraPosition - waypoint.CameraPosition) * percentDistance);
-      var camRotation = waypoint.Rotation.Y + ((Waypoints[_currentWaypoint + 1].Rotation.Y - waypoint.Rotation.Y) * percentDistance);
-      Camera.Rotation = new Vector3(Camera.Rotation.X, camRotation, Camera.Rotation.Z);
-
-      if (percentDistance >= 1.0 - (waypoint.Speed * delta * 2.0)) {
-
-        _timeStartcamera = 0.0;
-        _timeLastWaypoint = 0.0;
-        _currentWaypoint++;
-      }
-      else {
-        _timeLastWaypoint += delta;
-      }
-
-    }*/
-
 
 
     var nearest = NodeUtils.NearestNodes<Enemy>(PlayerPosition, EnemiesContainer, MAX_ENEMY_PANELS, e => e.Moving);
@@ -222,15 +182,14 @@ public partial class GameTyping : Node3D {
   }
 
   public void SpawnEnemy(ZombieSpawner spawner) {
-
-    Vocab? vocab = GameTypingSystem.NextEntry(false, spawner.MinWordLength, spawner.MaxWordLength);
-
+    var vocab = GameTypingSystem.NextEntry(false, spawner.MinWordLength, spawner.MaxWordLength);
+    if (vocab == null) {
+      return;
+    }
     var startTime = spawner.MinSpawnTime + Random.Shared.NextSingle() * (spawner.MaxSpawnTime - spawner.MinSpawnTime);
-
     var spawnPosition = spawner.GroundPosition;
     var enemy = CreateEnemy3D(vocab, spawnPosition, startTime);
     EnemiesContainer.AddChild(enemy);
-
     spawner.Spawned = true;
   }
 
@@ -261,7 +220,7 @@ public partial class GameTyping : Node3D {
   }
 
   private Enemy CreateEnemy3D(Vocab vocab, Vector3 position, double startTime) {
-    var enemy = Enemy.Instantiate(vocab, new Vector3(PlayerPosition.X, 0, PlayerPosition.Z), startTime);
+    var enemy = Enemy.Instantiate(vocab, PlayerPosition, startTime);
     enemy.Position = position;
     return enemy;
   }

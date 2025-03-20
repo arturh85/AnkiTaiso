@@ -12,6 +12,7 @@ emission = Color(1, 0, 1, 1)
 
 [node name="ZombieSpawner" type="Node3D"]
 script = ExtResource("1_bojb6")
+MinSpawnTime = 0.0
 
 [node name="EditorPosition" type="MeshInstance3D" parent="."]
 unique_name_in_owner = true

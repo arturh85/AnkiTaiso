@@ -15,7 +15,6 @@ public partial class EnemyPanel : Control {
   private Color _activeColor = Color.FromHtml("604540b3");
   private Color _inactiveColor = Color.FromHtml("00000064");
 
-
   public string PromptLabelBbcode {
     get => PromptLabel.Get("bbcode").ToString();
     set => PromptLabel.Set("bbcode", value);
@@ -31,15 +30,13 @@ public partial class EnemyPanel : Control {
     set => InputLabel.Set("bbcode", value);
   }
 
-  public string DebugLabelBbcode {
-    get => DebugLabel.Get("bbcode").ToString();
-    set => DebugLabel.Set("bbcode", value);
+  public string HintLabelBbcode {
+    get => HintLabel.Get("bbcode").ToString();
+    set => HintLabel.Set("bbcode", value);
   }
 
   [OnInstantiate]
-  private void Initialise() {
-    _currentEnemy = null;
-  }
+  private void Initialise() => _currentEnemy = null;
 
   public void UpdateGui(Enemy enemy, int order_index) {
     var pos3D = enemy.GlobalPosition + enemy.GetGuiOffset();
@@ -62,7 +59,6 @@ public partial class EnemyPanel : Control {
     if (PromptLabelBbcode != vocab.Entry.Prompt) {
       PromptLabelBbcode = vocab.Entry.Prompt;
     }
-
     if (vocab.Entry.Title == null) {
       TitleLabel.Hide();
     }
@@ -87,10 +83,12 @@ public partial class EnemyPanel : Control {
         InputLabelBbcode = "";
       }
     }
-
-    var targetDebugOutput = vocab.NextVariants != null ? string.Join(", ", vocab.NextVariants) : vocab.Next;
-    if (DebugLabelBbcode != targetDebugOutput) {
-      DebugLabelBbcode = targetDebugOutput;
+    var targetHint = " ";
+    if (vocab.ShowHint) {
+      targetHint = vocab.NextVariants != null ? string.Join(", ", vocab.NextVariants) : vocab.Next;
+    }
+    if (HintLabelBbcode != targetHint) {
+      HintLabelBbcode = targetHint;
     }
   }
 }

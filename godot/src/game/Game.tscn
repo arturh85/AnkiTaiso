@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bn84ofaaq4o80" path="res://src/death_menu/DeathMenu.tscn" id="7_35ldn"]
 [ext_resource type="PackedScene" uid="uid://bthdrw6580hll" path="res://src/win_menu/WinMenu.tscn" id="8_ovoi6"]
 [ext_resource type="PackedScene" uid="uid://conmng5ejji6f" path="res://src/pause_menu/PauseMenu.tscn" id="9_yxma7"]
+[ext_resource type="PackedScene" uid="uid://rmbv04yvw5yg" path="res://src/fps_counter/FpsCounter.tscn" id="10_da0yh"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_aawkc"]
 
@@ -63,5 +64,16 @@ mouse_filter = 1
 [node name="PauseMenu" parent="." instance=ExtResource("9_yxma7")]
 unique_name_in_owner = true
 visible = false
+
+[node name="FpsCounter" parent="." instance=ExtResource("10_da0yh")]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_bottom = 0.0
+offset_left = -88.0
+offset_top = 11.0
+offset_right = -88.0
+offset_bottom = 11.0
+grow_horizontal = 0
+grow_vertical = 1
 
 [editable path="InGameUi"]

@@ -42,14 +42,15 @@ public partial class InGameUI : Control, IInGameUI {
   }
 
   public void UpdateStatisticLabel() {
-    var diff = GameTypingSystem.GetDuration();
-    if (diff == null) {
-      StatisticLabel.Text = "";
-      return;
-    }
-    var total = GameTypingSystem.StatisticTotalError + GameTypingSystem.StatisticTotalSuccess;
-    var percent = (total - GameTypingSystem.StatisticTotalError) / diff.Value.TotalMinutes;
-    StatisticLabel.Text = $"{Mathf.Floor(percent)} hits/m";
+    StatisticLabel.Text = $"{GameTypingSystem.StatisticTotalError} Errors";
+    // var diff = GameTypingSystem.GetDuration();
+    // if (diff == null) {
+    //   StatisticLabel.Text = "";
+    //   return;
+    // }
+    // var total = GameTypingSystem.StatisticTotalError + GameTypingSystem.StatisticTotalSuccess;
+    // var percent = (total - GameTypingSystem.StatisticTotalError) / diff.Value.TotalMinutes;
+    // StatisticLabel.Text = $"{Mathf.Floor(percent)} hits/m";
   }
 
   public void UpdateProgressLabel(int leftVocab, int totalVocab) =>

@@ -1,0 +1,54 @@
+---
+const { title, buildInfo, tags, features, link, linkText, linkColor, borderColor, textColor } = Astro.props;
+---
+
+<div class="group bg-white dark:bg-[#2A2A2A] p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 max-w-2xl w-full">
+  <div class={`border-l-4 ${borderColor} pl-6`}>
+    <h3 class={`text-xl font-bold mb-2 ${textColor}`}>
+      {title}
+    </h3>
+    <div class="mb-4">
+      <span class="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-sm">
+        {buildInfo}
+      </span>
+    </div>
+    <div class="flex flex-wrap gap-2 mb-6">
+      {tags.map((tag: { bgColor: string; textColor: string; label: string }) => (
+        <span class={`bg-${tag.bgColor} text-${tag.textColor} px-3 py-1 rounded-full text-sm`}>
+          {tag.label}
+        </span>
+      ))}
+    </div>
+    <div class="space-y-4 mb-6 border-t border-gray-200 dark:border-gray-700 pt-4">
+      <div class="text-sm text-gray-600 dark:text-gray-300">
+        <h4 class={`text-lg font-semibold mb-4 ${textColor}`}>
+          Características de {title}
+        </h4>
+        <ul class="list-disc pl-6 text-sm space-y-1">
+          {features.map((feature: string) => (
+            <li>{feature}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+    <a
+      href={link}
+      class={`inline-flex items-center ${linkColor} hover:text-${linkColor}/80 font-medium`}
+    >
+      {linkText}
+      <svg
+        class="w-4 h-4 ml-2"
+        fill="none"
+        stroke="currentColor"
+        viewBox="0 0 24 24"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+        ></path>
+      </svg>
+    </a>
+  </div>
+</div>

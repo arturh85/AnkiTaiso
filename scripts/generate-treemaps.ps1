@@ -1,0 +1,3 @@
+& "$PSScriptRoot\treemap.ps1" -RootDir "/tmp/release/windows" -PathToPckExplorer "/tmp/release/pckexplorer/GodotPCKExplorer.Console.dll" -OutputFile "/tmp/release/treemaps/AnkiTaiso-BundleSize-windows.html"
+& "$PSScriptRoot\treemap.ps1" -RootDir "/tmp/release/linux" -PathToPckExplorer "/tmp/release/pckexplorer/GodotPCKExplorer.Console.dll" -OutputFile "/tmp/release/treemaps/AnkiTaiso-BundleSize-linux.html"
+& "$PSScriptRoot\treemap.ps1" -RootDir "/tmp/release/mac" -PathToPckExplorer "/tmp/release/pckexplorer/GodotPCKExplorer.Console.dll" -OutputFile "/tmp/release/treemaps/AnkiTaiso-BundleSize-mac.html"

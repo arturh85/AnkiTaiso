@@ -1,5 +1,6 @@
 namespace ankitaiso.enemy;
 
+using System;
 using Chickensoft.AutoInject;
 using Chickensoft.Introspection;
 using game_typing;
@@ -34,15 +35,38 @@ public partial class Enemy : Node3D {
   private void OnAnimationStarted(StringName animname) => Model.Show();
 
   public void OnReady() {
-
     ImpactSprite.Hide();
 
-    StartDelay.Timeout += StartDelayTimeout;
+    StartDelay.Timeout += OnReadyDelayed;
     StartDelay.Start();
+
+    var textureIdx = Random.Shared.Next(0, 5);
+    if (textureIdx == 1) {
+      LoadTexture("res://src/enemy/skins/Japanese_Zombie_Kimono.jpg");
+    }
+    else if (textureIdx == 2) {
+      LoadTexture("res://src/enemy/skins/Police_Officer_Zombie1.jpg");
+    }
+    else if (textureIdx == 3) {
+      LoadTexture("res://src/enemy/skins/PS1_Zombie_Alternative1.png");
+    }
+    else if (textureIdx == 4) {
+      LoadTexture("res://src/enemy/skins/PS1_Zombie_Soldier.png");
+    }
   }
 
-  void StartDelayTimeout() {
+  private void LoadTexture(string resourcePath) {
+    var material = Zombie1.Mesh.SurfaceGetMaterial(0);
+    if (material is not StandardMaterial3D material3D) {
+      return;
+    }
 
+    material3D.AlbedoTexture = ResourceLoader.Load<Texture2D>($"{resourcePath}");
+    // material3D.NormalTexture = ResourceLoader.Load<Texture2D>($"{resourceBasePath}/normal.jpg");
+    // material3D.RoughnessTexture = ResourceLoader.Load<Texture2D>($"{resourceBasePath}/roughness.jpg");
+  }
+
+  private void OnReadyDelayed() {
     var player = GetAnimationTree();
     player.AnimationStarted += OnAnimationStarted;
     player.AnimationFinished += OnAnimationFinished;
@@ -51,7 +75,6 @@ public partial class Enemy : Node3D {
 
     GameTypingSystem.OnHit += OnVocabHit;
     GameTypingSystem.OnMistake += OnVocabMistake;
-
   }
 
 
@@ -67,6 +90,7 @@ public partial class Enemy : Node3D {
     if (vocab != Vocab) {
       return;
     }
+
     GetAnimationTree().Set("parameters/OneShot/request", true);
 
 
@@ -127,6 +151,10 @@ public partial class Enemy : Node3D {
       EmitSignal(SignalName.OnDelete);
       QueueFree();
     }
+  }
+
+  public void UpdateMovementTarget(Vector3 newTargetPos) {
+    _movementTarget = newTargetPos;
   }
 
   public override void _Process(double delta) {

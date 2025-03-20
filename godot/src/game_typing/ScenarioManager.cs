@@ -148,7 +148,7 @@ public class ScenarioManager {
     }
 
     return new VocabEntry {
-      Prompt = config.PromptKey == null ? null : card.Fields[config.PromptKey].Value,
+      Prompt = config.PromptKey == null ? "???" : card.Fields[config.PromptKey].Value ?? "???",
       Translation = config.TranslationKey == null ? null : card.Fields[config.TranslationKey].Value,
       AudioFilename = audioFilename,
       Title = config.TitleKey == null ? null : card.Fields[config.TitleKey].Value

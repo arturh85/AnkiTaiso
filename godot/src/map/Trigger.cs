@@ -14,15 +14,7 @@ public partial class Trigger : Area3D {
   public override void _EnterTree() {
 
   }
-  public override void _Process(double delta) {
-    var cs = GetNode("CollisionShape3D");
-    if (Stop) {
-      //cs.Set("debug_color", Colors.Red);
-    }
-    else {
-      //cs.Set("debug_color", Colors.Green);
-    }
-  }
+
   public override void _PhysicsProcess(double delta) {
 
     var areas = GetOverlappingAreas();

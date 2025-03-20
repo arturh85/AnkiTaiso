@@ -122,6 +122,9 @@ public class GameTypingSystem {
     var success = false;
     var input = KeyboardUtils.KeyToString(key);
     if (input.Length == 0) {
+      if (key == Key.Backspace && Buffer.Length > 0) {
+        Buffer = Buffer[..^1];
+      }
       return true;
     }
 
@@ -138,13 +141,13 @@ public class GameTypingSystem {
           value = new CharStatistic(c);
           StatisticByChar.Add(c, value);
         }
+        success = EntryActive.OnInput(input);
         if (success) {
           value.SuccessCount += 1;
         }
         else {
           value.FailCount += 1;
         }
-        success = EntryActive.OnInput(input);
       }
       else if (EntryActive.NextVariants != null) {
         var c = EntryActive.Next;
@@ -161,6 +164,7 @@ public class GameTypingSystem {
             success = EntryActive.OnInput(EntryActive.Next);
             Buffer = "";
             value.SuccessCount += 1;
+            EntryActive.ShowHint = false;
           }
           else {
             Buffer = bufferInput;
@@ -169,7 +173,12 @@ public class GameTypingSystem {
 
           break;
         }
-        value.FailCount += 1;
+
+        if (!success) {
+          EntryActive.ShowHint = true;
+          Buffer = "";
+          value.FailCount += 1;
+        }
       }
       else {
         var c = EntryActive.Next;
@@ -212,6 +221,10 @@ public class GameTypingSystem {
           }
 
           break;
+        }
+
+        if (!success) {
+          Buffer = "";
         }
       }
     }

@@ -31,7 +31,7 @@ project/assembly_name="AnkiTaiso"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/expand-region/plugin.cfg", "res://addons/find-everywhere/plugin.cfg", "res://addons/imrp/plugin.cfg", "res://addons/previous-tab/plugin.cfg", "res://addons/richtext2/plugin.cfg", "res://addons/script-tabs/plugin.cfg", "res://addons/terrabrush/plugin.cfg")
+enabled=PackedStringArray("res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/expand-region/plugin.cfg", "res://addons/find-everywhere/plugin.cfg", "res://addons/imrp/plugin.cfg", "res://addons/previous-tab/plugin.cfg", "res://addons/richtext2/plugin.cfg", "res://addons/script-tabs/plugin.cfg", "res://addons/terrabrush/plugin.cfg")
 
 [file_customization]
 
@@ -145,18 +145,5 @@ anti_aliasing/quality/use_taa=true
 
 [richer_text_label]
 
-fonts={
-&"RobotoMono": "res://.addons/expand-region/addons/gdUnit4/src/update/assets/fonts/static/RobotoMono-Regular.ttf",
-&"RobotoMono-ExtraLight": "res://.addons/expand-region/addons/gdUnit4/src/update/assets/fonts/static/RobotoMono-ExtraLight.ttf",
-&"RobotoMono-ExtraLightItalic": "res://.addons/expand-region/addons/gdUnit4/src/update/assets/fonts/static/RobotoMono-ExtraLightItalic.ttf",
-&"RobotoMono-Light": "res://.addons/expand-region/addons/gdUnit4/src/update/assets/fonts/static/RobotoMono-Light.ttf",
-&"RobotoMono-LightItalic": "res://.addons/expand-region/addons/gdUnit4/src/update/assets/fonts/static/RobotoMono-LightItalic.ttf",
-&"RobotoMono-Medium": "res://.addons/expand-region/addons/gdUnit4/src/update/assets/fonts/static/RobotoMono-Medium.ttf",
-&"RobotoMono-MediumItalic": "res://.addons/expand-region/addons/gdUnit4/src/update/assets/fonts/static/RobotoMono-MediumItalic.ttf",
-&"RobotoMono-SemiBold": "res://.addons/expand-region/addons/gdUnit4/src/update/assets/fonts/static/RobotoMono-SemiBold.ttf",
-&"RobotoMono-SemiBoldItalic": "res://.addons/expand-region/addons/gdUnit4/src/update/assets/fonts/static/RobotoMono-SemiBoldItalic.ttf",
-&"RobotoMono-Thin": "res://.addons/expand-region/addons/gdUnit4/src/update/assets/fonts/static/RobotoMono-Thin.ttf",
-&"RobotoMono-ThinItalic": "res://.addons/expand-region/addons/gdUnit4/src/update/assets/fonts/static/RobotoMono-ThinItalic.ttf",
-&"RobotoMonoItalic": "res://.addons/expand-region/addons/gdUnit4/src/update/assets/fonts/static/RobotoMono-BoldItalic.ttf"
-}
+fonts={}
 colors={}

@@ -1,0 +1,33 @@
+---
+// Recibimos las propiedades necesarias para software.
+const { title, description, link, linkText, linkColor } = Astro.props;
+---
+<div class="tool-card">
+  <h3 class={`font-bold mb-2 ${linkColor}`}>
+    {title}
+  </h3>
+  <p class="text-sm mb-3 text-gray-900 dark:text-gray-100">
+    {description}
+  </p>
+  <a
+    href={link}
+    class={`inline-flex items-center text-gray-900 dark:text-gray-100 hover:text-${linkColor}/80 font-medium`}
+    target="_blank"
+    rel="noopener noreferrer"
+  >
+    {linkText}
+    <svg
+      class="w-4 h-4 ml-2"
+      fill="none"
+      stroke="currentColor"
+      viewBox="0 0 24 24"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"
+      ></path>
+    </svg>
+  </a>
+</div>

@@ -9,6 +9,7 @@ using game_typing.domain;
 using game.domain;
 using Godot;
 using state;
+using utils;
 using InGameAudioLogic = state.InGameAudioLogic;
 
 [Meta(typeof(IAutoNode))]
@@ -63,25 +64,36 @@ public partial class InGameAudio : Node {
       );
 
     GameTypingSystem.OnHit += OnHit;
+    GameTypingSystem.OnMistake += OnMistake;
 
     InGameAudioLogic.Start();
   }
+  public void OnExitTree() {
+    GameTypingSystem.OnHit -= OnHit;
+    GameTypingSystem.OnMistake -= OnMistake;
+    InGameAudioLogic.Stop();
+    InGameAudioBinding.Dispose();
+  }
 
   private void OnHit(string key, Vocab? vocab) {
-    if (vocab is { State: VocabState.Completed, Entry.AudioFilename: not null } && GameTypingRepo.ActiveScenario is
-        {
+    if (vocab is { State: VocabState.Completed, Entry.AudioFilename: not null } && GameTypingRepo.ActiveScenario is {
           Config: not null
         }) {
       var audioPath = $"{GameTypingRepo.ActiveScenario.Config.AudioDirectoryPath}/{vocab.Entry.AudioFilename}";
       ClearedWordPlayer.Stream = AudioStreamMP3.LoadFromFile(audioPath);
       ClearedWordPlayer.Play();
     }
+    else {
+      var player = NodeUtils.RandomChildWhere<AudioStreamPlayer>(OnHitPlayers, player => !player.Playing);
+      player?.Play();
+    }
   }
 
-  public void OnExitTree() {
-    InGameAudioLogic.Stop();
-    InGameAudioBinding.Dispose();
+  private void OnMistake(string key, Vocab? vocab) {
+    var player = NodeUtils.RandomChildWhere<AudioStreamPlayer>(OnMistakePlayers, player => !player.Playing);
+    player?.Play();
   }
+
 
   public void StartMainMenuMusic() {
     GameMusic.FadeOut();

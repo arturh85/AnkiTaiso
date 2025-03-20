@@ -1,0 +1,24 @@
+---
+import { useTranslations } from "@/i18n/utils";
+
+const currentLang: "es" | "en" = (Astro.currentLocale as "es" | "en") || "es";
+const translateLabels = useTranslations(currentLang);
+---
+
+<section class="py-8 relative">
+  <div class="max-w-5xl mx-auto">
+    <div class="bg-gradient-to-r from-[#2196F3]/90 to-[#9C27B0]/90 text-white mx-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+      <div class="container mx-auto px-6 py-5 text-center text-sm md:text-base">
+        <p class="leading-relaxed">
+          🙌 <strong>{translateLabels("guides.support.title")}</strong>
+          <br />
+          {translateLabels("guides.support.description1")}{" "}
+          <strong>{translateLabels("guides.support.emphasis1")}</strong>{" "}
+          {translateLabels("guides.support.description2")}{" "}
+          <strong>{translateLabels("guides.support.emphasis2")}</strong>{" "}
+          {translateLabels("guides.support.description3")}
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
