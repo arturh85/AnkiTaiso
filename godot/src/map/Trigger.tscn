@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://dg74yst1offlt"]
+
+[ext_resource type="Script" uid="uid://18qefslxu2op" path="res://src/map/Trigger.cs" id="1_87xms"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_87xms"]
+size = Vector3(0.373535, 2.38672, 2.7876)
+
+[node name="Trigger" type="Area3D"]
+collision_layer = 2
+collision_mask = 2
+monitorable = false
+script = ExtResource("1_87xms")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, -2.30502e-08, 0, 1, 0, 2.30502e-08, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_87xms")
+debug_color = Color(1, 0, 0, 1)

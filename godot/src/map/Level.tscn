@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://de6jvysh5078g"]
+
+[ext_resource type="Script" uid="uid://c68q0lr22mtv3" path="res://src/map/Level.cs" id="1_k0cd0"]
+
+[sub_resource type="Curve3D" id="Curve3D_0ohkh"]
+bake_interval = 10.0
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -20.9585, 11.0201, -14.5755, -1.81743, -0.225826, -0.372211, 1.81743, 0.225826, 0.372211, -16.2675, 10.312, -14.2509, -0.0444107, -0.340355, -1.22794, 0.0444107, 0.340355, 1.22794, -13.3238, 10.312, -13.1531, -0.172203, -0.057724, -0.926622, 0.172203, 0.057724, 0.926622, -13.0891, 10.312, -2.42452, -1.80365, -0.0176468, -0.460995, 1.80365, 0.0176468, 0.460995, -10.5512, 10.312, 1.14267, 0, 0, 0, 0, 0, 0, 0.882086, 10.312, 2.20446, 0, 0, 0, 0, 0, 0, 9.20757, 10.312, 1.99),
+"tilts": PackedFloat32Array(0, 0, 0, 0, -0.805024, 0, 0)
+}
+point_count = 7
+
+[node name="Level" type="Path3D"]
+curve = SubResource("Curve3D_0ohkh")
+script = ExtResource("1_k0cd0")

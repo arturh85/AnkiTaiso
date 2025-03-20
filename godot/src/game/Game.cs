@@ -93,6 +93,8 @@ public partial class Game : Node3D, IGame {
     GameTyping.PlayerPosition = ((CameraWaypoint)((Node3D)Map.GetNode("WayPoints").GetChildren()[0])).CameraPosition;
     GameTyping.Waypoints = Map.GetNode("WayPoints").GetChildren().Cast<CameraWaypoint>().ToList();
     GameTyping.Camera = PlayerCamera;
+    GameTyping.Levels = Map.GetNode("Levels") as Node3D;
+    GameTyping.Player = Player;
     //PlayerCamera.GlobalPosition = GameTyping.PlayerPosition;
     GameTyping.SpawnPosition = SpawnLocation.Position;
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cywpu6lxdjhuu"]
+[gd_scene load_steps=11 format=3 uid="uid://cywpu6lxdjhuu"]
 
 [ext_resource type="Script" uid="uid://cn53pono1ndde" path="res://src/game/Game.cs" id="1_17mmo"]
 [ext_resource type="PackedScene" uid="uid://pjmfnaiwwwed" path="res://src/player_camera/PlayerCamera.tscn" id="2_g21k4"]
@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bn84ofaaq4o80" path="res://src/death_menu/DeathMenu.tscn" id="7_35ldn"]
 [ext_resource type="PackedScene" uid="uid://bthdrw6580hll" path="res://src/win_menu/WinMenu.tscn" id="8_ovoi6"]
 [ext_resource type="PackedScene" uid="uid://conmng5ejji6f" path="res://src/pause_menu/PauseMenu.tscn" id="9_yxma7"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_aawkc"]
 
 [node name="Game" type="Node3D"]
 process_mode = 3
@@ -32,6 +34,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.0954, 20.3607, -7.28455)
 
 [node name="GameTyping" parent="PauseContainer" instance=ExtResource("5_2l3t5")]
 unique_name_in_owner = true
+
+[node name="Player" type="Area3D" parent="PauseContainer"]
+unique_name_in_owner = true
+transform = Transform3D(0.999997, 0, 0.00237365, 0, 1, 0, -0.00237365, 0, 0.999997, -29.966, 0, -3.928)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PauseContainer/Player"]
+shape = SubResource("SphereShape3D_aawkc")
 
 [node name="InGameUi" parent="." instance=ExtResource("5_w4lns")]
 unique_name_in_owner = true

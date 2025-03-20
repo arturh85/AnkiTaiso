@@ -22,6 +22,8 @@ public partial class GameTyping : Node3D {
 
   public Vector3 PlayerPosition;
   public Vector3 SpawnPosition;
+  public Node3D Levels;
+  public Area3D Player;
   public player_camera.PlayerCamera? Camera;
   public List<CameraWaypoint>? Waypoints;
 
@@ -33,6 +35,7 @@ public partial class GameTyping : Node3D {
   private double _timeStartcamera;
   private int _currentWaypoint;
 
+  private Follower _follower;
   [Dependency] public IAppRepo AppRepo => this.DependOn<IAppRepo>();
   [Dependency] public IGameTypingRepo GameTypingRepo => this.DependOn<IGameTypingRepo>();
   [Dependency] public GameTypingSystem GameTypingSystem => this.DependOn<GameTypingSystem>();
@@ -50,9 +53,15 @@ public partial class GameTyping : Node3D {
       GuiControls.AddChild(panel);
     }
     BufferLabelBbcode = "";
+
+    _follower = new Follower() { RotationMode = PathFollow3D.RotationModeEnum.Y };
   }
 
   public void OnResolved() {
+
+  }
+
+  public void StopCamera(float waitTime) {
 
   }
 
@@ -62,6 +71,12 @@ public partial class GameTyping : Node3D {
       return;
     }
 
+
+    Camera.GlobalPosition = _follower.GlobalPosition;
+    Player.GlobalPosition = _follower.GlobalPosition;
+    Camera.Rotation = _follower.Rotation;
+    _follower.SetProgress((float)delta * 0.5f + _follower.Progress);
+    /*
     var waypoint = Waypoints[_currentWaypoint];
     if (_timeLastWaypoint == 0.0) { // standing at waypoint
 
@@ -114,7 +129,7 @@ public partial class GameTyping : Node3D {
         _timeLastWaypoint += delta;
       }
 
-    }
+    }*/
 
 
 
@@ -150,6 +165,9 @@ public partial class GameTyping : Node3D {
     GameTypingSystem.RestartGame(WordList.Select(w => new VocabEntry(w)));
     _gameStarted = true;
     SetPaused(false);
+
+    Levels.GetNode("Level1").AddChild(_follower);
+
   }
 
   public void SetPaused(bool paused) {
@@ -203,8 +221,7 @@ public partial class GameTyping : Node3D {
     }
   }
 
-
-  private void SpawnEnemy(ZombieSpawner spawner) {
+  public void SpawnEnemy(ZombieSpawner spawner) {
 
     Vocab? vocab = GameTypingSystem.NextEntry(false, spawner.MinWordLength, spawner.MaxWordLength);
 

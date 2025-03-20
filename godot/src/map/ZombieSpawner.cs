@@ -3,6 +3,7 @@ namespace ankitaiso.map;
 using System;
 using System.Drawing;
 using Godot;
+using static ankitaiso.game.state.GameLogic.Input;
 
 [SceneTree]
 [Tool]
@@ -14,6 +15,7 @@ public partial class ZombieSpawner : Node3D {
   [Export] public int MinWordLength = 0;
   [Export] public int MaxWordLength = 99;
   public bool Spawned = false;
+  private bool _initialized = false;
 
   public void OnReady() => SetGroundPosition();
 
@@ -23,11 +25,14 @@ public partial class ZombieSpawner : Node3D {
     if (!Engine.IsEditorHint()) {
       EditorPosition.Hide();
     }
-    SetGroundPosition();
   }
 
 
   public override void _Process(double delta) {
+    if (!_initialized) {
+      _initialized = true;
+      SetGroundPosition();
+    }
 
     if (!Engine.IsEditorHint()) {
       return;
@@ -50,7 +55,7 @@ public partial class ZombieSpawner : Node3D {
   private void SetGroundPosition() {
     var spaceState = GetWorld3D().DirectSpaceState;
 
-    var query = PhysicsRayQueryParameters3D.Create(GlobalPosition, GlobalPosition + new Vector3(0, -999, 0));
+    var query = PhysicsRayQueryParameters3D.Create(GlobalPosition, GlobalPosition + new Vector3(0, -999, 0), 0b00000001);
     var result = spaceState.IntersectRay(query);
 
     if (result.Count > 0) {
