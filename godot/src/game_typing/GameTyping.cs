@@ -22,7 +22,6 @@ using utils;
 public partial class GameTyping : Node3D {
   public override void _Notification(int what) => this.Notify(what);
 
-  public Vector3 PlayerPosition;
   public Vector3 SpawnPosition;
   public Node3D Levels;
   public Area3D Player;
@@ -93,7 +92,7 @@ public partial class GameTyping : Node3D {
     }
 
 
-    var nearest = NodeUtils.NearestNodes<Enemy>(PlayerPosition, EnemiesContainer, MAX_ENEMY_PANELS, e => e.Moving);
+    var nearest = NodeUtils.NearestNodes<Enemy>(Player.GlobalPosition, EnemiesContainer, MAX_ENEMY_PANELS, e => e.Moving);
 
     var idx = 0;
     foreach (var child in GuiControls.GetChildren()) {
@@ -198,7 +197,7 @@ public partial class GameTyping : Node3D {
     var existingEnemies = Enumerable.Cast<Enemy>(EnemiesContainer.GetChildren()).ToList();
 
     for (var i = 0; i < maxAttempts; i++) {
-      var candidatePosition = NodeUtils.RandomPositionInArc(rng, PlayerPosition, SpawnPosition, radius);
+      var candidatePosition = NodeUtils.RandomPositionInArc(rng, Player.GlobalPosition, SpawnPosition, radius);
 
       if (!IsPositionOccupied3D(candidatePosition, existingEnemies, minDistance)) {
         return candidatePosition;
@@ -206,7 +205,7 @@ public partial class GameTyping : Node3D {
     }
 
     // Fallback to random position without collision check
-    return NodeUtils.RandomPositionInArc(rng, PlayerPosition, SpawnPosition, radius);
+    return NodeUtils.RandomPositionInArc(rng, Player.GlobalPosition, SpawnPosition, radius);
   }
 
 
@@ -220,7 +219,7 @@ public partial class GameTyping : Node3D {
   }
 
   private Enemy CreateEnemy3D(Vocab vocab, Vector3 position, double startTime) {
-    var enemy = Enemy.Instantiate(vocab, PlayerPosition, startTime);
+    var enemy = Enemy.Instantiate(vocab, Player.GlobalPosition, startTime);
     enemy.Position = position;
     return enemy;
   }

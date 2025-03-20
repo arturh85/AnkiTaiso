@@ -55,7 +55,7 @@ public partial class Game : Node3D, IGame {
     GameLogic = new GameLogic();
     GameLogic.Set(GameRepo);
     GameLogic.Set(AppRepo);
-    GameTyping.PlayerPosition = ((CameraWaypoint)((Node3D)Map.GetNode("WayPoints").GetChildren()[0])).CameraPosition;
+    Player.GlobalPosition = ((CameraWaypoint)((Node3D)Map.GetNode("WayPoints").GetChildren()[0])).CameraPosition;
     GameTyping.Camera = PlayerCamera;
     GameTyping.Levels = Map.GetNode("Levels") as Node3D;
     GameTyping.Player = Player;
